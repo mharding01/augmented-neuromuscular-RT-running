@@ -30,10 +30,10 @@ else
 fi
 
 # create the 'Optis' folder
-if [ -d "/home/ucl/mctr/thabra/Optis/coman_bruno/workR/Optis" ]; then
+if [ -d "/home/ucl/mctr/thabra/Optis/coman_matthew/workR/Optis" ]; then
 	echo "'Optis' folder already created"
 else
-	mkdir /home/ucl/mctr/thabra/Optis/coman_bruno/workR/Optis
+	mkdir /home/ucl/mctr/thabra/Optis/coman_matthew/workR/Optis
 
 	echo "'Optis' folder created"
 fi
@@ -42,22 +42,22 @@ fi
 for var in "$@"
 do
 	# create the folder $var inside the 'optis' folder
-	mkdir /home/ucl/mctr/thabra/Optis/coman_bruno/workR/Optis/$var
+	mkdir /home/ucl/mctr/thabra/Optis/coman_matthew/workR/Optis/$var
 
 	# go to the $var folder
-	cd /home/ucl/mctr/thabra/Optis/coman_bruno/workR/Optis/$var
+	cd /home/ucl/mctr/thabra/Optis/coman_matthew/workR/Optis/$var
 
 	# create the folder 'config_out' inside the $var folder
-	mkdir /home/ucl/mctr/thabra/Optis/coman_bruno/workR/Optis/$var/config_out
+	mkdir /home/ucl/mctr/thabra/Optis/coman_matthew/workR/Optis/$var/config_out
 
 	# create the folder 'results' inside the $var folder
-	mkdir /home/ucl/mctr/thabra/Optis/coman_bruno/workR/Optis/$var/results
+	mkdir /home/ucl/mctr/thabra/Optis/coman_matthew/workR/Optis/$var/results
 
 	# copy OptiParam.cc inside folder 'results' 
-	cp /home/ucl/mctr/thabra/Optis/coman_bruno/opti/config/OptiParams.cc /home/ucl/mctr/thabra/Optis/coman_bruno/workR/Optis/$var/results
+	cp /home/ucl/mctr/thabra/Optis/coman_matthew/opti/config/OptiParams.cc /home/ucl/mctr/thabra/Optis/coman_matthew/workR/Optis/$var/results
 
 	# cmake
-	cmake /home/ucl/mctr/thabra/Optis/coman_bruno/workR >> config_out/cmake_out.txt
+	cmake /home/ucl/mctr/thabra/Optis/coman_matthew/workR >> config_out/cmake_out.txt
 
 	echo "-------- CMake done for $var --------"
 	echo $'\n'
@@ -67,7 +67,7 @@ done
 for var in "$@"
 do
 	# go to the $var folder
-	cd /home/ucl/mctr/thabra/Optis/coman_bruno/workR/Optis/$var
+	cd /home/ucl/mctr/thabra/Optis/coman_matthew/workR/Optis/$var
 
 	# launch the compilation
 	make -j8
@@ -75,7 +75,7 @@ do
 	echo "---> Compilation done for $var"
 	echo $'\n'
 
-	sbatch /home/ucl/mctr/thabra/Optis/coman_bruno/opti/scripts/mpi_run.sh
+	sbatch /home/ucl/mctr/thabra/Optis/coman_matthew/opti/scripts/mpi_run.sh
 
 	echo "Opti launched for $var"
 

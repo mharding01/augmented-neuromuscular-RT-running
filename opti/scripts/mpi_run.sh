@@ -1,6 +1,6 @@
 #!/bin/bash
 # Submission script
-#SBATCH --job-name=coman_bruno_opti
+#SBATCH --job-name=coman_matthew_opti
 #SBATCH --time=20:00:00 # hh:mm:ss
 #SBATCH --output=run.txt
 #

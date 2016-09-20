@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # create the 'Optis' folder
-if [ -d "/home/nvander/Documents/Optis/coman_bruno/workR/Optis" ]; then
+if [ -d "/home/nvander/Documents/Optis/coman_matthew/workR/Optis" ]; then
 	echo "'Optis' folder already created"
 else
-	mkdir /home/nvander/Documents/Optis/coman_bruno/workR/Optis
+	mkdir /home/nvander/Documents/Optis/coman_matthew/workR/Optis
 
 	echo "'Optis' folder created"
 fi
@@ -13,19 +13,19 @@ fi
 for var in "$@"
 do
 	# create the folder $var inside the 'optis' folder
-	mkdir /home/nvander/Documents/Optis/coman_bruno/workR/Optis/$var
+	mkdir /home/nvander/Documents/Optis/coman_matthew/workR/Optis/$var
 
 	# go to the $var folder
-	cd /home/nvander/Documents/Optis/coman_bruno/workR/Optis/$var
+	cd /home/nvander/Documents/Optis/coman_matthew/workR/Optis/$var
 
 	# create the folder 'config_out' inside the $var folder
-	mkdir /home/nvander/Documents/Optis/coman_bruno/workR/Optis/$var/config_out
+	mkdir /home/nvander/Documents/Optis/coman_matthew/workR/Optis/$var/config_out
 
 	# create the folder 'results' inside the $var folder
-	mkdir /home/nvander/Documents/Optis/coman_bruno/workR/Optis/$var/results
+	mkdir /home/nvander/Documents/Optis/coman_matthew/workR/Optis/$var/results
 
 	# cmake
-	cmake -D CMAKE_C_COMPILER=gcc-4.6 -D CMAKE_CXX_COMPILER=g++-4.6 /home/nvander/Documents/Optis/coman_bruno/workR >> config_out/cmake_out.txt
+	cmake -D CMAKE_C_COMPILER=gcc-4.6 -D CMAKE_CXX_COMPILER=g++-4.6 /home/nvander/Documents/Optis/coman_matthew/workR >> config_out/cmake_out.txt
 
 	echo "-------- CMake done for $var --------"
 	echo $'\n'
@@ -35,7 +35,7 @@ done
 for var in "$@"
 do
 	# launch the shell script 'runOptiScript' for $var
-	screen -d -m -S $var /home/nvander/Documents/Optis/coman_bruno/opti/scripts/runOptiScript $var
+	screen -d -m -S $var /home/nvander/Documents/Optis/coman_matthew/opti/scripts/runOptiScript $var
 
 	echo "---> Compilation launched for $var"
 	echo $'\n'
