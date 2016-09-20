@@ -1,0 +1,521 @@
+
+#include "StimWangCtrl.hh"
+#include "DelayGeyer.hh"
+#include "coman_properties.hh"
+
+#define TA_EXTRA_K 4.0
+#define TA_EXTRA_THRESHOLD -0.1
+#define EXTRA_TA
+
+inline double pos(double x) { return (x > 0.0) ?  x : 0.0; }
+inline double neg(double x) { return (x < 0.0) ? -x : 0.0; }
+
+// extern global variable -> to remove at the end !!!
+extern double speed_fwd_global;
+
+/*! \brief constructor
+ * 
+ * \param[in] inputs controller inputs
+ * \param[in] ws walk states
+ * \param[in] fwd_kin forward kinematics
+ * \param[in] parts body parts
+ * \param[in] options controller options
+ */
+StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics *fwd_kin, BodyPart **parts, CtrlOptions *options): StimulationCtrl(inputs, ws, fwd_kin, parts, options)
+{
+	sw_st = static_cast<SwingStanceState*>(ws->get_state(SWING_STANCE_STATE));
+	tr_st = static_cast<TrailingState*>(ws->get_state(TRAILING_STATE));
+
+	delay_manager = new DelayGeyer();
+
+	flag_3D = options->is_flag_3D();
+	ctrl_two_parts = options->is_ctrl_two_parts();
+	Qq_match_wang = options->is_Qq_match_wang();
+	inital_pos = options->is_initial_pos();
+
+	flag_part1 = 0;
+	flag_part2 = 0;
+
+	if (flag_3D)
+	{
+		std::cout << "Error: 3D walking not implemented for Wang controller" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+
+	for (int i=0; i<NB_LEGS; i++)
+	{
+		pk[i] = parts[i]->get_articulations(PITCH_KNEE_ART);
+		ph[i] = parts[i]->get_articulations(PITCH_HIP_ART);
+		
+		sol[i] = parts[i]->get_muscle(SOL_MUSCLE);
+		ta[i]  = parts[i]->get_muscle(TA_MUSCLE);
+		vas[i] = parts[i]->get_muscle(VAS_MUSCLE);
+		ham[i] = parts[i]->get_muscle(HAM_MUSCLE);
+		hfl[i] = parts[i]->get_muscle(HFL_MUSCLE);
+		gas[i] = parts[i]->get_muscle(GAS_MUSCLE);
+		glu[i] = parts[i]->get_muscle(GLU_MUSCLE);
+
+		// angles (delay)
+		phi_k[i]  = 0.0;
+		phip_k[i] = 0.0;
+		phi_h[i]  = 0.0;
+		phip_h[i] = 0.0;
+
+		// l.ce (delay)
+		lce_ta[i]  = 0.0;
+		lce_ham[i] = 0.0;
+		lce_hfl[i] = 0.0;
+
+		// Fm (delay)
+		F_sol[i] = 0.0;
+		F_vas[i] = 0.0;
+		F_gas[i] = 0.0;
+		F_ham[i] = 0.0;
+		F_glu[i] = 0.0;
+	}
+
+	// torso (delay)
+	theta_torso = 0.0;
+	omega_torso = 0.0;
+	theta_toro_sw0 = 0.0;
+
+	// fixed parameters
+	F_max_sol = sol[R_ID]->get_Fmax();
+	F_max_vas = vas[R_ID]->get_Fmax();
+	F_max_gas = gas[R_ID]->get_Fmax();
+	F_max_ham = ham[R_ID]->get_Fmax();
+	F_max_glu = glu[R_ID]->get_Fmax();
+	l_opt_ta  = ta[R_ID]->get_lopt();
+	l_opt_ham = ham[R_ID]->get_lopt();
+	l_opt_hfl = hfl[R_ID]->get_lopt();
+
+	// ---- opti parameters ----
+	// pre-stimulations
+	S0_sol_st = 0.01;
+	S0_ta_st  = 0.01;
+	S0_gas_st = 0.01;
+	S0_vas_st = 0.08;
+	S0_ham_st = 0.05;
+	S0_rf_st  = 0.01;
+	S0_glu_st = 0.05;
+	S0_hfl_st = 0.05;
+	S0_sol_sw = 0.01;
+	S0_ta_sw  = 0.01;
+	S0_gas_sw = 0.01;
+	S0_vas_sw = 0.01;
+	S0_ham_sw = 0.01;
+	S0_rf_sw  = 0.01;
+	S0_glu_sw = 0.01;
+	S0_hfl_sw = 0.01;
+	// gains of positive force feedback laws
+	G_sol = 1.2;
+	G_sol_ta = 0.4;
+	G_gas = 1.1;
+	G_vas = 1.2;
+	G_ham = 0.65;
+	G_glu = 0.5;
+	// gains of positive length feedback laws
+	G_ta_sw = 1.1;
+	G_ta_st = 1.1;
+	G_hfl = 0.5;
+	G_ham_hfl = 4.0;
+	// offsets of positive length feedback laws
+	l_off_ta_sw = 0.72;
+	l_off_ta_st = 0.72;
+	l_off_hfl = 0.65;
+	l_off_ham_hfl = 0.85;
+	// stance phase PD-control parameters
+	K_ham = 0.0; //1.0;
+	K_glu = 0.0; //1.0;
+	K_hfl = 0.0; //1.0;
+	D_ham = 0.0; //0.2;
+	D_glu = 0.0; //0.2;
+	D_hfl = 0.0; //0.2;
+	theta_ref = 0.0; //0.105;
+	// swing initiation parameters
+	si_rf = 0.01;
+	si_vas = 1.0;
+	si_glu = 0.25;
+	si_hfl = 0.25;
+	// stance preparation muscle PD-control parameters
+	K_sp_vas = 1.0;
+	K_sp_glu = 1.0;
+	K_sp_hfl = 1.0;
+	D_sp_vas = 0.2;
+	D_sp_glu = 0.2;
+	D_sp_hfl = 0.2;
+	theta_k_ref = 0.14;
+	// stance preparation SIMBICON-style feedback parameters
+	theta_h_ref0 = 0.0;
+	c_d = 0.0; //0.5;
+	c_v = 0.0; //0.2;
+	// swing initiation and stance preparation offsets
+    d_si = 0.4;
+	d_sp = -0.15;
+	//additional parameters
+	k_THETA = 0.0; //1.15;
+	k_theta = 2.0;
+	phi_off_pk = 0.17;
+	//swtich controller time
+	t_switch = 3.0;
+
+	// for optimization
+	inputs->get_opti_inputs()->set_stim_ctrl(this);
+
+	first_swing[R_ID] = 1;
+	first_swing[L_ID] = 1;
+}
+
+/*! \brief destructor
+ */
+StimWangCtrl::~StimWangCtrl()
+{
+	delete delay_manager;
+}
+
+/*! \brief main computation
+ */
+void StimWangCtrl::compute()
+{
+	compute_delay();
+
+	switch_results();
+
+	compute_stimulation();
+}
+
+/*! \brief switch between know results and opti
+ */
+void StimWangCtrl::switch_results()
+{
+	if(ctrl_two_parts)
+	{
+		if((inputs->get_t() < t_switch) && !flag_part1)
+		{
+			inputs->get_opti_inputs()->set_opti_init();
+			flag_part1 = 1;
+		}
+		else if((inputs->get_t() >= t_switch) && !flag_part2)
+		{
+			inputs->get_opti_inputs()->set_opti();
+			flag_part2 = 1;
+		}
+	}
+}
+
+/*! \brief compute delays in signals
+ */
+void StimWangCtrl::compute_delay()
+{
+	// update time
+	delay_manager->set_t(inputs->get_t());
+
+	// angles (delay)
+	phi_k[R_ID]  = delay_manager->update_and_get(PHI_K_R,  pk[R_ID]->get_q());
+	phi_k[L_ID]  = delay_manager->update_and_get(PHI_K_L,  pk[L_ID]->get_q());
+	phip_k[R_ID] = delay_manager->update_and_get(PHIP_K_R, pk[R_ID]->get_qd());
+	phip_k[L_ID] = delay_manager->update_and_get(PHIP_K_L, pk[L_ID]->get_qd());
+	phi_h[R_ID]  = delay_manager->update_and_get(PHI_H_R,  ph[R_ID]->get_q());
+	phi_h[L_ID]  = delay_manager->update_and_get(PHI_H_L,  ph[L_ID]->get_q());
+	phip_h[R_ID] = delay_manager->update_and_get(PHIP_H_R, ph[R_ID]->get_qd());
+	phip_h[L_ID] = delay_manager->update_and_get(PHIP_H_L, ph[L_ID]->get_qd());
+
+	// l.ce (delay)
+	lce_ta[R_ID]  = delay_manager->update_and_get(LCE_TA_R,  ta[R_ID]->get_lce());
+	lce_ta[L_ID]  = delay_manager->update_and_get(LCE_TA_L,  ta[L_ID]->get_lce());
+	lce_ham[R_ID] = delay_manager->update_and_get(LCE_HAM_R, ham[R_ID]->get_lce());
+	lce_ham[L_ID] = delay_manager->update_and_get(LCE_HAM_L, ham[L_ID]->get_lce());
+	lce_hfl[R_ID] = delay_manager->update_and_get(LCE_HFL_R, hfl[R_ID]->get_lce());
+	lce_hfl[L_ID] = delay_manager->update_and_get(LCE_HFL_L, hfl[L_ID]->get_lce());
+
+	// Fm (delay)
+	F_sol[R_ID] = delay_manager->update_and_get(F_SOL_R, sol[R_ID]->get_Fm());
+	F_sol[L_ID] = delay_manager->update_and_get(F_SOL_L, sol[L_ID]->get_Fm());
+	F_vas[R_ID] = delay_manager->update_and_get(F_VAS_R, vas[R_ID]->get_Fm());
+	F_vas[L_ID] = delay_manager->update_and_get(F_VAS_L, vas[L_ID]->get_Fm());
+	F_gas[R_ID] = delay_manager->update_and_get(F_GAS_R, gas[R_ID]->get_Fm());
+	F_gas[L_ID] = delay_manager->update_and_get(F_GAS_L, gas[L_ID]->get_Fm());
+	F_ham[R_ID] = delay_manager->update_and_get(F_HAM_R, ham[R_ID]->get_Fm());
+	F_ham[L_ID] = delay_manager->update_and_get(F_HAM_L, ham[L_ID]->get_Fm());
+	F_glu[R_ID] = delay_manager->update_and_get(F_GLU_R, glu[R_ID]->get_Fm());
+	F_glu[L_ID] = delay_manager->update_and_get(F_GLU_L, glu[L_ID]->get_Fm());
+
+	// torso (delay)
+	theta_torso = delay_manager->update_and_get(THETA_TORSO, inputs->get_theta_torso(1));
+	omega_torso = delay_manager->update_and_get(OMEGA_TORSO, inputs->get_omega_torso(1));
+}
+
+/*! \brief compute the stimulations
+ */
+void StimWangCtrl::compute_stimulation()
+{
+	// set stimulations to minimal value
+	for(int i=RIGHT_LEG_BODY; i<=LEFT_LEG_BODY; i++)
+	{
+		for(int j=0; j<parts[i]->get_nb_muscles(); j++)
+		{
+			Stim[i][j] = S_MIN;
+		}
+	}
+
+	pitch_compute();
+
+	roll_compute_min();
+
+	yaw_compute_min();
+
+	// limit stimulations
+	for(int i=RIGHT_LEG_BODY; i<=LEFT_LEG_BODY; i++)
+	{
+		for(int j=0; j<parts[i]->get_nb_muscles(); j++)
+		{
+			Stim[i][j] = limit_range(Stim[i][j], S_MIN, S_MAX);
+		}
+	}
+}
+
+/*! \brief pitch muscles computation
+ */
+void StimWangCtrl::pitch_compute()
+{
+	double PD_torso_ham, PD_torso_glu, PD_torso_hfl;
+	double p_vas;
+	double theta_h_ref, d;
+	int first_step;
+
+	first_step = (sw_st->get_nb_strikes() < 1);
+	if (Qq_match_wang || inital_pos)
+	{
+		first_step = 0; //no special ctrl for first step if no impedance ctrl
+	}
+ 
+	for (int i=0; i<NB_LEGS; i++)
+	{
+		// swing
+		if (sw_st->is_swing_leg(i))
+		{
+			// SOL
+			Stim[i][SOL_MUSCLE] = S0_sol_sw;
+
+			// TA
+			Stim[i][TA_MUSCLE] = S0_ta_sw + pos(G_ta_sw * ( (lce_ta[i] / l_opt_ta) - l_off_ta_sw));
+
+			// GAS
+			Stim[i][GAS_MUSCLE] = S0_gas_sw;
+
+			// HAM
+			Stim[i][HAM_MUSCLE] = S0_ham_sw + G_ham * (F_ham[i] / F_max_ham);
+
+			// RF
+			Stim[i][RF_MUSCLE] = S0_rf_sw;
+
+			if (stance_preparation(i) && ((sw_st->get_nb_strikes() != 0) || !first_step))
+			{
+				// compute hip target ankle
+				if (i==R_ID)
+				{
+					d = fwd_kin->get_r_COM_Lfoot(0);
+				}
+				else
+				{
+					d = fwd_kin->get_r_COM_Rfoot(0);
+				}
+				theta_h_ref = -(theta_h_ref0 + c_d * d + c_v * speed_fwd_global);
+
+				// VAS
+				Stim[i][VAS_MUSCLE] = S0_vas_sw + pos(K_sp_vas * (phi_k[i] - theta_k_ref) + D_sp_vas * phip_k[i]);
+
+				// GLU
+				Stim[i][GLU_MUSCLE] = S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
+			
+				// HFL
+				Stim[i][HFL_MUSCLE] = S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);
+			}
+			else
+			{
+				// VAS
+				Stim[i][VAS_MUSCLE] = S0_vas_sw;
+
+				// GLU
+				Stim[i][GLU_MUSCLE] = S0_glu_sw + G_glu * (F_glu[i] / F_max_glu);
+
+				// HFL
+				if (first_swing[i])
+				{
+					theta_toro_sw0 = theta_torso;
+					first_swing[i] = 0;
+				}
+
+				Stim[i][HFL_MUSCLE] = S0_hfl_sw + k_THETA * (theta_toro_sw0 - theta_ref) + pos(G_hfl * ( (lce_hfl[i] / l_opt_hfl) - l_off_hfl)) - pos(G_ham_hfl * ( (lce_ham[i] / l_opt_ham) - l_off_ham_hfl));
+			}
+		}
+		// stance
+		else
+		{
+			// SOL
+			Stim[i][SOL_MUSCLE] = S0_sol_st + G_sol * (F_sol[i] / F_max_sol);
+
+			if(first_step) // first step
+			{
+				Stim[i][SOL_MUSCLE] = S_MIN;
+			}
+
+			// TA
+			Stim[i][TA_MUSCLE] = S0_ta_st - G_sol_ta * (F_sol[i] / F_max_sol) + pos(G_ta_st * ( (lce_ta[i] / l_opt_ta) - l_off_ta_st));
+
+			if(first_step) // first step
+			{
+				Stim[i][TA_MUSCLE] = S_MAX;
+			}
+
+			// GAS
+			Stim[i][GAS_MUSCLE] = S0_gas_st + G_gas * (F_gas[i] / F_max_gas);
+
+			if(first_step) // first step
+			{
+				Stim[i][GAS_MUSCLE] = S_MIN;
+			}
+
+			// VAS
+			Stim[i][VAS_MUSCLE] = S0_vas_st + G_vas * (F_vas[i] / F_max_vas);
+
+			p_vas = k_theta * (phi_k[i] - phi_off_pk);
+
+			if ( (p_vas < 0.0) && (phip_k[i] < 0.0))
+			{
+				Stim[i][VAS_MUSCLE] += p_vas;
+			}
+
+			// HAM
+			Stim[i][HAM_MUSCLE] = S0_ham_st + pos(K_ham * (theta_torso - theta_ref) + D_ham * omega_torso);
+
+			if (tr_st->get_trailing_leg(i)) // trailing leg in double support
+			{
+				Stim[i][HAM_MUSCLE] = S0_ham_st;
+			}
+
+			//RF
+			Stim[i][RF_MUSCLE] = S0_rf_st;
+
+			// GLU
+			Stim[i][GLU_MUSCLE] = S0_glu_st + pos(K_glu * (theta_torso - theta_ref) + D_glu * omega_torso);
+			
+			if (tr_st->get_trailing_leg(i)) // trailing leg in double support
+			{
+				Stim[i][GLU_MUSCLE] = S0_glu_st;
+			}
+
+			// HFL
+			Stim[i][HFL_MUSCLE] = S0_hfl_st + neg(K_hfl * (theta_torso - theta_ref) + D_hfl * omega_torso);
+			
+			if (tr_st->get_trailing_leg(i)) // trailing leg in double support
+			{
+				Stim[i][HFL_MUSCLE] = S0_hfl_st;
+			}
+
+			first_swing[i] = 1; // re-initialize flag to enter once at the beginning on the swing phase
+				
+			if (swing_initiation(i) && ((sw_st->get_nb_strikes() != 0) || !first_step))
+			{
+				// VAS
+				Stim[i][VAS_MUSCLE] =  limit_range(Stim[i][VAS_MUSCLE], S_MIN, S_MAX) - si_vas;
+
+				// RF
+				Stim[i][RF_MUSCLE] = limit_range(Stim[i][RF_MUSCLE], S_MIN, S_MAX) + si_rf;
+
+				// GLU
+				Stim[i][GLU_MUSCLE] = limit_range(Stim[i][GLU_MUSCLE], S_MIN, S_MAX) - si_glu;
+				
+				// HFL
+				Stim[i][HFL_MUSCLE] = limit_range(Stim[i][HFL_MUSCLE], S_MIN, S_MAX) + si_hfl;
+			}
+		}
+	}
+}
+
+/*! \brief pitch muscles computation: minimal stimulations
+ */
+void StimWangCtrl::pitch_compute_min()
+{
+	for (int i=0; i<NB_LEGS; i++)
+	{
+		Stim[i][SOL_MUSCLE] = S_MIN;
+		Stim[i][TA_MUSCLE]  = S_MIN;
+		Stim[i][GAS_MUSCLE] = S_MIN;
+		Stim[i][VAS_MUSCLE] = S_MIN;
+		Stim[i][HAM_MUSCLE] = S_MIN;
+		Stim[i][GLU_MUSCLE] = S_MIN;
+		Stim[i][HFL_MUSCLE] = S_MIN;
+		Stim[i][RF_MUSCLE] = S_MIN;
+	}
+}
+
+/*! \brief roll muscles computation: minimal stimulations
+ */
+void StimWangCtrl::roll_compute_min()
+{
+	for (int i=0; i<NB_LEGS; i++)
+	{
+		Stim[i][HAB_MUSCLE] = S_MIN;
+		Stim[i][HAD_MUSCLE] = S_MIN;
+		Stim[i][EVE_MUSCLE] = S_MIN;
+		Stim[i][INV_MUSCLE] = S_MIN;
+	}
+}
+
+/*! \brief yaw muscles computation: minimal stimulations
+ */
+void StimWangCtrl::yaw_compute_min()
+{
+	for (int i=0; i<NB_LEGS; i++)
+	{
+		Stim[i][HER_MUSCLE] = S_MIN;
+		Stim[i][HIR_MUSCLE] = S_MIN;
+	}
+}
+
+/*! \brief return 1 if stance preparation starts (end of swing phase), 0 otherwise
+ */
+int StimWangCtrl::stance_preparation(int swing_leg_id)
+{
+	double d; // normalized horizontal distance between COM and foot
+
+	switch(swing_leg_id)
+	{
+		case R_ID : 
+			d = fwd_kin->get_r_COM_Rfoot(0) / LEG_LENGTH;
+			break;
+		case L_ID : 
+			d = fwd_kin->get_r_COM_Lfoot(0) / LEG_LENGTH;
+			break;
+
+		default:
+			std::cout << "Error: unknown leg id : " << swing_leg_id << " !" << std::endl;
+			exit(EXIT_FAILURE);
+	}
+
+	return (d < d_sp);
+}
+
+/*! \brief return 1 if swing initiation starts (end of stance phase), 0 otherwise
+ */
+int StimWangCtrl::swing_initiation(int stance_leg_id)
+{
+	double d; // normalized horizontal distance between COM and foot
+
+	switch(stance_leg_id)
+	{
+		case R_ID : 
+			d = fwd_kin->get_r_COM_Rfoot(0) / LEG_LENGTH;
+			break;
+		case L_ID : 
+			d = fwd_kin->get_r_COM_Lfoot(0) / LEG_LENGTH;
+			break;
+
+		default:
+			std::cout << "Error: unknown leg id : " << stance_leg_id << " !" << std::endl;
+			exit(EXIT_FAILURE);
+	}
+
+	return ((d > d_si) || (sw_st->is_double_support() && d > 0.0));
+}

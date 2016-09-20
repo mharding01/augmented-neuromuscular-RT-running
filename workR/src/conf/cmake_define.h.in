@@ -1,0 +1,15 @@
+/*
+ * author: Nicolas Van der Noot
+ * 
+ * Personal definitions to use in the project, coming from CMake.
+ *
+ * A header file called 'cmake_define.h' is then automatically generated in the build directory
+ */
+#define COMAN_VERSION "@COMAN_VERSION@"
+#define COMAN_VERSION_UPPER "@COMAN_VERSION_UPPER@"
+
+#define CMAKE_VAR_1 @CMAKE_VAR_1@
+#define CMAKE_VAR_2 @CMAKE_VAR_2@
+#define CMAKE_VAR_3 @CMAKE_VAR_3@
+#define CMAKE_VAR_4 @CMAKE_VAR_4@
+#define CMAKE_VAR_5 @CMAKE_VAR_5@

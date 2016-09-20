@@ -1,0 +1,377 @@
+
+#include "MatsuokaSixN.hh"
+
+#define NB_STEPS_OSC_ERROS 5 ///< number of steps before computing the oscillators prediction errors [-]
+#define OSC_EXCITATION 1.0   ///< excitation of the oscillators
+
+#define MIN_THETA_REF 0.005
+
+inline double pos(double x){ return (x > 0.0) ?  x : 0.0; }
+inline double neg(double x){ return (x < 0.0) ? -x : 0.0; }
+
+#define NB_Y_OUTPUTS 4
+
+/*! \brief constructor
+ * 
+ * \param[in] nb_neurons number of neurons [-]
+ * \param[in] cur_t current time [s]
+ * \param[in] ws walk states
+ * \param[in] inputs controller inputs
+ */
+MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs *inputs, CtrlOptions *options): Oscillators(nb_neurons, cur_t)
+{
+	osc_err_av = new AverageInc();
+
+	last_t = cur_t;
+
+	this->ws = ws;
+	sw_st = static_cast<SwingStanceState*>(ws->get_state(SWING_STANCE_STATE));
+	m_st = static_cast<MainState*>(ws->get_state(MAIN_STATE));
+
+	this->inputs = inputs;
+
+	user_ctr = inputs->get_user_ctrl();
+
+	for(int i=0; i<nb_neurons; i++)
+	{
+		v.push_back(0.0);
+		vd.push_back(0.0);
+	}
+
+	for(unsigned int i=0; i<NB_Y_OUTPUTS; i++)
+	{
+		y.push_back(0.0);
+	}
+
+	for(int i=0; i<NB_LEGS; i++)
+	{
+		flag_strike_leg[i] = 0;
+	}
+
+	flag_strike_err = 0;
+
+	flag_osc_too_fast = 0;
+	t_osc_too_fast = 0.0;
+
+	t_osc_error = 0.0;
+	t_osc_error_mean = 0.0;
+
+	r_first_swing = options->is_r_first_swing();
+
+	// oscillos initialization time
+	init_t_oscillo = 0.2;
+
+	// oscillators main parameters
+	beta_A = 6.043252;
+	beta_B = 5.067806;
+	beta_C = 4.382409;
+
+	gamma_A = 1.525956;
+	gamma_B = 2.130010;
+	gamma_C = 2.878273;
+
+	eta_A = 5.508498;
+	eta_B = 4.846393;
+	eta_C = 5.643429;
+	eta_D = 3.733975;
+	eta_E = 3.685420;
+	eta_F = 4.473370;
+	eta_G = 3.501070;
+
+	// velocity adaptation parameters
+	P_theta = 0.053470;
+	P_tau   = 0.142185;
+	P_GLU   = 1.065147;
+	P_HFL   = 3.689370;
+	P_HAM1  = 2.189173;
+	P_HAM2  = 1.686624;
+
+	p_theta = 0.502487;
+	p_tau   = -0.058664;
+	p_HFL   = 3.057062;
+	p_HAM1  = 1.576165;
+	p_HAM2  = -2.829820;
+
+	// velocity tracking
+	v_star = 0.6;
+
+	// flag for CPG range
+	flag_range = options->is_cpg_range();
+	
+	update_speed_oscillos();
+
+	// for opti
+	inputs->get_opti_inputs()->set_osc(this);
+}
+
+/*! \brief destructor
+ */
+MatsuokaSixN::~MatsuokaSixN()
+{
+	delete osc_err_av;
+}
+
+/*! \brief Matsuoka oscillators with six neurons structure (Nico version)
+ */
+void MatsuokaSixN::Matsuoka_six_neurons()
+{
+	// neurons equations
+	xd[0] = tau_inv * ( -x[0] - beta_A*v[0] - eta_A*pos(x[3]) - eta_D*pos(x[1]) - eta_E*pos(x[4]) + u[0] );
+	xd[1] = tau_inv * ( -x[1] - beta_B*v[1] - eta_B*pos(x[4]) - eta_D*pos(x[0]) - eta_E*pos(x[3]) + u[1] );
+	xd[2] = tau_inv * ( -x[2] - beta_C*v[2] - eta_C*pos(x[5]) - eta_F*pos(x[1]) - eta_G*pos(x[4]) + u[2] );
+	xd[3] = tau_inv * ( -x[3] - beta_A*v[3] - eta_A*pos(x[0]) - eta_D*pos(x[4]) - eta_E*pos(x[1]) + u[3] );
+	xd[4] = tau_inv * ( -x[4] - beta_B*v[4] - eta_B*pos(x[1]) - eta_D*pos(x[3]) - eta_E*pos(x[0]) + u[4] );
+	xd[5] = tau_inv * ( -x[5] - beta_C*v[5] - eta_C*pos(x[2]) - eta_F*pos(x[4]) - eta_G*pos(x[1]) + u[5] );
+
+	// fatigue
+	vd[0] = tau_A_inv * ( -v[0] + pos(x[0]) );
+	vd[1] = tau_B_inv * ( -v[1] + pos(x[1]) );
+	vd[2] = tau_C_inv * ( -v[2] + pos(x[2]) );
+	vd[3] = tau_A_inv * ( -v[3] + pos(x[3]) );
+	vd[4] = tau_B_inv * ( -v[4] + pos(x[4]) );
+	vd[5] = tau_C_inv * ( -v[5] + pos(x[5]) ); 
+}
+
+/*! \brief 'update_speed_oscillos' with speed reference set to 'v_star'
+ */
+void MatsuokaSixN::update_speed_oscillos()
+{
+	update_speed_oscillos(v_star);
+}
+
+/*! \brief update oscillators velocity parameters
+ * 
+ * \param[in] v_request requested speed (m/s)
+ */
+void MatsuokaSixN::update_speed_oscillos(double v_request)
+{
+	double v_diff = v_request - v_star;
+
+	this->v_request = v_request;
+
+	//set_plot(v_request, "target speed [m/s]");
+
+	// linear function	
+	theta_ref = P_theta  + p_theta * v_diff;
+	tau       = P_tau    + p_tau   * v_diff;
+	k_GLU     = P_GLU;
+	k_HFL     = P_HFL    + p_HFL  * v_diff;
+	k_HAM1    = P_HAM1   + p_HAM1 * v_diff;
+	k_HAM2    = P_HAM2   + p_HAM2 * v_diff;
+
+	// limiting the interpolations
+	theta_ref = (theta_ref < MIN_THETA_REF) ? MIN_THETA_REF : theta_ref;
+	tau       = (tau       < 0.0) ? 0.0 : tau;
+	k_GLU     = (k_GLU     < 0.0) ? 0.0 : k_GLU;
+	k_HFL     = (k_HFL     < 0.0) ? 0.0 : k_HFL;
+	k_HAM1    = (k_HAM1    < 0.0) ? 0.0 : k_HAM1;
+	k_HAM2    = (k_HAM2    < 0.0) ? 0.0 : k_HAM2;
+
+	// oscillators period
+	tau_inv   = 1.0 / tau;
+	tau_A_inv = 1.0 / (gamma_A * tau);
+	tau_B_inv = 1.0 / (gamma_B * tau);
+	tau_C_inv = 1.0 / (gamma_C * tau);
+}
+
+/*! \brief integrate fatigue in neurons
+ * 
+ * \param[in] cur_t current time [s]
+ */
+void MatsuokaSixN::integrate_fatigue(double cur_t)
+{
+	for(unsigned int i=0; i<x.size(); i++)
+	{
+		v[i] += vd[i] * (cur_t - last_t);
+	}
+
+	last_t = cur_t;
+}
+
+/*! \brief check when the oscillators are no more too late after the corresponding strike
+ */
+void MatsuokaSixN::check_osc_strike()
+{
+	if (sw_st->get_flag_strike())
+	{
+		flag_strike_err = 1;
+	}
+
+	for(int i=0; i<NB_LEGS; i++)
+	{
+		if (sw_st->get_flag_strike_leg(i))
+		{
+			flag_strike_leg[i] = 1;
+		}
+	}
+
+	// after right strike (only x[0] positive)
+	if ( flag_strike_leg[R_ID] && (x[0] > 0.0) && (x[1] < 0.0) && (x[3] < 0.0) && (x[4] < 0.0) )
+	{
+		flag_strike_leg[R_ID] = 0;
+	}
+
+	// after left strike (only x[3] positive)
+	if ( flag_strike_leg[L_ID] && (x[0] < 0.0) && (x[1] < 0.0) && (x[3] > 0.0) && (x[4] < 0.0) )
+	{
+		flag_strike_leg[L_ID] = 0;
+	}
+}
+
+/*! \brief compute oscillators excitation
+ */
+void MatsuokaSixN::compute_osc_excitation()
+{
+	int supporting_r, supporting_l;
+
+	// initialization: choose the corresponding intial leg
+	if (inputs->get_t() < m_st->get_init_t_walk() + init_t_oscillo)
+	{
+		if (r_first_swing)
+		{
+			u[0] = 0.0;
+			u[1] = 0.0;
+			u[2] = 0.0;
+			u[3] = OSC_EXCITATION;
+			u[4] = 0.0;
+			u[5] = OSC_EXCITATION;
+		}
+		else
+		{
+			u[0] = OSC_EXCITATION;
+			u[1] = 0.0;
+			u[2] = OSC_EXCITATION;
+			u[3] = 0.0;
+			u[4] = 0.0;
+			u[5] = 0.0;
+		}
+	}
+	else
+	{
+		for(unsigned int i=0; i<u.size(); i++)
+		{
+			u[i] = OSC_EXCITATION;
+		}
+
+		// cut the excitations if signals too fast
+		if ( (sw_st->is_swing_leg(R_ID) && (x[0] > 0.0)) || (sw_st->is_swing_leg(L_ID) && (x[3] > 0.0)) )
+		{
+			for(unsigned int i=0; i<u.size(); i++)
+			{
+				u[i] = 0.0;
+			}
+		}
+		else
+		{
+			if (sw_st->is_supporting_r_leg())
+			{
+				supporting_r = 1;
+				supporting_l = 0;
+			}
+			else
+			{
+				supporting_r = 0;
+				supporting_l = 1;
+			}
+		
+			// handles oscillators too late (first line) and oscillators succession (second line)
+			u[0] += flag_strike_leg[R_ID]*neg(x[0]);
+			
+			u[1] -= flag_strike_leg[L_ID]*pos(x[1]);
+			u[1] -= pos(x[1])*supporting_l;
+
+			u[3] += flag_strike_leg[L_ID]*neg(x[3]);
+
+			u[4] -= flag_strike_leg[R_ID]*pos(x[4]);
+			u[4] -= pos(x[4])*supporting_r;
+
+			if (sw_st->get_nb_strikes() > 0) // first step done
+			{
+				u[0] -= pos(x[0])*supporting_l;
+				u[2] -= pos(x[2])*supporting_l;
+				u[3] -= pos(x[3])*supporting_r;
+				u[5] -= pos(x[5])*supporting_r;
+			}
+		}
+	}
+}
+
+/*! \brief error on the oscillators prediction
+ * 
+ * \param[in] cur_t current time [s]
+ */
+void MatsuokaSixN::oscillator_prediction_error(double cur_t)
+{
+	// oscillators too fast
+	if ( (sw_st->is_swing_leg(R_ID) && (x[0] > 0.0)) || (sw_st->is_swing_leg(L_ID) && (x[3] > 0.0)) )
+	{
+		if (!flag_osc_too_fast)
+		{
+			flag_osc_too_fast = 1;
+			t_osc_too_fast    = cur_t;
+		}
+	}
+
+	// synchronization finished after strike and correction
+	if ( flag_strike_err && ( (sw_st->is_supporting_r_leg() && (x[0] > 0.0)) || (!sw_st->is_supporting_r_leg() && (x[3] > 0.0)) ) )
+	{
+		flag_strike_err = 0;
+
+		// oscillators too fast
+		if (flag_osc_too_fast)
+		{
+			flag_osc_too_fast = 0;
+
+			t_osc_error = sw_st->get_t_start_last_stance() - t_osc_too_fast;
+		}
+		// oscillators too slow
+		else
+		{
+			t_osc_error = cur_t - sw_st->get_t_start_last_stance();
+		}
+
+		// mean on these predictions errors after some steps
+		if (sw_st->get_nb_strikes() > NB_STEPS_OSC_ERROS)
+		{
+			t_osc_error_mean = osc_err_av->update_and_get(t_osc_error);
+		}
+	}
+}
+
+/*! \brief update oscillators output
+ * 
+ * \param[in] cur_t current time [s]
+ */
+void MatsuokaSixN::update(double cur_t)
+{
+	// update oscillators velocity parameters at a strike
+	if (flag_range && (sw_st->get_nb_strikes() >= 4))
+	{
+		update_speed_oscillos(user_ctr->get_v_request());
+	}
+
+	// checking for too slow oscillators
+	check_osc_strike();
+
+	// start excitations when the robot start to walk
+	if (m_st->get_coman_state() != INIT_UPRIGHT_STATE)
+	{
+		compute_osc_excitation();
+	}
+
+	// oscillators differential equations
+	Matsuoka_six_neurons();
+	
+	// Euler explicite integration 
+	integrate_neurons(cur_t);
+	integrate_fatigue(cur_t);
+
+	// oscillators outputs
+	y[0] = pos(x[0]) - pos(x[1]);
+	y[1] = pos(x[2]) - pos(x[1]);
+	y[2] = pos(x[3]) - pos(x[4]);
+	y[3] = pos(x[5]) - pos(x[4]);
+
+	// oscillators prediction error
+	oscillator_prediction_error(cur_t);
+}

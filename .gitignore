@@ -1,0 +1,17 @@
+
+*.pyc
+*~
+*.m
+*.anim
+*.res
+**/*.m
+__pycache__
+stderr.txt
+stdout.txt
+resultsR
+SfunctionsR
+build
+debug
+test
+workR/optis
+.DS_Store

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# go to the requested folder
+cd /home/nvander/Documents/Optis/coman_bruno/workR/Optis/$1	
+
+# generate xml file
+python xml_gen.py
+
+# compilation
+make -j2 >> config_out/compilation_out.txt
+
+# execution
+optirunner -t 128.178.148.3 $1.xml >> config_out/running.txt
+
+# compilation to generate the outputs once the execution is finished
+python biorob_res_gen.py

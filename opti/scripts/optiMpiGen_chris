@@ -1,0 +1,84 @@
+#!/bin/bash
+
+source /etc/profile.d/modules.sh
+module purge
+
+HOSTNAME=$(hostname)
+
+if [ "$HOSTNAME" = "lemaitre2.cism.ucl.ac.be" ]; then
+    module load openmpi/1.6.5/gcc-4.6.2
+	module load cmake
+	module load gsl
+	module load python/2.7.3
+elif [ "$HOSTNAME" = "hmem00.cism.ucl.ac.be" ]; then
+    module load openmpi/1.5.3/gcc-4.4.4
+	module load cmake
+	module load gsl
+	module load python/2.7.3
+elif [ "$HOSTNAME" = "node001" ]; then #vega cluster
+    module load OpenMPI/1.8.1-GCC-4.8.3
+	module load CMake/3.0.0-intel-2014b 
+	module load GSL/1.16-intel-2014b 
+	module load Python/2.7.8-intel-2014b
+elif [ "$HOSTNAME" = "master2" ]; then #nic4 cluster
+    module load shared
+	module load openmpi/1.8.4/gcc-4.8.1
+	module load gsl/1.16/gcc-4.4.7
+	module load python/2.7.10
+else
+    echo "Unknow cluster"
+fi
+
+# create the 'Optis' folder
+if [ -d "/home/ucl/mctr/everarts/Optis/coman_bruno/workR/Optis" ]; then
+	echo "'Optis' folder already created"
+else
+	mkdir /home/ucl/mctr/everarts/Optis/coman_bruno/workR/Optis
+
+	echo "'Optis' folder created"
+fi
+
+# loop on all the inputs
+for var in "$@"
+do
+	# create the folder $var inside the 'optis' folder
+	mkdir /home/ucl/mctr/everarts/Optis/coman_bruno/workR/Optis/$var
+
+	# go to the $var folder
+	cd /home/ucl/mctr/everarts/Optis/coman_bruno/workR/Optis/$var
+
+	# create the folder 'config_out' inside the $var folder
+	mkdir /home/ucl/mctr/everarts/Optis/coman_bruno/workR/Optis/$var/config_out
+
+	# create the folder 'results' inside the $var folder
+	mkdir /home/ucl/mctr/everarts/Optis/coman_bruno/workR/Optis/$var/results
+
+	# copy OptiParam.cc inside folder 'results' 
+	cp /home/ucl/mctr/everarts/Optis/coman_bruno/opti/config/OptiParams.cc /home/ucl/mctr/everarts/Optis/coman_bruno/workR/Optis/$var/results
+
+	# cmake
+	cmake /home/ucl/mctr/everarts/Optis/coman_bruno/workR >> config_out/cmake_out.txt
+
+	echo "-------- CMake done for $var --------"
+	echo $'\n'
+done
+
+# loop on all the inputs
+for var in "$@"
+do
+	# go to the $var folder
+	cd /home/ucl/mctr/everarts/Optis/coman_bruno/workR/Optis/$var
+
+	# launch the compilation
+	make -j8
+
+	echo "---> Compilation done for $var"
+	echo $'\n'
+
+	sbatch /home/ucl/mctr/everarts/Optis/coman_bruno/opti/scripts/mpi_run.sh
+
+	echo "Opti launched for $var"
+
+	# wait 2 seconds (safety)
+	sleep 2
+done

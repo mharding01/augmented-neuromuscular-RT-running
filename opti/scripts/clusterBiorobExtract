@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Extracting $*"
+echo $'\n'
+
+# loop on all the inputs
+for var in "$@"
+do
+	# copy the result files (related to $var) from bioroblinux to the current directory (local computer)
+	scp -r nvander@bioroblinux.epfl.ch:/home/nvander/Documents/Optis/coman_bruno/workR/Optis/$var/results  ./$var
+
+	echo "---> $var extracted"
+	echo $'\n'
+done
