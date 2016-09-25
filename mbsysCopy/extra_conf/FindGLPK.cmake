@@ -55,6 +55,7 @@ set (TRIAL_PATHS_INC_GLPK
 set (TRIAL_PATHS_LIB_GLPK
   /home/ucl/mctr/bsomers/.local/lib
   /usr/local/lib
+  /usr/lib/x86_64-linux-gnu
   /home/nvander/glpk-4.57/src/.libs # BioRob
   /home/ucl/mctr/nvandernoot/glpk-4.57/src/.libs # nico
   /home/ucl/mctr/bsomers/glpk-4.57/src/.libs # bruno

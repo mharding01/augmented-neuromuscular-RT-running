@@ -14,7 +14,7 @@
 set( COMAN_VERSION "spring_toe_short_feet" )
 
 # 0: no opti ; 1: normal opti ; 2: BioRob opti ; 3: MPI
-set( OPTI_RUN 3 )
+set( OPTI_RUN 0 )
 
 # speed reference
 set (CMAKE_VAR_1 1.6)

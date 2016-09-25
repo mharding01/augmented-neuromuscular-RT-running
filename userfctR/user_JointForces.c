@@ -12,6 +12,7 @@
 #include "user_IO.h"
 #include "SimuOptions.h"
 #include "actuators_interface.h"
+#include "compute_spring_toe.h"
 
 double* user_JointForces(MbsData *mbs_data, double tsim)
 {
