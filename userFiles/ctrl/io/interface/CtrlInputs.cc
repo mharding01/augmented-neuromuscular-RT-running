@@ -1,7 +1,10 @@
-
 #include "CtrlInputs.hh"
 #include "OptiResults.hh"
 #include "OptiGeneration.hh"
+#include "OptiShortRun.hh"
+#include "OptiShortWalkFast.hh"
+#include "OptiShortWalkNormal.hh"
+#include "OptiLongRun.hh"
 
 /*! \brief constructor
  */
@@ -75,7 +78,11 @@ CtrlInputs::CtrlInputs(UserCtrl *user_ctrl, MotorCtrlIndex *ctrl_index, CtrlOpti
 	}
 	else
 	{
-		opti_inputs = new OptiResults();
+		//opti_inputs = new OptiResults();
+		opti_inputs = new OptiShortRun();
+		//opti_inputs = new OptiShortWalkFast();
+		//opti_inputs = new OptiShortWalkNormal();
+		//opti_inputs = new OptiLongRun();
 	}
 
 	// user control

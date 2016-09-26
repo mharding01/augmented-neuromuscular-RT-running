@@ -25,8 +25,6 @@ class OptiInputs
 		virtual ~OptiInputs();
 
 		virtual void set_opti() = 0;
-
-		void set_opti_init();
 		
 		void set_impedance_init(ImpedanceCtrlInit *impedance_init) { this->impedance_init = impedance_init; }
 		void set_stim_ctrl(StimulationCtrl *stim_ctrl) { this->stim_ctrl = stim_ctrl; }
