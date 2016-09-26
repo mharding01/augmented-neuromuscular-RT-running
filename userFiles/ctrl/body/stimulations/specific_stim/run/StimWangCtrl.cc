@@ -23,6 +23,8 @@ extern double speed_fwd_global;
  */
 StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics *fwd_kin, BodyPart **parts, CtrlOptions *options): StimulationCtrl(inputs, ws, fwd_kin, parts, options)
 {
+	opti_init = new OptiInit();
+
 	sw_st = static_cast<SwingStanceState*>(ws->get_state(SWING_STANCE_STATE));
 	tr_st = static_cast<TrailingState*>(ws->get_state(TRAILING_STATE));
 
@@ -171,6 +173,7 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
 StimWangCtrl::~StimWangCtrl()
 {
 	delete delay_manager;
+	delete opti_init;
 }
 
 /*! \brief main computation
@@ -192,7 +195,7 @@ void StimWangCtrl::switch_results()
 	{
 		if((inputs->get_t() < t_switch) && !flag_part1)
 		{
-			inputs->get_opti_inputs()->set_opti_init();
+			opti_init->set_opti();
 			flag_part1 = 1;
 		}
 		else if((inputs->get_t() >= t_switch) && !flag_part2)

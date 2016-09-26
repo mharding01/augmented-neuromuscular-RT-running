@@ -11,6 +11,7 @@
 #include "DelayManager.hh"
 #include "SwingStanceState.hh"
 #include "TrailingState.hh"
+#include "OptiInit.hh"
 
 /*! \brief Controller generating the stimulations sent to the muscles computed with Wang controller
  */
@@ -95,6 +96,8 @@ class StimWangCtrl: public StimulationCtrl
 		void set_t_switch(double value)    { t_switch    = value; }
 
 	private:
+		OptiInit *opti_init; ///< initial optimization parameters
+
 		SwingStanceState *sw_st; ///< swing-stance state
 		TrailingState *tr_st;    ///< trailing state
 
