@@ -1,0 +1,181 @@
+fitness: 1401.89
+
+norms:
+0.126497
+0.584859
+0.790915
+0.725543
+0.00218024
+0.000558957
+0.932777
+0.00739935
+0.0297544
+0.545293
+0.00254294
+0.0920428
+0.75375
+0.0427997
+0.321667
+0.0478575
+0.704323
+0.13476
+0.18518
+0.546551
+0.360301
+0.0410036
+0.444294
+0.638415
+0.809232
+0.101901
+0.815128
+0.933709
+0.905197
+0.148667
+0.0140789
+0.836343
+0.486739
+0.0100895
+0.0574253
+0.484305
+0.00539944
+0.729055
+0.000698016
+0.997983
+0.399818
+0.335885
+0.591424
+0.885376
+0.903819
+0.334961
+0.0064298
+0.519315
+0.186823
+0.994762
+0.174717
+0.585467
+0.0251128
+0.0793276
+0.0155709
+0.457577
+0.263174
+0.898429
+0.806285
+0.184965
+0.072866
+0.17751
+0.198491
+0.0317309
+0.000441742
+0.76741
+0.246878
+0.965043
+0.667706
+0.00144165
+0.689495
+
+
+/*
+ * The following lines present the results file with the normalized parameters.
+ * Do not use it directly, its purpose is just to show the match between the parameters
+ * to optimize and their normalized optimized values.
+ */
+
+#include "OptiNorms.hh"
+#include "StimWangCtrl.hh"
+#include "JointsInit.hh"
+
+/*! \brief constructor
+ */
+OptiNorms::OptiNorms()
+{
+
+}
+
+/*! \brief destructor
+ */
+OptiNorms::~OptiNorms()
+{
+
+}
+
+/*! \brief set optimization parameters
+ */
+void OptiNorms::set_opti()
+{
+	StimWangCtrl *stim_wang = static_cast<StimWangCtrl*>(stim_ctrl);
+
+	// Wang stimulations
+	stim_wang->set_S0_sol_st( 0.12649700 );
+	stim_wang->set_S0_ta_st( 0.58485900 );
+	stim_wang->set_S0_gas_st( 0.79091500 );
+	stim_wang->set_S0_vas_st( 0.72554300 );
+	stim_wang->set_S0_ham_st( 0.00218024 );
+	stim_wang->set_S0_rf_st( 0.00055896 );
+	stim_wang->set_S0_glu_st( 0.93277700 );
+	stim_wang->set_S0_hfl_st( 0.00739935 );
+	stim_wang->set_S0_sol_sw( 0.02975440 );
+	stim_wang->set_S0_ta_sw( 0.54529300 );
+	stim_wang->set_S0_gas_sw( 0.00254294 );
+	stim_wang->set_S0_vas_sw( 0.09204280 );
+	stim_wang->set_S0_ham_sw( 0.75375000 );
+	stim_wang->set_S0_rf_sw( 0.04279970 );
+	stim_wang->set_S0_glu_sw( 0.32166700 );
+	stim_wang->set_S0_hfl_sw( 0.04785750 );
+	stim_wang->set_G_sol( 0.70432300 );
+	stim_wang->set_G_sol_ta( 0.13476000 );
+	stim_wang->set_G_gas( 0.18518000 );
+	stim_wang->set_G_vas( 0.54655100 );
+	stim_wang->set_G_ham( 0.36030100 );
+	stim_wang->set_G_glu( 0.04100360 );
+	stim_wang->set_G_ta_sw( 0.44429400 );
+	stim_wang->set_G_ta_st( 0.63841500 );
+	stim_wang->set_G_hfl( 0.80923200 );
+	stim_wang->set_G_ham_hfl( 0.10190100 );
+	stim_wang->set_l_off_ta_sw( 0.81512800 );
+	stim_wang->set_l_off_ta_st( 0.93370900 );
+	stim_wang->set_l_off_ham_hfl( 0.90519700 );
+	stim_wang->set_l_off_hfl( 0.14866700 );
+	stim_wang->set_K_ham( 0.01407890 );
+	stim_wang->set_K_glu( 0.83634300 );
+	stim_wang->set_K_hfl( 0.48673900 );
+	stim_wang->set_D_ham( 0.01008950 );
+	stim_wang->set_D_glu( 0.05742530 );
+	stim_wang->set_D_hfl( 0.48430500 );
+	stim_wang->set_theta_ref( 0.00539944 );
+	stim_wang->set_si_vas( 0.72905500 );
+	stim_wang->set_si_rf( 0.00069802 );
+	stim_wang->set_si_glu( 0.99798300 );
+	stim_wang->set_si_hfl( 0.39981800 );
+	stim_wang->set_K_sp_vas( 0.33588500 );
+	stim_wang->set_K_sp_glu( 0.59142400 );
+	stim_wang->set_K_sp_hfl( 0.88537600 );
+	stim_wang->set_D_sp_vas( 0.90381900 );
+	stim_wang->set_D_sp_glu( 0.33496100 );
+	stim_wang->set_D_sp_hfl( 0.00642980 );
+	stim_wang->set_theta_k_ref( 0.51931500 );
+	stim_wang->set_theta_h_ref0( 0.18682300 );
+	stim_wang->set_d_sp( 0.99476200 );
+	stim_wang->set_d_si( 0.17471700 );
+	stim_wang->set_k_THETA( 0.58546700 );
+	stim_wang->set_k_theta( 0.02511280 );
+	stim_wang->set_phi_off_pk( 0.07932760 );
+
+	//init pos
+	joints_init->set_T3( 0.01557090 );
+	joints_init->set_T3_p( 0.45757700 );
+	joints_init->set_R2( 0.26317400 );
+	joints_init->set_R2_p( 0.89842900 );
+	joints_init->set_r_sh_p( 0.80628500 );
+	joints_init->set_r_hip( 0.18496500 );
+	joints_init->set_r_hip_p( 0.07286600 );
+	joints_init->set_r_knee( 0.17751000 );
+	joints_init->set_r_knee_p( 0.19849100 );
+	joints_init->set_r_ankle( 0.03173090 );
+	joints_init->set_r_ankle_p( 0.00044174 );
+	joints_init->set_l_hip( 0.76741000 );
+	joints_init->set_l_hip_p( 0.24687800 );
+	joints_init->set_l_knee( 0.96504300 );
+	joints_init->set_l_knee_p( 0.66770600 );
+	joints_init->set_l_ankle( 0.00144165 );
+	joints_init->set_l_ankle_p( 0.68949500 );
+}

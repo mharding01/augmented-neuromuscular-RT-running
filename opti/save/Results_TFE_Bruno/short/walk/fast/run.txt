@@ -1,0 +1,1164 @@
+iteration 1 performed, best fitness : 144.599
+iteration 2 performed, best fitness : 219.018
+iteration 3 performed, best fitness : 140.393
+iteration 4 performed, best fitness : 146.486
+iteration 5 performed, best fitness : 168.292
+iteration 6 performed, best fitness : 158.831
+iteration 7 performed, best fitness : 128.664
+iteration 8 performed, best fitness : 158.544
+iteration 9 performed, best fitness : 241.839
+iteration 10 performed, best fitness : 201.034
+iteration 11 performed, best fitness : 149.408
+iteration 12 performed, best fitness : 149.124
+iteration 13 performed, best fitness : 142.643
+iteration 14 performed, best fitness : 400.499
+iteration 15 performed, best fitness : 533.49
+iteration 16 performed, best fitness : 191.735
+iteration 17 performed, best fitness : 368.955
+iteration 18 performed, best fitness : 201.055
+iteration 19 performed, best fitness : 209.733
+iteration 20 performed, best fitness : 343.61
+iteration 21 performed, best fitness : 584.925
+iteration 22 performed, best fitness : 543.541
+iteration 23 performed, best fitness : 284.384
+iteration 24 performed, best fitness : 235.599
+iteration 25 performed, best fitness : 265.088
+iteration 26 performed, best fitness : 272.479
+iteration 27 performed, best fitness : 373.176
+iteration 28 performed, best fitness : 648.133
+iteration 29 performed, best fitness : 274.895
+iteration 30 performed, best fitness : 392.247
+iteration 31 performed, best fitness : 489.415
+iteration 32 performed, best fitness : 400.128
+iteration 33 performed, best fitness : 442.456
+iteration 34 performed, best fitness : 420.034
+iteration 35 performed, best fitness : 438.152
+iteration 36 performed, best fitness : 444.805
+iteration 37 performed, best fitness : 609.439
+iteration 38 performed, best fitness : 547.155
+iteration 39 performed, best fitness : 385.93
+iteration 40 performed, best fitness : 435.235
+iteration 41 performed, best fitness : 570.501
+iteration 42 performed, best fitness : 576.29
+iteration 43 performed, best fitness : 400.893
+iteration 44 performed, best fitness : 324.421
+iteration 45 performed, best fitness : 624.007
+iteration 46 performed, best fitness : 435.262
+iteration 47 performed, best fitness : 542.066
+iteration 48 performed, best fitness : 554.092
+iteration 49 performed, best fitness : 457.571
+iteration 50 performed, best fitness : 554.652
+iteration 51 performed, best fitness : 533.634
+iteration 52 performed, best fitness : 499.996
+iteration 53 performed, best fitness : 633.672
+iteration 54 performed, best fitness : 499.996
+iteration 55 performed, best fitness : 562.173
+iteration 56 performed, best fitness : 401.599
+iteration 57 performed, best fitness : 610.461
+iteration 58 performed, best fitness : 470.581
+iteration 59 performed, best fitness : 473.211
+iteration 60 performed, best fitness : 568.833
+iteration 61 performed, best fitness : 436.88
+iteration 62 performed, best fitness : 415.803
+iteration 63 performed, best fitness : 727.087
+iteration 64 performed, best fitness : 389.328
+iteration 65 performed, best fitness : 708.05
+iteration 66 performed, best fitness : 410.932
+iteration 67 performed, best fitness : 702.73
+iteration 68 performed, best fitness : 531.398
+iteration 69 performed, best fitness : 426.589
+iteration 70 performed, best fitness : 541.525
+iteration 71 performed, best fitness : 646.934
+iteration 72 performed, best fitness : 494.964
+iteration 73 performed, best fitness : 460.818
+iteration 74 performed, best fitness : 374.797
+iteration 75 performed, best fitness : 374.858
+iteration 76 performed, best fitness : 352.542
+iteration 77 performed, best fitness : 628.077
+iteration 78 performed, best fitness : 659.156
+iteration 79 performed, best fitness : 482.015
+iteration 80 performed, best fitness : 449.192
+iteration 81 performed, best fitness : 598.949
+iteration 82 performed, best fitness : 578.497
+iteration 83 performed, best fitness : 530.063
+iteration 84 performed, best fitness : 462.532
+iteration 85 performed, best fitness : 565.639
+iteration 86 performed, best fitness : 487.257
+iteration 87 performed, best fitness : 514.226
+iteration 88 performed, best fitness : 466.34
+iteration 89 performed, best fitness : 669.267
+iteration 90 performed, best fitness : 598.291
+iteration 91 performed, best fitness : 553.305
+iteration 92 performed, best fitness : 446.412
+iteration 93 performed, best fitness : 590.066
+iteration 94 performed, best fitness : 571.188
+iteration 95 performed, best fitness : 428.502
+iteration 96 performed, best fitness : 469.219
+iteration 97 performed, best fitness : 694.566
+iteration 98 performed, best fitness : 581.446
+iteration 99 performed, best fitness : 628.577
+iteration 100 performed, best fitness : 400.659
+iteration 101 performed, best fitness : 489.76
+iteration 102 performed, best fitness : 580.104
+iteration 103 performed, best fitness : 461.017
+iteration 104 performed, best fitness : 331.757
+iteration 105 performed, best fitness : 639.626
+iteration 106 performed, best fitness : 396.113
+iteration 107 performed, best fitness : 488.274
+iteration 108 performed, best fitness : 427.772
+iteration 109 performed, best fitness : 462.201
+iteration 110 performed, best fitness : 550.718
+iteration 111 performed, best fitness : 385.075
+iteration 112 performed, best fitness : 527.099
+iteration 113 performed, best fitness : 607.909
+iteration 114 performed, best fitness : 549.051
+iteration 115 performed, best fitness : 500.041
+iteration 116 performed, best fitness : 609.051
+iteration 117 performed, best fitness : 531.002
+iteration 118 performed, best fitness : 444.298
+iteration 119 performed, best fitness : 583.222
+iteration 120 performed, best fitness : 524.749
+iteration 121 performed, best fitness : 565.293
+iteration 122 performed, best fitness : 617.317
+iteration 123 performed, best fitness : 581.686
+iteration 124 performed, best fitness : 642.955
+iteration 125 performed, best fitness : 515.345
+iteration 126 performed, best fitness : 595.19
+iteration 127 performed, best fitness : 611.502
+iteration 128 performed, best fitness : 556.446
+iteration 129 performed, best fitness : 548.635
+iteration 130 performed, best fitness : 562.945
+iteration 131 performed, best fitness : 579.024
+iteration 132 performed, best fitness : 626.556
+iteration 133 performed, best fitness : 586.518
+iteration 134 performed, best fitness : 597.672
+iteration 135 performed, best fitness : 673.627
+iteration 136 performed, best fitness : 640.997
+iteration 137 performed, best fitness : 588.919
+iteration 138 performed, best fitness : 576.868
+iteration 139 performed, best fitness : 702.639
+iteration 140 performed, best fitness : 634.484
+iteration 141 performed, best fitness : 654.097
+iteration 142 performed, best fitness : 552.7
+iteration 143 performed, best fitness : 601.052
+iteration 144 performed, best fitness : 549.524
+iteration 145 performed, best fitness : 602.181
+iteration 146 performed, best fitness : 573.933
+iteration 147 performed, best fitness : 656.49
+iteration 148 performed, best fitness : 608.468
+iteration 149 performed, best fitness : 571.372
+iteration 150 performed, best fitness : 503.296
+iteration 151 performed, best fitness : 632.202
+iteration 152 performed, best fitness : 499.996
+iteration 153 performed, best fitness : 416.104
+iteration 154 performed, best fitness : 509.949
+iteration 155 performed, best fitness : 600.357
+iteration 156 performed, best fitness : 619.91
+iteration 157 performed, best fitness : 1061.34
+iteration 158 performed, best fitness : 772.096
+iteration 159 performed, best fitness : 615.411
+iteration 160 performed, best fitness : 1065.22
+iteration 161 performed, best fitness : 518.356
+iteration 162 performed, best fitness : 561.848
+iteration 163 performed, best fitness : 523.351
+iteration 164 performed, best fitness : 518.329
+iteration 165 performed, best fitness : 661.051
+iteration 166 performed, best fitness : 623.467
+iteration 167 performed, best fitness : 524.654
+iteration 168 performed, best fitness : 593.099
+iteration 169 performed, best fitness : 600.969
+iteration 170 performed, best fitness : 548.758
+iteration 171 performed, best fitness : 586.145
+iteration 172 performed, best fitness : 543.925
+iteration 173 performed, best fitness : 548.64
+iteration 174 performed, best fitness : 518.258
+iteration 175 performed, best fitness : 626.557
+iteration 176 performed, best fitness : 413.383
+iteration 177 performed, best fitness : 628.342
+iteration 178 performed, best fitness : 559.449
+iteration 179 performed, best fitness : 569.871
+iteration 180 performed, best fitness : 558.718
+iteration 181 performed, best fitness : 579.482
+iteration 182 performed, best fitness : 660.757
+iteration 183 performed, best fitness : 652.142
+iteration 184 performed, best fitness : 565.202
+iteration 185 performed, best fitness : 630.833
+iteration 186 performed, best fitness : 547.447
+iteration 187 performed, best fitness : 678.702
+iteration 188 performed, best fitness : 721.279
+iteration 189 performed, best fitness : 685.902
+iteration 190 performed, best fitness : 734.253
+iteration 191 performed, best fitness : 623.359
+iteration 192 performed, best fitness : 618.744
+iteration 193 performed, best fitness : 659.949
+iteration 194 performed, best fitness : 634.095
+iteration 195 performed, best fitness : 640.154
+iteration 196 performed, best fitness : 560.99
+iteration 197 performed, best fitness : 685.577
+iteration 198 performed, best fitness : 617.863
+iteration 199 performed, best fitness : 693.146
+iteration 200 performed, best fitness : 817.583
+iteration 201 performed, best fitness : 686.612
+iteration 202 performed, best fitness : 743.279
+iteration 203 performed, best fitness : 786.26
+iteration 204 performed, best fitness : 680.387
+iteration 205 performed, best fitness : 638.881
+iteration 206 performed, best fitness : 620.069
+iteration 207 performed, best fitness : 672.708
+iteration 208 performed, best fitness : 614.947
+iteration 209 performed, best fitness : 605.147
+iteration 210 performed, best fitness : 603.521
+iteration 211 performed, best fitness : 753.373
+iteration 212 performed, best fitness : 603.26
+iteration 213 performed, best fitness : 695.463
+iteration 214 performed, best fitness : 592.567
+iteration 215 performed, best fitness : 662.537
+iteration 216 performed, best fitness : 608.24
+iteration 217 performed, best fitness : 626.01
+iteration 218 performed, best fitness : 761.496
+iteration 219 performed, best fitness : 737.294
+iteration 220 performed, best fitness : 646.973
+iteration 221 performed, best fitness : 707.384
+iteration 222 performed, best fitness : 689.783
+iteration 223 performed, best fitness : 598.912
+iteration 224 performed, best fitness : 589.254
+iteration 225 performed, best fitness : 573.28
+iteration 226 performed, best fitness : 602.135
+iteration 227 performed, best fitness : 710.97
+iteration 228 performed, best fitness : 654.677
+iteration 229 performed, best fitness : 576.446
+iteration 230 performed, best fitness : 553.138
+iteration 231 performed, best fitness : 729.556
+iteration 232 performed, best fitness : 666.518
+iteration 233 performed, best fitness : 668.853
+iteration 234 performed, best fitness : 644.693
+iteration 235 performed, best fitness : 631.797
+iteration 236 performed, best fitness : 653.277
+iteration 237 performed, best fitness : 642.514
+iteration 238 performed, best fitness : 646.908
+iteration 239 performed, best fitness : 626.364
+iteration 240 performed, best fitness : 684.191
+iteration 241 performed, best fitness : 602.468
+iteration 242 performed, best fitness : 676.686
+iteration 243 performed, best fitness : 644.374
+iteration 244 performed, best fitness : 584.46
+iteration 245 performed, best fitness : 612.71
+iteration 246 performed, best fitness : 559.512
+iteration 247 performed, best fitness : 672.034
+iteration 248 performed, best fitness : 673.654
+iteration 249 performed, best fitness : 589.153
+iteration 250 performed, best fitness : 651.571
+iteration 251 performed, best fitness : 898.017
+iteration 252 performed, best fitness : 646.602
+iteration 253 performed, best fitness : 590.852
+iteration 254 performed, best fitness : 669.816
+iteration 255 performed, best fitness : 553.596
+iteration 256 performed, best fitness : 642.686
+iteration 257 performed, best fitness : 644.324
+iteration 258 performed, best fitness : 646.138
+iteration 259 performed, best fitness : 598.289
+iteration 260 performed, best fitness : 746.27
+iteration 261 performed, best fitness : 703.893
+iteration 262 performed, best fitness : 629.934
+iteration 263 performed, best fitness : 577.562
+iteration 264 performed, best fitness : 694.284
+iteration 265 performed, best fitness : 590.296
+iteration 266 performed, best fitness : 649.259
+iteration 267 performed, best fitness : 691.567
+iteration 268 performed, best fitness : 629.632
+iteration 269 performed, best fitness : 722.663
+iteration 270 performed, best fitness : 558.218
+iteration 271 performed, best fitness : 649.879
+iteration 272 performed, best fitness : 621.793
+iteration 273 performed, best fitness : 606.325
+iteration 274 performed, best fitness : 686.369
+iteration 275 performed, best fitness : 570.721
+iteration 276 performed, best fitness : 622.947
+iteration 277 performed, best fitness : 770.257
+iteration 278 performed, best fitness : 664.214
+iteration 279 performed, best fitness : 725.593
+iteration 280 performed, best fitness : 737.723
+iteration 281 performed, best fitness : 700.859
+iteration 282 performed, best fitness : 660.671
+iteration 283 performed, best fitness : 705.825
+iteration 284 performed, best fitness : 685.585
+iteration 285 performed, best fitness : 725.384
+iteration 286 performed, best fitness : 702.954
+iteration 287 performed, best fitness : 660.425
+iteration 288 performed, best fitness : 737.425
+iteration 289 performed, best fitness : 629.416
+iteration 290 performed, best fitness : 652.853
+iteration 291 performed, best fitness : 680.905
+iteration 292 performed, best fitness : 619.992
+iteration 293 performed, best fitness : 656.473
+iteration 294 performed, best fitness : 687.534
+iteration 295 performed, best fitness : 749.912
+iteration 296 performed, best fitness : 728.812
+iteration 297 performed, best fitness : 700.8
+iteration 298 performed, best fitness : 688.56
+iteration 299 performed, best fitness : 578.201
+iteration 300 performed, best fitness : 632.758
+iteration 301 performed, best fitness : 687.22
+iteration 302 performed, best fitness : 769.783
+iteration 303 performed, best fitness : 639.165
+iteration 304 performed, best fitness : 596.692
+iteration 305 performed, best fitness : 672.745
+iteration 306 performed, best fitness : 617.131
+iteration 307 performed, best fitness : 611.542
+iteration 308 performed, best fitness : 632.056
+iteration 309 performed, best fitness : 677.16
+iteration 310 performed, best fitness : 670.019
+iteration 311 performed, best fitness : 622.978
+iteration 312 performed, best fitness : 610.787
+iteration 313 performed, best fitness : 627.421
+iteration 314 performed, best fitness : 794.415
+iteration 315 performed, best fitness : 790.815
+iteration 316 performed, best fitness : 694.179
+iteration 317 performed, best fitness : 732.132
+iteration 318 performed, best fitness : 625.568
+iteration 319 performed, best fitness : 642.049
+iteration 320 performed, best fitness : 685.607
+iteration 321 performed, best fitness : 738.015
+iteration 322 performed, best fitness : 798.172
+iteration 323 performed, best fitness : 623.675
+iteration 324 performed, best fitness : 614.429
+iteration 325 performed, best fitness : 616.428
+iteration 326 performed, best fitness : 695.786
+iteration 327 performed, best fitness : 631.382
+iteration 328 performed, best fitness : 622.327
+iteration 329 performed, best fitness : 708.988
+iteration 330 performed, best fitness : 674.418
+iteration 331 performed, best fitness : 708.925
+iteration 332 performed, best fitness : 660.157
+iteration 333 performed, best fitness : 727.775
+iteration 334 performed, best fitness : 732.046
+iteration 335 performed, best fitness : 760.892
+iteration 336 performed, best fitness : 859.992
+iteration 337 performed, best fitness : 604.365
+iteration 338 performed, best fitness : 812.468
+iteration 339 performed, best fitness : 717.773
+iteration 340 performed, best fitness : 648.556
+iteration 341 performed, best fitness : 718.624
+iteration 342 performed, best fitness : 635.602
+iteration 343 performed, best fitness : 609.382
+iteration 344 performed, best fitness : 665.445
+iteration 345 performed, best fitness : 670.074
+iteration 346 performed, best fitness : 673.379
+iteration 347 performed, best fitness : 629.226
+iteration 348 performed, best fitness : 675.764
+iteration 349 performed, best fitness : 605.536
+iteration 350 performed, best fitness : 760.764
+iteration 351 performed, best fitness : 670.054
+iteration 352 performed, best fitness : 653.282
+iteration 353 performed, best fitness : nan
+iteration 354 performed, best fitness : 661.065
+iteration 355 performed, best fitness : 651.002
+iteration 356 performed, best fitness : 657.105
+iteration 357 performed, best fitness : 686.631
+iteration 358 performed, best fitness : 647.163
+iteration 359 performed, best fitness : 731.019
+iteration 360 performed, best fitness : 692.174
+iteration 361 performed, best fitness : 780.58
+iteration 362 performed, best fitness : 643.822
+iteration 363 performed, best fitness : 641.616
+iteration 364 performed, best fitness : 650.644
+iteration 365 performed, best fitness : 600.542
+iteration 366 performed, best fitness : 672.633
+iteration 367 performed, best fitness : 613.709
+iteration 368 performed, best fitness : 679.953
+iteration 369 performed, best fitness : 679.229
+iteration 370 performed, best fitness : 653.758
+iteration 371 performed, best fitness : 703.157
+iteration 372 performed, best fitness : 625.532
+iteration 373 performed, best fitness : 659.76
+iteration 374 performed, best fitness : 685.276
+iteration 375 performed, best fitness : 716.314
+iteration 376 performed, best fitness : 671.725
+iteration 377 performed, best fitness : 634.463
+iteration 378 performed, best fitness : 675.328
+iteration 379 performed, best fitness : 706.068
+iteration 380 performed, best fitness : 663.064
+iteration 381 performed, best fitness : 594.779
+iteration 382 performed, best fitness : 615.143
+iteration 383 performed, best fitness : 656.19
+iteration 384 performed, best fitness : 596.725
+iteration 385 performed, best fitness : 636.583
+iteration 386 performed, best fitness : 648.946
+iteration 387 performed, best fitness : 632.856
+iteration 388 performed, best fitness : 662.579
+iteration 389 performed, best fitness : 703.596
+iteration 390 performed, best fitness : 650.019
+iteration 391 performed, best fitness : 647.559
+iteration 392 performed, best fitness : 640.169
+iteration 393 performed, best fitness : 600.365
+iteration 394 performed, best fitness : 613.938
+iteration 395 performed, best fitness : 666.956
+iteration 396 performed, best fitness : 658.374
+iteration 397 performed, best fitness : 608.557
+iteration 398 performed, best fitness : 655.084
+iteration 399 performed, best fitness : 612.307
+iteration 400 performed, best fitness : 667.248
+iteration 401 performed, best fitness : 692.6
+iteration 402 performed, best fitness : 656.091
+iteration 403 performed, best fitness : 687.637
+iteration 404 performed, best fitness : 626.445
+iteration 405 performed, best fitness : 691.947
+iteration 406 performed, best fitness : 668.598
+iteration 407 performed, best fitness : 651.207
+iteration 408 performed, best fitness : 715.729
+iteration 409 performed, best fitness : 662.273
+iteration 410 performed, best fitness : 639.709
+iteration 411 performed, best fitness : 670.189
+iteration 412 performed, best fitness : 688.683
+iteration 413 performed, best fitness : 708.007
+iteration 414 performed, best fitness : 639.503
+iteration 415 performed, best fitness : 659.567
+iteration 416 performed, best fitness : 708.95
+iteration 417 performed, best fitness : 705.024
+iteration 418 performed, best fitness : 668.123
+iteration 419 performed, best fitness : 701.522
+iteration 420 performed, best fitness : 678.756
+iteration 421 performed, best fitness : 699.493
+iteration 422 performed, best fitness : 631.75
+iteration 423 performed, best fitness : 664.53
+iteration 424 performed, best fitness : 651.322
+iteration 425 performed, best fitness : 702.259
+iteration 426 performed, best fitness : 643.797
+iteration 427 performed, best fitness : 650.005
+iteration 428 performed, best fitness : 642.412
+iteration 429 performed, best fitness : 652.076
+iteration 430 performed, best fitness : 645.146
+iteration 431 performed, best fitness : 671.31
+iteration 432 performed, best fitness : 788.724
+iteration 433 performed, best fitness : 643.92
+iteration 434 performed, best fitness : 668.727
+iteration 435 performed, best fitness : 644.967
+iteration 436 performed, best fitness : 636.73
+iteration 437 performed, best fitness : 710.464
+iteration 438 performed, best fitness : 666.486
+iteration 439 performed, best fitness : 653.968
+iteration 440 performed, best fitness : 631.173
+iteration 441 performed, best fitness : 654.664
+iteration 442 performed, best fitness : 600.613
+iteration 443 performed, best fitness : 678.294
+iteration 444 performed, best fitness : 666.154
+iteration 445 performed, best fitness : 690.765
+iteration 446 performed, best fitness : 636.832
+iteration 447 performed, best fitness : 645.377
+iteration 448 performed, best fitness : 639.012
+iteration 449 performed, best fitness : 691.992
+iteration 450 performed, best fitness : 683.291
+iteration 451 performed, best fitness : 671.108
+iteration 452 performed, best fitness : 651.993
+iteration 453 performed, best fitness : 671.42
+iteration 454 performed, best fitness : 695.541
+iteration 455 performed, best fitness : 610.99
+iteration 456 performed, best fitness : 766.485
+iteration 457 performed, best fitness : 706.675
+iteration 458 performed, best fitness : 692.796
+iteration 459 performed, best fitness : 664.1
+iteration 460 performed, best fitness : 718.576
+iteration 461 performed, best fitness : 674.827
+iteration 462 performed, best fitness : 737.743
+iteration 463 performed, best fitness : 742.416
+iteration 464 performed, best fitness : 695.134
+iteration 465 performed, best fitness : 710.422
+iteration 466 performed, best fitness : 668.185
+iteration 467 performed, best fitness : 701.632
+iteration 468 performed, best fitness : 703.143
+iteration 469 performed, best fitness : 713.53
+iteration 470 performed, best fitness : 719.82
+iteration 471 performed, best fitness : 711.217
+iteration 472 performed, best fitness : 825.723
+iteration 473 performed, best fitness : 783.442
+iteration 474 performed, best fitness : 711.309
+iteration 475 performed, best fitness : 686.774
+iteration 476 performed, best fitness : 755.43
+iteration 477 performed, best fitness : 720.564
+iteration 478 performed, best fitness : 637.129
+iteration 479 performed, best fitness : 749.327
+iteration 480 performed, best fitness : 731.805
+iteration 481 performed, best fitness : 763.841
+iteration 482 performed, best fitness : 734.174
+iteration 483 performed, best fitness : 700.883
+iteration 484 performed, best fitness : 702.383
+iteration 485 performed, best fitness : 740.797
+iteration 486 performed, best fitness : 704.362
+iteration 487 performed, best fitness : 714.455
+iteration 488 performed, best fitness : 694.709
+iteration 489 performed, best fitness : 769.842
+iteration 490 performed, best fitness : 729.895
+iteration 491 performed, best fitness : 728.934
+iteration 492 performed, best fitness : 772.632
+iteration 493 performed, best fitness : 688.521
+iteration 494 performed, best fitness : 696.1
+iteration 495 performed, best fitness : 690.991
+iteration 496 performed, best fitness : 707.771
+iteration 497 performed, best fitness : 751.618
+iteration 498 performed, best fitness : 734.87
+iteration 499 performed, best fitness : 720.671
+iteration 500 performed, best fitness : 709.032
+iteration 501 performed, best fitness : 788.377
+iteration 502 performed, best fitness : 723.623
+iteration 503 performed, best fitness : 731.835
+iteration 504 performed, best fitness : 812.324
+iteration 505 performed, best fitness : 693.823
+iteration 506 performed, best fitness : 712.673
+iteration 507 performed, best fitness : 734.263
+iteration 508 performed, best fitness : 758.759
+iteration 509 performed, best fitness : 802.759
+iteration 510 performed, best fitness : 755.03
+iteration 511 performed, best fitness : 763.905
+iteration 512 performed, best fitness : 672.357
+iteration 513 performed, best fitness : 739.368
+iteration 514 performed, best fitness : 692.803
+iteration 515 performed, best fitness : 749.962
+iteration 516 performed, best fitness : 819.005
+iteration 517 performed, best fitness : 759.015
+iteration 518 performed, best fitness : 795.766
+iteration 519 performed, best fitness : 799.283
+iteration 520 performed, best fitness : 864.087
+iteration 521 performed, best fitness : 779.663
+iteration 522 performed, best fitness : 811.294
+iteration 523 performed, best fitness : 787.709
+iteration 524 performed, best fitness : 894.035
+iteration 525 performed, best fitness : 836.593
+iteration 526 performed, best fitness : 832.798
+iteration 527 performed, best fitness : 878.88
+iteration 528 performed, best fitness : 849.109
+iteration 529 performed, best fitness : 828.021
+iteration 530 performed, best fitness : 962.252
+iteration 531 performed, best fitness : 921.105
+iteration 532 performed, best fitness : 850.665
+iteration 533 performed, best fitness : 959.295
+iteration 534 performed, best fitness : 951.843
+iteration 535 performed, best fitness : 926.545
+iteration 536 performed, best fitness : 845.722
+iteration 537 performed, best fitness : 916.643
+iteration 538 performed, best fitness : 839.129
+iteration 539 performed, best fitness : 1014.16
+iteration 540 performed, best fitness : 1024.88
+iteration 541 performed, best fitness : 949.817
+iteration 542 performed, best fitness : 911.295
+iteration 543 performed, best fitness : 995.176
+iteration 544 performed, best fitness : 1254.76
+iteration 545 performed, best fitness : 1004.44
+iteration 546 performed, best fitness : 1045.86
+iteration 547 performed, best fitness : 933.7
+iteration 548 performed, best fitness : 1104.26
+iteration 549 performed, best fitness : 1027.67
+iteration 550 performed, best fitness : 985.289
+iteration 551 performed, best fitness : 1027.9
+iteration 552 performed, best fitness : 902.335
+iteration 553 performed, best fitness : 993.756
+iteration 554 performed, best fitness : 865.287
+iteration 555 performed, best fitness : 1027.1
+iteration 556 performed, best fitness : 1028.11
+iteration 557 performed, best fitness : 1026.37
+iteration 558 performed, best fitness : 1027.19
+iteration 559 performed, best fitness : 1073.43
+iteration 560 performed, best fitness : 1045.97
+iteration 561 performed, best fitness : 1029.95
+iteration 562 performed, best fitness : 1041.38
+iteration 563 performed, best fitness : 1035.77
+iteration 564 performed, best fitness : 1028.78
+iteration 565 performed, best fitness : 1050.34
+iteration 566 performed, best fitness : 1085.86
+iteration 567 performed, best fitness : 1107.91
+iteration 568 performed, best fitness : 1043.01
+iteration 569 performed, best fitness : 1090.72
+iteration 570 performed, best fitness : 1078.24
+iteration 571 performed, best fitness : 1105.17
+iteration 572 performed, best fitness : 1128.02
+iteration 573 performed, best fitness : 1070.96
+iteration 574 performed, best fitness : 1102.59
+iteration 575 performed, best fitness : 1073.95
+iteration 576 performed, best fitness : 1048.47
+iteration 577 performed, best fitness : 1055.08
+iteration 578 performed, best fitness : 1054.24
+iteration 579 performed, best fitness : 1062.15
+iteration 580 performed, best fitness : 1057.42
+iteration 581 performed, best fitness : 1050.84
+iteration 582 performed, best fitness : 1062.93
+iteration 583 performed, best fitness : 1058.79
+iteration 584 performed, best fitness : 1081.64
+iteration 585 performed, best fitness : 1063.67
+iteration 586 performed, best fitness : 1094.67
+iteration 587 performed, best fitness : 1081.77
+iteration 588 performed, best fitness : 1127.6
+iteration 589 performed, best fitness : 1082.13
+iteration 590 performed, best fitness : 1076.22
+iteration 591 performed, best fitness : 1063.89
+iteration 592 performed, best fitness : 1059.27
+iteration 593 performed, best fitness : 1080.72
+iteration 594 performed, best fitness : 1069.13
+iteration 595 performed, best fitness : 1057.67
+iteration 596 performed, best fitness : 1060.72
+iteration 597 performed, best fitness : 1065.96
+iteration 598 performed, best fitness : 1064.18
+iteration 599 performed, best fitness : 1065.2
+iteration 600 performed, best fitness : 1063.55
+iteration 601 performed, best fitness : 1079.18
+iteration 602 performed, best fitness : 1066.57
+iteration 603 performed, best fitness : 1065.56
+iteration 604 performed, best fitness : 1073.18
+iteration 605 performed, best fitness : 1067.29
+iteration 606 performed, best fitness : 1077.65
+iteration 607 performed, best fitness : 1087.73
+iteration 608 performed, best fitness : 1095.64
+iteration 609 performed, best fitness : 1080.45
+iteration 610 performed, best fitness : 1074.32
+iteration 611 performed, best fitness : 1066.78
+iteration 612 performed, best fitness : 1079.78
+iteration 613 performed, best fitness : 1077.78
+iteration 614 performed, best fitness : 1101.17
+iteration 615 performed, best fitness : 1096.32
+iteration 616 performed, best fitness : 1079.75
+iteration 617 performed, best fitness : 1081.05
+iteration 618 performed, best fitness : 1081
+iteration 619 performed, best fitness : 1095.46
+iteration 620 performed, best fitness : 1081.92
+iteration 621 performed, best fitness : 1107.11
+iteration 622 performed, best fitness : 1104.17
+iteration 623 performed, best fitness : 1093
+iteration 624 performed, best fitness : 1111.29
+iteration 625 performed, best fitness : 1095.71
+iteration 626 performed, best fitness : 1100.38
+iteration 627 performed, best fitness : 1142.54
+iteration 628 performed, best fitness : 1114.45
+iteration 629 performed, best fitness : 1159.65
+iteration 630 performed, best fitness : 1156.79
+iteration 631 performed, best fitness : 1140.47
+iteration 632 performed, best fitness : 1108.28
+iteration 633 performed, best fitness : 1136.33
+iteration 634 performed, best fitness : 1117.68
+iteration 635 performed, best fitness : 1094.82
+iteration 636 performed, best fitness : 1103.87
+iteration 637 performed, best fitness : 1105.1
+iteration 638 performed, best fitness : 1132.15
+iteration 639 performed, best fitness : 1107.07
+iteration 640 performed, best fitness : 1162.71
+iteration 641 performed, best fitness : 1133.89
+iteration 642 performed, best fitness : 1127.38
+iteration 643 performed, best fitness : 1116.06
+iteration 644 performed, best fitness : 1106.72
+iteration 645 performed, best fitness : 1103.91
+iteration 646 performed, best fitness : 1116.21
+iteration 647 performed, best fitness : 1114.94
+iteration 648 performed, best fitness : 1137.37
+iteration 649 performed, best fitness : 1108.87
+iteration 650 performed, best fitness : 1137.4
+iteration 651 performed, best fitness : 1104.79
+iteration 652 performed, best fitness : 1095.95
+iteration 653 performed, best fitness : 1113.42
+iteration 654 performed, best fitness : 1124.13
+iteration 655 performed, best fitness : 1116.82
+iteration 656 performed, best fitness : 1141.76
+iteration 657 performed, best fitness : 1116.79
+iteration 658 performed, best fitness : 1130.64
+iteration 659 performed, best fitness : 1141.35
+iteration 660 performed, best fitness : 1100.98
+iteration 661 performed, best fitness : 1105.07
+iteration 662 performed, best fitness : 1126.7
+iteration 663 performed, best fitness : 1103.09
+iteration 664 performed, best fitness : 1119.11
+iteration 665 performed, best fitness : 1114.46
+iteration 666 performed, best fitness : 1114.31
+iteration 667 performed, best fitness : 1120.25
+iteration 668 performed, best fitness : 1106.67
+iteration 669 performed, best fitness : 1127.89
+iteration 670 performed, best fitness : 1116.14
+iteration 671 performed, best fitness : 1116.39
+iteration 672 performed, best fitness : 1112.71
+iteration 673 performed, best fitness : 1110.68
+iteration 674 performed, best fitness : 1114.38
+iteration 675 performed, best fitness : 1151.06
+iteration 676 performed, best fitness : 1136.16
+iteration 677 performed, best fitness : 1147.77
+iteration 678 performed, best fitness : 1109.05
+iteration 679 performed, best fitness : 1130.55
+iteration 680 performed, best fitness : 1137.62
+iteration 681 performed, best fitness : 1138.66
+iteration 682 performed, best fitness : 1152.18
+iteration 683 performed, best fitness : 1165.73
+iteration 684 performed, best fitness : 1123.93
+iteration 685 performed, best fitness : 1168.32
+iteration 686 performed, best fitness : 1143.86
+iteration 687 performed, best fitness : 1114.87
+iteration 688 performed, best fitness : 1108.71
+iteration 689 performed, best fitness : 1143.49
+iteration 690 performed, best fitness : 1123.46
+iteration 691 performed, best fitness : 1143.52
+iteration 692 performed, best fitness : 1112.82
+iteration 693 performed, best fitness : 1127.73
+iteration 694 performed, best fitness : 1128.8
+iteration 695 performed, best fitness : 1161.79
+iteration 696 performed, best fitness : 1175.66
+iteration 697 performed, best fitness : 1158.55
+iteration 698 performed, best fitness : 1185.39
+iteration 699 performed, best fitness : 1179.23
+iteration 700 performed, best fitness : 1163.98
+iteration 701 performed, best fitness : 1139.09
+iteration 702 performed, best fitness : 1125.91
+iteration 703 performed, best fitness : 1153.04
+iteration 704 performed, best fitness : 1216.98
+iteration 705 performed, best fitness : 1177.56
+iteration 706 performed, best fitness : 1155.88
+iteration 707 performed, best fitness : 1166.76
+iteration 708 performed, best fitness : 1181.52
+iteration 709 performed, best fitness : 1178.01
+iteration 710 performed, best fitness : 1188.18
+iteration 711 performed, best fitness : 1176.79
+iteration 712 performed, best fitness : 1153.82
+iteration 713 performed, best fitness : 1203.35
+iteration 714 performed, best fitness : 1176.78
+iteration 715 performed, best fitness : 1195.59
+iteration 716 performed, best fitness : 1226.99
+iteration 717 performed, best fitness : 1196.65
+iteration 718 performed, best fitness : 1185.18
+iteration 719 performed, best fitness : 1193.37
+iteration 720 performed, best fitness : 1204.91
+iteration 721 performed, best fitness : 1225.43
+iteration 722 performed, best fitness : 1208.15
+iteration 723 performed, best fitness : 1222.8
+iteration 724 performed, best fitness : 1207.74
+iteration 725 performed, best fitness : 1199.88
+iteration 726 performed, best fitness : 1235.09
+iteration 727 performed, best fitness : 1210.51
+iteration 728 performed, best fitness : 1225.39
+iteration 729 performed, best fitness : 1214.68
+iteration 730 performed, best fitness : 1204.8
+iteration 731 performed, best fitness : 1227.13
+iteration 732 performed, best fitness : 1217.44
+iteration 733 performed, best fitness : 1207.62
+iteration 734 performed, best fitness : 1179.9
+iteration 735 performed, best fitness : 1255.28
+iteration 736 performed, best fitness : 1207.62
+iteration 737 performed, best fitness : 1213.58
+iteration 738 performed, best fitness : 1220.21
+iteration 739 performed, best fitness : 1193.42
+iteration 740 performed, best fitness : 1223.73
+iteration 741 performed, best fitness : 1288.87
+iteration 742 performed, best fitness : 1255.68
+iteration 743 performed, best fitness : 1206.79
+iteration 744 performed, best fitness : 1235.48
+iteration 745 performed, best fitness : 1240.11
+iteration 746 performed, best fitness : 1213.08
+iteration 747 performed, best fitness : 1216.03
+iteration 748 performed, best fitness : 1247.39
+iteration 749 performed, best fitness : 1229
+iteration 750 performed, best fitness : 1273.36
+iteration 751 performed, best fitness : 1207.91
+iteration 752 performed, best fitness : 1236.95
+iteration 753 performed, best fitness : 1248.33
+iteration 754 performed, best fitness : 1220.63
+iteration 755 performed, best fitness : 1238.97
+iteration 756 performed, best fitness : 1292.91
+iteration 757 performed, best fitness : 1300.1
+iteration 758 performed, best fitness : 1230.81
+iteration 759 performed, best fitness : 1266.98
+iteration 760 performed, best fitness : 1260.4
+iteration 761 performed, best fitness : 1204.12
+iteration 762 performed, best fitness : 1236.9
+iteration 763 performed, best fitness : 1212.25
+iteration 764 performed, best fitness : 1246.3
+iteration 765 performed, best fitness : 1246.82
+iteration 766 performed, best fitness : 1232.72
+iteration 767 performed, best fitness : 1221.09
+iteration 768 performed, best fitness : 1218.31
+iteration 769 performed, best fitness : 1256
+iteration 770 performed, best fitness : 1274.14
+iteration 771 performed, best fitness : 1280.93
+iteration 772 performed, best fitness : 1217.57
+iteration 773 performed, best fitness : 1246.62
+iteration 774 performed, best fitness : 1254.56
+iteration 775 performed, best fitness : 1235.91
+iteration 776 performed, best fitness : 1244.57
+iteration 777 performed, best fitness : 1262.77
+iteration 778 performed, best fitness : 1255.09
+iteration 779 performed, best fitness : 1306.52
+iteration 780 performed, best fitness : 1258.42
+iteration 781 performed, best fitness : 1233.99
+iteration 782 performed, best fitness : 1260.15
+iteration 783 performed, best fitness : 1231.94
+iteration 784 performed, best fitness : 1249.28
+iteration 785 performed, best fitness : 1242.67
+iteration 786 performed, best fitness : 1242.64
+iteration 787 performed, best fitness : 1301.82
+iteration 788 performed, best fitness : 1293.7
+iteration 789 performed, best fitness : 1279.9
+iteration 790 performed, best fitness : 1275.2
+iteration 791 performed, best fitness : 1265.71
+iteration 792 performed, best fitness : 1259.11
+iteration 793 performed, best fitness : 1279.91
+iteration 794 performed, best fitness : 1293.29
+iteration 795 performed, best fitness : 1286.97
+iteration 796 performed, best fitness : 1299.51
+iteration 797 performed, best fitness : 1275.6
+iteration 798 performed, best fitness : 1283.4
+iteration 799 performed, best fitness : 1267.17
+iteration 800 performed, best fitness : 1296.76
+iteration 801 performed, best fitness : 1266.79
+iteration 802 performed, best fitness : 1279.95
+iteration 803 performed, best fitness : 1269.38
+iteration 804 performed, best fitness : 1256.41
+iteration 805 performed, best fitness : 1278.96
+iteration 806 performed, best fitness : 1274.02
+iteration 807 performed, best fitness : 1262.57
+iteration 808 performed, best fitness : 1289.76
+iteration 809 performed, best fitness : 1272.41
+iteration 810 performed, best fitness : 1241.8
+iteration 811 performed, best fitness : 1269.23
+iteration 812 performed, best fitness : 1308.15
+iteration 813 performed, best fitness : 1287.88
+iteration 814 performed, best fitness : 1273.18
+iteration 815 performed, best fitness : 1294.2
+iteration 816 performed, best fitness : 1252.11
+iteration 817 performed, best fitness : 1282.91
+iteration 818 performed, best fitness : 1297.75
+iteration 819 performed, best fitness : 1267.13
+iteration 820 performed, best fitness : 1275
+iteration 821 performed, best fitness : 1290.55
+iteration 822 performed, best fitness : 1298.66
+iteration 823 performed, best fitness : 1322.79
+iteration 824 performed, best fitness : 1284.31
+iteration 825 performed, best fitness : 1287.66
+iteration 826 performed, best fitness : 1287.8
+iteration 827 performed, best fitness : 1305.87
+iteration 828 performed, best fitness : 1278.04
+iteration 829 performed, best fitness : 1279.99
+iteration 830 performed, best fitness : 1256.18
+iteration 831 performed, best fitness : 1280.41
+iteration 832 performed, best fitness : 1267.45
+iteration 833 performed, best fitness : 1277.8
+iteration 834 performed, best fitness : 1262.54
+iteration 835 performed, best fitness : 1255.35
+iteration 836 performed, best fitness : 1324.64
+iteration 837 performed, best fitness : 1260.48
+iteration 838 performed, best fitness : 1282.19
+iteration 839 performed, best fitness : 1260.53
+iteration 840 performed, best fitness : 1310.33
+iteration 841 performed, best fitness : 1305.78
+iteration 842 performed, best fitness : 1305.83
+iteration 843 performed, best fitness : 1290.55
+iteration 844 performed, best fitness : 1283.05
+iteration 845 performed, best fitness : 1293.97
+iteration 846 performed, best fitness : 1295.94
+iteration 847 performed, best fitness : 1294.44
+iteration 848 performed, best fitness : 1282.25
+iteration 849 performed, best fitness : 1298.8
+iteration 850 performed, best fitness : 1285.51
+iteration 851 performed, best fitness : 1283.89
+iteration 852 performed, best fitness : 1301.46
+iteration 853 performed, best fitness : 1281.11
+iteration 854 performed, best fitness : 1295.39
+iteration 855 performed, best fitness : 1294.55
+iteration 856 performed, best fitness : 1285.97
+iteration 857 performed, best fitness : 1297.53
+iteration 858 performed, best fitness : 1284.11
+iteration 859 performed, best fitness : 1293.69
+iteration 860 performed, best fitness : 1298.73
+iteration 861 performed, best fitness : 1307.76
+iteration 862 performed, best fitness : 1286.86
+iteration 863 performed, best fitness : 1292.66
+iteration 864 performed, best fitness : 1268.53
+iteration 865 performed, best fitness : 1290.23
+iteration 866 performed, best fitness : 1283.65
+iteration 867 performed, best fitness : 1287.5
+iteration 868 performed, best fitness : 1297.31
+iteration 869 performed, best fitness : 1296.67
+iteration 870 performed, best fitness : 1307.77
+iteration 871 performed, best fitness : 1291.62
+iteration 872 performed, best fitness : 1302.97
+iteration 873 performed, best fitness : 1274.87
+iteration 874 performed, best fitness : 1283.21
+iteration 875 performed, best fitness : 1288.36
+iteration 876 performed, best fitness : 1301.49
+iteration 877 performed, best fitness : 1286.58
+iteration 878 performed, best fitness : 1287.4
+iteration 879 performed, best fitness : 1293.92
+iteration 880 performed, best fitness : 1295.59
+iteration 881 performed, best fitness : 1291.75
+iteration 882 performed, best fitness : 1305.82
+iteration 883 performed, best fitness : 1297.54
+iteration 884 performed, best fitness : 1284.82
+iteration 885 performed, best fitness : 1283.4
+iteration 886 performed, best fitness : 1306
+iteration 887 performed, best fitness : 1293.89
+iteration 888 performed, best fitness : nan
+iteration 889 performed, best fitness : 1285.05
+iteration 890 performed, best fitness : 1299.18
+iteration 891 performed, best fitness : 1292.62
+iteration 892 performed, best fitness : 1313.55
+iteration 893 performed, best fitness : 1304.97
+iteration 894 performed, best fitness : 1285.86
+iteration 895 performed, best fitness : 1302.45
+iteration 896 performed, best fitness : 1313.65
+iteration 897 performed, best fitness : 1300.48
+iteration 898 performed, best fitness : 1312.2
+iteration 899 performed, best fitness : 1290.25
+iteration 900 performed, best fitness : 1308.61
+iteration 901 performed, best fitness : 1300.63
+iteration 902 performed, best fitness : 1313.68
+iteration 903 performed, best fitness : 1312.62
+iteration 904 performed, best fitness : 1304.13
+iteration 905 performed, best fitness : 1308.93
+iteration 906 performed, best fitness : 1321.12
+iteration 907 performed, best fitness : 1300
+iteration 908 performed, best fitness : 1301.44
+iteration 909 performed, best fitness : 1295.67
+iteration 910 performed, best fitness : 1297.8
+iteration 911 performed, best fitness : 1306.36
+iteration 912 performed, best fitness : 1311.36
+iteration 913 performed, best fitness : 1311.9
+iteration 914 performed, best fitness : 1291.44
+iteration 915 performed, best fitness : 1316.88
+iteration 916 performed, best fitness : 1308.64
+iteration 917 performed, best fitness : 1303.86
+iteration 918 performed, best fitness : 1295.62
+iteration 919 performed, best fitness : 1300.4
+iteration 920 performed, best fitness : 1300.14
+iteration 921 performed, best fitness : 1310.59
+iteration 922 performed, best fitness : 1301.27
+iteration 923 performed, best fitness : 1311.63
+iteration 924 performed, best fitness : 1298.62
+iteration 925 performed, best fitness : 1315.31
+iteration 926 performed, best fitness : 1312.57
+iteration 927 performed, best fitness : 1309.49
+iteration 928 performed, best fitness : 1312.22
+iteration 929 performed, best fitness : 1282.08
+iteration 930 performed, best fitness : 1309.48
+iteration 931 performed, best fitness : 1323.65
+iteration 932 performed, best fitness : 1300.89
+iteration 933 performed, best fitness : 1299.47
+iteration 934 performed, best fitness : 1308.19
+iteration 935 performed, best fitness : 1310.82
+iteration 936 performed, best fitness : 1305.84
+iteration 937 performed, best fitness : 1301.76
+iteration 938 performed, best fitness : 1309.9
+iteration 939 performed, best fitness : 1285.21
+iteration 940 performed, best fitness : 1297.86
+iteration 941 performed, best fitness : 1305.1
+iteration 942 performed, best fitness : 1307.94
+iteration 943 performed, best fitness : 1293.86
+iteration 944 performed, best fitness : 1310.14
+iteration 945 performed, best fitness : 1324.97
+iteration 946 performed, best fitness : 1307.76
+iteration 947 performed, best fitness : 1309.82
+iteration 948 performed, best fitness : 1315.62
+iteration 949 performed, best fitness : 1305.71
+iteration 950 performed, best fitness : 1324.23
+iteration 951 performed, best fitness : 1297.49
+iteration 952 performed, best fitness : 1315.89
+iteration 953 performed, best fitness : 1318.36
+iteration 954 performed, best fitness : 1309.06
+iteration 955 performed, best fitness : 1319.22
+iteration 956 performed, best fitness : 1302.25
+iteration 957 performed, best fitness : 1302.28
+iteration 958 performed, best fitness : 1316.09
+iteration 959 performed, best fitness : 1311.49
+iteration 960 performed, best fitness : 1307.42
+iteration 961 performed, best fitness : 1317.58
+iteration 962 performed, best fitness : 1314.24
+iteration 963 performed, best fitness : 1309.7
+iteration 964 performed, best fitness : 1312.28
+iteration 965 performed, best fitness : 1304.73
+iteration 966 performed, best fitness : 1303.49
+iteration 967 performed, best fitness : 1325.31
+iteration 968 performed, best fitness : 1311.17
+iteration 969 performed, best fitness : 1314.61
+iteration 970 performed, best fitness : 1315.15
+iteration 971 performed, best fitness : 1308.96
+iteration 972 performed, best fitness : 1324.97
+iteration 973 performed, best fitness : 1329.41
+iteration 974 performed, best fitness : 1317.94
+iteration 975 performed, best fitness : 1317.44
+iteration 976 performed, best fitness : 1315.3
+iteration 977 performed, best fitness : 1324.64
+iteration 978 performed, best fitness : 1318.39
+iteration 979 performed, best fitness : 1320.05
+iteration 980 performed, best fitness : 1313.52
+iteration 981 performed, best fitness : 1317.31
+iteration 982 performed, best fitness : 1309.2
+iteration 983 performed, best fitness : 1319.16
+iteration 984 performed, best fitness : 1318.45
+iteration 985 performed, best fitness : 1313.17
+iteration 986 performed, best fitness : 1314.57
+iteration 987 performed, best fitness : 1313.09
+iteration 988 performed, best fitness : 1313.89
+iteration 989 performed, best fitness : 1314.44
+iteration 990 performed, best fitness : 1324.13
+iteration 991 performed, best fitness : 1308.35
+iteration 992 performed, best fitness : 1321.66
+iteration 993 performed, best fitness : 1322.52
+iteration 994 performed, best fitness : 1316.83
+iteration 995 performed, best fitness : 1318.12
+iteration 996 performed, best fitness : 1311.71
+iteration 997 performed, best fitness : 1318.39
+iteration 998 performed, best fitness : 1315.97
+iteration 999 performed, best fitness : 1323.35
+close slave 49
+close slave 6
+close slave 50
+close slave 12
+close slave 8
+close slave 10
+close slave 7
+close slave 11
+close slave 48
+close slave 13
+close slave 5
+close slave 26
+close slave 45
+close slave 33
+close slave 47
+close slave 35
+close slave 43
+close slave 9
+close slave 20
+close slave 1
+close slave 4
+close slave 17
+close slave 36
+close slave 24
+close slave 31
+close slave 21
+close slave 37
+close slave 3
+close slave 39
+close slave 46
+close slave 2
+close slave 27
+close slave 29
+close slave 34
+close slave 32
+close slave 30
+close slave 22
+close slave 25
+close slave 19
+close slave 28
+close slave 18
+close slave 23
+close slave 15
+close slave 16
+close slave 40
+close slave 44
+close slave 38
+close slave 14
+close slave 42
+close slave 41
+iteration 1000 performed, best fitness : 1318.81
+fitness: 1329.405722
+
+fitness history:
+  144.599181 ; 219.017788 ; 140.392717 ; 146.485720 ; 168.291621 ; 158.830913 ; 128.664193 ; 158.544421 ; 241.838847 ; 201.034101
+  149.407707 ; 149.124215 ; 142.643029 ; 400.498740 ; 533.489663 ; 191.735175 ; 368.955276 ; 201.054511 ; 209.733390 ; 343.609520
+  584.925144 ; 543.541428 ; 284.384289 ; 235.598912 ; 265.087531 ; 272.479067 ; 373.175536 ; 648.133002 ; 274.895496 ; 392.246578
+  489.415449 ; 400.128277 ; 442.455813 ; 420.033980 ; 438.151970 ; 444.804995 ; 609.439459 ; 547.155414 ; 385.929971 ; 435.235493
+  570.501275 ; 576.289855 ; 400.893212 ; 324.420800 ; 624.007166 ; 435.262462 ; 542.066426 ; 554.091517 ; 457.570804 ; 554.652272
+  533.633555 ; 499.995833 ; 633.671815 ; 499.995833 ; 562.173008 ; 401.599451 ; 610.461198 ; 470.581240 ; 473.210522 ; 568.833046
+  436.879963 ; 415.803138 ; 727.086899 ; 389.327990 ; 708.050183 ; 410.932354 ; 702.730177 ; 531.397896 ; 426.589063 ; 541.525061
+  646.934308 ; 494.963635 ; 460.817656 ; 374.796808 ; 374.858327 ; 352.541727 ; 628.077202 ; 659.156472 ; 482.014711 ; 449.191566
+  598.949133 ; 578.496685 ; 530.062650 ; 462.532422 ; 565.638822 ; 487.257065 ; 514.226431 ; 466.340239 ; 669.266877 ; 598.290858
+  553.305292 ; 446.412159 ; 590.065865 ; 571.188230 ; 428.502163 ; 469.219280 ; 694.565952 ; 581.445590 ; 628.577130 ; 400.658860
+  489.760420 ; 580.103873 ; 461.017427 ; 331.757326 ; 639.626000 ; 396.112656 ; 488.273662 ; 427.771914 ; 462.200750 ; 550.717926
+  385.075074 ; 527.098911 ; 607.909007 ; 549.050801 ; 500.040672 ; 609.051276 ; 531.001895 ; 444.297814 ; 583.222186 ; 524.748620
+  565.292899 ; 617.317036 ; 581.685587 ; 642.955266 ; 515.344972 ; 595.190249 ; 611.502087 ; 556.445960 ; 548.634559 ; 562.944763
+  579.023712 ; 626.556466 ; 586.517537 ; 597.671643 ; 673.627256 ; 640.996848 ; 588.919010 ; 576.867549 ; 702.639342 ; 634.484397
+  654.096965 ; 552.699543 ; 601.051801 ; 549.524073 ; 602.181127 ; 573.932789 ; 656.489583 ; 608.467553 ; 571.372436 ; 503.295794
+  632.201835 ; 499.995833 ; 416.103939 ; 509.949112 ; 600.356578 ; 619.909866 ; 1061.335318 ; 772.096174 ; 615.410677 ; 1065.215769
+  518.355736 ; 561.848385 ; 523.351181 ; 518.328763 ; 661.051232 ; 623.467196 ; 524.653894 ; 593.099379 ; 600.968509 ; 548.757716
+  586.145086 ; 543.924959 ; 548.639566 ; 518.257505 ; 626.556638 ; 413.382928 ; 628.342007 ; 559.448664 ; 569.871326 ; 558.717611
+  579.482427 ; 660.757424 ; 652.142440 ; 565.201717 ; 630.833333 ; 547.446968 ; 678.701714 ; 721.279105 ; 685.901558 ; 734.252953
+  623.359169 ; 618.744056 ; 659.949247 ; 634.094881 ; 640.153828 ; 560.990152 ; 685.577287 ; 617.862502 ; 693.146303 ; 817.583321
+  686.611502 ; 743.279152 ; 786.260455 ; 680.386663 ; 638.881401 ; 620.068981 ; 672.708362 ; 614.947460 ; 605.147123 ; 603.520943
+  753.372554 ; 603.259542 ; 695.463395 ; 592.567147 ; 662.536807 ; 608.240374 ; 626.010424 ; 761.496422 ; 737.293837 ; 646.972962
+  707.384073 ; 689.782980 ; 598.912473 ; 589.254322 ; 573.279751 ; 602.135387 ; 710.970210 ; 654.677244 ; 576.446206 ; 553.138233
+  729.556015 ; 666.518097 ; 668.853084 ; 644.693465 ; 631.796732 ; 653.276521 ; 642.513794 ; 646.908318 ; 626.363591 ; 684.191015
+  602.468198 ; 676.686403 ; 644.374472 ; 584.459742 ; 612.710498 ; 559.511971 ; 672.034141 ; 673.653515 ; 589.153339 ; 651.571483
+  898.017308 ; 646.601936 ; 590.852305 ; 669.815828 ; 553.596075 ; 642.686430 ; 644.324255 ; 646.137883 ; 598.288889 ; 746.270283
+  703.893106 ; 629.933763 ; 577.562430 ; 694.284341 ; 590.296015 ; 649.258909 ; 691.566830 ; 629.631814 ; 722.663096 ; 558.218118
+  649.879335 ; 621.792854 ; 606.324530 ; 686.368648 ; 570.720586 ; 622.947187 ; 770.257052 ; 664.214317 ; 725.593048 ; 737.723210
+  700.859276 ; 660.670973 ; 705.824639 ; 685.585187 ; 725.384230 ; 702.953867 ; 660.425108 ; 737.425359 ; 629.415723 ; 652.853287
+  680.904933 ; 619.991750 ; 656.473215 ; 687.534232 ; 749.912361 ; 728.812241 ; 700.799584 ; 688.560093 ; 578.200921 ; 632.757971
+  687.220139 ; 769.782654 ; 639.164832 ; 596.692404 ; 672.745429 ; 617.130794 ; 611.542359 ; 632.056134 ; 677.159508 ; 670.019073
+  622.978452 ; 610.787138 ; 627.420657 ; 794.414751 ; 790.815410 ; 694.178862 ; 732.132302 ; 625.568453 ; 642.049278 ; 685.606920
+  738.015214 ; 798.171797 ; 623.675180 ; 614.428904 ; 616.428317 ; 695.785624 ; 631.381738 ; 622.327346 ; 708.988117 ; 674.418443
+  708.925127 ; 660.156787 ; 727.775296 ; 732.046140 ; 760.891718 ; 859.991577 ; 604.364566 ; 812.467971 ; 717.773239 ; 648.556334
+  718.623742 ; 635.601814 ; 609.382207 ; 665.445063 ; 670.073651 ; 673.379328 ; 629.225743 ; 675.764424 ; 605.536404 ; 760.763827
+  670.053899 ; 653.281981 ; nan ; 661.065253 ; 651.002219 ; 657.105228 ; 686.631172 ; 647.163151 ; 731.018584 ; 692.173750
+  780.580381 ; 643.822481 ; 641.616084 ; 650.643732 ; 600.541946 ; 672.632860 ; 613.708570 ; 679.952543 ; 679.229497 ; 653.757949
+  703.156788 ; 625.532397 ; 659.760462 ; 685.275986 ; 716.313859 ; 671.725099 ; 634.463186 ; 675.328236 ; 706.068472 ; 663.064285
+  594.779296 ; 615.143435 ; 656.189742 ; 596.724842 ; 636.583408 ; 648.945879 ; 632.855964 ; 662.578765 ; 703.595986 ; 650.019017
+  647.559318 ; 640.168894 ; 600.364801 ; 613.938413 ; 666.956160 ; 658.374340 ; 608.557391 ; 655.083767 ; 612.306645 ; 667.248189
+  692.600009 ; 656.090691 ; 687.636963 ; 626.444723 ; 691.946726 ; 668.598047 ; 651.207498 ; 715.729064 ; 662.273481 ; 639.709105
+  670.189453 ; 688.682903 ; 708.007383 ; 639.502740 ; 659.566584 ; 708.949794 ; 705.023637 ; 668.122977 ; 701.521585 ; 678.756488
+  699.493476 ; 631.749833 ; 664.530091 ; 651.321940 ; 702.258725 ; 643.797355 ; 650.005279 ; 642.411752 ; 652.076204 ; 645.146074
+  671.310304 ; 788.723883 ; 643.920273 ; 668.726642 ; 644.967118 ; 636.730347 ; 710.464147 ; 666.485899 ; 653.967786 ; 631.173234
+  654.664405 ; 600.613125 ; 678.294456 ; 666.153833 ; 690.765439 ; 636.831849 ; 645.377320 ; 639.012487 ; 691.991717 ; 683.290731
+  671.107810 ; 651.992996 ; 671.420483 ; 695.540946 ; 610.989685 ; 766.484658 ; 706.674652 ; 692.795917 ; 664.100116 ; 718.575621
+  674.826504 ; 737.742776 ; 742.416160 ; 695.133523 ; 710.422152 ; 668.185419 ; 701.631589 ; 703.142966 ; 713.529610 ; 719.819782
+  711.217246 ; 825.723110 ; 783.442254 ; 711.309282 ; 686.773753 ; 755.430303 ; 720.563539 ; 637.129091 ; 749.326991 ; 731.804519
+  763.840866 ; 734.174030 ; 700.883364 ; 702.383084 ; 740.796581 ; 704.361933 ; 714.454978 ; 694.708951 ; 769.842263 ; 729.894518
+  728.934092 ; 772.632208 ; 688.520916 ; 696.099595 ; 690.990848 ; 707.770673 ; 751.617672 ; 734.869557 ; 720.670827 ; 709.032085
+  788.376509 ; 723.622915 ; 731.834811 ; 812.324062 ; 693.822716 ; 712.673360 ; 734.262804 ; 758.758773 ; 802.759210 ; 755.030126
+  763.905150 ; 672.357230 ; 739.368284 ; 692.803157 ; 749.961957 ; 819.004972 ; 759.014745 ; 795.765847 ; 799.282712 ; 864.086907
+  779.662713 ; 811.294108 ; 787.709294 ; 894.034954 ; 836.592662 ; 832.797671 ; 878.880414 ; 849.108649 ; 828.021092 ; 962.251646
+  921.104546 ; 850.665053 ; 959.294550 ; 951.842953 ; 926.544785 ; 845.722184 ; 916.643037 ; 839.128667 ; 1014.157437 ; 1024.879800
+  949.816721 ; 911.294791 ; 995.175718 ; 1254.762999 ; 1004.440058 ; 1045.858384 ; 933.699853 ; 1104.263358 ; 1027.667079 ; 985.289208
+  1027.897747 ; 902.335500 ; 993.756426 ; 865.286688 ; 1027.102621 ; 1028.113723 ; 1026.374172 ; 1027.194657 ; 1073.430366 ; 1045.965009
+  1029.947273 ; 1041.377924 ; 1035.773521 ; 1028.782032 ; 1050.342631 ; 1085.856502 ; 1107.907908 ; 1043.005161 ; 1090.718731 ; 1078.241120
+  1105.167191 ; 1128.024268 ; 1070.961254 ; 1102.589315 ; 1073.946520 ; 1048.471842 ; 1055.076651 ; 1054.238731 ; 1062.151552 ; 1057.417302
+  1050.837870 ; 1062.934191 ; 1058.788375 ; 1081.642363 ; 1063.666755 ; 1094.666274 ; 1081.774310 ; 1127.601440 ; 1082.134759 ; 1076.221802
+  1063.886840 ; 1059.274166 ; 1080.716573 ; 1069.131935 ; 1057.674679 ; 1060.716055 ; 1065.964034 ; 1064.184408 ; 1065.198836 ; 1063.546176
+  1079.178401 ; 1066.567242 ; 1065.555815 ; 1073.184756 ; 1067.288752 ; 1077.653802 ; 1087.727007 ; 1095.637406 ; 1080.452214 ; 1074.321775
+  1066.784874 ; 1079.779502 ; 1077.780362 ; 1101.166750 ; 1096.315761 ; 1079.747359 ; 1081.045625 ; 1081.004395 ; 1095.457125 ; 1081.915583
+  1107.108344 ; 1104.174698 ; 1093.003404 ; 1111.290146 ; 1095.710576 ; 1100.378537 ; 1142.539994 ; 1114.454471 ; 1159.652621 ; 1156.790854
+  1140.474023 ; 1108.282938 ; 1136.325285 ; 1117.676359 ; 1094.820426 ; 1103.868894 ; 1105.100409 ; 1132.151366 ; 1107.073207 ; 1162.707295
+  1133.886587 ; 1127.379187 ; 1116.060443 ; 1106.716642 ; 1103.908357 ; 1116.206256 ; 1114.938268 ; 1137.372598 ; 1108.865713 ; 1137.399413
+  1104.791953 ; 1095.953473 ; 1113.422243 ; 1124.125116 ; 1116.824800 ; 1141.764865 ; 1116.791391 ; 1130.642717 ; 1141.347997 ; 1100.975686
+  1105.072609 ; 1126.699765 ; 1103.093210 ; 1119.112828 ; 1114.457818 ; 1114.305096 ; 1120.254222 ; 1106.669123 ; 1127.886466 ; 1116.140953
+  1116.392734 ; 1112.711521 ; 1110.675429 ; 1114.380757 ; 1151.059538 ; 1136.158661 ; 1147.765412 ; 1109.045765 ; 1130.554414 ; 1137.617656
+  1138.662112 ; 1152.181034 ; 1165.734517 ; 1123.930604 ; 1168.315340 ; 1143.861453 ; 1114.866107 ; 1108.712908 ; 1143.493775 ; 1123.457163
+  1143.521947 ; 1112.823240 ; 1127.731794 ; 1128.799229 ; 1161.791181 ; 1175.660066 ; 1158.545131 ; 1185.389081 ; 1179.225844 ; 1163.979461
+  1139.089807 ; 1125.913891 ; 1153.041243 ; 1216.983034 ; 1177.558346 ; 1155.876268 ; 1166.764789 ; 1181.519381 ; 1178.009229 ; 1188.177062
+  1176.788675 ; 1153.822785 ; 1203.351943 ; 1176.776055 ; 1195.588052 ; 1226.986990 ; 1196.651374 ; 1185.178416 ; 1193.371066 ; 1204.908437
+  1225.425848 ; 1208.147908 ; 1222.802515 ; 1207.740666 ; 1199.883538 ; 1235.093345 ; 1210.505317 ; 1225.385389 ; 1214.682018 ; 1204.800588
+  1227.129496 ; 1217.441793 ; 1207.615631 ; 1179.895383 ; 1255.284792 ; 1207.624927 ; 1213.576926 ; 1220.208380 ; 1193.418923 ; 1223.731560
+  1288.873261 ; 1255.677102 ; 1206.787923 ; 1235.478120 ; 1240.114915 ; 1213.079820 ; 1216.028440 ; 1247.387994 ; 1228.999629 ; 1273.360097
+  1207.913545 ; 1236.954327 ; 1248.328383 ; 1220.626182 ; 1238.974851 ; 1292.913424 ; 1300.103789 ; 1230.812340 ; 1266.976877 ; 1260.401648
+  1204.122647 ; 1236.898018 ; 1212.250907 ; 1246.301240 ; 1246.816759 ; 1232.717348 ; 1221.086406 ; 1218.305376 ; 1255.997468 ; 1274.140257
+  1280.929054 ; 1217.571512 ; 1246.617380 ; 1254.561302 ; 1235.914831 ; 1244.572603 ; 1262.769780 ; 1255.087580 ; 1306.521607 ; 1258.422026
+  1233.988072 ; 1260.152299 ; 1231.936326 ; 1249.284324 ; 1242.672439 ; 1242.637653 ; 1301.818596 ; 1293.699646 ; 1279.897359 ; 1275.200567
+  1265.708725 ; 1259.112565 ; 1279.909901 ; 1293.293190 ; 1286.974529 ; 1299.510970 ; 1275.601391 ; 1283.402981 ; 1267.174988 ; 1296.761613
+  1266.794347 ; 1279.947251 ; 1269.378289 ; 1256.407946 ; 1278.964266 ; 1274.017413 ; 1262.569454 ; 1289.760554 ; 1272.414913 ; 1241.803893
+  1269.226496 ; 1308.147355 ; 1287.875421 ; 1273.181622 ; 1294.202706 ; 1252.112488 ; 1282.911340 ; 1297.751882 ; 1267.133072 ; 1274.998422
+  1290.548610 ; 1298.661781 ; 1322.787578 ; 1284.305599 ; 1287.663299 ; 1287.804917 ; 1305.873489 ; 1278.036828 ; 1279.992059 ; 1256.177094
+  1280.409391 ; 1267.451847 ; 1277.799510 ; 1262.536927 ; 1255.353877 ; 1324.640613 ; 1260.479771 ; 1282.192420 ; 1260.526597 ; 1310.329067
+  1305.778299 ; 1305.832548 ; 1290.553220 ; 1283.050465 ; 1293.970886 ; 1295.936567 ; 1294.435896 ; 1282.251165 ; 1298.796491 ; 1285.508172
+  1283.891993 ; 1301.461353 ; 1281.111555 ; 1295.385657 ; 1294.550953 ; 1285.965454 ; 1297.529029 ; 1284.108001 ; 1293.685255 ; 1298.734596
+  1307.761114 ; 1286.856396 ; 1292.657323 ; 1268.532023 ; 1290.225794 ; 1283.649762 ; 1287.503733 ; 1297.311634 ; 1296.674957 ; 1307.766115
+  1291.624251 ; 1302.967502 ; 1274.871336 ; 1283.208937 ; 1288.359244 ; 1301.494189 ; 1286.578421 ; 1287.397574 ; 1293.923551 ; 1295.585006
+  1291.745410 ; 1305.815384 ; 1297.543204 ; 1284.820534 ; 1283.398869 ; 1305.998187 ; 1293.894523 ; nan ; 1285.050147 ; 1299.179967
+  1292.617821 ; 1313.545239 ; 1304.969932 ; 1285.857473 ; 1302.448933 ; 1313.646289 ; 1300.478110 ; 1312.201790 ; 1290.254395 ; 1308.606942
+  1300.629404 ; 1313.680055 ; 1312.621879 ; 1304.132864 ; 1308.932389 ; 1321.116016 ; 1300.003642 ; 1301.441460 ; 1295.666231 ; 1297.803022
+  1306.358524 ; 1311.361350 ; 1311.897179 ; 1291.440214 ; 1316.875968 ; 1308.643003 ; 1303.859579 ; 1295.616851 ; 1300.395403 ; 1300.139518
+  1310.592740 ; 1301.273170 ; 1311.633153 ; 1298.621225 ; 1315.310139 ; 1312.572403 ; 1309.492422 ; 1312.216995 ; 1282.083870 ; 1309.475982
+  1323.651189 ; 1300.886340 ; 1299.471741 ; 1308.193055 ; 1310.820688 ; 1305.842701 ; 1301.763258 ; 1309.898346 ; 1285.207452 ; 1297.863502
+  1305.097497 ; 1307.938984 ; 1293.856478 ; 1310.135438 ; 1324.973122 ; 1307.763346 ; 1309.820197 ; 1315.619915 ; 1305.705430 ; 1324.230759
+  1297.488748 ; 1315.886073 ; 1318.361289 ; 1309.055919 ; 1319.223002 ; 1302.247241 ; 1302.279960 ; 1316.092289 ; 1311.489523 ; 1307.416320
+  1317.579564 ; 1314.238117 ; 1309.696613 ; 1312.280474 ; 1304.727325 ; 1303.489645 ; 1325.306444 ; 1311.174244 ; 1314.607268 ; 1315.148525
+  1308.964124 ; 1324.965562 ; 1329.405722 ; 1317.943720 ; 1317.444631 ; 1315.297678 ; 1324.641034 ; 1318.394532 ; 1320.045844 ; 1313.520315
+  1317.314209 ; 1309.197605 ; 1319.158247 ; 1318.454205 ; 1313.171854 ; 1314.567055 ; 1313.094736 ; 1313.890608 ; 1314.437653 ; 1324.130561
+  1308.346369 ; 1321.662499 ; 1322.516266 ; 1316.831714 ; 1318.119929 ; 1311.707405 ; 1318.393683 ; 1315.974608 ; 1323.351423 ; 1318.809645
+
+values:
+  0.726097 ; 0.944902 ; 0.909244 ; 0.765092 ; 0.929299 ; 0.002447 ; 0.174223 ; 0.941386 ; 0.182967 ; 0.062511
+  0.921437 ; 0.671963 ; 0.323891 ; 0.992049 ; 0.177815 ; 0.840029 ; 0.374079 ; 0.664623 ; 0.742444 ; 0.013380
+  0.004654 ; 0.018229 ; 0.947652 ; 0.853292 ; 0.506303 ; 0.002924 ; 0.058920 ; 0.550101 ; 0.999698 ; 0.466086
+  0.000928 ; 0.209890 ; 0.563756 ; 0.065315 ; 0.708477 ; 0.779622 ; 0.998926 ; 0.206183 ; 0.125535 ; 0.587905
+  0.952496 ; 0.004065 ; 0.725410 ; 0.108333 ; 0.667359 ; 0.053678 ; 0.425372 ; 0.844532 ; 0.257102 ; 0.981454
+  0.971168 ; 0.416593 ; 0.061379 ; 0.953059 ; 0.117284 ; 0.988673 ; 0.535636 ; 0.487692 ; 0.101654 ; 0.346708
+  0.322898 ; 0.536860 ; 0.331520 ; 0.466491 ; 0.709645 ; 0.892995 ; 0.120029 ; 0.126546 ; 0.636427 ; 0.978992
+  0.676805
+close master

@@ -20,7 +20,7 @@ set( OPTI_RUN 0 )
 set (CMAKE_VAR_1 1.6)
 
 # initial forward speed
-set (CMAKE_VAR_2 1.8)
+set (CMAKE_VAR_2 1.6)
 
 # not used
 set (CMAKE_VAR_3 0.0)
