@@ -21,7 +21,7 @@ BioRob_priority = 25
 # Set the token used on the Biorob Cluster. This one can be optained at https://biorobsrvm1.epfl.ch/token.php
 # when you are connected to the EPFL network (otherwise, use a VPN connection).
 # Beware: a new token must be re-generated if no optimization is performed during 3 days.
-BioRob_token = "af5a91ef2d57fde2d60b4fb258331390"
+BioRob_token = "dd561cfe8e27751d58473b1b2d2bd600"
 
 
 # generate the 'opti.xml' file
