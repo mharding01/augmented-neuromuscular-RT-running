@@ -12,6 +12,7 @@
 #include "CtrlOutputs.hh"
 #include "BodyPart.hh"
 #include "StimulationCtrl.hh"
+#include "StimWalkCtrl.hh" // TODO: for cpg ghost controller
 #include "StimInit.hh"
 #include "ForwardKinematics.hh"
 #include "WalkStates.hh"
@@ -69,6 +70,7 @@ class Body: public Computation
 		StimulationCtrl *stim_init; ///< stimulations to initialize the motion
 		StimulationCtrl *stim_ctrl; ///< main stimulations (for the muscles) controller during walking
 		StimulationCtrl *stim_upper; ///< stimulations for the upper body
+		StimWalkCtrl *ghost_stim_cpg; ///< stimulations from cpg (ghost controller for testing)
 
 		double met_energy_total; ///< total metabolic enrgy
 

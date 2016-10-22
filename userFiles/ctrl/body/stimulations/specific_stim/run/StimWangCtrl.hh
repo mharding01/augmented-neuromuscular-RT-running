@@ -12,13 +12,14 @@
 #include "SwingStanceState.hh"
 #include "TrailingState.hh"
 #include "OptiInit.hh"
+#include "MatsuokaSixN.hh"
 
 /*! \brief Controller generating the stimulations sent to the muscles computed with Wang controller
  */
 class StimWangCtrl: public StimulationCtrl
 {
 	public:
-		StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics *fwd_kin, BodyPart **parts, CtrlOptions *options);
+		StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics *fwd_kin, BodyPart **parts, CtrlOptions *options, MatsuokaSixN* ghost_osc);
 		virtual ~StimWangCtrl();
 
 		virtual void compute();
@@ -112,6 +113,8 @@ class StimWangCtrl: public StimulationCtrl
 		Muscle *hfl[NB_LEGS]; ///< HFL muscle
 		Muscle *gas[NB_LEGS]; ///< GAS muscle
 		Muscle *glu[NB_LEGS]; ///< GLU muscle
+
+        MatsuokaSixN* ghost_osc; ///< Oscillator from CPG ghost controller
 
 		int flag_3D; ///< 1 for 3D walking, 0 otherwise
 		int ctrl_two_parts; ///< 1 for ctrl in two parts : first with know results and after with opti's results, 0 otherwise

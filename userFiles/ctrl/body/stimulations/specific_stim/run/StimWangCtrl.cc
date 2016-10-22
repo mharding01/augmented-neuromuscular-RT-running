@@ -2,6 +2,7 @@
 #include "StimWangCtrl.hh"
 #include "DelayGeyer.hh"
 #include "coman_properties.hh"
+#include "user_realtime.h" // TODO: For plotting 
 
 #define TA_EXTRA_K 4.0
 #define TA_EXTRA_THRESHOLD -0.1
@@ -21,7 +22,7 @@ extern double speed_fwd_global;
  * \param[in] parts body parts
  * \param[in] options controller options
  */
-StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics *fwd_kin, BodyPart **parts, CtrlOptions *options): StimulationCtrl(inputs, ws, fwd_kin, parts, options)
+StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics *fwd_kin, BodyPart **parts, CtrlOptions *options, MatsuokaSixN* ghost_osc): StimulationCtrl(inputs, ws, fwd_kin, parts, options)
 {
 	opti_init = new OptiInit();
 
@@ -166,6 +167,9 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
 
 	first_swing[R_ID] = 1;
 	first_swing[L_ID] = 1;
+
+    // TODO: added ghost oscillator object
+    this->ghost_osc = ghost_osc; 
 }
 
 /*! \brief destructor
@@ -308,6 +312,12 @@ void StimWangCtrl::pitch_compute()
 
 			// HAM
 			Stim[i][HAM_MUSCLE] = S0_ham_sw + G_ham * (F_ham[i] / F_max_ham);
+            // TODO: Plot wang-HAM
+            set_plot(Stim[i][HAM_MUSCLE], "wang_HAM_stim");
+            
+            // TODO: Plot ghost_osc y[4]
+            double y4 = pos(ghost_osc->get_x(6)) - pos(ghost_osc->get_x(5));
+            set_plot(y4, "unweighted HAM stim from oscillators");
 
 			// RF
 			Stim[i][RF_MUSCLE] = S0_rf_sw;

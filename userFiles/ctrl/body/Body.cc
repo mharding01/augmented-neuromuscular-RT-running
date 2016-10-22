@@ -71,9 +71,11 @@ Body::Body(CtrlInputs *inputs, CtrlOptions *options, MotorCtrlIndex *ctrl_index,
 		}
 	}
 
+    /* Init stimulations controllers */
 	stim_init = new StimQqRefCtrl(inputs, ws, fwd_kin, parts, options);
-
-	switch (flag_ctrl)
+	ghost_stim_cpg = new StimWalkCtrl(inputs, ws, fwd_kin, parts, options);
+    	
+	switch (flag_ctrl) /* Select and init lower body's stim. controller */
 	{
 		case CTRL_CPG:
 			stim_ctrl = new StimWalkCtrl(inputs, ws, fwd_kin, parts, options);
@@ -84,7 +86,8 @@ Body::Body(CtrlInputs *inputs, CtrlOptions *options, MotorCtrlIndex *ctrl_index,
 			break;
 
 		case CTRL_REFLEX_WANG:
-			stim_ctrl = new StimWangCtrl(inputs, ws, fwd_kin, parts, options);
+            /* TODO: Added pointer to ghost_stim_cpg's osc's to constructor */
+			stim_ctrl = new StimWangCtrl(inputs, ws, fwd_kin, parts, options, ghost_stim_cpg->get_osc());
 			break;
 
 		case CTRL_STIM_TEST:
@@ -227,6 +230,8 @@ void Body::compute()
 	// compute stimulation
 	cur_stim_ctrl->compute();
 	stim_upper->compute();
+    // TODO: Adding ghost controller computation
+    ghost_stim_cpg->compute();
 	
 	// apply stimulations
 	for(int i=0; i<NB_BODY_PARTS; i++)
