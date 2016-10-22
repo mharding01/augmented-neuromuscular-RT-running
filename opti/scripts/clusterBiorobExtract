@@ -7,7 +7,7 @@ echo $'\n'
 for var in "$@"
 do
 	# copy the result files (related to $var) from bioroblinux to the current directory (local computer)
-	scp -r harding@bioroblinux.epfl.ch:/home/harding/BIOROB/opti_res/coman_matthew/workR/Optis/$var/results  ./$var
+	scp -r harding@bioroblinux.epfl.ch:/home/harding/BIOROB/opti_res/coman_matthew/workR/$var/results  ./$var
 
 	echo "---> $var extracted"
 	echo $'\n'
