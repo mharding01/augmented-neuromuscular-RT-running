@@ -1,7 +1,8 @@
 #!/bin/bash
 # Define variables and aliases to ease navigating the code in this projcet
 
-TOP=~/BIOROB/coman_matthew
+SCRIPTS=$(pwd)
+TOP=$SCRIPTS/../
 WORK=$TOP/workR
 USERFILES=$TOP/userFiles
 USERFCTR=$TOP/userfctR
