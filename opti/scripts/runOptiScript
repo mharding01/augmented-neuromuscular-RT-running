@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # go to the requested folder
-cd /home/harding/BIOROB/opti_res/coman_matthew/workR/$1	
+cd /home/harding/BIOROB/opti_res/coman_matthew/workR/Optis/$1	
 
 # generate xml file
 python xml_gen.py
