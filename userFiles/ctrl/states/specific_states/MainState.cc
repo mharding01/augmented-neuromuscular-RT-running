@@ -13,7 +13,7 @@ MainState::MainState(CtrlInputs *inputs, CtrlOptions *options): WalkState(inputs
 
 	if (coman_state == WALK_COMAN_STATE)
 	{
-		init_t_walk = -10.0; // for SwingStanceState FSM
+		init_t_walk = 0.0; // for SwingStanceState FSM
 	}
 	else
 	{

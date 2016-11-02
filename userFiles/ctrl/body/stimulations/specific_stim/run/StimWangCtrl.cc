@@ -311,14 +311,32 @@ void StimWangCtrl::pitch_compute()
 			Stim[i][GAS_MUSCLE] = S0_gas_sw;
 
 			// HAM
-			Stim[i][HAM_MUSCLE] = S0_ham_sw + G_ham * (F_ham[i] / F_max_ham);
-            // TODO: Plot wang-HAM
-            set_plot(Stim[i][HAM_MUSCLE], "wang_HAM_stim");
-            
+            // TODO:
+			//Stim[i][HAM_MUSCLE] = S0_ham_sw + G_ham * (F_ham[i] / F_max_ham);
+     
             // TODO: Plot ghost_osc y[4]
-            double y4 = pos(ghost_osc->get_x(6)) - pos(ghost_osc->get_x(5));
-            set_plot(y4, "unweighted HAM stim from oscillators");
+            double y1 = ghost_osc->get_y_pos(0);
+            double y2 = ghost_osc->get_y_pos(1);
+            double y3 = ghost_osc->get_y_pos(2);
+            double y4 = ghost_osc->get_y_pos(3);
+            //set_plot(y1, "MOsc Y1");
+            //set_plot(y2, "MOsc Y2"); 
+            //set_plot(y3, "MOsc Y3");
+            //set_plot(y4, "MOsc Y4");
 
+            // TODO: Plot ghost_osc x activations
+            double x1 = ghost_osc->get_x_pos(0);
+            double x2 = ghost_osc->get_x_pos(1);
+            double x3 = ghost_osc->get_x_pos(2);
+            double x4 = ghost_osc->get_x_pos(3);
+            double x5 = ghost_osc->get_x_pos(4);
+            double x6 = ghost_osc->get_x_pos(5);
+            //set_plot(x1, "MOsc X1");
+            //set_plot(x2, "MOsc X2"); 
+            //set_plot(x3, "MOsc X3");
+            //set_plot(x4, "MOsc X4");
+            //set_plot(x5, "MOsc X5");
+            //set_plot(x6, "MOsc X6");
 			// RF
 			Stim[i][RF_MUSCLE] = S0_rf_sw;
 
@@ -340,7 +358,7 @@ void StimWangCtrl::pitch_compute()
 
 				// GLU
 				Stim[i][GLU_MUSCLE] = S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
-			
+
 				// HFL
 				Stim[i][HFL_MUSCLE] = S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);
 			}
@@ -361,6 +379,9 @@ void StimWangCtrl::pitch_compute()
 
 				Stim[i][HFL_MUSCLE] = S0_hfl_sw + k_THETA * (theta_toro_sw0 - theta_ref) + pos(G_hfl * ( (lce_hfl[i] / l_opt_hfl) - l_off_hfl)) - pos(G_ham_hfl * ( (lce_ham[i] / l_opt_ham) - l_off_ham_hfl));
 			}
+            // Plots
+            //set_plot(Stim[i][GLU_MUSCLE], "GLU swing");	// TODO
+            //set_plot(Stim[i][HAM_MUSCLE], "HAM swing"); // TODO
 		}
 		// stance
 		else
@@ -442,7 +463,18 @@ void StimWangCtrl::pitch_compute()
 				// HFL
 				Stim[i][HFL_MUSCLE] = limit_range(Stim[i][HFL_MUSCLE], S_MIN, S_MAX) + si_hfl;
 			}
+
+            // Plots
+            //set_plot(Stim[i][GLU_MUSCLE], "GLU stance");	// TODO
+            //set_plot(Stim[i][HAM_MUSCLE], "HAM stance");    // TODO
 		}
+        // Plots
+        set_plot(Stim[0][GLU_MUSCLE], "GLU one leg gen");	// TODO
+        set_plot(Stim[0][HAM_MUSCLE], "HAM one leg gen");    // TODO
+
+        // Replace reflex stims with CPG stims
+	    Stim[R_ID][HAM_MUSCLE] = k_HAM1 * ghost_osc->get_y_pos(0) + k_HAM2 * ghost_osc->get_y_pos(2);
+	    Stim[L_ID][HAM_MUSCLE] = k_HAM1 * ghost_osc->get_y_pos(2) + k_HAM2 * ghost_osc->get_y_pos(0);
 	}
 }
 

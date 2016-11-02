@@ -130,6 +130,14 @@ void MatsuokaSixN::Matsuoka_six_neurons()
 	vd[3] = tau_A_inv * ( -v[3] + pos(x[3]) );
 	vd[4] = tau_B_inv * ( -v[4] + pos(x[4]) );
 	vd[5] = tau_C_inv * ( -v[5] + pos(x[5]) ); 
+
+    //set_plot(x[0], "X1");
+    //set_plot(x[1], "X2");
+    //set_plot(x[3] , "X4");
+    //set_plot(x[4] , "X5");
+    //set_plot(x[2] , "X3");
+    //set_plot(x[5] , "X6");
+    
 }
 
 /*! \brief 'update_speed_oscillos' with speed reference set to 'v_star'
@@ -153,7 +161,8 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 
 	// linear function	
 	theta_ref = P_theta  + p_theta * v_diff;
-	tau       = P_tau    + p_tau   * v_diff;
+	//tau       = P_tau    + p_tau   * v_diff; TODO
+	tau       = P_tau / 2.6;
 	k_GLU     = P_GLU;
 	k_HFL     = P_HFL    + p_HFL  * v_diff;
 	k_HAM1    = P_HAM1   + p_HAM1 * v_diff;
@@ -252,6 +261,7 @@ void MatsuokaSixN::compute_osc_excitation()
 		{
 			u[i] = OSC_EXCITATION;
 		}
+        return; // TODO: REMOVE for normal sync procedure
 
 		// cut the excitations if signals too fast
 		if ( (sw_st->is_swing_leg(R_ID) && (x[0] > 0.0)) || (sw_st->is_swing_leg(L_ID) && (x[3] > 0.0)) )

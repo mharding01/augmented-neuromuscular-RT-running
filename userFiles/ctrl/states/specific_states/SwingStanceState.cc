@@ -85,6 +85,7 @@ void SwingStanceState::compute()
 	// time
 	t = inputs->get_t();
 
+    /* TODO:
 	// before initial swing
 	if (inputs->get_t() < main_state->get_init_t_walk() + safety_time_walk)
 	{
@@ -95,6 +96,7 @@ void SwingStanceState::compute()
 
 		return;
 	}
+    */
 
 	// loop on both legs
 	for(int i=0; i<NB_LEGS; i++)

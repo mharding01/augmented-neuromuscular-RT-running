@@ -38,7 +38,7 @@ CtrlOptions::CtrlOptions()
 	extra_knee = 0;
 
 	// CPG speed range
-	cpg_range = 1;
+	cpg_range = 0;
 
 	// ham extra reflex
 	extra_ham_reflex = 0;
