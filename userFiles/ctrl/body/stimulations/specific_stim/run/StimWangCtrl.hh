@@ -95,6 +95,8 @@ class StimWangCtrl: public StimulationCtrl
 		void set_phi_off_pk(double value)  { phi_off_pk  = value; }
 
 		void set_t_switch(double value)    { t_switch    = value; }
+    
+        MatsuokaSixN* get_ghost_osc()      { return ghost_osc; }
 
 	private:
 		OptiInit *opti_init; ///< initial optimization parameters

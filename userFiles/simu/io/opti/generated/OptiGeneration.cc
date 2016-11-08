@@ -22,12 +22,12 @@ OptiGeneration::~OptiGeneration()
 void OptiGeneration::set_opti()
 {
 	StimWangCtrl *stim_wang = static_cast<StimWangCtrl*>(stim_ctrl);
-    MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_ctrl->ghost_osc);
+    MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
 
     // Oscillator fields
-    g_osc->set_gamma_A(optiParams[0]);1.525956 
-    g_osc->set_gamma_B(optiParams[1]);2.450000 
-    g_osc->set_gamma_C(optiParams[2]);2.878273 
+    g_osc->set_gamma_A(optiParams[0]);
+    g_osc->set_gamma_B(optiParams[1]);
+    g_osc->set_gamma_C(optiParams[2]);
 
     g_osc->set_eta_A(optiParams[3]);  
     g_osc->set_eta_B(optiParams[4]);  
