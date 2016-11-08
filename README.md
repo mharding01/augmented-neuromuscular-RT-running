@@ -381,6 +381,7 @@ scp -r user@bioroblinux.epfl.ch:path/coman_nico/workR/Optis/first_opti/results .
 Here, we provide an example to launch three similar optimizations in parallel. Because the PSO algorithm is a heuristic one, you can get different solutions, even starting from similar executables.
 
 ```
+[On biorobcn1 ...]
 cd coman_nico/workR
 cp ../opti/scripts/optiBioRob ./
 ./optiBioRob opti_1 opti_2 opti_3
