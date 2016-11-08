@@ -25,9 +25,9 @@ void OPTI_NAME::set_opti()
     MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_ctrl->ghost_osc);
 
     // Oscillator fields
-    g_osc->set_gamma_A({1.525956;  }); 
-    g_osc->set_gamma_B({2.450000;  }); 
-    g_osc->set_gamma_C({2.878273;  }); 
+    g_osc->set_gamma_A({1.48; 1.60  });1.525956 
+    g_osc->set_gamma_B({2.35; 2.55 });2.450000 
+    g_osc->set_gamma_C({2.55; 3.01  });2.878273 
 
     g_osc->set_eta_A({5.45; 5.53  });  
     g_osc->set_eta_B({4.80; 4.90 });  
