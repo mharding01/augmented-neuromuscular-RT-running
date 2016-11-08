@@ -33,6 +33,8 @@ class MatsuokaSixN: public Oscillators
 
 		double get_k_GLU()     const { return k_GLU;     }
 		double get_k_HFL()     const { return k_HFL;     }
+		double get_k_HFLrun1()     const { return k_HFLrun1;     }
+		double get_k_HFLrun2()     const { return k_HFLrun2;     }
 		double get_k_HAM1()    const { return k_HAM1;    }
 		double get_k_HAM2()    const { return k_HAM2;    }
 		double get_theta_ref() const { return theta_ref; }
@@ -135,6 +137,8 @@ class MatsuokaSixN: public Oscillators
 		double k_HFL;
 		double k_HAM1;
 		double k_HAM2;
+        double k_HFLrun1;   
+        double k_HFLrun2;
 
 		// integration
 		double last_t;
@@ -149,6 +153,10 @@ class MatsuokaSixN: public Oscillators
 		double t_osc_error_mean;
 
 		int flag_range; ///< 1 if CPG range activated, 0 otherwise
+
+        // Running alignment fields
+        // TODO: Assumes bipedal
+        int flag_last_stance_leg_r;  /// Flag set when r leg was last stance leg
 };
 
 #endif

@@ -9,7 +9,7 @@
 inline double pos(double x){ return (x > 0.0) ?  x : 0.0; }
 inline double neg(double x){ return (x < 0.0) ? -x : 0.0; }
 
-#define NB_Y_OUTPUTS 4
+#define NB_Y_OUTPUTS 6
 
 /*! \brief constructor
  * 
@@ -67,7 +67,7 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	beta_C = 4.382409;
 
 	gamma_A = 1.525956;
-	gamma_B = 2.130010;
+	gamma_B = 2.45000; // 2.130010;
 	gamma_C = 2.878273;
 
 	eta_A = 5.508498;
@@ -75,7 +75,10 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	eta_C = 5.643429;
 	eta_D = 3.733975;
 	eta_E = 3.685420;
-	eta_F = 4.473370;
+
+    // Added props
+	
+    eta_F = 4.473370;
 	eta_G = 3.501070;
 
 	// velocity adaptation parameters
@@ -92,11 +95,18 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	p_HAM1  = 1.576165;
 	p_HAM2  = -2.829820;
 
+    // TODO: Default params for running stims' CPG weights
+    k_HFLrun1 = 4.121;
+    k_HFLrun2 = 7.093;
+
 	// velocity tracking
 	v_star = 0.6;
 
 	// flag for CPG range
 	flag_range = options->is_cpg_range();
+
+    // flag for last stance leg
+    flag_last_stance_leg_r = !r_first_swing;
 	
 	update_speed_oscillos();
 
@@ -130,13 +140,21 @@ void MatsuokaSixN::Matsuoka_six_neurons()
 	vd[3] = tau_A_inv * ( -v[3] + pos(x[3]) );
 	vd[4] = tau_B_inv * ( -v[4] + pos(x[4]) );
 	vd[5] = tau_C_inv * ( -v[5] + pos(x[5]) ); 
+    
+    set_plot(x[0], "x1");
+    //set_plot(x[1], "x2");
+    set_plot(x[3] , "x4");
+    set_plot(x[4] , "x5");
+    //set_plot(x[2] , "x3");
+    //set_plot(x[5] , "x6");
 
-    //set_plot(x[0], "X1");
-    //set_plot(x[1], "X2");
-    //set_plot(x[3] , "X4");
-    //set_plot(x[4] , "X5");
-    //set_plot(x[2] , "X3");
-    //set_plot(x[5] , "X6");
+    // Plot fatigue
+    //set_plot(v[0], "V1");
+    //set_plot(v[1], "V2");
+    //set_plot(v[3] , "V4");
+    //set_plot(v[4] , "V5");
+    //set_plot(v[2] , "V3");
+    //set_plot(v[5] , "V6");
     
 }
 
@@ -211,17 +229,20 @@ void MatsuokaSixN::check_osc_strike()
 		if (sw_st->get_flag_strike_leg(i))
 		{
 			flag_strike_leg[i] = 1;
+            // Set flag_last_stance_leg 
+            flag_last_stance_leg_r = flag_strike_leg[R_ID];
 		}
 	}
 
-	// after right strike (only x[0] positive)
-	if ( flag_strike_leg[R_ID] && (x[0] > 0.0) && (x[1] < 0.0) && (x[3] < 0.0) && (x[4] < 0.0) )
+
+	// after right strike (only x[1] positive)
+	if ( flag_strike_leg[R_ID] && (x[0] < 0.0) && (x[1] > 0.0) && (x[3] < 0.0) && (x[4] < 0.0) )
 	{
 		flag_strike_leg[R_ID] = 0;
 	}
 
-	// after left strike (only x[3] positive)
-	if ( flag_strike_leg[L_ID] && (x[0] < 0.0) && (x[1] < 0.0) && (x[3] > 0.0) && (x[4] < 0.0) )
+	// after left strike (only x[4] positive)
+	if ( flag_strike_leg[L_ID] && (x[0] < 0.0) && (x[1] < 0.0) && (x[3] < 0.0) && (x[4] > 0.0) )
 	{
 		flag_strike_leg[L_ID] = 0;
 	}
@@ -234,24 +255,25 @@ void MatsuokaSixN::compute_osc_excitation()
 	int supporting_r, supporting_l;
 
 	// initialization: choose the corresponding intial leg
-	if (inputs->get_t() < m_st->get_init_t_walk() + init_t_oscillo)
+    // TODO: extended by .144 seconds
+	if (inputs->get_t() < 0.144 + m_st->get_init_t_walk() + init_t_oscillo)
 	{
 		if (r_first_swing)
 		{
-			u[0] = 0.0;
-			u[1] = 0.0;
+			u[0] = OSC_EXCITATION;
+			u[1] = 0.0;  // N2 aligns with left foot-strike 
 			u[2] = 0.0;
-			u[3] = OSC_EXCITATION;
-			u[4] = 0.0;
-			u[5] = OSC_EXCITATION;
+			u[3] = 0.0;
+			u[4] = 0.0;  // Now N5 aligns with right foot-strike
+			u[5] = 0.0;
 		}
 		else
 		{
-			u[0] = OSC_EXCITATION;
-			u[1] = 0.0;
-			u[2] = OSC_EXCITATION;
-			u[3] = 0.0;
-			u[4] = 0.0;
+			u[0] = 0.0;
+			u[1] = 0.0; // N2 aligns with left foot-strike
+			u[2] = 0.0;
+			u[3] = OSC_EXCITATION;
+			u[4] = 0.0; // N5 aligns with right foot-strike 
 			u[5] = 0.0;
 		}
 	}
@@ -261,10 +283,13 @@ void MatsuokaSixN::compute_osc_excitation()
 		{
 			u[i] = OSC_EXCITATION;
 		}
-        return; // TODO: REMOVE for normal sync procedure
-
-		// cut the excitations if signals too fast
-		if ( (sw_st->is_swing_leg(R_ID) && (x[0] > 0.0)) || (sw_st->is_swing_leg(L_ID) && (x[3] > 0.0)) )
+		
+        // cut the excitations if signals too fast
+		/*if ( (sw_st->is_swing_leg(L_ID) && (x[1] > 0.0)) || (sw_st->is_swing_leg(L_ID) && (x[4] > 0.0)) )*/
+        // TODO: Running code, anticipating next foot-strike after flight phase
+        if ( (!flag_last_stance_leg_r && sw_st->is_flight_phase() && (x[1] > 0.0)) 
+            ||
+             (flag_last_stance_leg_r && sw_st->is_flight_phase() && (x[4] > 0.0)) )
 		{
 			for(unsigned int i=0; i<u.size(); i++)
 			{
@@ -278,29 +303,37 @@ void MatsuokaSixN::compute_osc_excitation()
 				supporting_r = 1;
 				supporting_l = 0;
 			}
+            else if (sw_st->is_flight_phase()) 
+            {   
+                // Added flight phase support
+                supporting_r = 0;
+                supporting_l = 0;
+            }
 			else
 			{
 				supporting_r = 0;
 				supporting_l = 1;
 			}
-		
+	
 			// handles oscillators too late (first line) and oscillators succession (second line)
-			u[0] += flag_strike_leg[R_ID]*neg(x[0]);
+			u[0] -= flag_strike_leg[R_ID]*pos(x[0]);
+			u[0] -= pos(x[0])*supporting_r;
 			
-			u[1] -= flag_strike_leg[L_ID]*pos(x[1]);
-			u[1] -= pos(x[1])*supporting_l;
+            u[1] += flag_strike_leg[R_ID]*neg(x[1]);
 
-			u[3] += flag_strike_leg[L_ID]*neg(x[3]);
+			u[3] -= flag_strike_leg[L_ID]*pos(x[3]);
+			u[3] -= pos(x[3])*supporting_l;
 
-			u[4] -= flag_strike_leg[R_ID]*pos(x[4]);
-			u[4] -= pos(x[4])*supporting_r;
+			u[4] += flag_strike_leg[L_ID]*neg(x[4]);
+
 
 			if (sw_st->get_nb_strikes() > 0) // first step done
 			{
-				u[0] -= pos(x[0])*supporting_l;
-				u[2] -= pos(x[2])*supporting_l;
-				u[3] -= pos(x[3])*supporting_r;
-				u[5] -= pos(x[5])*supporting_r;
+                // Attenuate signals: N1/N3 while R stance, N4/N6 while L stance
+				u[0] -= pos(x[0])*supporting_r;
+				u[2] -= pos(x[2])*supporting_r;
+				u[3] -= pos(x[3])*supporting_l;
+				u[5] -= pos(x[5])*supporting_l;
 			}
 		}
 	}
@@ -313,8 +346,12 @@ void MatsuokaSixN::compute_osc_excitation()
 void MatsuokaSixN::oscillator_prediction_error(double cur_t)
 {
 	// oscillators too fast
-	if ( (sw_st->is_swing_leg(R_ID) && (x[0] > 0.0)) || (sw_st->is_swing_leg(L_ID) && (x[3] > 0.0)) )
-	{
+    /*if ( (sw_st->is_swing_leg(L_ID) && (x[1] > 0.0)) || (sw_st->is_swing_leg(L_ID) && (x[4] > 0.0)) )*/
+    // TODO: Running code, anticipating next foot-strike after flight phase
+    if ( (!flag_last_stance_leg_r && sw_st->is_flight_phase() && (x[1] > 0.0)) 
+        ||
+         (flag_last_stance_leg_r && sw_st->is_flight_phase() && (x[4] > 0.0)) )
+    {
 		if (!flag_osc_too_fast)
 		{
 			flag_osc_too_fast = 1;
@@ -323,7 +360,9 @@ void MatsuokaSixN::oscillator_prediction_error(double cur_t)
 	}
 
 	// synchronization finished after strike and correction
-	if ( flag_strike_err && ( (sw_st->is_supporting_r_leg() && (x[0] > 0.0)) || (!sw_st->is_supporting_r_leg() && (x[3] > 0.0)) ) )
+	if ( flag_strike_err && ( (sw_st->is_supporting_r_leg() && (x[1] > 0.0)) 
+        || 
+        ((!sw_st->is_supporting_r_leg() && !sw_st->is_flight_phase()) && (x[4] > 0.0)) ) )
 	{
 		flag_strike_err = 0;
 
@@ -381,6 +420,8 @@ void MatsuokaSixN::update(double cur_t)
 	y[1] = pos(x[2]) - pos(x[1]);
 	y[2] = pos(x[3]) - pos(x[4]);
 	y[3] = pos(x[5]) - pos(x[4]);
+    y[4] = pos(x[1]) - pos(x[0]);
+    y[5] = pos(x[4]) - pos(x[3]);
 
 	// oscillators prediction error
 	oscillator_prediction_error(cur_t);
