@@ -509,7 +509,7 @@ void StimWangCtrl::pitch_compute()
         double k_HFLrun1, k_HFLrun2;
         k_HFLrun1 = ghost_osc->get_k_HFLrun1();
         k_HFLrun2 = ghost_osc->get_k_HFLrun2();
-        if (inputs->get_t() > 5.0)
+        if (inputs->get_t() > 2.0) // TODO: Changed to 2.0 seconds for optimization
         {
             if (i==R_ID) {Stim[i][HFL_MUSCLE] = k_HFLrun1 * y3 + k_HFLrun2 * y5;}
             else if (i==L_ID) {Stim[i][HFL_MUSCLE] = k_HFLrun1 * y1 + k_HFLrun2 * y6;}

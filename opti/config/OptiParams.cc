@@ -1,6 +1,7 @@
 #include "OPTI_NAME.hh"
 #include "StimWangCtrl.hh"
 #include "JointsInit.hh"
+#include "MatsuokaSixN.hh"
 
 /*! \brief constructor
  */
@@ -21,6 +22,23 @@ OPTI_NAME::~OPTI_NAME()
 void OPTI_NAME::set_opti()
 {
 	StimWangCtrl *stim_wang = static_cast<StimWangCtrl*>(stim_ctrl);
+    MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_ctrl->ghost_osc);
+
+    // Oscillator fields
+    g_osc->set_gamma_A({1.525956;  }); 
+    g_osc->set_gamma_B({2.450000;  }); 
+    g_osc->set_gamma_C({2.878273;  }); 
+
+    g_osc->set_eta_A({5.45; 5.53  });  
+    g_osc->set_eta_B({4.80; 4.90 });  
+    g_osc->set_eta_C({5.62; 5.72 });  
+    g_osc->set_eta_D({3.73; 3.78 });  
+    g_osc->set_eta_E({3.64; 3.72 });  
+
+    g_osc->set_P_tau({0.05 ; 0.06 } );    // TODO: not using v_diff
+
+    g_osc->set_k_HFLrun1( {2.9 ; 6.1});
+    g_osc->set_k_HFLrun2( {3.0 ; 8.0});
 
 	// Wang stimulations
 	stim_wang->set_S0_sol_st( { 0.01 ; 0.05 } );

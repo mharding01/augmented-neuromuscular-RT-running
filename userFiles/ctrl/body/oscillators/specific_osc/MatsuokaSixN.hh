@@ -71,6 +71,9 @@ class MatsuokaSixN: public Oscillators
 		void set_p_HFL(double value)   { p_HFL = value; }
 		void set_p_HAM1(double value)  { p_HAM1 = value; }
 		void set_p_HAM2(double value)  { p_HAM2 = value; }
+		
+		void set_k_HFLrun1(double value)  { k_HFLrun1 = value; }
+		void set_k_HFLrun2(double value)  { k_HFLrun2 = value; }
 
 	private:
 		std::vector<double> v;  ///< fatigue for neurons
