@@ -10,8 +10,8 @@ import nb_opti_params as nb_par
 
 # You first need to define the number of particles that will be optimized at each generation,
 # as well as the number of generations.
-nb_particles   = 200 # number of particles [-]
-nb_generations = 100 # number of generations [-]
+nb_particles   = 350 # number of particles [-]
+nb_generations = 200# number of generations [-]
 
 # Define the priority on the Biorob Cluster, which is used to handle the different
 # optimizations priorities running on this cluster, at the same time.
@@ -21,7 +21,7 @@ BioRob_priority = 25
 # Set the token used on the Biorob Cluster. This one can be optained at https://biorobsrvm1.epfl.ch/token.php
 # when you are connected to the EPFL network (otherwise, use a VPN connection).
 # Beware: a new token must be re-generated if no optimization is performed during 3 days.
-BioRob_token = "bd8e94dc95f97625619660b2987d78ff"
+BioRob_token = "1f72626c231df7acda9b1081dbee10cb"
 
 
 # generate the 'opti.xml' file

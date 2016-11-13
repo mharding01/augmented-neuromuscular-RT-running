@@ -98,6 +98,7 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
     // TODO: Default params for running stims' CPG weights
     k_HFLrun1 = 4.121;
     k_HFLrun2 = 7.093;
+    k_HFLrun3 = 2.0;
 
 	// velocity tracking
 	v_star = 0.6;
@@ -142,7 +143,7 @@ void MatsuokaSixN::Matsuoka_six_neurons()
 	vd[5] = tau_C_inv * ( -v[5] + pos(x[5]) ); 
     
     set_plot(x[0], "x1");
-    //set_plot(x[1], "x2");
+    set_plot(x[1], "x2");
     set_plot(x[3] , "x4");
     set_plot(x[4] , "x5");
     //set_plot(x[2] , "x3");

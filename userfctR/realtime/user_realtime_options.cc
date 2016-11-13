@@ -78,7 +78,7 @@
 void user_realtime_options(Realtime_option *options)
 {
 	options->start_viewpoint = 0;
-
+    options->max_nb_legends = options->max_nb_curves;
 	options->final_break = 1;
 }
 

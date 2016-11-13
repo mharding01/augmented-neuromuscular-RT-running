@@ -506,25 +506,28 @@ void StimWangCtrl::pitch_compute()
         double y4 = ghost_osc->get_y_pos(3);
         double y5 = ghost_osc->get_y_pos(4);
         double y6 = ghost_osc->get_y_pos(5);
-        double k_HFLrun1, k_HFLrun2;
+        double k_HFLrun1, k_HFLrun2, k_HFLrun3;
         k_HFLrun1 = ghost_osc->get_k_HFLrun1();
         k_HFLrun2 = ghost_osc->get_k_HFLrun2();
+        k_HFLrun3 = ghost_osc->get_k_HFLrun3();
         if (inputs->get_t() > 2.0) // TODO: Changed to 2.0 seconds for optimization
         {
-            if (i==R_ID) {Stim[i][HFL_MUSCLE] = k_HFLrun1 * y3 + k_HFLrun2 * y5;}
-            else if (i==L_ID) {Stim[i][HFL_MUSCLE] = k_HFLrun1 * y1 + k_HFLrun2 * y6;}
+            if (i==R_ID) {Stim[i][HFL_MUSCLE] = 
+                            k_HFLrun1 * y3 + k_HFLrun2 * y5 + k_HFLrun3 * y1;}
+            else if (i==L_ID) {Stim[i][HFL_MUSCLE] = 
+                            k_HFLrun1 * y1 + k_HFLrun2 * y6 + k_HFLrun3 * y3;}
         }
 
 
         // Stance+swing plots
         set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU");	// TODO
-        //set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM");    // TODO
+        set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM");    // TODO
         set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL");    // TODO
         //set_plot(Stim[R_ID][RF_MUSCLE], "R RF");    // TODO
         
 
         set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU");	// TODO
-        //set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM");    // TODO
+        set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM");    // TODO
         set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL");    // TODO
         //set_plot(Stim[L_ID][RF_MUSCLE], "L RF");    // TODO
 

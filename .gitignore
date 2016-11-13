@@ -5,6 +5,7 @@
 *.anim
 *.res
 **/*.m
+*.swp
 __pycache__
 stderr.txt
 stdout.txt

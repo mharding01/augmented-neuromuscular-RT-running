@@ -35,6 +35,7 @@ class MatsuokaSixN: public Oscillators
 		double get_k_HFL()     const { return k_HFL;     }
 		double get_k_HFLrun1()     const { return k_HFLrun1;     }
 		double get_k_HFLrun2()     const { return k_HFLrun2;     }
+		double get_k_HFLrun3()     const { return k_HFLrun3;     }
 		double get_k_HAM1()    const { return k_HAM1;    }
 		double get_k_HAM2()    const { return k_HAM2;    }
 		double get_theta_ref() const { return theta_ref; }
@@ -74,6 +75,7 @@ class MatsuokaSixN: public Oscillators
 		
 		void set_k_HFLrun1(double value)  { k_HFLrun1 = value; }
 		void set_k_HFLrun2(double value)  { k_HFLrun2 = value; }
+		void set_k_HFLrun3(double value)  { k_HFLrun3 = value; }
 
 	private:
 		std::vector<double> v;  ///< fatigue for neurons
@@ -142,6 +144,7 @@ class MatsuokaSixN: public Oscillators
 		double k_HAM2;
         double k_HFLrun1;   
         double k_HFLrun2;
+        double k_HFLrun3;
 
 		// integration
 		double last_t;
