@@ -43,6 +43,7 @@ void TorsoFitness::compute()
 	if (mbs_data->q[1] > DIST_TORSO_START)
 	{
 		opti_started = 1;
+        // Increment mean of torso's theta along y-axis, forward tilt
 		torso_mean = torso_av->update_and_get(inputs->get_theta_torso(1)); 
 	}
 }

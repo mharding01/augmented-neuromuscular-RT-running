@@ -30,6 +30,8 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 			fitness_tab.push_back(speed_fitness);
 		}
 
+		fitness_tab.push_back(new OscillosFitness(mbs_data, ctrl)); 
+
 		fitness_tab.push_back(new TorsoFitness(mbs_data, sens_info, ctrl)); 
 
 		fitness_tab.push_back(new FootFitness(mbs_data, sens_info, ctrl)); 
