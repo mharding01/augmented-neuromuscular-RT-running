@@ -11,7 +11,7 @@ import nb_opti_params as nb_par
 # You first need to define the number of particles that will be optimized at each generation,
 # as well as the number of generations.
 nb_particles   = 350 # number of particles [-]
-nb_generations = 200# number of generations [-]
+nb_generations = 100# number of generations [-]
 
 # Define the priority on the Biorob Cluster, which is used to handle the different
 # optimizations priorities running on this cluster, at the same time.
