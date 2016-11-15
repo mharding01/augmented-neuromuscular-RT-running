@@ -9,7 +9,7 @@
 inline double pos(double x){ return (x > 0.0) ?  x : 0.0; }
 inline double neg(double x){ return (x < 0.0) ? -x : 0.0; }
 
-#define NB_Y_OUTPUTS 6
+#define NB_Y_OUTPUTS 8
 
 /*! \brief constructor
  * 
@@ -96,6 +96,10 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	p_HAM2  = -2.829820;
 
     // TODO: Default params for running stims' CPG weights
+    k_HAMrun1 = 1.15;
+    k_HAMrun2 = 2.35;
+    k_HAMrun3 = 1.15; 
+
     k_HFLrun1 = 4.121;
     k_HFLrun2 = 7.093;
     k_HFLrun3 = 2.0;
@@ -146,8 +150,8 @@ void MatsuokaSixN::Matsuoka_six_neurons()
     set_plot(x[1], "x2");
     set_plot(x[3] , "x4");
     set_plot(x[4] , "x5");
-    //set_plot(x[2] , "x3");
-    //set_plot(x[5] , "x6");
+    set_plot(x[2] , "x3");
+    set_plot(x[5] , "x6");
 
     // Plot fatigue
     //set_plot(v[0], "V1");
@@ -423,6 +427,9 @@ void MatsuokaSixN::update(double cur_t)
 	y[3] = pos(x[5]) - pos(x[4]);
     y[4] = pos(x[1]) - pos(x[0]);
     y[5] = pos(x[4]) - pos(x[3]);
+    
+    y[6] = pos(x[0]) + pos(x[5]);
+    y[7] = pos(x[3]) + pos(x[2]);
 
 	// oscillators prediction error
 	oscillator_prediction_error(cur_t);

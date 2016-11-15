@@ -38,6 +38,9 @@ class MatsuokaSixN: public Oscillators
 		double get_k_HFLrun3()     const { return k_HFLrun3;     }
 		double get_k_HAM1()    const { return k_HAM1;    }
 		double get_k_HAM2()    const { return k_HAM2;    }
+		double get_k_HAMrun1()    const { return k_HAMrun1;    }
+		double get_k_HAMrun2()    const { return k_HAMrun2;    }
+		double get_k_HAMrun3()    const { return k_HAMrun3;    }
 		double get_theta_ref() const { return theta_ref; }
 
 		double get_t_osc_error_mean() const { return t_osc_error_mean; }
@@ -73,6 +76,10 @@ class MatsuokaSixN: public Oscillators
 		void set_p_HAM1(double value)  { p_HAM1 = value; }
 		void set_p_HAM2(double value)  { p_HAM2 = value; }
 		
+		void set_k_HAMrun1(double value)  { k_HAMrun1 = value; }
+		void set_k_HAMrun2(double value)  { k_HAMrun2 = value; }
+		void set_k_HAMrun3(double value)  { k_HAMrun3 = value; }
+
 		void set_k_HFLrun1(double value)  { k_HFLrun1 = value; }
 		void set_k_HFLrun2(double value)  { k_HFLrun2 = value; }
 		void set_k_HFLrun3(double value)  { k_HFLrun3 = value; }
@@ -142,6 +149,9 @@ class MatsuokaSixN: public Oscillators
 		double k_HFL;
 		double k_HAM1;
 		double k_HAM2;
+		double k_HAMrun1;
+		double k_HAMrun2;
+		double k_HAMrun3;
         double k_HFLrun1;   
         double k_HFLrun2;
         double k_HFLrun3;

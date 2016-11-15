@@ -40,6 +40,10 @@ void OPTI_NAME::set_opti()
     g_osc->set_k_HFLrun1( {2.9 ; 6.1});
     g_osc->set_k_HFLrun2( {3.0 ; 8.0});
     g_osc->set_k_HFLrun3( {1.5 ; 3.5});
+    
+    g_osc->set_k_HAMrun1( {.75 ; 1.75});
+    g_osc->set_k_HAMrun2( {1.8 ; 2.8});
+    g_osc->set_k_HAMrun3( {.75 ; 1.75});
 
 	// Wang stimulations
 	stim_wang->set_S0_sol_st( { 0.01 ; 0.05 } );
