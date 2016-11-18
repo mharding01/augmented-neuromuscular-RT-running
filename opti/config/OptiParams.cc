@@ -39,13 +39,11 @@ void OPTI_NAME::set_opti()
 
     g_osc->set_k_HFLrun1( {2.9 ; 6.1});
     g_osc->set_k_HFLrun2( {3.0 ; 8.0});
-    g_osc->set_k_HFLrun3( {1.5 ; 3.5});
     
-    g_osc->set_k_HAMrun1( {.75 ; 1.75});
-    g_osc->set_k_HAMrun2( {1.8 ; 2.8});
-    g_osc->set_k_HAMrun3( {.75 ; 1.75});
-
 	// Wang stimulations
+
+    // TODO: added cpg_ctrl_thresh_t parameter for optimization
+    stim_wang->set_cpg_ctrl_thresh_t( {1.50 ; 3.00 } );
 	stim_wang->set_S0_sol_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_ta_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_gas_st( { 0.01 ; 0.05 } );
@@ -94,7 +92,7 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_D_sp_glu( { 0.0 ; 0.1 } );
 	stim_wang->set_D_sp_hfl( { 0.0 ; 0.1 } );
 	stim_wang->set_theta_k_ref( { 0.0 ; 0.3 } );
-	stim_wang->set_theta_h_ref0( { 0.15 ; 0.9 } );
+	stim_wang->set_theta_h_ref0( { 0.05 ; 0.9 } ); // TODO: made its lower bound smaller
 	stim_wang->set_d_sp( { -0.3 ; 0.1 } );
 	stim_wang->set_d_si( { 0.2 ; 0.7 } );
 	stim_wang->set_k_THETA( { 1.0 ; 5.7 } );

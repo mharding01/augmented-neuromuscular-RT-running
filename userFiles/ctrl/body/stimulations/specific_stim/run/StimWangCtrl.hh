@@ -95,7 +95,10 @@ class StimWangCtrl: public StimulationCtrl
 		void set_phi_off_pk(double value)  { phi_off_pk  = value; }
 
 		void set_t_switch(double value)    { t_switch    = value; }
-    
+   
+        // TODO: cpg control time parameter 
+		void set_cpg_ctrl_thresh_t(double value)    { cpg_ctrl_thresh_t = value; }
+
         MatsuokaSixN* get_ghost_osc()      { return ghost_osc; }
 
 	private:
@@ -239,6 +242,9 @@ class StimWangCtrl: public StimulationCtrl
 
 		int stance_preparation(int swing_leg_id);
 		int swing_initiation(int stance_leg_id);
+
+        // TODO:For testing cpg control of stims for optis
+        double cpg_ctrl_thresh_t;
 };
 
 #endif

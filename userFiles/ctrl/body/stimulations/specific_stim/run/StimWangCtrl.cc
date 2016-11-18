@@ -170,6 +170,9 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
 
     // TODO: added ghost oscillator object
     this->ghost_osc = ghost_osc; 
+
+    // TODO: add cpg control time threshold parameter
+    cpg_ctrl_thresh_t = 2.0;
 }
 
 /*! \brief destructor
@@ -508,30 +511,29 @@ void StimWangCtrl::pitch_compute()
         double y6 = ghost_osc->get_y_pos(5);
         double y7 = ghost_osc->get_y_pos(6);
         double y8 = ghost_osc->get_y_pos(7);
-        double k_HFLrun1, k_HFLrun2, k_HFLrun3;
-        double k_HAMrun1, k_HAMrun2, k_HAMrun3;
-        k_HAMrun1 = ghost_osc->get_k_HAMrun1();
-        k_HAMrun2 = ghost_osc->get_k_HAMrun2();
-        k_HAMrun3 = ghost_osc->get_k_HAMrun3();
+        double k_HFLrun1, k_HFLrun2;
+        //double k_HAMrun1, k_HAMrun2, k_HAMrun3;
+        /*k_HAMrun1 = ghost_osc->get_k_HAMrun1();
+        k_HAMrun2 = ghost_osc->get_k_HAMrun2();*/
+        /*k_HAMrun3 = ghost_osc->get_k_HAMrun3();*/
         k_HFLrun1 = ghost_osc->get_k_HFLrun1();
         k_HFLrun2 = ghost_osc->get_k_HFLrun2();
-        k_HFLrun3 = ghost_osc->get_k_HFLrun3();
-        if (inputs->get_t() > 2.0) // TODO: Changed to 2.0 seconds for optimization
+        if (inputs->get_t() > cpg_ctrl_thresh_t) 
         {
             if (i==R_ID) 
             {
                 Stim[i][HFL_MUSCLE] = 
-                            k_HFLrun1 * y3 + k_HFLrun2 * y5 + k_HFLrun3 * y1;
-                Stim[i][HAM_MUSCLE] = 
-                            k_HAMrun1 * y7 + k_HAMrun2 * y6 + k_HAMrun3 * y2;
+                            k_HFLrun1 * y3 + k_HFLrun2 * y5;
+                //Stim[i][HAM_MUSCLE] = 
+                //            k_HAMrun1 * y7 + k_HAMrun2 * y6 + k_HAMrun3 * y2;
  
             }
             else if (i==L_ID) 
             {
                 Stim[i][HFL_MUSCLE] = 
-                            k_HFLrun1 * y1 + k_HFLrun2 * y6 + k_HFLrun3 * y3;
-                Stim[i][HAM_MUSCLE] = 
-                            k_HAMrun1 * y8 + k_HAMrun2 * y5 + k_HAMrun3 * y4;
+                            k_HFLrun1 * y1 + k_HFLrun2 * y6;
+                // Stim[i][HAM_MUSCLE] = 
+                //             k_HAMrun1 * y8 + k_HAMrun2 * y5 + k_HAMrun3 * y4;
             }
         }
 
