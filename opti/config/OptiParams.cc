@@ -80,7 +80,7 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_D_ham( { 0.0 ; 0.5 } );
 	stim_wang->set_D_glu( { 0.0 ; 0.5 } );
 	stim_wang->set_D_hfl( { 0.0 ; 0.5 } );
-	stim_wang->set_theta_ref( { 0.017 ; 0.11 } );
+	stim_wang->set_theta_ref( { 0.010 ; 0.095 } ); // TODO: made this smaller as stimwang runner was unstable
 	stim_wang->set_si_vas( { 0.3 ; 1.0 } );
 	stim_wang->set_si_rf( { 0.0 ; 1.0 } );
 	stim_wang->set_si_glu( { 0.2 ; 1.0 } );
