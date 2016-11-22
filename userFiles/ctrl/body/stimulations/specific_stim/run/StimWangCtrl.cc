@@ -3,6 +3,7 @@
 #include "DelayGeyer.hh"
 #include "coman_properties.hh"
 #include "user_realtime.h" // TODO: For plotting 
+#include <stdio.h>
 
 #define TA_EXTRA_K 4.0
 #define TA_EXTRA_THRESHOLD -0.1
@@ -362,33 +363,35 @@ void StimWangCtrl::pitch_compute()
 			}
 
             // Plots
-            /*if (i == R_ID) 
+            if (i == R_ID) 
             {
                 // plot right leg stims
                 set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU sw");	// TODO
-                //set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM sw");    // TODO
-                set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL sw");    // TODO
+                set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM sw");    // TODO
+                //set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL sw");    // TODO
                 //set_plot(Stim[R_ID][RF_MUSCLE], "R RF sw");    // TODO
                 
                 set_plot(0.0, "R GLU st");	// TODO
-                //set_plot(0.0, "R HAM st");    // TODO
-                set_plot(0.0, "R HFL st");    // TODO
+                set_plot(0.0, "R HAM st");    // TODO
+                //set_plot(0.0, "R HFL st");    // TODO
                 //set_plot(0.0, "R RF st");    // TODO
             }
             else
             {
+                
                 // plot left leg stims
                 set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU sw");	// TODO
-                //set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM sw");    // TODO
-                set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL sw");    // TODO
+                set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM sw");    // TODO
+                //set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL sw");    // TODO
                 //set_plot(Stim[L_ID][RF_MUSCLE], "L RF sw");    // TODO
                 
                 set_plot(0.0, "L GLU st");	// TODO
-                //set_plot(0.0, "L HAM st");    // TODO
-                set_plot(0.0, "L HFL st");    // TODO
+                set_plot(0.0, "L HAM st");    // TODO
+                //set_plot(0.0, "L HFL st");    // TODO
                 //set_plot(0.0, "L RF st");    // TODO
+                
             }
-            */
+            
 		}
 		// stance
 		else
@@ -473,32 +476,33 @@ void StimWangCtrl::pitch_compute()
 
             // Plots
 
-            /*if (i == R_ID)
+            if (i == R_ID)
             {
                 set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU st");	// TODO
-                //set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM st");    // TODO
-                set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL st");    // TODO
+                set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM st");    // TODO
+                //set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL st");    // TODO
                 //set_plot(Stim[R_ID][RF_MUSCLE], "R RF st");    // TODO
                 
                 set_plot(0.0, "R GLU sw");	// TODO
-                //set_plot(0.0, "R HAM sw");    // TODO
-                set_plot(0.0, "R HFL sw");    // TODO
+                set_plot(0.0, "R HAM sw");    // TODO
+                //set_plot(0.0, "R HFL sw");    // TODO
                 //set_plot(0.0, "R RF sw");    // TODO
             }
             else
             {
+                
                 set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU st");	// TODO
-                //set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM st");    // TODO
-                set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL st");    // TODO
+                set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM st");    // TODO
+                //set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL st");    // TODO
                 //set_plot(Stim[L_ID][RF_MUSCLE], "L RF st");    // TODO
                 
                 set_plot(0.0, "L GLU sw");	// TODO
-                //set_plot(0.0, "L HAM sw");    // TODO
-                set_plot(0.0, "L HFL sw");    // TODO
+                set_plot(0.0, "L HAM sw");    // TODO
+                //set_plot(0.0, "L HFL sw");    // TODO
                 //set_plot(0.0, "L RF sw");    // TODO
-
+                
             } 
-            */
+            
 		}
 
         // Overwrite stims
@@ -518,38 +522,49 @@ void StimWangCtrl::pitch_compute()
         /*k_HAMrun3 = ghost_osc->get_k_HAMrun3();*/
         k_HFLrun1 = ghost_osc->get_k_HFLrun1();
         k_HFLrun2 = ghost_osc->get_k_HFLrun2();
-        if (inputs->get_t() > cpg_ctrl_thresh_t) 
+        if ( inputs->get_t() > cpg_ctrl_thresh_t )
         {
             if (i==R_ID) 
             {
                 Stim[i][HFL_MUSCLE] = 
                             k_HFLrun1 * y3 + k_HFLrun2 * y5;
+                // Zero-out GLU when y3 or y5 are positive
+                Stim[i][GLU_MUSCLE] = (y3 || y5) ? S_MIN : Stim[i][GLU_MUSCLE];
+    
                 //Stim[i][HAM_MUSCLE] = 
                 //            k_HAMrun1 * y7 + k_HAMrun2 * y6 + k_HAMrun3 * y2;
- 
+                
+                // plot right leg stims
+                //set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM sw");    // TODO
+                set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL cpg");    // TODO
             }
             else if (i==L_ID) 
             {
                 Stim[i][HFL_MUSCLE] = 
                             k_HFLrun1 * y1 + k_HFLrun2 * y6;
+                // Zero-out GLU when y1 or y6 are positive
+                Stim[i][GLU_MUSCLE] = (y1 || y6) ? S_MIN : Stim[i][GLU_MUSCLE];
                 // Stim[i][HAM_MUSCLE] = 
                 //             k_HAMrun1 * y8 + k_HAMrun2 * y5 + k_HAMrun3 * y4;
+                //set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM cpg");    // TODO
+                set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL cpg");    // TODO
             }
         }
 
 
         // Stance+swing plots
+        /*
         set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU");	// TODO
         set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM");    // TODO
-        //set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL");    // TODO
+        set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL");    // TODO
         //set_plot(Stim[R_ID][RF_MUSCLE], "R RF");    // TODO
         
 
         set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU");	// TODO
         set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM");    // TODO
-        //set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL");    // TODO
+        set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL");    // TODO
         //set_plot(Stim[L_ID][RF_MUSCLE], "L RF");    // TODO
-
+        */
 	}
 }
 

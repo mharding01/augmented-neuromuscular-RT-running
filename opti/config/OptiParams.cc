@@ -43,7 +43,7 @@ void OPTI_NAME::set_opti()
 	// Wang stimulations
 
     // TODO: added cpg_ctrl_thresh_t parameter for optimization
-    stim_wang->set_cpg_ctrl_thresh_t( {1.50 ; 3.00 } );
+    stim_wang->set_cpg_ctrl_thresh_t( {5.0; 5.75 } );
 	stim_wang->set_S0_sol_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_ta_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_gas_st( { 0.01 ; 0.05 } );
@@ -74,7 +74,7 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_l_off_ta_st( { 0.50 ; 0.8 } );
 	stim_wang->set_l_off_ham_hfl( { 0.0 ; 0.71 } );
 	stim_wang->set_l_off_hfl( { 0.0 ; 0.85 } );
-	stim_wang->set_K_ham( { 1.0 ; 14.0 } );
+	stim_wang->set_K_ham( { 1.0 ; 8.0 } );  // TODO: shortened, want less HAM in stance
 	stim_wang->set_K_glu( { 0.5 ; 14.0 } );
 	stim_wang->set_K_hfl( { 1.0 ; 18.0 } );
 	stim_wang->set_D_ham( { 0.0 ; 0.5 } );

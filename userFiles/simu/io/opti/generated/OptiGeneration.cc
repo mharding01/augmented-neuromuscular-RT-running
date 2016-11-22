@@ -74,7 +74,7 @@ void OptiGeneration::set_opti()
 	stim_wang->set_l_off_ta_st( optiParams[39] );
 	stim_wang->set_l_off_ham_hfl( optiParams[40] );
 	stim_wang->set_l_off_hfl( optiParams[41] );
-	stim_wang->set_K_ham( optiParams[42] );
+	stim_wang->set_K_ham( optiParams[42] );  // TODO: shortened, want less HAM in stance
 	stim_wang->set_K_glu( optiParams[43] );
 	stim_wang->set_K_hfl( optiParams[44] );
 	stim_wang->set_D_ham( optiParams[45] );

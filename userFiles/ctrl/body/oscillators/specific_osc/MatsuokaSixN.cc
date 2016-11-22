@@ -146,12 +146,12 @@ void MatsuokaSixN::Matsuoka_six_neurons()
 	vd[4] = tau_B_inv * ( -v[4] + pos(x[4]) );
 	vd[5] = tau_C_inv * ( -v[5] + pos(x[5]) ); 
     
-    set_plot(x[0], "x1");
-    set_plot(x[1], "x2");
-    set_plot(x[3] , "x4");
-    set_plot(x[4] , "x5");
-    set_plot(x[2] , "x3");
-    set_plot(x[5] , "x6");
+    //set_plot(x[0], "x1");
+    //set_plot(x[1], "x2");
+    //set_plot(x[3] , "x4");
+    //set_plot(x[4] , "x5");
+    //set_plot(x[2] , "x3");
+    //set_plot(x[5] , "x6");
 
     // Plot fatigue
     //set_plot(v[0], "V1");
