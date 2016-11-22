@@ -35,10 +35,11 @@ void OPTI_NAME::set_opti()
     g_osc->set_eta_D({3.73; 3.78 });  
     g_osc->set_eta_E({3.64; 3.72 });  
 
-    g_osc->set_P_tau({0.05 ; 0.06 } );    // TODO: not using v_diff
+    g_osc->set_P_tau({0.04 ; 0.06 } );    // TODO: not using v_diff
 
-    g_osc->set_k_HFLrun1( {2.9 ; 6.1});
-    g_osc->set_k_HFLrun2( {3.0 ; 8.0});
+    g_osc->set_k_HFLrun1( {1.5 ; 6.1});
+    g_osc->set_k_HFLrun2( {2.0 ; 8.0});
+    g_osc->set_k_HAMrun3( {0.5 ; 5.0});
     
 	// Wang stimulations
 
@@ -74,12 +75,12 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_l_off_ta_st( { 0.50 ; 0.8 } );
 	stim_wang->set_l_off_ham_hfl( { 0.0 ; 0.71 } );
 	stim_wang->set_l_off_hfl( { 0.0 ; 0.85 } );
-	stim_wang->set_K_ham( { 1.0 ; 8.0 } );  // TODO: shortened, want less HAM in stance
+	stim_wang->set_K_ham( { 0.5 ; 8.0 } );  // TODO: shortened, want less HAM in stance
 	stim_wang->set_K_glu( { 0.5 ; 14.0 } );
 	stim_wang->set_K_hfl( { 1.0 ; 18.0 } );
 	stim_wang->set_D_ham( { 0.0 ; 0.5 } );
 	stim_wang->set_D_glu( { 0.0 ; 0.5 } );
-	stim_wang->set_D_hfl( { 0.0 ; 0.5 } );
+	stim_wang->set_D_hfl( { 0.0 ; 0.8 } );
 	stim_wang->set_theta_ref( { 0.010 ; 0.095 } ); // TODO: made this smaller as stimwang runner was unstable
 	stim_wang->set_si_vas( { 0.3 ; 1.0 } );
 	stim_wang->set_si_rf( { 0.0 ; 1.0 } );
