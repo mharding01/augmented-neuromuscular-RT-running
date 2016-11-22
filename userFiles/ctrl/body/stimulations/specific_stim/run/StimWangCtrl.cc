@@ -547,10 +547,10 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][GLU_MUSCLE] = 
                         S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
                     Stim[i][HAM_MUSCLE] = 
-                        k_HAMrun3 * y2;
-                        /* Force-feedback control of HAM in late-swing
+                        /*k_HAMrun3 * y2;*/
+                        // Force-feedback control of HAM in late-swing
                         S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
-                        */
+                        
                 }
                 else 
                 {
@@ -590,10 +590,9 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][GLU_MUSCLE] = 
                         S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
                     Stim[i][HAM_MUSCLE] = 
-                        k_HAMrun3 * y4;
-                        /* Force-feedback control of HAM in late-swing
+                        /* k_HAMrun3 * y4; */
+                        // Force-feedback control of HAM in late-swing
                         S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
-                        */
                 }
                 else 
                 {
