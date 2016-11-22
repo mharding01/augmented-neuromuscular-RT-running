@@ -25,7 +25,7 @@ class SpeedFitness: public FitnessStage
 
 		void set_speed_ref(double value) { speed_ref = value; }
 
-	private:
+	protected:
 		SensorsInfo *sens_info; ///< info from the sensors
 
 		int speed_opti_started; ///< 1 if computation started, 0 otherwise

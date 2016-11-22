@@ -174,6 +174,9 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
 
     // TODO: add cpg control time threshold parameter
     cpg_ctrl_thresh_t = 2.0;
+
+    // TODO: add flag indicating when cpg control active
+    cpg_ctrl_active = 0;
 }
 
 /*! \brief destructor
@@ -521,6 +524,9 @@ void StimWangCtrl::pitch_compute()
         k_HFLrun2 = ghost_osc->get_k_HFLrun2();
         if ( inputs->get_t() > cpg_ctrl_thresh_t ) /* Overwrite stims after thresh */
         {
+            // Set flag, indicating cpg control initiated
+            cpg_ctrl_active = 1;    
+
             if (i==R_ID) 
             {
                 if (y6)    /* N5 positive - PD torso active (stance)*/

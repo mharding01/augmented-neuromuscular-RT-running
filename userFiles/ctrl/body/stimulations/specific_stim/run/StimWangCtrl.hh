@@ -99,6 +99,8 @@ class StimWangCtrl: public StimulationCtrl
         // TODO: cpg control time parameter 
 		void set_cpg_ctrl_thresh_t(double value)    { cpg_ctrl_thresh_t = value; }
 
+        int is_cpg_ctrl_active()           { return cpg_ctrl_active; }
+
         MatsuokaSixN* get_ghost_osc()      { return ghost_osc; }
 
 	private:
@@ -245,6 +247,9 @@ class StimWangCtrl: public StimulationCtrl
 
         // TODO:For testing cpg control of stims for optis
         double cpg_ctrl_thresh_t;
+
+        // TODO: Flag indicating when cpg control is active
+        int cpg_ctrl_active;
 };
 
 #endif
