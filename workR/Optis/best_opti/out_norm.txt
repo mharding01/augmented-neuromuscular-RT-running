@@ -1,0 +1,181 @@
+fitness: 1344.74710902112
+
+norms:
+0.205405401085906
+0.483672665625232
+0.326687686470265
+0.495947810403056
+0.175389350659706
+0.904257675849458
+0.861809118049455
+0.580331574936242
+0.299119722925837
+0.604517594238587
+0.570049540030895
+0.723259171558503
+0.0731159593054244
+0.311780345870741
+0.088339311106619
+0.0695079257234913
+0.508676774751301
+0.233995076794736
+0.103771304463771
+0.533619332207529
+0.444948677956006
+0.304960686959169
+0.952777969655159
+0.477183714051113
+0.959778196717857
+0.483540671893179
+0.334951760175368
+0.337112039633663
+0.867525932915492
+0.0866114362284815
+0.689851158998417
+0.898324948466363
+0.140865410606969
+0.630829794461175
+0.170523079025279
+0.373533110083263
+0.572523635565396
+0.511456723866152
+0.694597515791088
+0.908282064122953
+0.513360546885958
+0.0886289358414068
+0.341152952892715
+0.58500837094978
+0.416082894211719
+0.539476188041513
+0.655415338642316
+0.911517823721044
+0.532525260025326
+0.926621069196997
+0.588171251800733
+0.182594072535712
+0.419053175471121
+0.578600850307974
+0.174025936830357
+0.651435038494159
+0.437415521664333
+0.667801148490943
+0.673658144047783
+0.323466658344991
+0.236073767905992
+0.181304794459804
+0.236921841226705
+0.295602176751615
+0.973898314623332
+0.315678835786332
+0.752969697026076
+0.699045354470356
+0.867791083607801
+0.48643997830734
+0.158673333581109
+
+
+/*
+ * The following lines present the results file with the normalized parameters.
+ * Do not use it directly, its purpose is just to show the match between the parameters
+ * to optimize and their normalized optimized values.
+ */
+
+#include "OptiNorms.hh"
+#include "StimWangCtrl.hh"
+#include "JointsInit.hh"
+
+/*! \brief constructor
+ */
+OptiNorms::OptiNorms()
+{
+
+}
+
+/*! \brief destructor
+ */
+OptiNorms::~OptiNorms()
+{
+
+}
+
+/*! \brief set optimization parameters
+ */
+void OptiNorms::set_opti()
+{
+	StimWangCtrl *stim_wang = static_cast<StimWangCtrl*>(stim_ctrl);
+
+	// Wang stimulations
+	stim_wang->set_S0_sol_st( 0.20540540 );
+	stim_wang->set_S0_ta_st( 0.48367267 );
+	stim_wang->set_S0_gas_st( 0.32668769 );
+	stim_wang->set_S0_vas_st( 0.49594781 );
+	stim_wang->set_S0_ham_st( 0.17538935 );
+	stim_wang->set_S0_rf_st( 0.90425768 );
+	stim_wang->set_S0_glu_st( 0.86180912 );
+	stim_wang->set_S0_hfl_st( 0.58033157 );
+	stim_wang->set_S0_sol_sw( 0.29911972 );
+	stim_wang->set_S0_ta_sw( 0.60451759 );
+	stim_wang->set_S0_gas_sw( 0.57004954 );
+	stim_wang->set_S0_vas_sw( 0.72325917 );
+	stim_wang->set_S0_ham_sw( 0.07311596 );
+	stim_wang->set_S0_rf_sw( 0.31178035 );
+	stim_wang->set_S0_glu_sw( 0.08833931 );
+	stim_wang->set_S0_hfl_sw( 0.06950793 );
+	stim_wang->set_G_sol( 0.50867677 );
+	stim_wang->set_G_sol_ta( 0.23399508 );
+	stim_wang->set_G_gas( 0.10377130 );
+	stim_wang->set_G_vas( 0.53361933 );
+	stim_wang->set_G_ham( 0.44494868 );
+	stim_wang->set_G_glu( 0.30496069 );
+	stim_wang->set_G_ta_sw( 0.95277797 );
+	stim_wang->set_G_ta_st( 0.47718371 );
+	stim_wang->set_G_hfl( 0.95977820 );
+	stim_wang->set_G_ham_hfl( 0.48354067 );
+	stim_wang->set_l_off_ta_sw( 0.33495176 );
+	stim_wang->set_l_off_ta_st( 0.33711204 );
+	stim_wang->set_l_off_ham_hfl( 0.86752593 );
+	stim_wang->set_l_off_hfl( 0.08661144 );
+	stim_wang->set_K_ham( 0.68985116 );
+	stim_wang->set_K_glu( 0.89832495 );
+	stim_wang->set_K_hfl( 0.14086541 );
+	stim_wang->set_D_ham( 0.63082979 );
+	stim_wang->set_D_glu( 0.17052308 );
+	stim_wang->set_D_hfl( 0.37353311 );
+	stim_wang->set_theta_ref( 0.57252364 );
+	stim_wang->set_si_vas( 0.51145672 );
+	stim_wang->set_si_rf( 0.69459752 );
+	stim_wang->set_si_glu( 0.90828206 );
+	stim_wang->set_si_hfl( 0.51336055 );
+	stim_wang->set_K_sp_vas( 0.08862894 );
+	stim_wang->set_K_sp_glu( 0.34115295 );
+	stim_wang->set_K_sp_hfl( 0.58500837 );
+	stim_wang->set_D_sp_vas( 0.41608289 );
+	stim_wang->set_D_sp_glu( 0.53947619 );
+	stim_wang->set_D_sp_hfl( 0.65541534 );
+	stim_wang->set_theta_k_ref( 0.91151782 );
+	stim_wang->set_theta_h_ref0( 0.53252526 );
+	stim_wang->set_d_sp( 0.92662107 );
+	stim_wang->set_d_si( 0.58817125 );
+	stim_wang->set_k_THETA( 0.18259407 );
+	stim_wang->set_k_theta( 0.41905318 );
+	stim_wang->set_phi_off_pk( 0.57860085 );
+
+	//init pos
+	joints_init->set_T3( 0.17402594 );
+	joints_init->set_T3_p( 0.65143504 );
+	joints_init->set_R2( 0.43741552 );
+	joints_init->set_R2_p( 0.66780115 );
+	joints_init->set_r_sh_p( 0.67365814 );
+	joints_init->set_r_hip( 0.32346666 );
+	joints_init->set_r_hip_p( 0.23607377 );
+	joints_init->set_r_knee( 0.18130479 );
+	joints_init->set_r_knee_p( 0.23692184 );
+	joints_init->set_r_ankle( 0.29560218 );
+	joints_init->set_r_ankle_p( 0.97389831 );
+	joints_init->set_l_hip( 0.31567884 );
+	joints_init->set_l_hip_p( 0.75296970 );
+	joints_init->set_l_knee( 0.69904535 );
+	joints_init->set_l_knee_p( 0.86779108 );
+	joints_init->set_l_ankle( 0.48643998 );
+	joints_init->set_l_ankle_p( 0.15867333 );
+}
