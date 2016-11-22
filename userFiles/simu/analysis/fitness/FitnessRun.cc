@@ -2,7 +2,7 @@
 #include "FitnessRun.hh"
 #include "MinDistFitness.hh"
 #include "WalkTimeFitness.hh"
-#include "SpeedFitness.hh"
+#include "CPG_SpeedFitness.hh"
 #include "OscillosFitness.hh"
 #include "DSFitness.hh"
 #include "FlightFitness.hh"
@@ -26,8 +26,9 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 
 		if (options->speed_opti)
 		{
-			speed_fitness = new SpeedFitness(mbs_data, sens_info); 
-			fitness_tab.push_back(speed_fitness);
+            CPG_SpeedFitness *cpg_speed_fitness = new CPG_SpeedFitness(mbs_data, ctrl, sens_info);
+            speed_fitness = static_cast<SpeedFitness*>(cpg_speed_fitness);
+			fitness_tab.push_back(cpg_speed_fitness); 
 		}
 
 		fitness_tab.push_back(new OscillosFitness(mbs_data, ctrl)); 
