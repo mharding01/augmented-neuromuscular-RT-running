@@ -35,7 +35,7 @@ void OPTI_NAME::set_opti()
     g_osc->set_eta_D({3.73; 3.78 });  
     g_osc->set_eta_E({3.64; 3.72 });  
 
-    g_osc->set_P_tau({0.04 ; 0.06 } );    // TODO: not using v_diff
+    g_osc->set_P_tau({0.005 ; 0.1 } );    // TODO: not using v_diff
 
     g_osc->set_k_HFLrun1( {1.5 ; 6.1});
     g_osc->set_k_HFLrun2( {2.0 ; 8.0});
