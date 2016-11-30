@@ -59,7 +59,7 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	r_first_swing = options->is_r_first_swing();
 
 	// oscillos initialization time
-	init_t_oscillo = 0.2;
+	init_t_oscillo = 0.3444;
 
 	// oscillators main parameters
 	beta_A = 6.043252;
@@ -184,8 +184,7 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 
 	// linear function	
 	theta_ref = P_theta  + p_theta * v_diff;
-	//tau       = P_tau    + p_tau   * v_diff; TODO
-	tau       = P_tau / 2.6;
+	tau       = P_tau    + p_tau   * v_diff; 
 	k_GLU     = P_GLU;
 	k_HFL     = P_HFL    + p_HFL  * v_diff;
 	k_HAM1    = P_HAM1   + p_HAM1 * v_diff;
@@ -260,8 +259,7 @@ void MatsuokaSixN::compute_osc_excitation()
 	int supporting_r, supporting_l;
 
 	// initialization: choose the corresponding intial leg
-    // TODO: extended by .144 seconds
-	if (inputs->get_t() < 0.144 + m_st->get_init_t_walk() + init_t_oscillo)
+	if (inputs->get_t() < m_st->get_init_t_walk() + init_t_oscillo)
 	{
 		if (r_first_swing)
 		{
