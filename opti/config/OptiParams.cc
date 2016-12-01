@@ -35,7 +35,7 @@ void OPTI_NAME::set_opti()
     g_osc->set_eta_D({3.73; 3.78 });  
     g_osc->set_eta_E({3.64; 3.72 });  
 
-    g_osc->set_P_tau({0.005 ; 0.165 } );    // TODO: not using v_diff
+    g_osc->set_P_tau({0.0015 ; 0.082} );    // TODO: Scaled down range by factor of min ~3, max 2 
 
     g_osc->set_k_HFLrun1( {1.0 ; 6.1});
     g_osc->set_k_HFLrun2( {2.0 ; 8.0});
