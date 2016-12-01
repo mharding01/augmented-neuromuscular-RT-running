@@ -5,7 +5,7 @@
 #include "WalkStates.hh"
 
 #define DIST_FIT_START 5.0
-#define MAX_FLIGHT_PER_CYCLE 0.1
+#define MAX_FLIGHT_PER_CYCLE 0.1    // TODO: tune this value later?
 #define FLIGHT_MARGIN 0.08
 
 /*! \brief constructor
@@ -28,7 +28,7 @@ FlightFitness::FlightFitness(MbsData *mbs_data, Ctrl *ctrl): FitnessStage(mbs_da
 	flight_opti_t_start = 0.0;
 	flight_per_cycle = 0.0;
 
-	max_fitness = 100.0;
+	max_fitness = 250.0;
 }
 
 /*! \brief destructor
@@ -84,5 +84,5 @@ double FlightFitness::get_fitness()
  */
 int FlightFitness::next_stage_unlocked()
 {
-	return (flight_per_cycle > FLIGHT_MARGIN);
+	return 1;
 }

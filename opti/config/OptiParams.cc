@@ -35,7 +35,7 @@ void OPTI_NAME::set_opti()
     g_osc->set_eta_D({3.73; 3.78 });  
     g_osc->set_eta_E({3.64; 3.72 });  
 
-    g_osc->set_P_tau({0.0015 ; 0.082} );    // TODO: Scaled down range by factor of min ~3, max 2 
+    g_osc->set_P_tau({0.0015 ; 0.102} );    // TODO: Scaled down range by factor of min ~3, max 2 
 
     g_osc->set_k_HFLrun1( {1.0 ; 6.1});
     g_osc->set_k_HFLrun2( {2.0 ; 8.0});
@@ -44,7 +44,7 @@ void OPTI_NAME::set_opti()
 	// Wang stimulations
 
     // TODO: added cpg_ctrl_thresh_t parameter for optimization
-    stim_wang->set_cpg_ctrl_thresh_t( {5.0; 5.75 } );
+    stim_wang->set_cpg_ctrl_thresh_t( {0.2; 1.0 } );    // TODO: cpg control set to overwrite just after oscillo init. @ .2 sec
 	stim_wang->set_S0_sol_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_ta_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_gas_st( { 0.01 ; 0.05 } );

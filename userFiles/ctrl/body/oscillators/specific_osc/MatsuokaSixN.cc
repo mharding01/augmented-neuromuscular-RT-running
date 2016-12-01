@@ -59,7 +59,7 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	r_first_swing = options->is_r_first_swing();
 
 	// oscillos initialization time
-	init_t_oscillo = 0.3444;
+	init_t_oscillo = 0.2;
 
 	// oscillators main parameters
 	beta_A = 6.043252;
