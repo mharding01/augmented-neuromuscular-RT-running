@@ -25,19 +25,19 @@ void OPTI_NAME::set_opti()
     MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
 
     // Oscillator fields
-    g_osc->set_gamma_A({1.48; 1.60  });
-    g_osc->set_gamma_B({2.35; 2.55 });
-    g_osc->set_gamma_C({2.55; 3.01  });
+    g_osc->set_gamma_A({1.0; 1.60  });
+    g_osc->set_gamma_B({2.0; 2.55 });
+    g_osc->set_gamma_C({2.0; 3.01  });
 
     g_osc->set_eta_A({5.45; 5.53  });  
     g_osc->set_eta_B({4.80; 4.90 });  
-    g_osc->set_eta_C({5.62; 5.72 });  
+    g_osc->set_eta_C({5.62; 6.62 });  // TODO: N3 and N6, controls how soon appear 
     g_osc->set_eta_D({3.73; 3.78 });  
     g_osc->set_eta_E({3.64; 3.72 });  
 
-    g_osc->set_P_tau({0.005 ; 0.1 } );    // TODO: not using v_diff
+    g_osc->set_P_tau({0.005 ; 0.165 } );    // TODO: not using v_diff
 
-    g_osc->set_k_HFLrun1( {1.5 ; 6.1});
+    g_osc->set_k_HFLrun1( {1.0 ; 6.1});
     g_osc->set_k_HFLrun2( {2.0 ; 8.0});
     g_osc->set_k_HAMrun3( {0.5 ; 5.0});
     
@@ -75,13 +75,13 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_l_off_ta_st( { 0.50 ; 0.8 } );
 	stim_wang->set_l_off_ham_hfl( { 0.0 ; 0.71 } );
 	stim_wang->set_l_off_hfl( { 0.0 ; 0.85 } );
-	stim_wang->set_K_ham( { 0.5 ; 8.0 } );  // TODO: shortened, want less HAM in stance
-	stim_wang->set_K_glu( { 0.5 ; 14.0 } );
-	stim_wang->set_K_hfl( { 1.0 ; 18.0 } );
+	stim_wang->set_K_ham( { 3.5 ; 6.0 } );  // TODO: shortened, want less HAM in stance
+	stim_wang->set_K_glu( { 0.5 ; 14.0 } ); // Prefer GLU to handle much of trunk lean
+	stim_wang->set_K_hfl( { 1.0 ; 10.0 } ); // Prefer HFL not to be too active
 	stim_wang->set_D_ham( { 0.0 ; 0.5 } );
 	stim_wang->set_D_glu( { 0.0 ; 0.5 } );
 	stim_wang->set_D_hfl( { 0.0 ; 0.8 } );
-	stim_wang->set_theta_ref( { 0.010 ; 0.095 } ); // TODO: made this smaller as stimwang runner was unstable
+	stim_wang->set_theta_ref( { 0.005 ; 0.45 } ); // TODO: trunk lean, realistic max i pi/6=30deg.
 	stim_wang->set_si_vas( { 0.3 ; 1.0 } );
 	stim_wang->set_si_rf( { 0.0 ; 1.0 } );
 	stim_wang->set_si_glu( { 0.2 ; 1.0 } );
@@ -93,7 +93,7 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_D_sp_glu( { 0.0 ; 0.1 } );
 	stim_wang->set_D_sp_hfl( { 0.0 ; 0.1 } );
 	stim_wang->set_theta_k_ref( { 0.0 ; 0.3 } );
-	stim_wang->set_theta_h_ref0( { 0.05 ; 0.9 } ); // TODO: made its lower bound smaller
+	stim_wang->set_theta_h_ref0( { 0.05 ; 0.9 } ); // TODO: made its lower bound smaller, come back to this later
 	stim_wang->set_d_sp( { -0.3 ; 0.1 } );
 	stim_wang->set_d_si( { 0.2 ; 0.7 } );
 	stim_wang->set_k_THETA( { 1.0 ; 5.7 } );
