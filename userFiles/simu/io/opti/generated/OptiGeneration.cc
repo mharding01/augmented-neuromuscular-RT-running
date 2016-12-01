@@ -31,7 +31,7 @@ void OptiGeneration::set_opti()
 
     g_osc->set_eta_A(optiParams[3]);  
     g_osc->set_eta_B(optiParams[4]);  
-    g_osc->set_eta_C(optiParams[5]);  
+    g_osc->set_eta_C(optiParams[5]);  // TODO: N3 and N6, controls how soon appear 
     g_osc->set_eta_D(optiParams[6]);  
     g_osc->set_eta_E(optiParams[7]);  
 
@@ -76,12 +76,12 @@ void OptiGeneration::set_opti()
 	stim_wang->set_l_off_ham_hfl( optiParams[41] );
 	stim_wang->set_l_off_hfl( optiParams[42] );
 	stim_wang->set_K_ham( optiParams[43] );  // TODO: shortened, want less HAM in stance
-	stim_wang->set_K_glu( optiParams[44] );
-	stim_wang->set_K_hfl( optiParams[45] );
+	stim_wang->set_K_glu( optiParams[44] ); // Prefer GLU to handle much of trunk lean
+	stim_wang->set_K_hfl( optiParams[45] ); // Prefer HFL not to be too active
 	stim_wang->set_D_ham( optiParams[46] );
 	stim_wang->set_D_glu( optiParams[47] );
 	stim_wang->set_D_hfl( optiParams[48] );
-	stim_wang->set_theta_ref( optiParams[49] ); // TODO: made this smaller as stimwang runner was unstable
+	stim_wang->set_theta_ref( optiParams[49] ); // TODO: trunk lean, realistic max i pi/6=30deg.
 	stim_wang->set_si_vas( optiParams[50] );
 	stim_wang->set_si_rf( optiParams[51] );
 	stim_wang->set_si_glu( optiParams[52] );
@@ -93,7 +93,7 @@ void OptiGeneration::set_opti()
 	stim_wang->set_D_sp_glu( optiParams[58] );
 	stim_wang->set_D_sp_hfl( optiParams[59] );
 	stim_wang->set_theta_k_ref( optiParams[60] );
-	stim_wang->set_theta_h_ref0( optiParams[61] ); // TODO: made its lower bound smaller
+	stim_wang->set_theta_h_ref0( optiParams[61] ); // TODO: made its lower bound smaller, come back to this later
 	stim_wang->set_d_sp( optiParams[62] );
 	stim_wang->set_d_si( optiParams[63] );
 	stim_wang->set_k_THETA( optiParams[64] );
