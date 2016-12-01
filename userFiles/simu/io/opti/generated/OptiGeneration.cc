@@ -35,7 +35,7 @@ void OptiGeneration::set_opti()
     g_osc->set_eta_D(optiParams[6]);  
     g_osc->set_eta_E(optiParams[7]);  
 
-    g_osc->set_P_tau(optiParams[8] );    // TODO: not using v_diff
+    g_osc->set_P_tau(optiParams[8] );    // TODO: Scaled down range by factor of min ~3, max 2 
 
     g_osc->set_k_HFLrun1( optiParams[9]);
     g_osc->set_k_HFLrun2( optiParams[10]);
