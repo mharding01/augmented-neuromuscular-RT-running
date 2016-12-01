@@ -19,7 +19,7 @@ OscillosFitness::OscillosFitness(MbsData *mbs_data, Ctrl *ctrl): FitnessStage(mb
 
 	osc = stim_walk_ctrl->get_osc();
 
-	max_fitness = 100.0;
+	max_fitness = 500.0;
 }
 
 /*! \brief destructor
