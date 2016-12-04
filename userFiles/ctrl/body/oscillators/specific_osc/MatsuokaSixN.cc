@@ -150,8 +150,8 @@ void MatsuokaSixN::Matsuoka_six_neurons()
     set_plot(x[1], "x2");
     set_plot(x[3] , "x4");
     set_plot(x[4] , "x5");
-    set_plot(x[2] , "x3");
-    set_plot(x[5] , "x6");
+    //set_plot(x[2] , "x3");
+    //set_plot(x[5] , "x6");
 
     // Plot fatigue
     //set_plot(v[0], "V1");
