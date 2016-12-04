@@ -44,7 +44,7 @@ void OPTI_NAME::set_opti()
 	// Wang stimulations
 
     // TODO: added cpg_ctrl_thresh_t parameter for optimization
-    stim_wang->set_cpg_ctrl_thresh_t( {0.2; 1.0 } );    // TODO: cpg control set to overwrite just after oscillo init. @ .2 sec
+    stim_wang->set_cpg_ctrl_thresh_t( {0.2; 0.5 } );    // TODO: cpg control set to overwrite just after oscillo init. @ .2 sec
 	stim_wang->set_S0_sol_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_ta_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_gas_st( { 0.01 ; 0.05 } );

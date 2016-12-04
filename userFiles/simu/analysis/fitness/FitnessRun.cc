@@ -21,13 +21,14 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 	if (ctrl->get_ctrl_id() == NICO_CTRL)
 	{   
         // In decreasing order of reward
-		fitness_tab.push_back(new OscillosFitness(mbs_data, ctrl));     // 500
+        fitness_tab.push_back(new MinDistFitness(mbs_data, sens_info)); // 500
+		
+		fitness_tab.push_back(new WalkTimeFitness(mbs_data));           // 400
+		
+        fitness_tab.push_back(new OscillosFitness(mbs_data, ctrl));     // 300
 
-		fitness_tab.push_back(new FlightFitness(mbs_data, ctrl));       // 500
+		fitness_tab.push_back(new FlightFitness(mbs_data, ctrl));       // 250 
 		
-        fitness_tab.push_back(new MinDistFitness(mbs_data, sens_info)); // 300
-		
-		fitness_tab.push_back(new WalkTimeFitness(mbs_data));           // 300
 
 		if (options->speed_opti)
 		{   // 300

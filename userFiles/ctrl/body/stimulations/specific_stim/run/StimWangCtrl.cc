@@ -369,12 +369,12 @@ void StimWangCtrl::pitch_compute()
             {
                 // plot right leg stims
                 set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU sw");	// TODO
-                set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM sw");    // TODO
+                //set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM sw");    // TODO
                 //set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL sw");    // TODO
                 //set_plot(Stim[R_ID][RF_MUSCLE], "R RF sw");    // TODO
                 
                 set_plot(0.0, "R GLU st");	// TODO
-                set_plot(0.0, "R HAM st");    // TODO
+                //set_plot(0.0, "R HAM st");    // TODO
                 //set_plot(0.0, "R HFL st");    // TODO
                 //set_plot(0.0, "R RF st");    // TODO
             }
@@ -383,12 +383,12 @@ void StimWangCtrl::pitch_compute()
                 
                 // plot left leg stims
                 set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU sw");	// TODO
-                set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM sw");    // TODO
+                //set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM sw");    // TODO
                 //set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL sw");    // TODO
                 //set_plot(Stim[L_ID][RF_MUSCLE], "L RF sw");    // TODO
                 
                 set_plot(0.0, "L GLU st");	// TODO
-                set_plot(0.0, "L HAM st");    // TODO
+                //set_plot(0.0, "L HAM st");    // TODO
                 //set_plot(0.0, "L HFL st");    // TODO
                 //set_plot(0.0, "L RF st");    // TODO
                 
@@ -481,12 +481,12 @@ void StimWangCtrl::pitch_compute()
             if (i == R_ID)
             {
                 set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU st");	// TODO
-                set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM st");    // TODO
+                //set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM st");    // TODO
                 //set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL st");    // TODO
                 //set_plot(Stim[R_ID][RF_MUSCLE], "R RF st");    // TODO
                 
                 set_plot(0.0, "R GLU sw");	// TODO
-                set_plot(0.0, "R HAM sw");    // TODO
+                //set_plot(0.0, "R HAM sw");    // TODO
                 //set_plot(0.0, "R HFL sw");    // TODO
                 //set_plot(0.0, "R RF sw");    // TODO
             }
@@ -494,12 +494,12 @@ void StimWangCtrl::pitch_compute()
             {
                 
                 set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU st");	// TODO
-                set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM st");    // TODO
+                //set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM st");    // TODO
                 //set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL st");    // TODO
                 //set_plot(Stim[L_ID][RF_MUSCLE], "L RF st");    // TODO
                 
                 set_plot(0.0, "L GLU sw");	// TODO
-                set_plot(0.0, "L HAM sw");    // TODO
+                //set_plot(0.0, "L HAM sw");    // TODO
                 //set_plot(0.0, "L HFL sw");    // TODO
                 //set_plot(0.0, "L RF sw");    // TODO
                 
