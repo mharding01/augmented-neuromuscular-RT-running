@@ -397,9 +397,11 @@ void MatsuokaSixN::oscillator_prediction_error(double cur_t)
 void MatsuokaSixN::update(double cur_t)
 {
 	// update oscillators velocity parameters at a strike
-	if (flag_range && (sw_st->get_nb_strikes() >= 4))
+	/*if (flag_range) TODO: && (sw_st->get_nb_strikes() >= 4)) */
+    if (1)  // TODO:
 	{
-		update_speed_oscillos(user_ctr->get_v_request());
+		//update_speed_oscillos(user_ctr->get_v_request());
+        update_speed_oscillos();
 	}
 
 	// checking for too slow oscillators
