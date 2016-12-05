@@ -25,7 +25,7 @@ void OptiGeneration::set_opti()
     MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
 
     // Oscillator fields
-    g_osc->set_gamma_A(optiParams[0]);
+    g_osc->set_gamma_A(optiParams[0]); // Longer or shorter than 50% of %50 of gait cycle
     g_osc->set_gamma_B(optiParams[1]);
     g_osc->set_gamma_C(optiParams[2]);
 
@@ -81,7 +81,7 @@ void OptiGeneration::set_opti()
 	stim_wang->set_D_ham( optiParams[46] );
 	stim_wang->set_D_glu( optiParams[47] );
 	stim_wang->set_D_hfl( optiParams[48] );
-	stim_wang->set_theta_ref( optiParams[49] ); // TODO: trunk lean, realistic max i pi/6=30deg.
+	stim_wang->set_theta_ref( optiParams[49] ); // TODO: trunk lean, realistic max i pi/12=15deg.
 	stim_wang->set_si_vas( optiParams[50] );
 	stim_wang->set_si_rf( optiParams[51] );
 	stim_wang->set_si_glu( optiParams[52] );

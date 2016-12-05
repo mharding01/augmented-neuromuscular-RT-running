@@ -147,8 +147,8 @@ void MatsuokaSixN::Matsuoka_six_neurons()
 	vd[5] = tau_C_inv * ( -v[5] + pos(x[5]) ); 
     
     set_plot(x[0], "x1");
-    set_plot(x[1], "x2");
-    set_plot(x[3] , "x4");
+    //set_plot(x[1], "x2");
+    //set_plot(x[3] , "x4");
     set_plot(x[4] , "x5");
     //set_plot(x[2] , "x3");
     //set_plot(x[5] , "x6");
@@ -263,19 +263,19 @@ void MatsuokaSixN::compute_osc_excitation()
 	{
 		if (r_first_swing)
 		{
-			u[0] = OSC_EXCITATION;
+			u[0] = 0.0;
 			u[1] = 0.0;  // N2 aligns with left foot-strike 
 			u[2] = 0.0;
 			u[3] = 0.0;
-			u[4] = 0.0;  // Now N5 aligns with right foot-strike
+			u[4] = OSC_EXCITATION;  // Now N5 aligns with right foot-strike
 			u[5] = 0.0;
 		}
 		else
 		{
 			u[0] = 0.0;
-			u[1] = 0.0; // N2 aligns with left foot-strike
+			u[1] = OSC_EXCITATION; // N2 aligns with left foot-strike
 			u[2] = 0.0;
-			u[3] = OSC_EXCITATION;
+			u[3] = 0.0;
 			u[4] = 0.0; // N5 aligns with right foot-strike 
 			u[5] = 0.0;
 		}
