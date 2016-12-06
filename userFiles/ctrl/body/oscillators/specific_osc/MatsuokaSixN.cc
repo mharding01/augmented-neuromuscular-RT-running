@@ -59,7 +59,7 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	r_first_swing = options->is_r_first_swing();
 
 	// oscillos initialization time
-	init_t_oscillo = 0.2;
+	init_t_oscillo = 0.01;
 
 	// oscillators main parameters
 	beta_A = 6.043252;
@@ -88,12 +88,20 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	P_HFL   = 3.689370;
 	P_HAM1  = 2.189173;
 	P_HAM2  = 1.686624;
-
+    
+    /*
 	p_theta = 0.502487;
 	p_tau   = -0.058664;
 	p_HFL   = 3.057062;
 	p_HAM1  = 1.576165;
 	p_HAM2  = -2.829820;
+    */
+
+    p_theta = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
+    p_tau   = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
+    p_HFL   = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
+    p_HAM1  = 0.0; // TODO: for now, these are zero'd, come back when speed modulating     
+    p_HAM2  = 0.0; // TODO: for now, these are zero'd, come back when speed modulating     
 
     // TODO: Default params for running stims' CPG weights
     k_HAMrun1 = 1.15;

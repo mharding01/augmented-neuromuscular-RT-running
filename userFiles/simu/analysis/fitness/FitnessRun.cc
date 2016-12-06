@@ -31,7 +31,7 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 		
 
 		if (options->speed_opti)
-		{   // 300
+		{   // 400
             CPG_SpeedFitness *cpg_speed_fitness = new CPG_SpeedFitness(mbs_data, ctrl, sens_info);
             speed_fitness = static_cast<SpeedFitness*>(cpg_speed_fitness);
 			fitness_tab.push_back(cpg_speed_fitness); 
