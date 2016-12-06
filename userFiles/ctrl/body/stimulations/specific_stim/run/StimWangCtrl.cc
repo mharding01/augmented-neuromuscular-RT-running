@@ -544,7 +544,7 @@ void StimWangCtrl::pitch_compute()
                                 k_HFLrun1 * y3 + k_HFLrun2 * y5;
                     // Zero-out GLU when y3 or y5 are positive
                     Stim[i][GLU_MUSCLE] = S_MIN; 
-                    //Stim[i][HAM_MUSCLE] = S_MIN; 
+                    Stim[i][HAM_MUSCLE] = S_MIN; 
                 } 
                 else if (y1 || y2)    /* N1/N3 positive - PD hip active (late swing), cpg-controlled HAM*/
                 {
@@ -588,7 +588,7 @@ void StimWangCtrl::pitch_compute()
                         k_HFLrun1 * y1 + k_HFLrun2 * y6;
                     // Zero-out GLU when y1 or y6 are positive
                     Stim[i][GLU_MUSCLE] = S_MIN;
-                    //Stim[i][HAM_MUSCLE] = S_MIN;
+                    Stim[i][HAM_MUSCLE] = S_MIN;
                 }
                 else if (y3 || y4) /* N4/N6 positive - PD control of hip, cpg-control of HAM (late swing)*/
                 {
