@@ -25,9 +25,9 @@ void OPTI_NAME::set_opti()
     MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
 
     // Oscillator fields
-    g_osc->set_gamma_A({.5; 2.60  }); // Longer or shorter than 50% of %50 of gait cycle
-    g_osc->set_gamma_B({.5; 2.55 });
-    g_osc->set_gamma_C({0.5; 3.01  });
+    g_osc->set_gamma_A({.33; 3.0  }); // Longer or shorter than 50% of %50 of gait cycle
+    g_osc->set_gamma_B({.33; 3.0 });
+    g_osc->set_gamma_C({0.33; 3.0  });
 
     g_osc->set_eta_A({5.45; 5.53  });  
     g_osc->set_eta_B({4.80; 4.90 });  
@@ -38,13 +38,12 @@ void OPTI_NAME::set_opti()
     g_osc->set_P_tau({0.00015 ; 0.102} );    // TODO: Scaled down range by factor of min ~3, max 2 
 
     g_osc->set_k_HFLrun1( {1.0 ; 6.1});
-    g_osc->set_k_HFLrun2( {2.0 ; 8.0});
-    g_osc->set_k_HAMrun3( {0.5 ; 5.0});
+    g_osc->set_k_HFLrun2( {1.5 ; 10.0});
+    g_osc->set_k_HAMrun3( {0.5 ; 7.0});
     
 	// Wang stimulations
 
     // TODO: added cpg_ctrl_thresh_t parameter for optimization
-    stim_wang->set_cpg_ctrl_thresh_t( {0.0; 0.4 } );    // TODO: cpg control set to overwrite just after oscillo init. @ .2 sec
 	stim_wang->set_S0_sol_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_ta_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_gas_st( { 0.01 ; 0.05 } );
