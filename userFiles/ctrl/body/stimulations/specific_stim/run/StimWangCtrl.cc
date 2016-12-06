@@ -173,7 +173,7 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
     this->ghost_osc = ghost_osc; 
 
     // TODO: add cpg control time threshold parameter
-    cpg_ctrl_thresh_t = 2.0;
+    cpg_ctrl_thresh_t = 0.0;
 
     // TODO: add flag indicating when cpg control active
     cpg_ctrl_active = 0;
