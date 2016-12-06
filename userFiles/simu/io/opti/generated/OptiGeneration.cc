@@ -35,7 +35,7 @@ void OptiGeneration::set_opti()
     g_osc->set_eta_D(optiParams[6]);  
     g_osc->set_eta_E(optiParams[7]);  
 
-    g_osc->set_P_tau(optiParams[8] );    // TODO: Scaled down range by factor of min ~3, max 2 
+    g_osc->set_P_tau(optiParams[8] );    // TODO: 
 
     g_osc->set_k_HFLrun1( optiParams[9]);
     g_osc->set_k_HFLrun2( optiParams[10]);
@@ -80,7 +80,7 @@ void OptiGeneration::set_opti()
 	stim_wang->set_D_ham( optiParams[45] );
 	stim_wang->set_D_glu( optiParams[46] );
 	stim_wang->set_D_hfl( optiParams[47] );
-	stim_wang->set_theta_ref( optiParams[48] ); // TODO: trunk lean, realistic max i pi/12=15deg.
+	stim_wang->set_theta_ref( optiParams[48] ); // TODO: trunk lean, realistic max i pi/15=18deg.
 	stim_wang->set_si_vas( optiParams[49] );
 	stim_wang->set_si_rf( optiParams[50] );
 	stim_wang->set_si_glu( optiParams[51] );

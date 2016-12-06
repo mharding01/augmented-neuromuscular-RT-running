@@ -35,7 +35,7 @@ void OPTI_NAME::set_opti()
     g_osc->set_eta_D({3.73; 3.78 });  
     g_osc->set_eta_E({3.64; 3.72 });  
 
-    g_osc->set_P_tau({0.00015 ; 0.102} );    // TODO: Scaled down range by factor of min ~3, max 2 
+    g_osc->set_P_tau({0.00015 ; 0.152} );    // TODO: 
 
     g_osc->set_k_HFLrun1( {1.0 ; 6.1});
     g_osc->set_k_HFLrun2( {1.5 ; 10.0});
@@ -80,7 +80,7 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_D_ham( { 0.0 ; 0.5 } );
 	stim_wang->set_D_glu( { 0.0 ; 0.5 } );
 	stim_wang->set_D_hfl( { 0.0 ; 0.8 } );
-	stim_wang->set_theta_ref( { 0.005 ; 0.21 } ); // TODO: trunk lean, realistic max i pi/12=15deg.
+	stim_wang->set_theta_ref( { 0.005 ; 0.15 } ); // TODO: trunk lean, realistic max i pi/15=18deg.
 	stim_wang->set_si_vas( { 0.3 ; 1.0 } );
 	stim_wang->set_si_rf( { 0.0 ; 1.0 } );
 	stim_wang->set_si_glu( { 0.2 ; 1.0 } );
