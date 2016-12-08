@@ -25,7 +25,7 @@ void OptiGeneration::set_opti()
     MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
 
     // Oscillator fields
-    g_osc->set_gamma_A(optiParams[0]); // Longer or shorter than 50% of %50 of gait cycle
+    g_osc->set_gamma_A(optiParams[0]);
     g_osc->set_gamma_B(optiParams[1]);
     g_osc->set_gamma_C(optiParams[2]);
 
@@ -35,7 +35,7 @@ void OptiGeneration::set_opti()
     g_osc->set_eta_D(optiParams[6]);  
     g_osc->set_eta_E(optiParams[7]);  
 
-    g_osc->set_P_tau(optiParams[8] );    // TODO: 
+    g_osc->set_P_tau(optiParams[8] ); // Taken from master commit: "All_1 results, 1459 score"
 
     g_osc->set_k_HFLrun1( optiParams[9]);
     g_osc->set_k_HFLrun2( optiParams[10]);
@@ -74,7 +74,7 @@ void OptiGeneration::set_opti()
 	stim_wang->set_l_off_ta_st( optiParams[39] );
 	stim_wang->set_l_off_ham_hfl( optiParams[40] );
 	stim_wang->set_l_off_hfl( optiParams[41] );
-	stim_wang->set_K_ham( optiParams[42] );  // TODO: shortened, want less HAM in stance
+	stim_wang->set_K_ham( optiParams[42] );  // TODO: want less HAM in stance
 	stim_wang->set_K_glu( optiParams[43] ); // Prefer GLU to handle much of trunk lean
 	stim_wang->set_K_hfl( optiParams[44] ); // Prefer HFL not to be too active
 	stim_wang->set_D_ham( optiParams[45] );
