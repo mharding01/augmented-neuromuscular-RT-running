@@ -1,9 +1,10 @@
-
+#include <stdio.h>
 #include "OscillosFitness.hh"
 #include "NicoCtrl.hh"
 #include "Body.hh"
 #include "StimWalkCtrl.hh"
 
+#define DIST_OSCILLO_START 3    // 3m distance before rewarding oscillo error 
 /*! \brief constructor
  * 
  * \param[in] mbs_data Robotran structure
@@ -42,8 +43,17 @@ void OscillosFitness::compute()
  */
 double OscillosFitness::get_fitness()
 {
-	return compute_gaussian_fitness(osc->get_t_osc_error_mean(), max_fitness, 1100.0);
+    if (mbs_data->q[1] > DIST_OSCILLO_START) 
+    {
+        return compute_gaussian_fitness(osc->get_t_osc_error_mean(), max_fitness, 1100.0);
+
+    }
+    else
+    {
+        return 0.0;
+    }
 }
+
 
 /*! \brief detect if next stage is unlocked
  * 
