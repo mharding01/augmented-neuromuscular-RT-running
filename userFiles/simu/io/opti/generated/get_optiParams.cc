@@ -32,7 +32,7 @@ double convert_to_optiParams(std::vector<double> optiNorms)
 		case 5 : return (last_elem * 0.38000000 + 5.62000000);
 		case 6 : return (last_elem * 0.05000000 + 3.73000000);
 		case 7 : return (last_elem * 0.08000000 + 3.64000000);
-		case 8 : return (last_elem * 0.04985000 + 0.00015000);
+		case 8 : return (last_elem * 0.04000000 + 0.01000000);
 		case 9 : return (last_elem * 5.10000000 + 1.00000000);
 		case 10 : return (last_elem * 8.50000000 + 1.50000000);
 		case 11 : return (last_elem * 6.50000000 + 0.50000000);

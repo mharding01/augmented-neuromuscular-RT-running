@@ -4,7 +4,7 @@
 #include "NicoCtrl.hh"
 #include "Body.hh"
 
-#define VELOCITY_MARGIN 0.05
+#define DIST_VELOCITY_START 2.0
 
 /*! \brief constructor
  * 
@@ -32,7 +32,8 @@ void CPG_SpeedFitness::compute()
 {
 	double t;
 
-	if (stims->is_cpg_ctrl_active()) /* Only start when cpg contrl active */
+	if (mbs_data->q[1] > DIST_VELOCITY_START 
+            && stims->is_cpg_ctrl_active()) /* Only start when cpg contrl active and moved forward certain distance */
 	{
 		t = mbs_data->tsim;
 
