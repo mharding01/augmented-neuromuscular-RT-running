@@ -66,15 +66,15 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	beta_B = 5.067806;
 	beta_C = 4.382409;
 
-	gamma_A = 1.525956;
-	gamma_B = 2.45000; // 2.130010;
-	gamma_C = 2.878273;
+	gamma_A = 1.57553931;
+	gamma_B = 2.53633384; // 2.130010;
+	gamma_C = 2.65514190;
 
-	eta_A = 5.508498;
-	eta_B = 4.846393;
-	eta_C = 5.643429;
-	eta_D = 3.733975;
-	eta_E = 3.685420;
+	eta_A = 5.49681774;
+	eta_B = 4.86147345;
+	eta_C = 5.68391234;
+	eta_D = 3.73377651;
+	eta_E = 3.66622041;
 
     // Added props
 	
@@ -83,7 +83,7 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 
 	// velocity adaptation parameters
 	P_theta = 0.053470;
-	P_tau   = 0.142185;
+	P_tau   = 0.04747445;
 	P_GLU   = 1.065147;
 	P_HFL   = 3.689370;
 	P_HAM1  = 2.189173;
@@ -104,13 +104,9 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
     p_HAM2  = 0.0; // TODO: for now, these are zero'd, come back when speed modulating     
 
     // TODO: Default params for running stims' CPG weights
-    k_HAMrun1 = 1.15;
-    k_HAMrun2 = 2.35;
-    k_HAMrun3 = 1.15; 
-
-    k_HFLrun1 = 4.121;
-    k_HFLrun2 = 7.093;
-    k_HFLrun3 = 2.0;
+    k_HFLrun1 = 1.59619401;
+    k_HFLrun2 = 7.01533279;
+    k_HAMrun3 = 6.20870389; 
 
 	// velocity tracking
 	v_star = 0.6;

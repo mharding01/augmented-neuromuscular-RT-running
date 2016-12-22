@@ -17,27 +17,27 @@ JointsInit::JointsInit(MbsData *mbs_data, CtrlInputs *inputs)
 	this->inputs = inputs;
 
 	T1_p = CMAKE_VAR_2;
-	T3   = 0.0;
-	T3_p = 0.0;
-	R2   = 0.0;
-	R2_p = 0.0;
+	T3   = 0.51534532; //0.51434532;
+	T3_p = -0.19917298;
+	R2   = 0.15931929;
+	R2_p = 0.12469546;
 
 	r_sh   = 0.0;
-	r_sh_p = 0.0;
+	r_sh_p = 1.78067287;
 
-	r_hip     = 0.0;
-	r_hip_p   = 0.0;
-	r_knee    = 0.0;
-	r_knee_p  = 0.0;
-	r_ankle   = 0.0;
-	r_ankle_p = 0.0;
+	r_hip     = -0.53664085;
+	r_hip_p   = 2.35038869;
+	r_knee    = 0.50076082;
+	r_knee_p  = 1.65588274;
+	r_ankle   = 0.04930992;
+	r_ankle_p = 4.63256804;
 
-	l_hip     = 0.0;
-	l_hip_p   = 0.0;
-	l_knee    = 0.0;
-	l_knee_p  = 0.0;
-	l_ankle   = 0.0;
-	l_ankle_p = 0.0;
+	l_hip     = -0.01129314;
+	l_hip_p   = -1.50775015;
+	l_knee    = 0.96870977;
+	l_knee_p  = -0.15919546;
+	l_ankle   = 0.0;//0.27641770;
+	l_ankle_p = -1.70;//-1.33132669;
 
 	nb_mot = inputs->get_nb_mot();
 

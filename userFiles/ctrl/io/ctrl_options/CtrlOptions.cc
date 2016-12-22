@@ -29,7 +29,7 @@ CtrlOptions::CtrlOptions()
 	upper_motion = 1;
 
 	// controller in two parts (first with konw results)
-	ctrl_two_parts = 0;
+	ctrl_two_parts = 1;
 
 	// limiting output torques
 	torque_limit = 0;

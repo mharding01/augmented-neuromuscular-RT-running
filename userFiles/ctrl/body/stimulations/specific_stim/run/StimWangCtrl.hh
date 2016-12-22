@@ -23,6 +23,7 @@ class StimWangCtrl: public StimulationCtrl
 		virtual ~StimWangCtrl();
 
 		virtual void compute();
+        virtual void set_opti_defaults();
 
 		void compute_delay();
 		void compute_stimulation();
@@ -235,6 +236,7 @@ class StimWangCtrl: public StimulationCtrl
     	double phi_off_pk;
     	//switch controller
     	double t_switch;
+        int nb_strikes_switch;
 
 		void pitch_compute();
 

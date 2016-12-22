@@ -35,7 +35,8 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
 	flag_3D = options->is_flag_3D();
 	ctrl_two_parts = options->is_ctrl_two_parts();
 	Qq_match_wang = options->is_Qq_match_wang();
-	inital_pos = options->is_initial_pos();
+	inital_pos = options->is_initial_pos(); 
+    inital_pos = 0;
 
 	flag_part1 = 0;
 	flag_part2 = 0;
@@ -93,75 +94,13 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
 	l_opt_ham = ham[R_ID]->get_lopt();
 	l_opt_hfl = hfl[R_ID]->get_lopt();
 
-	// ---- opti parameters ----
-	// pre-stimulations
-	S0_sol_st = 0.01;
-	S0_ta_st  = 0.01;
-	S0_gas_st = 0.01;
-	S0_vas_st = 0.08;
-	S0_ham_st = 0.05;
-	S0_rf_st  = 0.01;
-	S0_glu_st = 0.05;
-	S0_hfl_st = 0.05;
-	S0_sol_sw = 0.01;
-	S0_ta_sw  = 0.01;
-	S0_gas_sw = 0.01;
-	S0_vas_sw = 0.01;
-	S0_ham_sw = 0.01;
-	S0_rf_sw  = 0.01;
-	S0_glu_sw = 0.01;
-	S0_hfl_sw = 0.01;
-	// gains of positive force feedback laws
-	G_sol = 1.2;
-	G_sol_ta = 0.4;
-	G_gas = 1.1;
-	G_vas = 1.2;
-	G_ham = 0.65;
-	G_glu = 0.5;
-	// gains of positive length feedback laws
-	G_ta_sw = 1.1;
-	G_ta_st = 1.1;
-	G_hfl = 0.5;
-	G_ham_hfl = 4.0;
-	// offsets of positive length feedback laws
-	l_off_ta_sw = 0.72;
-	l_off_ta_st = 0.72;
-	l_off_hfl = 0.65;
-	l_off_ham_hfl = 0.85;
-	// stance phase PD-control parameters
-	K_ham = 0.0; //1.0;
-	K_glu = 0.0; //1.0;
-	K_hfl = 0.0; //1.0;
-	D_ham = 0.0; //0.2;
-	D_glu = 0.0; //0.2;
-	D_hfl = 0.0; //0.2;
-	theta_ref = 0.0; //0.105;
-	// swing initiation parameters
-	si_rf = 0.01;
-	si_vas = 1.0;
-	si_glu = 0.25;
-	si_hfl = 0.25;
-	// stance preparation muscle PD-control parameters
-	K_sp_vas = 1.0;
-	K_sp_glu = 1.0;
-	K_sp_hfl = 1.0;
-	D_sp_vas = 0.2;
-	D_sp_glu = 0.2;
-	D_sp_hfl = 0.2;
-	theta_k_ref = 0.14;
-	// stance preparation SIMBICON-style feedback parameters
-	theta_h_ref0 = 0.0;
-	c_d = 0.0; //0.5;
-	c_v = 0.0; //0.2;
-	// swing initiation and stance preparation offsets
-    d_si = 0.4;
-	d_sp = -0.15;
-	//additional parameters
-	k_THETA = 0.0; //1.15;
-	k_theta = 2.0;
-	phi_off_pk = 0.17;
+    // set opti default parameters
+    set_opti_defaults();    
+
 	//swtich controller time
 	t_switch = 3.0;
+    // switch controller nb of steps
+    nb_strikes_switch = 6;
 
 	// for optimization
 	inputs->get_opti_inputs()->set_stim_ctrl(this);
@@ -177,6 +116,80 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
 
     // TODO: add flag indicating when cpg control active
     cpg_ctrl_active = 0;
+}
+
+/*! \brief Set StimWang parameters to defaults
+ */
+void StimWangCtrl::set_opti_defaults()
+{
+	// ---- opti parameters ----
+	// pre-stimulations
+	S0_sol_st = 0.04051781;
+	S0_ta_st  = 0.01605854 ;
+	S0_gas_st = 0.03672691;
+	S0_vas_st = 0.32842455;
+	S0_ham_st = 0.29797363;
+	S0_rf_st  = 0.09781730 ;
+	S0_glu_st = 0.11264627;
+	S0_hfl_st = 0.09101347;
+	S0_sol_sw = 0.02880403;
+	S0_ta_sw  = .02961106 ;
+	S0_gas_sw = 0.09458508;
+	S0_vas_sw = 0.02181909;
+	S0_ham_sw = 0.06652838;
+	S0_rf_sw  = .37252351 ;
+	S0_glu_sw = 0.01657156;
+	S0_hfl_sw = 0.04202100;
+	// gains of positive force feedback laws
+	G_sol = 2.44040651;
+	G_sol_ta = 4.73210470;
+	G_gas = 16.29604047;
+	G_vas = 1.05551413;
+	G_ham = 2.28251452;
+	G_glu = 1.07624631;
+	// gains of positive length feedback laws
+	G_ta_sw = 3.46270266;
+	G_ta_st = 2.19688800;
+	G_hfl = 2.14613290;
+	G_ham_hfl = 6.10776576;
+	// offsets of positive length feedback laws
+	l_off_ta_sw = 0.61752060;
+	l_off_ta_st = 0.60032765;
+	l_off_ham_hfl = 0.47799085;
+	l_off_hfl = 0.53284490 ;
+	// stance phase PD-control parameters
+	K_ham = 3.30099978; //1.0;
+	K_glu = 6.97141634; //1.0;
+	K_hfl = 8.51399488; //1.0;
+	D_ham = 0.28472525; //0.2;
+	D_glu = 0.05289260; //0.2;
+	D_hfl = 0.70371939; //0.2;
+	theta_ref = 0.02114376; //0.105;
+	// swing initiation parameters
+	si_vas = 0.78000072;
+	si_rf = 0.10492337;
+	si_glu = 0.62043390;
+	si_hfl = 0.27594038;
+	// stance preparation muscle PD-control parameters
+	K_sp_vas = 1.59802488;
+	K_sp_glu = 3.11768317;
+	K_sp_hfl = 1.88241262;
+	D_sp_vas = 0.09571155;
+	D_sp_glu = 0.02186125;
+	D_sp_hfl = 0.08392030;
+	theta_k_ref = 0.29975759;
+	// stance preparation SIMBICON-style feedback parameters
+	theta_h_ref0 = 0.60620732;
+	c_d = 0.0; //0.5;
+	c_v = 0.0; //0.2;
+	// swing initiation and stance preparation offsets
+	d_sp = -0.08317890;
+    d_si = 0.32710358;
+	//additional parameters
+	k_THETA = 3.37682482; //1.15;
+	k_theta = 2.53505258;
+	phi_off_pk = 0.08940935;
+
 }
 
 /*! \brief destructor
@@ -204,12 +217,13 @@ void StimWangCtrl::switch_results()
 {
 	if(ctrl_two_parts)
 	{
-		if((inputs->get_t() < t_switch) && !flag_part1)
+		if((sw_st->get_nb_strikes() < nb_strikes_switch) && !flag_part1)
 		{
-			opti_init->set_opti();
+			//opti_init->set_opti();
+            set_opti_defaults();
 			flag_part1 = 1;
 		}
-		else if((inputs->get_t() >= t_switch) && !flag_part2)
+		else if((sw_st->get_nb_strikes() >= nb_strikes_switch) && !flag_part2)
 		{
 			inputs->get_opti_inputs()->set_opti();
 			flag_part2 = 1;
