@@ -36,7 +36,6 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
 	ctrl_two_parts = options->is_ctrl_two_parts();
 	Qq_match_wang = options->is_Qq_match_wang();
 	inital_pos = options->is_initial_pos(); 
-    inital_pos = 0;
 
 	flag_part1 = 0;
 	flag_part2 = 0;
@@ -192,6 +191,20 @@ void StimWangCtrl::set_opti_defaults()
 
 }
 
+/*! \brief sets optimization values for anytime after constructor 
+ * (e.g. after x strikes)
+ */
+void StimWangCtrl::set_opti_delayed()
+{
+    // Use Matsuoka to optimize 6 parameters - opti_set() occured at constructor
+    ghost_osc->delayed_opti_set();
+    // ghost_osc->update_speed_oscillos(); 
+
+    // Retrieve update values for trunk lean and hip angle
+    theta_ref = ghost_osc->get_theta_trunk_ref();
+    theta_h_ref0 = ghost_osc->get_theta_hip_ref();
+}
+
 /*! \brief destructor
  */
 StimWangCtrl::~StimWangCtrl()
@@ -225,7 +238,7 @@ void StimWangCtrl::switch_results()
 		}
 		else if((sw_st->get_nb_strikes() >= nb_strikes_switch) && !flag_part2)
 		{
-			inputs->get_opti_inputs()->set_opti();
+            set_opti_delayed();
 			flag_part2 = 1;
 		}
 	}

@@ -24,6 +24,7 @@ class StimWangCtrl: public StimulationCtrl
 
 		virtual void compute();
         virtual void set_opti_defaults();
+        virtual void set_opti_delayed();
 
 		void compute_delay();
 		void compute_stimulation();

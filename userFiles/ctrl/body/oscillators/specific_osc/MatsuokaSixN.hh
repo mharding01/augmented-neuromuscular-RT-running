@@ -41,7 +41,8 @@ class MatsuokaSixN: public Oscillators
 		double get_k_HAMrun1()    const { return k_HAMrun1;    }
 		double get_k_HAMrun2()    const { return k_HAMrun2;    }
 		double get_k_HAMrun3()    const { return k_HAMrun3;    }
-		double get_theta_ref() const { return theta_ref; }
+		double get_theta_trunk_ref() const { return theta_trunk_ref; }
+		double get_theta_hip_ref() const { return theta_hip_ref; }
 
 		double get_t_osc_error_mean() const { return t_osc_error_mean; }
 
@@ -63,14 +64,16 @@ class MatsuokaSixN: public Oscillators
 		void set_eta_F(double value) { eta_F = value; }
 		void set_eta_G(double value) { eta_G = value; }
 
-		void set_P_theta(double value) { P_theta = value; }
+		void set_P_theta_trunk(double value) { P_theta_trunk = value; }
+		void set_P_theta_hip(double value) { P_theta_hip = value; }
 		void set_P_tau(double value)   { P_tau = value; }
 		void set_P_GLU(double value)   { P_GLU = value; }
 		void set_P_HFL(double value)   { P_HFL = value; }
 		void set_P_HAM1(double value)  { P_HAM1 = value; }
 		void set_P_HAM2(double value)  { P_HAM2 = value; }
 
-		void set_p_theta(double value) { p_theta = value; }
+		void set_p_theta_trunk(double value) { p_theta_trunk = value; }
+		void set_p_theta_hip(double value) { p_theta_hip = value; }
 		void set_p_tau(double value)   { p_tau = value; }
 		void set_p_HFL(double value)   { p_HFL = value; }
 		void set_p_HAM1(double value)  { p_HAM1 = value; }
@@ -84,6 +87,15 @@ class MatsuokaSixN: public Oscillators
 		void set_k_HFLrun2(double value)  { k_HFLrun2 = value; }
 		void set_k_HFLrun3(double value)  { k_HFLrun3 = value; }
 
+        /* Delayed setting of fields, after x steps during optimization */
+		void opti_set_k_HFLrun1(double value)  { opt_k_HFLrun1 = value; }
+		void opti_set_k_HFLrun2(double value)  { opt_k_HFLrun2 = value; }
+		void opti_set_k_HAMrun3(double value)  { opt_k_HAMrun3 = value; }
+		void opti_set_P_theta_trunk(double value) { opt_P_theta_trunk = value; }
+		void opti_set_P_theta_hip(double value) { opt_P_theta_hip = value; }
+		void opti_set_P_tau(double value)   { opt_P_tau = value; }
+
+        void delayed_opti_set();
 	private:
 		std::vector<double> v;  ///< fatigue for neurons
 		std::vector<double> vd; ///< fatigue for neurons (derivative)
@@ -124,14 +136,16 @@ class MatsuokaSixN: public Oscillators
 		double tau_C_inv;
 
 		// velocity adaptation parameters
-		double P_theta;
+		double P_theta_trunk;
+		double P_theta_hip;
 		double P_tau;
 		double P_GLU;
 		double P_HFL;
 		double P_HAM1;
 		double P_HAM2;
 
-		double p_theta;
+		double p_theta_trunk;
+		double p_theta_hip;
 		double p_tau;
 		double p_HFL;
 		double p_HAM1;
@@ -141,7 +155,8 @@ class MatsuokaSixN: public Oscillators
 		double v_star;
 		double v_request;
 
-		double theta_ref;
+		double theta_trunk_ref;
+		double theta_hip_ref;
 		double tau;
 
 
@@ -173,6 +188,16 @@ class MatsuokaSixN: public Oscillators
         // Running alignment fields
         // TODO: Assumes bipedal
         int flag_last_stance_leg_r;  /// Flag set when r leg was last stance leg
+
+        // Optimization variables for varying speed running
+		double opt_P_theta_trunk;
+		double opt_P_theta_hip;
+		double opt_P_tau;
+
+        double opt_k_HFLrun1;   
+        double opt_k_HFLrun2;
+		double opt_k_HAMrun3;
+
 };
 
 #endif

@@ -82,7 +82,8 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	eta_G = 3.501070;
 
 	// velocity adaptation parameters
-	P_theta = 0.053470;
+	P_theta_trunk = 0.02114376; // Taken from StimWang new defaults
+    P_theta_hip = 0.60620732;
 	P_tau   = 0.04747445;
 	P_GLU   = 1.065147;
 	P_HFL   = 3.689370;
@@ -97,7 +98,8 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	p_HAM2  = -2.829820;
     */
 
-    p_theta = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
+    p_theta_trunk = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
+    p_theta_hip = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
     p_tau   = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
     p_HFL   = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
     p_HAM1  = 0.0; // TODO: for now, these are zero'd, come back when speed modulating     
@@ -107,6 +109,14 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
     k_HFLrun1 = 1.59619401;
     k_HFLrun2 = 7.01533279;
     k_HAMrun3 = 6.20870389; 
+    
+    // Init delayed "opti_set" params to defaults
+    opt_k_HFLrun1 = k_HFLrun1 ;
+    opt_k_HFLrun2 = k_HFLrun2 ;
+    opt_k_HAMrun3 = k_HAMrun3 ;
+    opt_P_theta_trunk = P_theta_trunk;
+    opt_P_theta_hip = P_theta_hip;
+    opt_P_tau = P_tau;
 
 	// velocity tracking
 	v_star = 0.6;
@@ -187,7 +197,8 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 	//set_plot(v_request, "target speed [m/s]");
 
 	// linear function	
-	theta_ref = P_theta  + p_theta * v_diff;
+	theta_trunk_ref = P_theta_trunk  + p_theta_trunk * v_diff;
+	theta_hip_ref = P_theta_hip  + p_theta_hip * v_diff;
 	tau       = P_tau    + p_tau   * v_diff; 
 	k_GLU     = P_GLU;
 	k_HFL     = P_HFL    + p_HFL  * v_diff;
@@ -195,7 +206,10 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 	k_HAM2    = P_HAM2   + p_HAM2 * v_diff;
 
 	// limiting the interpolations
-	theta_ref = (theta_ref < MIN_THETA_REF) ? MIN_THETA_REF : theta_ref;
+	theta_trunk_ref = (theta_trunk_ref < MIN_THETA_REF) \
+                        ? MIN_THETA_REF : theta_trunk_ref;
+    theta_hip_ref = (theta_hip_ref < MIN_THETA_REF) \
+                        ? MIN_THETA_REF : theta_hip_ref;
 	tau       = (tau       < 0.0) ? 0.0 : tau;
 	k_GLU     = (k_GLU     < 0.0) ? 0.0 : k_GLU;
 	k_HFL     = (k_HFL     < 0.0) ? 0.0 : k_HFL;
@@ -437,4 +451,19 @@ void MatsuokaSixN::update(double cur_t)
 
 	// oscillators prediction error
 	oscillator_prediction_error(cur_t);
+}
+
+/*! \brief
+* Sets oscillator fields manually, allowing for delayed updating of parameters
+* during optimization.
+*/
+void MatsuokaSixN::delayed_opti_set()
+{
+    // Updates 6 running parameters according to their "opt" (optimized) counterparts
+    k_HFLrun1 = opt_k_HFLrun1;
+    k_HFLrun2 = opt_k_HFLrun2;
+    k_HAMrun3 = opt_k_HAMrun3;
+    P_theta_trunk = opt_P_theta_trunk;
+    P_theta_hip = opt_P_theta_hip;
+    P_tau = opt_P_tau;
 }
