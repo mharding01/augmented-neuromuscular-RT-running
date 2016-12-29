@@ -4,7 +4,7 @@
 #include "NicoCtrl.hh"
 #include "Body.hh"
 
-#define DIST_VELOCITY_START 2.0
+#define DIST_VELOCITY_START 4.0
 
 /*! \brief constructor
  * 

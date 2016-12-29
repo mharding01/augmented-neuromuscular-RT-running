@@ -24,15 +24,15 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
         fitness_tab.push_back(new MinDistFitness(mbs_data, sens_info)); // 500
 		
 		fitness_tab.push_back(new WalkTimeFitness(mbs_data));           // 400
-		
-        fitness_tab.push_back(new OscillosFitness(mbs_data, ctrl));     // 300
 
 		if (options->speed_opti)
-		{   // 300
+		{   // 400
             CPG_SpeedFitness *cpg_speed_fitness = new CPG_SpeedFitness(mbs_data, ctrl, sens_info);
             speed_fitness = static_cast<SpeedFitness*>(cpg_speed_fitness);
 			fitness_tab.push_back(cpg_speed_fitness); 
 		}
+
+        fitness_tab.push_back(new OscillosFitness(mbs_data, ctrl));     // 300
 
 		fitness_tab.push_back(new FlightFitness(mbs_data, ctrl));       // 250 
 		
