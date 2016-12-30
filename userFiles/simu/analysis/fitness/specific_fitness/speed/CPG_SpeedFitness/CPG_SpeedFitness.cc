@@ -63,7 +63,7 @@ double CPG_SpeedFitness::get_fitness()
 		if (fabs(speed_opti - speed_ref) > VELOCITY_MARGIN)
 		{
             // TODO: Changed error coeff to 100, now effective gaussian range: -.15:.15 speed error
-			return compute_gaussian_fitness(speed_ref - speed_opti, max_fitness, 100);
+			return compute_gaussian_fitness(speed_ref - speed_opti, max_fitness, 25);
 		}
 		else
 		{
