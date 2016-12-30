@@ -20,8 +20,7 @@ class CPG_SpeedFitness: public SpeedFitness
 	public:
 		CPG_SpeedFitness(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info);
 		virtual ~CPG_SpeedFitness();
-		void compute();
-        double get_fitness();
+		virtual void compute();
 	private:
 
         StimWangCtrl *stims;     // Pointer to stims for controller in use

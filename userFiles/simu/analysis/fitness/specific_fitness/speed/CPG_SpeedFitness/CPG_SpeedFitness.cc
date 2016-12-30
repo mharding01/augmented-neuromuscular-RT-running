@@ -5,7 +5,6 @@
 #include "Body.hh"
 
 #define DIST_VELOCITY_START 4.0
-#define VELOCITY_MARGIN 0.025
 
 /*! \brief constructor
  * 
@@ -49,30 +48,6 @@ void CPG_SpeedFitness::compute()
 		{
 			speed_opti = (sens_info->get_S_MidWaist_P(0) - speed_opti_x_start) / (t - speed_opti_t_start); // mean velocity
 		}
-	}
-}
-
-/*! \brief get fitness
- * 
- * \return fitness
- */
-double CPG_SpeedFitness::get_fitness()
-{
-	if (speed_opti_started)
-	{
-		if (fabs(speed_opti - speed_ref) > VELOCITY_MARGIN)
-		{
-            // TODO: Changed error coeff to 100, now effective gaussian range: -.15:.15 speed error
-			return compute_gaussian_fitness(speed_ref - speed_opti, max_fitness, 100);
-		}
-		else
-		{
-			return max_fitness;
-		}
-	}
-	else
-	{
-		return 0.0;
 	}
 }
 
