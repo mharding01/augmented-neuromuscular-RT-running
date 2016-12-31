@@ -25,7 +25,7 @@ CPG_SpeedFitness::CPG_SpeedFitness(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *s
  */
 CPG_SpeedFitness::~CPG_SpeedFitness()
 {
-	printf("Speed opti, speed ref: %f, %f\n", speed_opti, speed_ref);
+	//printf("Speed opti, speed ref: %f, %f\n", speed_opti, speed_ref);
 }
 
 /*! \brief compute variables at each time step
