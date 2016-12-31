@@ -20,18 +20,22 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 {
 	if (ctrl->get_ctrl_id() == NICO_CTRL)
 	{   
-        // In decreasing order of reward
+		// Staged optimization: Stage 1 is walk_time
+		fitness_tab.push_back(new WalkTimeFitness(mbs_data));           // 400
+		/* --- Locked until no falls before 75% of 30seconds --- */
+
+		// Stage 2: speed
 		if (options->speed_opti)
-		{   // 800
+		{   // 800 ...
+			// want to still reward staying as close as possible to within 0.025
             CPG_SpeedFitness *cpg_speed_fitness = new CPG_SpeedFitness(mbs_data, ctrl, sens_info);
             speed_fitness = static_cast<SpeedFitness*>(cpg_speed_fitness);
 			fitness_tab.push_back(cpg_speed_fitness); 
 		}
+		/* --- Locked until speed is within 0.05 of target_speed ---- */
 
-        fitness_tab.push_back(new MinDistFitness(mbs_data, sens_info)); // 500
-		
-		fitness_tab.push_back(new WalkTimeFitness(mbs_data));           // 400
-
+		// Stage 3: min distance, oscillo error, flight, torso, met energy, foot
+		fitness_tab.push_back(new MinDistFitness(mbs_data, sens_info)); // 300
 
         fitness_tab.push_back(new OscillosFitness(mbs_data, ctrl));     // 300
 
@@ -41,7 +45,8 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 
 		fitness_tab.push_back(new MetEnergyFitness(mbs_data, ctrl));        // 50
 
-		fitness_tab.push_back(new FootFitness(mbs_data, sens_info, ctrl));  // 25
+		//TODO: foot fitness favors maximizing total stance time per gait cycle
+		//fitness_tab.push_back(new FootFitness(mbs_data, sens_info, ctrl));  // 25
 
 	}
 }

@@ -1,6 +1,7 @@
 
 #include "WalkTimeFitness.hh"
 
+#define WT_PERCENT_THRESH 0.75
 /*! \brief constructor
  * 
  * \param[in] mbs_data Robotran structure
@@ -40,5 +41,5 @@ double WalkTimeFitness::get_fitness()
  */
 int WalkTimeFitness::next_stage_unlocked()
 {
-	return 1;
+	return (mbs_data->tsim / tf) > WT_PERCENT_THRESH;
 }

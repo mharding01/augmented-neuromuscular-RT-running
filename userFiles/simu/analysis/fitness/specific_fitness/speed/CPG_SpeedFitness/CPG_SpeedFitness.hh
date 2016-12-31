@@ -22,6 +22,7 @@ class CPG_SpeedFitness: public SpeedFitness
 		virtual ~CPG_SpeedFitness();
 		void compute();
         double get_fitness();
+        int next_stage_unlocked();
 	private:
 
         StimWangCtrl *stims;     // Pointer to stims for controller in use

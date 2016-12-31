@@ -6,6 +6,7 @@
 
 #define DIST_VELOCITY_START 4.0
 #define VELOCITY_MARGIN 0.025
+#define VELOCITY_THRESH 0.05
 
 /*! \brief constructor
  * 
@@ -76,3 +77,7 @@ double CPG_SpeedFitness::get_fitness()
 	}
 }
 
+int CPG_SpeedFitness::next_stage_unlocked()
+{
+	return (fabs(speed_opti - speed_ref) < VELOCITY_THRESH);
+}
