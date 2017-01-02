@@ -20,11 +20,8 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 {
 	if (ctrl->get_ctrl_id() == NICO_CTRL)
 	{   
-		// Staged optimization: Stage 1 is walk_time
-		fitness_tab.push_back(new WalkTimeFitness(mbs_data));           // 400
-		/* --- Locked until no falls before 75% of 30seconds --- */
-
-		// Stage 2: speed
+		// Staged optimization: 
+		// Stage 1: speed
 		if (options->speed_opti)
 		{   // 800 ...
 			// want to still reward staying as close as possible to within 0.025
@@ -33,6 +30,9 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 			fitness_tab.push_back(cpg_speed_fitness); 
 		}
 		/* --- Locked until speed is within 0.05 of target_speed ---- */
+		// Stage 2: walk time
+		fitness_tab.push_back(new WalkTimeFitness(mbs_data));           // 400
+		/* --- Locked until no falls before 75% of 30seconds --- */
 
 		// Stage 3: min distance, oscillo error, flight, torso, met energy, foot
 		fitness_tab.push_back(new MinDistFitness(mbs_data, sens_info)); // 300
