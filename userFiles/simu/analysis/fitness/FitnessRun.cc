@@ -21,7 +21,9 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 	if (ctrl->get_ctrl_id() == NICO_CTRL)
 	{   
 		// Staged optimization: 
-		// Stage 1: speed
+		
+		fitness_tab.push_back(new TorsoFitness(mbs_data, sens_info, ctrl)); // 300
+		// Stage 1: torso+speed
 		if (options->speed_opti)
 		{   // 800 ...
 			// want to still reward staying as close as possible to within 0.025
@@ -40,8 +42,6 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
         fitness_tab.push_back(new OscillosFitness(mbs_data, ctrl));     // 300
 
 		fitness_tab.push_back(new FlightFitness(mbs_data, ctrl));       // 250 
-		
-		fitness_tab.push_back(new TorsoFitness(mbs_data, sens_info, ctrl)); // 100
 
 		fitness_tab.push_back(new MetEnergyFitness(mbs_data, ctrl));        // 50
 
