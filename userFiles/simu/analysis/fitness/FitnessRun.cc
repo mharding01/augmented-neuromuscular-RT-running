@@ -20,12 +20,12 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 {
 	if (ctrl->get_ctrl_id() == NICO_CTRL)
 	{   
-		// Staged optimization: 
+		// Flat optimization: 
 		
 		fitness_tab.push_back(new TorsoFitness(mbs_data, sens_info, ctrl)); // 300
 		// Stage 1: torso+speed
 		if (options->speed_opti)
-		{   // 800 ...
+		{   // 1000 ...
 			// want to still reward staying as close as possible to within 0.025
             CPG_SpeedFitness *cpg_speed_fitness = new CPG_SpeedFitness(mbs_data, ctrl, sens_info);
             speed_fitness = static_cast<SpeedFitness*>(cpg_speed_fitness);

@@ -43,11 +43,12 @@ void Fitness::compute()
 	{
 		fitness_details.push_back(fitness_tab[i]->get_fitness());
 		total_fitness += fitness_tab[i]->get_fitness();
-		if (!fitness_tab[i]->next_stage_unlocked())
+		// TODO: Remove stages
+		/*if (!fitness_tab[i]->next_stage_unlocked())
 		{
 			break;
 		}
-
+		*/
 	}
 }
 
