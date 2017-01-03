@@ -144,6 +144,7 @@ class StimWangCtrl: public StimulationCtrl
 
 		double theta_toro_sw0; ///< torso angle at the beginning of the swing phase [rad]
 		int first_swing[NB_LEGS]; ///< flag to enter only one in first swing contact 
+		int first_stance[NB_LEGS]; ///< flag to enter only once in first stance contact 
 
 		// l.ce (dalay)
 		double lce_ta[NB_LEGS];  ///< contractile element derivative for TA [m]
