@@ -182,7 +182,7 @@ void StimWangCtrl::set_opti_defaults()
 	D_sp_hfl = 0.08392030;
 	theta_k_ref = 0.29975759;
 	// stance preparation SIMBICON-style feedback parameters
-	theta_h_ref0 = 0.60620732;
+	theta_h_ref0 = 0.406; //TODO //0.60620732;
 	c_d = 0.0; //0.5;
 	c_v = 0.0; //0.2;
 	// swing initiation and stance preparation offsets
@@ -307,11 +307,13 @@ void StimWangCtrl::compute_stimulation()
 	set_plot(phi_h[R_ID], "R hip phi");
 	//set_plot(phip_h[R_ID], "hip angular speed");
 	//set_plot(phi_k[R_ID], "knee angle");
+	//set_plot(theta_k_ref, "knee ref angle");
 	//set_plot(phip_k[R_ID], "knee angular speed");
 
-	//set_plot(theta_torso, "torso angle");
+	set_plot(theta_torso, "torso angle");
+	set_plot(theta_ref, "theta ref");
 	//set_plot(omega_torso, "torso omega");
-	set_plot(theta_toro_sw0, "torso sw 0");
+	//set_plot(theta_toro_sw0, "torso sw 0");
 
 	pitch_compute();
 
@@ -597,7 +599,6 @@ void StimWangCtrl::pitch_compute()
 		// SIMBICON law, converts hip reference angle	
 		theta_h_ref = -(theta_h_ref0 + c_d * d + c_v * speed_fwd_global);
 		set_plot(theta_h_ref, "theta_h_ref");
-		// theta_h_ref -= 2.0;
         if ( inputs->get_t() > cpg_ctrl_thresh_t ) /* Overwrite stims after thresh */
         {
             // Set flag, indicating cpg control initiated
@@ -643,9 +644,9 @@ void StimWangCtrl::pitch_compute()
 
                 
                 // plot right leg stims
-                //set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU cpg");    // TODO
+                set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU cpg");    // TODO
                 set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM cpg");    // TODO
-                //set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL cpg");    // TODO
+                set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL cpg");    // TODO
             }
             else if (i==L_ID) 
             {

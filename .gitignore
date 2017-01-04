@@ -14,5 +14,6 @@ SfunctionsR
 build
 debug
 test
-workR/optis
+workR/*Optis
+workR/*.*
 .DS_Store

@@ -4,7 +4,7 @@
 #include "NicoCtrl.hh"
 #include "Body.hh"
 
-#define DIST_VELOCITY_START 2.0
+#define DIST_VELOCITY_START 4.0
 #define VELOCITY_MARGIN 0.025
 #define VELOCITY_THRESH 0.05
 

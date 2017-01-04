@@ -64,7 +64,7 @@ SimuOptions* init_SimuOptions()
 	options->gcm_model = MESH_GCM_MODEL;
 
 	//must to be the same value in CtrlOptions (used to unactivate noise before switch)
-	options->ctrl_two_parts = 0;
+	options->ctrl_two_parts = 1;
 	if (options->simu_constraint == SIMU_Qq_MATCH_WANG)
 	{
 		options->ctrl_two_parts = 0;
