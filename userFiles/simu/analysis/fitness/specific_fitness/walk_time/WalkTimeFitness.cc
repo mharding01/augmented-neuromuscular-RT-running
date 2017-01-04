@@ -9,7 +9,7 @@
 WalkTimeFitness::WalkTimeFitness(MbsData *mbs_data): FitnessStage(mbs_data)
 {
 	tf = mbs_data->tf;
-	max_fitness = 500.0;
+	max_fitness = 400.0;
 }
 
 /*! \brief destructor

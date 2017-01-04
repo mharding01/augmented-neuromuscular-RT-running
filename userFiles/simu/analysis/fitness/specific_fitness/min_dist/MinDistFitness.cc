@@ -16,7 +16,7 @@ MinDistFitness::MinDistFitness(MbsData *mbs_data, SensorsInfo *sens_info): Fitne
 
 	lim_x_travel = 0.25 * tf;
 
-	max_fitness = 300.0;
+	max_fitness = 500.0;
 
 	this->sens_info = sens_info;
 }
