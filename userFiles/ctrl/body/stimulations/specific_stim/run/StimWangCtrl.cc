@@ -202,7 +202,7 @@ void StimWangCtrl::set_opti_delayed()
 {
     // Use Matsuoka to optimize 6 parameters - opti_set() occured at constructor
     ghost_osc->delayed_opti_set();
-    // ghost_osc->update_speed_oscillos(); 
+    ghost_osc->update_speed_oscillos(); // update theta_*_ref's
 
     // Retrieve update values for trunk lean and hip angle
     theta_ref = ghost_osc->get_theta_trunk_ref();

@@ -83,7 +83,7 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 
 	// velocity adaptation parameters
 	P_theta_trunk = 0.02114376; // Taken from StimWang new defaults
-    P_theta_hip = 0.60620732;
+    P_theta_hip = 0.406;	// TODO: 0.60620732;
 	P_tau   = 0.04747445;
 	P_GLU   = 1.065147;
 	P_HFL   = 3.689370;
@@ -160,12 +160,12 @@ void MatsuokaSixN::Matsuoka_six_neurons()
 	vd[4] = tau_B_inv * ( -v[4] + pos(x[4]) );
 	vd[5] = tau_C_inv * ( -v[5] + pos(x[5]) ); 
     
-    set_plot(y[0], "y1");
-    set_plot(y[1], "y2");
-    set_plot(y[3] , "y4");
-    set_plot(y[4] , "y5");
-    set_plot(y[2] , "y3");
-    set_plot(y[5] , "y6");
+    //set_plot(y[0], "y1");
+    //set_plot(y[1], "y2");
+    //set_plot(y[3] , "y4");
+    //set_plot(y[4] , "y5");
+    //set_plot(y[2] , "y3");
+    //set_plot(y[5] , "y6");
 
     // Plot fatigue
     //set_plot(v[0], "V1");
