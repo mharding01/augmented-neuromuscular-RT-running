@@ -204,9 +204,12 @@ void StimWangCtrl::set_opti_delayed()
     ghost_osc->delayed_opti_set();
     ghost_osc->update_speed_oscillos(); // update theta_*_ref's
 
-    // Retrieve update values for trunk lean and hip angle
+    // Retrieve update values for trunk lean and hip angle, SOL and GAS gains
     theta_ref = ghost_osc->get_theta_trunk_ref();
     theta_h_ref0 = ghost_osc->get_theta_hip_ref();
+	G_sol = ghost_osc->get_G_sol();
+	G_sol_ta = ghost_osc->get_G_sol_ta();
+	G_gas = ghost_osc->get_G_gas();
 }
 
 /*! \brief destructor
@@ -644,9 +647,9 @@ void StimWangCtrl::pitch_compute()
 
                 
                 // plot right leg stims
-                set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU cpg");    // TODO
-                set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM cpg");    // TODO
-                set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL cpg");    // TODO
+                //set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU cpg");    // TODO
+                //set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM cpg");    // TODO
+                //set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL cpg");    // TODO
             }
             else if (i==L_ID) 
             {

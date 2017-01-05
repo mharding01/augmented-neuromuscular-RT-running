@@ -29,8 +29,11 @@ void OptiGeneration::set_opti()
     g_osc->opti_set_P_tau(optiParams[0] ); // Taken from master commit: "All_1 results, 1459 score"
 	g_osc->opti_set_P_theta_trunk( optiParams[1] ); // TODO: trunk lean 
 	g_osc->opti_set_P_theta_hip( optiParams[2] ); // TODO: made its lower bound smaller, come back to this later
+	g_osc->opti_set_P_G_SOL( optiParams[3] );	// TODO: Original bounds
+	g_osc->opti_set_P_G_SOL_TA( optiParams[4] );// Prevent tripping
+	g_osc->opti_set_P_G_GAS( optiParams[5] );
 
-    g_osc->opti_set_k_HFLrun1( optiParams[3]);
-    g_osc->opti_set_k_HFLrun2( optiParams[4]);
-    g_osc->opti_set_k_HAMrun3( optiParams[5]);
+    g_osc->opti_set_k_HFLrun1( optiParams[6]);
+    g_osc->opti_set_k_HFLrun2( optiParams[7]);
+    g_osc->opti_set_k_HAMrun3( optiParams[8]);
 }
