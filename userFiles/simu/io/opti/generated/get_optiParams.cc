@@ -25,9 +25,9 @@ double convert_to_optiParams(std::vector<double> optiNorms)
 	switch (index)
 	{
 		case 0 : return (last_elem * 0.14000000 + 0.01000000);
-		case 1 : return (last_elem * 0.24500000 + 0.00500000);
+		case 1 : return (last_elem * 0.25000000 + 0.00000000);
 		case 2 : return (last_elem * 0.85000000 + 0.05000000);
-		case 3 : return (last_elem * 5.80000000 + 0.30000000);
+		case 3 : return (last_elem * 6.00000000 + 0.10000000);
 		case 4 : return (last_elem * 9.00000000 + 1.00000000);
 		case 5 : return (last_elem * 6.70000000 + 0.30000000);
 
