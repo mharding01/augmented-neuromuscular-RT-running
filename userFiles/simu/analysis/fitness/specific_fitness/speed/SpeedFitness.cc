@@ -21,7 +21,7 @@ SpeedFitness::SpeedFitness(MbsData *mbs_data, SensorsInfo *sens_info): FitnessSt
 
 	speed_opti = 0.0;
 
-	max_fitness = 500.0;
+	max_fitness = 700.0;
 
 	speed_ref = mbs_data->user_IO->options->opti_speed_ref;
 }
