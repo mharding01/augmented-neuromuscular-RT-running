@@ -27,13 +27,19 @@ void OptiGeneration::set_opti()
     // Uses "opti_set" function family in order to delay setting these params
     // until after Ctrl construction
     g_osc->opti_set_P_tau(optiParams[0] ); // Taken from master commit: "All_1 results, 1459 score"
+	// HIP CONTROL
 	g_osc->opti_set_P_theta_trunk( optiParams[1] ); // TODO: trunk lean 
 	g_osc->opti_set_P_theta_hip( optiParams[2] ); // TODO: made its lower bound smaller, come back to this later
-	g_osc->opti_set_P_G_SOL( optiParams[3] );	// TODO: Original bounds
-	g_osc->opti_set_P_G_SOL_TA( optiParams[4] );// Prevent tripping
-	g_osc->opti_set_P_G_GAS( optiParams[5] );
+    g_osc->opti_set_k_HFLrun1( optiParams[3]);
+    g_osc->opti_set_k_HFLrun2( optiParams[4]);
+    g_osc->opti_set_k_HAMrun3( optiParams[5]);
 
-    g_osc->opti_set_k_HFLrun1( optiParams[6]);
-    g_osc->opti_set_k_HFLrun2( optiParams[7]);
-    g_osc->opti_set_k_HAMrun3( optiParams[8]);
+	// ANKLE CONTROL
+	g_osc->opti_set_P_G_SOL( optiParams[6] );	// TODO: Original bounds
+	g_osc->opti_set_P_G_SOL_TA( optiParams[7] );// Prevent tripping
+	g_osc->opti_set_P_G_GAS( optiParams[8] );
+
+	// KNEE CONTROL
+	g_osc->opti_set_P_G_VAS( optiParams[9] );	// Shock absorption, v. thrust
+	g_osc->opti_set_P_k_theta( optiParams[10]);	// Prevent hyperextension
 }

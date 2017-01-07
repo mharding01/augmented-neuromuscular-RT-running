@@ -92,6 +92,8 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	P_G_SOL = 2.44040651;
 	P_G_SOL_TA = 4.73210470;
 	P_G_GAS = 16.29604047;
+	P_G_VAS = 1.05551413;
+	P_k_theta = 2.53505258;
     
     /*
 	p_theta = 0.502487;
@@ -110,6 +112,8 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	p_G_SOL = 0.0;
 	p_G_SOL_TA = 0.0;
 	p_G_GAS = 0.0;
+	p_G_VAS = 0.0;
+	p_k_theta = 0.0;
 
     // TODO: Default params for running stims' CPG weights
     k_HFLrun1 = 1.59619401;
@@ -126,6 +130,8 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
     opt_P_G_SOL = P_G_SOL;
     opt_P_G_SOL_TA = P_G_SOL_TA;
     opt_P_G_GAS = P_G_GAS;
+    opt_P_G_VAS = P_G_VAS;
+    opt_P_k_theta = P_k_theta;
 
 	// velocity tracking
 	v_star = 0.6;
@@ -216,6 +222,8 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 	G_sol	  = P_G_SOL + p_G_SOL * v_diff;
 	G_sol_ta  = P_G_SOL_TA + p_G_SOL_TA * v_diff;
 	G_gas 	  = P_G_GAS + p_G_GAS * v_diff;
+	G_vas	  = P_G_VAS + p_G_VAS * v_diff;
+	k_theta	  = P_k_theta + p_k_theta * v_diff;
 	
 	// limiting the interpolations
 	theta_trunk_ref = (theta_trunk_ref < MIN_THETA_REF) \
@@ -230,6 +238,8 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 	G_sol	  = (G_sol < 0.0) ? 0.0 : G_sol;
 	G_sol_ta  = (G_sol_ta < 0.0) ? 0.0 : G_sol_ta;
 	G_gas	  = (G_gas < 0.0) ? 0.0 : G_gas;
+	G_vas	  = (G_vas < 0.0) ? 0.0 : G_vas;
+	k_theta	  = (k_theta < 0.0) ? 0.0 : k_theta;
 
 	// oscillators period
 	tau_inv   = 1.0 / tau;
@@ -478,10 +488,13 @@ void MatsuokaSixN::delayed_opti_set()
     k_HFLrun1 = opt_k_HFLrun1;
     k_HFLrun2 = opt_k_HFLrun2;
     k_HAMrun3 = opt_k_HAMrun3;
+	// Corresponding values of below need to be set by update_speed_oscillos()
     P_theta_trunk = opt_P_theta_trunk;
     P_theta_hip = opt_P_theta_hip;
     P_tau = opt_P_tau;
 	P_G_SOL = opt_P_G_SOL;
 	P_G_SOL_TA = opt_P_G_SOL_TA;
 	P_G_GAS = opt_P_G_GAS;
+	P_G_VAS = opt_P_G_VAS;
+	P_k_theta = opt_P_k_theta;
 }

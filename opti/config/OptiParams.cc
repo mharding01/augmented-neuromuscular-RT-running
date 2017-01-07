@@ -27,13 +27,19 @@ void OPTI_NAME::set_opti()
     // Uses "opti_set" function family in order to delay setting these params
     // until after Ctrl construction
     g_osc->opti_set_P_tau({0.010 ; 0.15} ); // Taken from master commit: "All_1 results, 1459 score"
+	// HIP CONTROL
 	g_osc->opti_set_P_theta_trunk( { 0.00 ; 0.25 } ); // TODO: trunk lean 
 	g_osc->opti_set_P_theta_hip( { 0.05 ; 0.9 } ); // TODO: made its lower bound smaller, come back to this later
+    g_osc->opti_set_k_HFLrun1( {.1 ; 6.1});
+    g_osc->opti_set_k_HFLrun2( {1.0 ; 10.0});
+    g_osc->opti_set_k_HAMrun3( {0.3 ; 7.0});
+
+	// ANKLE CONTROL
 	g_osc->opti_set_P_G_SOL( { 0.97 ; 5.0 } );	// TODO: Original bounds
 	g_osc->opti_set_P_G_SOL_TA( { 0.4 ; 7.0 } );// Prevent tripping
 	g_osc->opti_set_P_G_GAS( { 0.0 ; 20.0 } );
 
-    g_osc->opti_set_k_HFLrun1( {.1 ; 6.1});
-    g_osc->opti_set_k_HFLrun2( {1.0 ; 10.0});
-    g_osc->opti_set_k_HAMrun3( {0.3 ; 7.0});
+	// KNEE CONTROL
+	g_osc->opti_set_P_G_VAS( { 0.82 ; 5.0 } );	// Shock absorption, v. thrust
+	g_osc->opti_set_P_k_theta( {1.0 ; 15.0});	// Prevent hyperextension
 }

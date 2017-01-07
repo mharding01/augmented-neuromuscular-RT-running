@@ -205,11 +205,16 @@ void StimWangCtrl::set_opti_delayed()
     ghost_osc->update_speed_oscillos(); // update theta_*_ref's
 
     // Retrieve update values for trunk lean and hip angle, SOL and GAS gains
+	// HIP CONTROL
     theta_ref = ghost_osc->get_theta_trunk_ref();
     theta_h_ref0 = ghost_osc->get_theta_hip_ref();
+	// ANKLE CONTROL
 	G_sol = ghost_osc->get_G_sol();
 	G_sol_ta = ghost_osc->get_G_sol_ta();
 	G_gas = ghost_osc->get_G_gas();
+	// KNEE EXTENSION CONTROL
+	G_vas = ghost_osc->get_G_vas();	// Shock absorbing on stance, generate thrust 
+	k_theta = ghost_osc->get_k_theta(); // Prevents hyperextension
 }
 
 /*! \brief destructor

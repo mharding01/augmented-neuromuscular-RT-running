@@ -46,6 +46,8 @@ class MatsuokaSixN: public Oscillators
 		double get_G_sol()	const { return G_sol; }
 		double get_G_sol_ta()	const { return G_sol_ta; }
 		double get_G_gas()	const { return G_gas; }
+		double get_G_vas()	const { return G_vas; }
+		double get_k_theta()	const { return k_theta; }
 
 		double get_t_osc_error_mean() const { return t_osc_error_mean; }
 
@@ -77,6 +79,8 @@ class MatsuokaSixN: public Oscillators
 		void set_P_G_SOL(double value)  { P_G_SOL = value; }
 		void set_P_G_SOL_TA(double value)  { P_G_SOL_TA = value; }
 		void set_P_G_GAS(double value)  { P_G_GAS = value; }
+		void set_P_G_VAS(double value)  { P_G_VAS = value; }
+		void set_P_k_theta(double value)  { P_k_theta = value; }
 
 		void set_p_theta_trunk(double value) { p_theta_trunk = value; }
 		void set_p_theta_hip(double value) { p_theta_hip = value; }
@@ -87,6 +91,8 @@ class MatsuokaSixN: public Oscillators
 		void set_p_G_SOL(double value)  { p_G_SOL = value; }
 		void set_p_G_SOL_TA(double value)  { p_G_SOL_TA = value; }
 		void set_p_G_GAS(double value)  { p_G_GAS = value; }
+		void set_p_G_VAS(double value)  { p_G_VAS = value; }
+		void set_p_k_theta(double value)  { p_k_theta = value; }
 		
 		void set_k_HAMrun1(double value)  { k_HAMrun1 = value; }
 		void set_k_HAMrun2(double value)  { k_HAMrun2 = value; }
@@ -106,6 +112,8 @@ class MatsuokaSixN: public Oscillators
 		void opti_set_P_G_SOL(double value)   { opt_P_G_SOL = value; }
 		void opti_set_P_G_SOL_TA(double value)   { opt_P_G_SOL_TA = value; }
 		void opti_set_P_G_GAS(double value)   { opt_P_G_GAS = value; }
+		void opti_set_P_G_VAS(double value)   { opt_P_G_VAS = value; }
+		void opti_set_P_k_theta(double value)   { opt_P_k_theta = value; }
 
         void delayed_opti_set();
 	private:
@@ -158,6 +166,8 @@ class MatsuokaSixN: public Oscillators
 		double P_G_SOL;
 		double P_G_SOL_TA;
 		double P_G_GAS;
+		double P_G_VAS;
+		double P_k_theta;
 
 		double p_theta_trunk;
 		double p_theta_hip;
@@ -168,6 +178,8 @@ class MatsuokaSixN: public Oscillators
 		double p_G_SOL;
 		double p_G_SOL_TA;
 		double p_G_GAS;
+		double p_G_VAS;
+		double p_k_theta;
 
 		// velocity tracking
 		double v_star;
@@ -179,6 +191,8 @@ class MatsuokaSixN: public Oscillators
 		double G_sol;	// FF gain for SOL
 		double G_sol_ta;// FF gain for SOL-based suppression of TA
 		double G_gas;	// FF gain for GAS
+		double G_vas;	// FF gain for GAS
+		double k_theta;	// VAS suppression on stance, P control beyond phi_off
 
 		double k_GLU;
 		double k_HFL;
@@ -216,6 +230,8 @@ class MatsuokaSixN: public Oscillators
 		double opt_P_G_SOL;
 		double opt_P_G_SOL_TA;
 		double opt_P_G_GAS;
+		double opt_P_G_VAS;
+		double opt_P_k_theta;
 
         double opt_k_HFLrun1;   
         double opt_k_HFLrun2;
