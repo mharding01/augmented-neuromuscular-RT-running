@@ -175,12 +175,12 @@ void MatsuokaSixN::Matsuoka_six_neurons()
 	vd[4] = tau_B_inv * ( -v[4] + pos(x[4]) );
 	vd[5] = tau_C_inv * ( -v[5] + pos(x[5]) ); 
     
-    //set_plot(y[0], "y1");
-    //set_plot(y[1], "y2");
-    //set_plot(y[3] , "y4");
-    //set_plot(y[4] , "y5");
-    //set_plot(y[2] , "y3");
-    //set_plot(y[5] , "y6");
+    set_plot(x[0], "x1");
+    set_plot(x[1], "x2");
+    set_plot(x[3] , "x4");
+    set_plot(x[4] , "x5");
+    set_plot(x[2] , "x3");
+    set_plot(x[5] , "x6");
 
     // Plot fatigue
     //set_plot(v[0], "V1");
@@ -282,14 +282,14 @@ void MatsuokaSixN::check_osc_strike()
 	}
 
 
-	// after right strike (only x[1] positive)
-	if ( flag_strike_leg[R_ID] && (x[0] < 0.0) && (x[1] > 0.0) && (x[3] < 0.0) && (x[4] < 0.0) )
+	// after right strike (only x[4] positive)
+	if ( flag_strike_leg[R_ID] && (x[0] < 0.0) && (x[1] < 0.0) && (x[3] < 0.0) && (x[4] > 0.0) )
 	{
 		flag_strike_leg[R_ID] = 0;
 	}
 
-	// after left strike (only x[4] positive)
-	if ( flag_strike_leg[L_ID] && (x[0] < 0.0) && (x[1] < 0.0) && (x[3] < 0.0) && (x[4] > 0.0) )
+	// after left strike (only x[1] positive)
+	if ( flag_strike_leg[L_ID] && (x[0] < 0.0) && (x[1] > 0.0) && (x[3] < 0.0) && (x[4] < 0.0) )
 	{
 		flag_strike_leg[L_ID] = 0;
 	}
@@ -333,9 +333,9 @@ void MatsuokaSixN::compute_osc_excitation()
         // cut the excitations if signals too fast
 		/*if ( (sw_st->is_swing_leg(L_ID) && (x[1] > 0.0)) || (sw_st->is_swing_leg(L_ID) && (x[4] > 0.0)) )*/
         // TODO: Running code, anticipating next foot-strike after flight phase
-        if ( (!flag_last_stance_leg_r && sw_st->is_flight_phase() && (x[1] > 0.0)) 
+        if ( (!flag_last_stance_leg_r && sw_st->is_flight_phase() && (x[4] > 0.0)) 
             ||
-             (flag_last_stance_leg_r && sw_st->is_flight_phase() && (x[4] > 0.0)) )
+             (flag_last_stance_leg_r && sw_st->is_flight_phase() && (x[1] > 0.0)) )
 		{
 			for(unsigned int i=0; i<u.size(); i++)
 			{
@@ -361,25 +361,26 @@ void MatsuokaSixN::compute_osc_excitation()
 				supporting_l = 1;
 			}
 	
-			// handles oscillators too late (first line) and oscillators succession (second line)
-			u[0] -= flag_strike_leg[R_ID]*pos(x[0]);
-			u[0] -= pos(x[0])*supporting_r;
+			// handles oscillators too late (first 2 lines) and oscillators succession (second line)
+			// Ordering: N5 -> N1 -> N2 -> N4, N5/N2 are RFS/LFS-aligned (see eta's)
+			u[0] -= flag_strike_leg[L_ID]*pos(x[0]);
+			u[0] -= pos(x[0])*supporting_l;
 			
-            u[1] += flag_strike_leg[R_ID]*neg(x[1]);
+            u[1] += flag_strike_leg[L_ID]*neg(x[1]);
 
-			u[3] -= flag_strike_leg[L_ID]*pos(x[3]);
-			u[3] -= pos(x[3])*supporting_l;
+			u[3] -= flag_strike_leg[R_ID]*pos(x[3]);
+			u[3] -= pos(x[3])*supporting_r;
 
-			u[4] += flag_strike_leg[L_ID]*neg(x[4]);
+			u[4] += flag_strike_leg[R_ID]*neg(x[4]);
 
 
 			if (sw_st->get_nb_strikes() > 0) // first step done
 			{
-                // Attenuate signals: N1/N3 while R stance, N4/N6 while L stance
-				u[0] -= pos(x[0])*supporting_r;
-				u[2] -= pos(x[2])*supporting_r;
-				u[3] -= pos(x[3])*supporting_l;
-				u[5] -= pos(x[5])*supporting_l;
+                // Attenuate signals: N1/N3 while L stance, N4/N6 while R stance
+				u[0] -= pos(x[0])*supporting_l;
+				u[2] -= pos(x[2])*supporting_l;
+				u[3] -= pos(x[3])*supporting_r;
+				u[5] -= pos(x[5])*supporting_r;
 			}
 		}
 	}
@@ -394,9 +395,9 @@ void MatsuokaSixN::oscillator_prediction_error(double cur_t)
 	// oscillators too fast
     /*if ( (sw_st->is_swing_leg(L_ID) && (x[1] > 0.0)) || (sw_st->is_swing_leg(L_ID) && (x[4] > 0.0)) )*/
     // TODO: Running code, anticipating next foot-strike after flight phase
-    if ( (!flag_last_stance_leg_r && sw_st->is_flight_phase() && (x[1] > 0.0)) 
+    if ( (!flag_last_stance_leg_r && sw_st->is_flight_phase() && (x[4] > 0.0)) 
         ||
-         (flag_last_stance_leg_r && sw_st->is_flight_phase() && (x[4] > 0.0)) )
+         (flag_last_stance_leg_r && sw_st->is_flight_phase() && (x[1] > 0.0)) )
     {
 		if (!flag_osc_too_fast)
 		{
@@ -406,9 +407,9 @@ void MatsuokaSixN::oscillator_prediction_error(double cur_t)
 	}
 
 	// synchronization finished after strike and correction
-	if ( flag_strike_err && ( (sw_st->is_supporting_r_leg() && (x[1] > 0.0)) 
+	if ( flag_strike_err && ( (sw_st->is_supporting_r_leg() && (x[4] > 0.0)) 
         || 
-        ((!sw_st->is_supporting_r_leg() && !sw_st->is_flight_phase()) && (x[4] > 0.0)) ) )
+        ((!sw_st->is_supporting_r_leg() && !sw_st->is_flight_phase()) && (x[1] > 0.0)) ) )
 	{
 		flag_strike_err = 0;
 
@@ -431,6 +432,7 @@ void MatsuokaSixN::oscillator_prediction_error(double cur_t)
 			t_osc_error_mean = osc_err_av->update_and_get(t_osc_error);
 		}
 	}
+	//set_plot(t_osc_error_mean, "osc_err");
 }
 
 /*! \brief update oscillators output
