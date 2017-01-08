@@ -3,6 +3,7 @@
 #include "NicoCtrl.hh"
 #include "Body.hh"
 #include "StimWalkCtrl.hh"
+#include "StimWangCtrl.hh"
 
 #define DIST_OSCILLO_START 3    // 3m distance before rewarding oscillo error 
 /*! \brief constructor
@@ -16,9 +17,9 @@ OscillosFitness::OscillosFitness(MbsData *mbs_data, Ctrl *ctrl): FitnessStage(mb
 
 	Body *lower_body = static_cast<Body*>(nico_ctrl->get_manager()->get_computation(LOWER_BODY));
 
-	StimWalkCtrl *stim_walk_ctrl = static_cast<StimWalkCtrl*>(lower_body->get_stim_ctrl());
+	StimWangCtrl *stim_wang_ctrl = static_cast<StimWangCtrl*>(lower_body->get_stim_ctrl());
 
-	osc = stim_walk_ctrl->get_osc();
+	osc = stim_wang_ctrl->get_ghost_osc();
 
 	max_fitness = 250.0;
 }

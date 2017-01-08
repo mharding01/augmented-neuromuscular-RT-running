@@ -3,7 +3,7 @@
 #include "user_IO.h"
 #include "coman_properties.hh"
 
-#define DIST_ENERGY_START 2.0
+#define DIST_ENERGY_START 4.0
 
 /*! \brief constructor
  * 
@@ -26,7 +26,7 @@ MetEnergyFitness::MetEnergyFitness(MbsData *mbs_data, Ctrl *ctrl): FitnessStage(
 
 	dt = mbs_data->dt0;
 
-	max_fitness = 50.0;
+	max_fitness = 400.0;
 
 	options = mbs_data->user_IO->options;
 	printed = 0;
