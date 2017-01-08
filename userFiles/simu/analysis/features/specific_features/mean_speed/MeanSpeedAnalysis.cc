@@ -2,8 +2,8 @@
 #include "SimuIndex.hh"
 #include "user_IO.h"
 
-#define DIST_VELOCITY_START 25.0 ///< distance to start speed computation TODO: Hardcoded, not important
-#define DIST_VELOCITY_END 30.0  ///< distance to finish speed computation
+#define DIST_VELOCITY_START 15.0 ///< distance to start speed computation TODO: Hardcoded, not important
+#define DIST_VELOCITY_END 20.0  ///< distance to finish speed computation
 
 #define SIZE_VEL_AVERAGE 4000 ///< size of the running average to compute speed
 

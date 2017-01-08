@@ -17,7 +17,7 @@ set( COMAN_VERSION "spring_toe_short_feet" )
 set( OPTI_RUN 0 )
 
 # speed reference
-set (CMAKE_VAR_1 1.6)
+set (CMAKE_VAR_1 2.0)
 
 # initial forward speed
 set (CMAKE_VAR_2 1.6)
