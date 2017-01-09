@@ -32,10 +32,10 @@ double convert_to_optiParams(std::vector<double> optiNorms)
 		case 5 : return (last_elem * 0.38000000 + 5.62000000);
 		case 6 : return (last_elem * 0.05000000 + 3.73000000);
 		case 7 : return (last_elem * 0.08000000 + 3.64000000);
-		case 8 : return (last_elem * 0.04000000 + 0.01000000);
-		case 9 : return (last_elem * 5.60000000 + 0.50000000);
-		case 10 : return (last_elem * 8.50000000 + 1.50000000);
-		case 11 : return (last_elem * 6.50000000 + 0.50000000);
+		case 8 : return (last_elem * 0.06000000 + 0.01000000);
+		case 9 : return (last_elem * 5.80000000 + 0.30000000);
+		case 10 : return (last_elem * 9.00000000 + 1.00000000);
+		case 11 : return (last_elem * 6.70000000 + 0.30000000);
 		case 12 : return (last_elem * 0.04000000 + 0.01000000);
 		case 13 : return (last_elem * 0.04000000 + 0.01000000);
 		case 14 : return (last_elem * 0.04000000 + 0.01000000);
@@ -72,7 +72,7 @@ double convert_to_optiParams(std::vector<double> optiNorms)
 		case 45 : return (last_elem * 0.50000000 + 0.00000000);
 		case 46 : return (last_elem * 0.50000000 + 0.00000000);
 		case 47 : return (last_elem * 0.80000000 + 0.00000000);
-		case 48 : return (last_elem * 0.14500000 + 0.00500000);
+		case 48 : return (last_elem * 0.19500000 + 0.00500000);
 		case 49 : return (last_elem * 0.70000000 + 0.30000000);
 		case 50 : return (last_elem * 1.00000000 + 0.00000000);
 		case 51 : return (last_elem * 0.80000000 + 0.20000000);

@@ -640,7 +640,9 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][HFL_MUSCLE] = 
                                 k_HFLrun1 * y1 + k_HFLrun2 * y5;
                     // Zero-out GLU when y1 or y5 are positive
-                    Stim[i][GLU_MUSCLE] = S_MIN; 
+                    //Stim[i][GLU_MUSCLE] = S_MIN; // TODO:
+                    Stim[i][GLU_MUSCLE] = 
+                        S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
                     Stim[i][HAM_MUSCLE] = S_MIN; 
                 } 
                 //else if (y1 || y2)    /* N1/N3 positive - PD hip active (late swing), cpg-controlled HAM*/
@@ -665,9 +667,9 @@ void StimWangCtrl::pitch_compute()
 
                 
                 // plot right leg stims
-                //set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU cpg");    // TODO
-                //set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM cpg");    // TODO
-                //set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL cpg");    // TODO
+                set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU cpg");    // TODO
+                set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM cpg");    // TODO
+                set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL cpg");    // TODO
             }
             else if (i==L_ID) 
             {
@@ -686,7 +688,9 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][HFL_MUSCLE] =
                         k_HFLrun1 * y3 + k_HFLrun2 * y6;
                     // Zero-out GLU when y3 or y6 are positive
-                    Stim[i][GLU_MUSCLE] = S_MIN;
+                    //Stim[i][GLU_MUSCLE] = S_MIN; // TODO
+                    Stim[i][GLU_MUSCLE] = 
+                        S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
                     Stim[i][HAM_MUSCLE] = S_MIN;
                 }
                 //else if (y3 || y4) /* N4/N6 positive - PD control of hip, cpg-control of HAM (late swing)*/
