@@ -35,14 +35,15 @@ void OPTI_NAME::set_opti()
     g_osc->set_eta_D({3.73; 3.78 });  
     g_osc->set_eta_E({3.64; 3.72 });  
 
-    g_osc->set_P_tau({0.010 ; 0.05} ); // Taken from master commit: "All_1 results, 1459 score"
+    g_osc->set_P_tau({0.010 ; 0.07} ); // Taken from master commit: "All_1 results, 1459 score"
 
-    g_osc->set_k_HFLrun1( {1.0 ; 6.1});
-    g_osc->set_k_HFLrun2( {1.5 ; 10.0});
-    g_osc->set_k_HAMrun3( {0.5 ; 7.0});
+    g_osc->set_k_HFLrun1( {0.3 ; 6.1});
+    g_osc->set_k_HFLrun2( {1.0 ; 10.0});
+    g_osc->set_k_HAMrun3( {0.3 ; 7.0});
     
 	// Wang stimulations
 
+    // TODO: added cpg_ctrl_thresh_t parameter for optimization
 	stim_wang->set_S0_sol_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_ta_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_gas_st( { 0.01 ; 0.05 } );
@@ -79,7 +80,7 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_D_ham( { 0.0 ; 0.5 } );
 	stim_wang->set_D_glu( { 0.0 ; 0.5 } );
 	stim_wang->set_D_hfl( { 0.0 ; 0.8 } );
-	stim_wang->set_theta_ref( { 0.005 ; 0.15 } ); // TODO: trunk lean, realistic max i pi/15=18deg.
+	stim_wang->set_theta_ref( { 0.005 ; 0.20 } ); // TODO: trunk lean, realistic max i pi/15=18deg.
 	stim_wang->set_si_vas( { 0.3 ; 1.0 } );
 	stim_wang->set_si_rf( { 0.0 ; 1.0 } );
 	stim_wang->set_si_glu( { 0.2 ; 1.0 } );

@@ -127,71 +127,71 @@ void StimWangCtrl::set_opti_defaults()
 {
 	// ---- opti parameters ----
 	// pre-stimulations
-	S0_sol_st = 0.04051781;
-	S0_ta_st  = 0.01605854 ;
-	S0_gas_st = 0.03672691;
-	S0_vas_st = 0.32842455;
-	S0_ham_st = 0.29797363;
-	S0_rf_st  = 0.09781730 ;
-	S0_glu_st = 0.11264627;
-	S0_hfl_st = 0.09101347;
-	S0_sol_sw = 0.02880403;
-	S0_ta_sw  = .02961106 ;
-	S0_gas_sw = 0.09458508;
-	S0_vas_sw = 0.02181909;
-	S0_ham_sw = 0.06652838;
-	S0_rf_sw  = .37252351 ;
-	S0_glu_sw = 0.01657156;
-	S0_hfl_sw = 0.04202100;
+	S0_sol_st = 0.04144467;
+	S0_ta_st  = 0.03442493;
+	S0_gas_st = 0.01144743;
+	S0_vas_st = 0.27724696;
+	S0_ham_st = 0.12211856;
+	S0_rf_st  = 0.03856261;
+	S0_glu_st = 0.19368160;
+	S0_hfl_st = 0.08483506;
+	S0_sol_sw = 0.03201217;
+	S0_ta_sw  = .02341347 ;
+	S0_gas_sw = 0.05998866;
+	S0_vas_sw = 0.07705747;
+	S0_ham_sw = 0.08176211;
+	S0_rf_sw  = .29242350 ;
+	S0_glu_sw = 0.01436186;
+	S0_hfl_sw = 0.03742033;
 	// gains of positive force feedback laws
-	G_sol = 2.44040651;
-	G_sol_ta = 4.73210470;
-	G_gas = 16.29604047;
-	G_vas = 1.05551413;
-	G_ham = 2.28251452;
-	G_glu = 1.07624631;
+	G_sol = 3.20496133;
+	G_sol_ta = 3.15520137;
+	G_gas = 9.63917261;
+	G_vas = 1.64607262;
+	G_ham = 1.11480642;
+	G_glu = 0.07998873;
 	// gains of positive length feedback laws
-	G_ta_sw = 3.46270266;
-	G_ta_st = 2.19688800;
-	G_hfl = 2.14613290;
-	G_ham_hfl = 6.10776576;
+	G_ta_sw = 2.71763514;
+	G_ta_st = 3.70742092;
+	G_hfl = 0.82179641;
+	G_ham_hfl = 3.85110420;
 	// offsets of positive length feedback laws
-	l_off_ta_sw = 0.61752060;
-	l_off_ta_st = 0.60032765;
-	l_off_ham_hfl = 0.47799085;
-	l_off_hfl = 0.53284490 ;
+	l_off_ta_sw = 0.63260836;
+	l_off_ta_st = 0.50250814;
+	l_off_ham_hfl = 0.00736140;
+	l_off_hfl = 0.53396689 ;
 	// stance phase PD-control parameters
-	K_ham = 3.30099978; //1.0;
-	K_glu = 6.97141634; //1.0;
-	K_hfl = 8.51399488; //1.0;
-	D_ham = 0.28472525; //0.2;
-	D_glu = 0.05289260; //0.2;
-	D_hfl = 0.70371939; //0.2;
-	theta_ref = 0.02114376; //0.105;
+	K_ham = 4.06202134 ; //1.0;
+	K_glu = 13.99331892; //1.0;
+	K_hfl = 5.05426992; //1.0;
+	D_ham = 0.30785626; //0.2;
+	D_glu = 0.49261734; //0.2;
+	D_hfl = 0.12076677; //0.2;
+	theta_ref = 0.06586455; //0.105;
 	// swing initiation parameters
-	si_vas = 0.78000072;
-	si_rf = 0.10492337;
-	si_glu = 0.62043390;
-	si_hfl = 0.27594038;
+	si_vas = 0.42227731;
+	si_rf = 0.32872840 ;
+	si_glu = 0.65210655;
+	si_hfl = 0.59414450;
 	// stance preparation muscle PD-control parameters
-	K_sp_vas = 1.59802488;
-	K_sp_glu = 3.11768317;
-	K_sp_hfl = 1.88241262;
-	D_sp_vas = 0.09571155;
-	D_sp_glu = 0.02186125;
-	D_sp_hfl = 0.08392030;
-	theta_k_ref = 0.29975759;
+	K_sp_vas = 0.13819734;
+	K_sp_glu = 2.95331736;
+	K_sp_hfl = 0.91644294;
+	D_sp_vas = 0.03033318;
+	D_sp_glu = 0.04191062;
+	D_sp_hfl = 0.02470569;
+	theta_k_ref = 0.11244578;
 	// stance preparation SIMBICON-style feedback parameters
-	theta_h_ref0 = 0.406; //TODO //0.60620732;
+	theta_h_ref0 = 0.16986034; //TODO //0.60620732;
 	c_d = 0.0; //0.5;
 	c_v = 0.0; //0.2;
 	// swing initiation and stance preparation offsets
-	d_sp = -0.08317890;
-    d_si = 0.32710358;
+	d_sp = -0.07115247;
+    d_si = 0.37523836 ;
 	//additional parameters
-	k_THETA = 3.37682482; //1.15;
-	k_theta = 2.53505258;
-	phi_off_pk = 0.08940935;
+	k_THETA = 5.15958768; //1.15;
+	k_theta = 6.68941640;
+	phi_off_pk = 0.12978405;
 
 }
 
@@ -330,7 +330,7 @@ void StimWangCtrl::compute_stimulation()
 	//set_plot(phip_k[R_ID], "knee angular speed");
 
 	set_plot(theta_torso, "torso angle");
-	set_plot(theta_ref, "theta ref");
+	//set_plot(theta_ref, "theta ref");
 	//set_plot(omega_torso, "torso omega");
 	//set_plot(theta_toro_sw0, "torso sw 0");
 

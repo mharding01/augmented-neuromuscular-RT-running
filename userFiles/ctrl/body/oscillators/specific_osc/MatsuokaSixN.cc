@@ -66,34 +66,34 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	beta_B = 5.067806;
 	beta_C = 4.382409;
 
-	gamma_A = 1.57553931;
-	gamma_B = 2.53633384; // 2.130010;
-	gamma_C = 2.65514190;
+	gamma_A = 1.59030347;
+	gamma_B = 2.39640033; 
+	gamma_C = 2.84350615;
 
-	eta_A = 5.49681774;
-	eta_B = 4.86147345;
-	eta_C = 5.68391234;
-	eta_D = 3.73377651;
-	eta_E = 3.66622041;
+	eta_A =5.46761414 ;
+	eta_B =4.88355275 ;
+	eta_C =5.66314746 ;
+	eta_D =3.77916453 ;
+	eta_E =3.70464392 ;
 
-    // Added props
+    // Added props 
 	
     eta_F = 4.473370;
 	eta_G = 3.501070;
 
 	// velocity adaptation parameters
-	P_theta_trunk = 0.02114376; // Taken from StimWang new defaults
-    P_theta_hip = 0.406;	// TODO: 0.60620732;
-	P_tau   = 0.04747445;
+	P_theta_trunk = 0.06586455; // Taken from StimWang new defaults
+    P_theta_hip = 0.16986034;	// TODO: 0.60620732;
+	P_tau   = 0.04676336;
 	P_GLU   = 1.065147;
 	P_HFL   = 3.689370;
 	P_HAM1  = 2.189173;
 	P_HAM2  = 1.686624;
-	P_G_SOL = 2.44040651;
-	P_G_SOL_TA = 4.73210470;
-	P_G_GAS = 16.29604047;
-	P_G_VAS = 1.05551413;
-	P_k_theta = 2.53505258;
+	P_G_SOL = 3.20496133;
+	P_G_SOL_TA = 3.15520137;
+	P_G_GAS = 9.63917261;
+	P_G_VAS = 1.64607262;
+	P_k_theta = 6.68941640;
     
     /*
 	p_theta = 0.502487;
@@ -116,9 +116,9 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	p_k_theta = 0.0;
 
     // TODO: Default params for running stims' CPG weights
-    k_HFLrun1 = 1.59619401;
-    k_HFLrun2 = 7.01533279;
-    k_HAMrun3 = 6.20870389; 
+    k_HFLrun1 =4.17021254;	//1.59619401;
+    k_HFLrun2 =9.16549638;	//7.01533279;
+    k_HAMrun3 =3.35982891;	//6.20870389; 
     
     // Init delayed "opti_set" params to defaults
     opt_k_HFLrun1 = k_HFLrun1 ;
@@ -175,12 +175,12 @@ void MatsuokaSixN::Matsuoka_six_neurons()
 	vd[4] = tau_B_inv * ( -v[4] + pos(x[4]) );
 	vd[5] = tau_C_inv * ( -v[5] + pos(x[5]) ); 
     
-    set_plot(x[0], "x1");
-    set_plot(x[1], "x2");
-    set_plot(x[3] , "x4");
-    set_plot(x[4] , "x5");
-    set_plot(x[2] , "x3");
-    set_plot(x[5] , "x6");
+    //set_plot(x[0], "x1");
+    //set_plot(x[1], "x2");
+    //set_plot(x[3] , "x4");
+    //set_plot(x[4] , "x5");
+    //set_plot(x[2] , "x3");
+    //set_plot(x[5] , "x6");
 
     // Plot fatigue
     //set_plot(v[0], "V1");
