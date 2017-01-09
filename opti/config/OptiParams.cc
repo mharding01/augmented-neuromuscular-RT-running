@@ -40,8 +40,4 @@ void OPTI_NAME::set_opti()
 	g_osc->opti_set_P_G_SOL( { 0.97 ; 5.0 } );	// TODO: Original bounds
 	g_osc->opti_set_P_G_SOL_TA( { 0.4 ; 7.0 } );// Prevent tripping
 	g_osc->opti_set_P_G_GAS( { 0.0 ; 20.0 } );
-
-	// KNEE CONTROL
-	g_osc->opti_set_P_G_VAS( { 0.82 ; 5.0 } );	// Shock absorption, v. thrust
-	g_osc->opti_set_P_k_theta( {1.0 ; 15.0});	// Prevent hyperextension
 }
