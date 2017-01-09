@@ -4,7 +4,7 @@
 #include "NicoCtrl.hh"
 #include "Body.hh"
 
-#define DIST_VELOCITY_START 4.0
+#define DIST_VELOCITY_START 2.0
 #define VELOCITY_MARGIN 0.025
 #define VELOCITY_THRESH 0.05
 
@@ -64,7 +64,9 @@ double CPG_SpeedFitness::get_fitness()
 		if (fabs(speed_opti - speed_ref) > VELOCITY_MARGIN)
 		{
             // TODO: Changed error coeff to 85, now error of 0.05 is 75% of m_score
-			return compute_gaussian_fitness(speed_ref - speed_opti, max_fitness, 85);
+			//return compute_gaussian_fitness(speed_ref - speed_opti, max_fitness, 85);
+			// TODO: temporarily returning to old speed
+			return compute_gaussian_fitness(speed_ref - speed_opti, max_fitness, 10);
 		}
 		else
 		{

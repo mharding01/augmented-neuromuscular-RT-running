@@ -34,8 +34,8 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 		}
 
 		fitness_tab.push_back(new FlightFitness(mbs_data, ctrl));       // 250 
-		fitness_tab.push_back(new TorsoFitness(mbs_data, sens_info, ctrl)); // 100
-		fitness_tab.push_back(new MetEnergyFitness(mbs_data, ctrl));    // 100
+		fitness_tab.push_back(new TorsoFitness(mbs_data, sens_info, ctrl)); //250  
+		fitness_tab.push_back(new MetEnergyFitness(mbs_data, ctrl));    // 50 
 
 		//TODO: foot fitness favors maximizing total stance time per gait cycle
 		//fitness_tab.push_back(new FootFitness(mbs_data, sens_info, ctrl));  // 25
