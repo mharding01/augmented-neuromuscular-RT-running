@@ -6,6 +6,7 @@
 #include "user_IO.h"
 #include "ContactGestion.hh"
 #include "user_IO.h"
+#include "user_realtime.h"
 
 #define TIME_SAFETY 0.15          ///< time safety [s]
 #define TIME_TAKE_OFF_SAFETY 0.01 ///< time safety to wait after take-off [s]
@@ -99,6 +100,8 @@ void SwingStanceAnalysis::compute()
 	double x_foot, t;
 	double Fz[N_LEGS];
 	double angle_foot;
+	double gh_t_flight, flight_per_cycle;
+
 
 	CppInterface *cppInterface;
 
@@ -135,7 +138,7 @@ void SwingStanceAnalysis::compute()
 	flag_strike = 0;
 
 	flag_strike = 0;
-
+	
 	for (int i=0; i<N_LEGS; i++)
 	{
 		flag_strike_leg[i] = 0;	
@@ -218,10 +221,12 @@ void SwingStanceAnalysis::compute()
 				{
 					stride_period_mean = str_period_av->update_and_get(stride_period[i]);
 					stride_length_mean = str_length_av->update_and_get(stride_length[i]);
+					// Stance-time of leg i, only
 					take_off_mean = take_off_av->update_and_get(take_off_pourc[i]);
 					if (i == RIGHT_ID) 
 					{
 						ds_cycle_mean = ds_cycle_av->update_and_get(100*ds_time/stride_period[i]);
+						// Flight total time over one gait cycle
 						flight_cycle_mean = flight_cycle_av->update_and_get(100*flight_time/stride_period[i]);
 					}
 				}
@@ -283,8 +288,8 @@ void SwingStanceAnalysis::compute()
 
 		std::cout << "period: " << stride_period_mean << " [s]" << std::endl;
 		std::cout << "length: " << stride_length_mean << " [m]" <<std::endl;
-		std::cout << "stance phase: " << take_off_mean << " [%]" <<std::endl;
+		std::cout << "one leg stance phase: " << take_off_mean << " [%]" <<std::endl;
 		std::cout << "double support: " << ds_cycle_mean << " [%]" <<std::endl;
-		std::cout << "flight: " << flight_cycle_mean << " [%]" <<std::endl;
+		std::cout << "tot flight: " << flight_cycle_mean << " [%]" <<std::endl;
 	}
 }
