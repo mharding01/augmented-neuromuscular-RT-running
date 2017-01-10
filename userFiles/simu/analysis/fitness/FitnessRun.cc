@@ -21,8 +21,8 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 	if (ctrl->get_ctrl_id() == NICO_CTRL)
 	{   
 		// Flat optimization: 
-		fitness_tab.push_back(new WalkTimeFitness(mbs_data));           // 800
-		fitness_tab.push_back(new MinDistFitness(mbs_data, sens_info)); // 700
+		fitness_tab.push_back(new WalkTimeFitness(mbs_data));           // 400
+		fitness_tab.push_back(new MinDistFitness(mbs_data, sens_info)); // 400
 		
 		if (options->speed_opti)
 		{   // 800 ...
