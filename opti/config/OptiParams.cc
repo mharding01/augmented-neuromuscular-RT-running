@@ -29,15 +29,15 @@ void OPTI_NAME::set_opti()
     g_osc->opti_set_P_tau({0.010 ; 0.15} ); // Taken from master commit: "All_1 results, 1459 score"
 	// HIP CONTROL
 	g_osc->opti_set_P_theta_trunk( { 0.00 ; 0.25 } ); // TODO: trunk lean 
-	g_osc->opti_set_P_theta_hip( { 0.05 ; 0.9 } ); // TODO: made its lower bound smaller, come back to this later
+	g_osc->opti_set_P_theta_hip( { 0.005 ; 0.9 } ); // TODO: made its lower bound smaller, come back to this later
     
 	// CPG CONTROL
-    g_osc->opti_set_k_HFLrun1( {0.3 ; 6.1});
-    g_osc->opti_set_k_HFLrun2( {1.0 ; 10.0});
+    g_osc->opti_set_k_HFLrun1( {0.3 ; 8.1});	// Higher bound
+    g_osc->opti_set_k_HFLrun2( {1.0 ; 12.0});	// Higher bound
     g_osc->opti_set_k_HAMrun3( {0.3 ; 7.0});
 
 	// ANKLE CONTROL
-	g_osc->opti_set_P_G_SOL( { 0.97 ; 5.0 } );	// TODO: Original bounds
+	g_osc->opti_set_P_G_SOL( { 0.60 ; 5.0 } );	// Lower bounds
 	g_osc->opti_set_P_G_SOL_TA( { 0.4 ; 7.0 } );// Prevent tripping
 	g_osc->opti_set_P_G_GAS( { 0.0 ; 20.0 } );
 }

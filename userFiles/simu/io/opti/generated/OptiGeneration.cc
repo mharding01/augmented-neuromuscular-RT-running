@@ -32,12 +32,12 @@ void OptiGeneration::set_opti()
 	g_osc->opti_set_P_theta_hip( optiParams[2] ); // TODO: made its lower bound smaller, come back to this later
     
 	// CPG CONTROL
-    g_osc->opti_set_k_HFLrun1( optiParams[3]);
-    g_osc->opti_set_k_HFLrun2( optiParams[4]);
+    g_osc->opti_set_k_HFLrun1( optiParams[3]);	// Higher bound
+    g_osc->opti_set_k_HFLrun2( optiParams[4]);	// Higher bound
     g_osc->opti_set_k_HAMrun3( optiParams[5]);
 
 	// ANKLE CONTROL
-	g_osc->opti_set_P_G_SOL( optiParams[6] );	// TODO: Original bounds
+	g_osc->opti_set_P_G_SOL( optiParams[6] );	// Lower bounds
 	g_osc->opti_set_P_G_SOL_TA( optiParams[7] );// Prevent tripping
 	g_osc->opti_set_P_G_GAS( optiParams[8] );
 }
