@@ -40,4 +40,8 @@ void OptiGeneration::set_opti()
 	g_osc->opti_set_P_G_SOL( optiParams[6] );	// Lower bounds
 	g_osc->opti_set_P_G_SOL_TA( optiParams[7] );// Prevent tripping
 	g_osc->opti_set_P_G_GAS( optiParams[8] );
+	
+	// KNEE CONTROL
+	g_osc->opti_set_P_G_VAS( optiParams[9] );	// Shock absorption, v. thrust
+	g_osc->opti_set_P_k_theta( optiParams[10]);	// Prevent hyperextension
 }

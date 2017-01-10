@@ -33,6 +33,8 @@ double convert_to_optiParams(std::vector<double> optiNorms)
 		case 6 : return (last_elem * 4.40000000 + 0.60000000);
 		case 7 : return (last_elem * 6.60000000 + 0.40000000);
 		case 8 : return (last_elem * 20.00000000 + 0.00000000);
+		case 9 : return (last_elem * 4.18000000 + 0.82000000);
+		case 10 : return (last_elem * 14.00000000 + 1.00000000);
 
 		default:
 			std::cout << "Error: optiNorms is too small: " << index << " !" << std::endl;
@@ -47,5 +49,5 @@ double convert_to_optiParams(std::vector<double> optiNorms)
  */
 int get_nb_optiParams()
 {
-	return 9;
+	return 11;
 }
