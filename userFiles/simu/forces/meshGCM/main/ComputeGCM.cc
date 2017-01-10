@@ -28,7 +28,7 @@ ComputeGCM::ComputeGCM(MbsData *mbs_data, GaitFeatures *gait_features, SensorsIn
 	this->gait_features = gait_features;
 	this->sens_info = sens_info;
 
-	ground = new TrainingGround(mbs_data, gait_features, sens_info);
+	ground = new FlatGround(mbs_data, gait_features, sens_info);
 
 	coman_model = mbs_data->user_IO->options->coman_model;
 
