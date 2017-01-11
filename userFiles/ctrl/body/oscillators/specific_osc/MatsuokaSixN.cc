@@ -118,12 +118,12 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
     // TODO: Default params for running stims' CPG weights
     k_HFLrun1 =4.17021254;	//1.59619401;
     k_HFLrun2 =9.16549638;	//7.01533279;
-    k_HAMrun3 =3.35982891;	//6.20870389; 
+    k_HAMrun =3.35982891;	//6.20870389; 
     
     // Init delayed "opti_set" params to defaults
     opt_k_HFLrun1 = k_HFLrun1 ;
     opt_k_HFLrun2 = k_HFLrun2 ;
-    opt_k_HAMrun3 = k_HAMrun3 ;
+    opt_k_HAMrun = k_HAMrun ;
     opt_P_theta_trunk = P_theta_trunk;
     opt_P_theta_hip = P_theta_hip;
     opt_P_tau = P_tau;
@@ -209,7 +209,7 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 
 	this->v_request = v_request;
 
-	//set_plot(v_request, "target speed [m/s]");
+	set_plot(v_request, "target speed [m/s]");
 
 	// linear function	
 	theta_trunk_ref = P_theta_trunk  + p_theta_trunk * v_diff;
@@ -442,11 +442,10 @@ void MatsuokaSixN::oscillator_prediction_error(double cur_t)
 void MatsuokaSixN::update(double cur_t)
 {
 	// update oscillators velocity parameters at a strike
-	/*if (flag_range) TODO: && (sw_st->get_nb_strikes() >= 4)) */
-    if (1)  // TODO:
+	if ((flag_range) && (sw_st->get_nb_strikes() >= 6)) 
 	{
-		//update_speed_oscillos(user_ctr->get_v_request());
-        update_speed_oscillos();
+		update_speed_oscillos(user_ctr->get_v_request());
+        //update_speed_oscillos();
 	}
 
 	// checking for too slow oscillators
@@ -489,7 +488,7 @@ void MatsuokaSixN::delayed_opti_set()
     // Updates 6 running parameters according to their "opt" (optimized) counterparts
     k_HFLrun1 = opt_k_HFLrun1;
     k_HFLrun2 = opt_k_HFLrun2;
-    k_HAMrun3 = opt_k_HAMrun3;
+    k_HAMrun = opt_k_HAMrun;
 	// Corresponding values of below need to be set by update_speed_oscillos()
     P_theta_trunk = opt_P_theta_trunk;
     P_theta_hip = opt_P_theta_hip;
@@ -500,3 +499,4 @@ void MatsuokaSixN::delayed_opti_set()
 	P_G_VAS = opt_P_G_VAS;
 	P_k_theta = opt_P_k_theta;
 }
+

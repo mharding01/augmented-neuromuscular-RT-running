@@ -35,12 +35,11 @@ class MatsuokaSixN: public Oscillators
 		double get_k_HFL()     const { return k_HFL;     }
 		double get_k_HFLrun1()     const { return k_HFLrun1;     }
 		double get_k_HFLrun2()     const { return k_HFLrun2;     }
-		double get_k_HFLrun3()     const { return k_HFLrun3;     }
 		double get_k_HAM1()    const { return k_HAM1;    }
 		double get_k_HAM2()    const { return k_HAM2;    }
 		double get_k_HAMrun1()    const { return k_HAMrun1;    }
 		double get_k_HAMrun2()    const { return k_HAMrun2;    }
-		double get_k_HAMrun3()    const { return k_HAMrun3;    }
+		double get_k_HAMrun()    const { return k_HAMrun;    }
 		double get_theta_trunk_ref() const { return theta_trunk_ref; }
 		double get_theta_hip_ref() const { return theta_hip_ref; }
 		double get_G_sol()	const { return G_sol; }
@@ -96,16 +95,15 @@ class MatsuokaSixN: public Oscillators
 		
 		void set_k_HAMrun1(double value)  { k_HAMrun1 = value; }
 		void set_k_HAMrun2(double value)  { k_HAMrun2 = value; }
-		void set_k_HAMrun3(double value)  { k_HAMrun3 = value; }
+		void set_k_HAMrun(double value)  { k_HAMrun = value; }
 
 		void set_k_HFLrun1(double value)  { k_HFLrun1 = value; }
 		void set_k_HFLrun2(double value)  { k_HFLrun2 = value; }
-		void set_k_HFLrun3(double value)  { k_HFLrun3 = value; }
 
         /* Delayed setting of fields, after x steps during optimization */
 		void opti_set_k_HFLrun1(double value)  { opt_k_HFLrun1 = value; }
 		void opti_set_k_HFLrun2(double value)  { opt_k_HFLrun2 = value; }
-		void opti_set_k_HAMrun3(double value)  { opt_k_HAMrun3 = value; }
+		void opti_set_k_HAMrun(double value)  { opt_k_HAMrun = value; }
 		void opti_set_P_theta_trunk(double value) { opt_P_theta_trunk = value; }
 		void opti_set_P_theta_hip(double value) { opt_P_theta_hip = value; }
 		void opti_set_P_tau(double value)   { opt_P_tau = value; }
@@ -200,10 +198,9 @@ class MatsuokaSixN: public Oscillators
 		double k_HAM2;
 		double k_HAMrun1;
 		double k_HAMrun2;
-		double k_HAMrun3;
+		double k_HAMrun;
         double k_HFLrun1;   
         double k_HFLrun2;
-        double k_HFLrun3;
 
 		// integration
 		double last_t;
@@ -235,7 +232,7 @@ class MatsuokaSixN: public Oscillators
 
         double opt_k_HFLrun1;   
         double opt_k_HFLrun2;
-		double opt_k_HAMrun3;
+		double opt_k_HAMrun;
 
 };
 

@@ -23,7 +23,7 @@ extern double speed_fwd_global;
  * \param[in] parts body parts
  * \param[in] options controller options
  */
-StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics *fwd_kin, BodyPart **parts, CtrlOptions *options, MatsuokaSixN* ghost_osc): StimulationCtrl(inputs, ws, fwd_kin, parts, options)
+StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics *fwd_kin, BodyPart **parts, CtrlOptions *options): StimulationCtrl(inputs, ws, fwd_kin, parts, options)
 {
 	opti_init = new OptiInit();
 
@@ -39,6 +39,11 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
 
 	flag_part1 = 0;
 	flag_part2 = 0;
+
+	// Oscillator gains 
+	k_HFLrun1 = 0.0;
+	k_HFLrun2 = 0.0;
+	k_HAMrun = 0.0;
 
 	if (flag_3D)
 	{
@@ -96,8 +101,6 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
     // set opti default parameters
     set_opti_defaults();    
 
-	//swtich controller time
-	t_switch = 3.0;
     // switch controller nb of steps
     nb_strikes_switch = 6;
 
@@ -111,13 +114,13 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
 	first_stance[R_ID] = 1;
 	first_stance[L_ID] = 1;
 
-    // TODO: added ghost oscillator object
-    this->ghost_osc = ghost_osc; 
+    // added ghost oscillator object
+    this->ghost_osc = new MatsuokaSixN(6, inputs->get_t(), ws, inputs, options); 
 
-    // TODO: add cpg control time threshold parameter
+    // add cpg control time threshold parameter
     cpg_ctrl_thresh_t = 0.0;
 
-    // TODO: add flag indicating when cpg control active
+    // add flag indicating when cpg control active
     cpg_ctrl_active = 0;
 }
 
@@ -241,6 +244,8 @@ StimWangCtrl::~StimWangCtrl()
 void StimWangCtrl::compute()
 {
 	compute_delay();
+
+	update_oscillators();
 
 	switch_results();
 
@@ -601,8 +606,8 @@ void StimWangCtrl::pitch_compute()
         double y7 = ghost_osc->get_y_pos(6);
         double y8 = ghost_osc->get_y_pos(7);
         double k_HFLrun1, k_HFLrun2;
-        double k_HAMrun3;
-        k_HAMrun3 = ghost_osc->get_k_HAMrun3();
+        double k_HAMrun;
+        k_HAMrun = ghost_osc->get_k_HAMrun();
         k_HFLrun1 = ghost_osc->get_k_HFLrun1();
         k_HFLrun2 = ghost_osc->get_k_HFLrun2();
 	
@@ -651,7 +656,7 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][GLU_MUSCLE] = 
                         S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
                     Stim[i][HAM_MUSCLE] = 
-                        k_HAMrun3 * y4;
+                        k_HAMrun * y4;
                         /* Force-feedback control of HAM in late-swing
                         S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
                         */
@@ -697,7 +702,7 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][GLU_MUSCLE] = 
                         S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
                     Stim[i][HAM_MUSCLE] = 
-                        k_HAMrun3 * y2;
+                        k_HAMrun * y2;
                         /* Force-feedback control of HAM in late-swing
                         S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
                         */
@@ -804,3 +809,30 @@ int StimWangCtrl::swing_initiation(int stance_leg_id)
 
 	return ((d > d_si) || (sw_st->is_double_support() && d > 0.0));
 }
+
+/*! \brief update oscillator gains for velocity tracking */
+void StimWangCtrl::update_oscillators()
+{
+	ghost_osc->update(inputs->get_t());
+
+    // Retrieve updated values for cpg gains, trunk lean and hip ref angles, SOL and GAS gains
+	// CPG CONTROL
+	k_HFLrun1 = ghost_osc->get_k_HFLrun1();
+	k_HFLrun2 = ghost_osc->get_k_HFLrun2();
+	k_HAMrun = ghost_osc->get_k_HAMrun();
+
+	// HIP CONTROL
+    theta_ref = ghost_osc->get_theta_trunk_ref();
+    theta_h_ref0 = ghost_osc->get_theta_hip_ref();
+	// ANKLE CONTROL
+	G_sol = ghost_osc->get_G_sol();
+	G_sol_ta = ghost_osc->get_G_sol_ta();
+	G_gas = ghost_osc->get_G_gas();
+	// KNEE EXTENSION CONTROL
+	G_vas = ghost_osc->get_G_vas();	// Shock absorbing on stance, generate thrust 
+	k_theta = ghost_osc->get_k_theta(); // Prevents hyperextension
+
+
+	
+}
+

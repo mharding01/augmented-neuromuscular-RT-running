@@ -34,7 +34,7 @@ void OPTI_NAME::set_opti()
 	// CPG CONTROL
     g_osc->opti_set_k_HFLrun1( {0.3 ; 8.1});	// Higher bound
     g_osc->opti_set_k_HFLrun2( {1.0 ; 12.0});	// Higher bound
-    g_osc->opti_set_k_HAMrun3( {0.3 ; 7.0});
+    g_osc->opti_set_k_HAMrun( {0.3 ; 7.0});
 
 	// ANKLE CONTROL
 	g_osc->opti_set_P_G_SOL( { 0.60 ; 5.0 } );	// Lower bounds

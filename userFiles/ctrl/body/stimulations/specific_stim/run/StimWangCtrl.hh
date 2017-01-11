@@ -19,7 +19,7 @@
 class StimWangCtrl: public StimulationCtrl
 {
 	public:
-		StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics *fwd_kin, BodyPart **parts, CtrlOptions *options, MatsuokaSixN* ghost_osc);
+		StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics *fwd_kin, BodyPart **parts, CtrlOptions *options);
 		virtual ~StimWangCtrl();
 
 		virtual void compute();
@@ -169,6 +169,11 @@ class StimWangCtrl: public StimulationCtrl
 		double l_opt_hfl; ///< l.opt: HFL muscle [m]
 
 		// --- opti parameters ---
+		
+		// cpg oscillator signal gains
+		double k_HFLrun1; ///< HFL "swing prep" oscillator gain [.]
+		double k_HFLrun2; ///< HFL "swing" oscillator gain [.]
+		double k_HAMrun; ///< HAM "late swing" oscillator gain [.]
 
     	// pre-stimulations
     	double S0_sol_st;
@@ -239,6 +244,8 @@ class StimWangCtrl: public StimulationCtrl
     	//switch controller
     	double t_switch;
         int nb_strikes_switch;
+
+		void update_oscillators();
 
 		void pitch_compute();
 

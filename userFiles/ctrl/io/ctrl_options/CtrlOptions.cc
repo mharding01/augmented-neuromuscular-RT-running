@@ -29,7 +29,7 @@ CtrlOptions::CtrlOptions()
 	upper_motion = 1;
 
 	// controller in two parts (first with konw results)
-	ctrl_two_parts = 1;
+	ctrl_two_parts = 0;
 
 	// limiting output torques
 	torque_limit = 0;
@@ -38,7 +38,7 @@ CtrlOptions::CtrlOptions()
 	extra_knee = 0;
 
 	// CPG speed range
-	cpg_range = 0;
+	cpg_range = 1;
 
 	// ham extra reflex
 	extra_ham_reflex = 0;
