@@ -75,6 +75,9 @@ class MatsuokaSixN: public Oscillators
 		void set_P_HFL(double value)   { P_HFL = value; }
 		void set_P_HAM1(double value)  { P_HAM1 = value; }
 		void set_P_HAM2(double value)  { P_HAM2 = value; }
+		void set_P_k_HFLrun1(double value)  { P_k_HFLrun1= value; }
+		void set_P_k_HFLrun2(double value)  { P_k_HFLrun2= value; }
+		void set_P_k_HAMrun(double value)  { P_k_HAMrun= value; }
 		void set_P_G_SOL(double value)  { P_G_SOL = value; }
 		void set_P_G_SOL_TA(double value)  { P_G_SOL_TA = value; }
 		void set_P_G_GAS(double value)  { P_G_GAS = value; }
@@ -92,6 +95,13 @@ class MatsuokaSixN: public Oscillators
 		void set_p_G_GAS(double value)  { p_G_GAS = value; }
 		void set_p_G_VAS(double value)  { p_G_VAS = value; }
 		void set_p_k_theta(double value)  { p_k_theta = value; }
+		void set_p2_theta_trunk(double value)  { p2_theta_trunk = value; }
+		void set_p2_tau(double value)  { p2_tau = value; }
+		void set_p2_k_HFLrun1(double value)  { p2_k_HFLrun1= value; }
+		void set_p2_k_HFLrun2(double value)  { p2_k_HFLrun2 = value; }
+		void set_p2_k_HAMrun(double value)  { p2_k_HAMrun = value; }
+		void set_p2_G_SOL(double value)  { p2_G_SOL = value; }
+		void set_p2_G_VAS(double value)  { p2_G_VAS = value; }
 		
 		void set_k_HAMrun1(double value)  { k_HAMrun1 = value; }
 		void set_k_HAMrun2(double value)  { k_HAMrun2 = value; }
@@ -125,6 +135,8 @@ class MatsuokaSixN: public Oscillators
 		CtrlInputs *inputs;     ///< controller inputs
 		UserCtrl *user_ctr;     ///< user control
 		AverageInc *osc_err_av; ///< mean errors on the oscillators
+
+		void enable_velocity_tracking(); ///< after init steps, updates coeffs
 
 		int flag_strike_err;          ///< flag to compute strike error
 		int flag_strike_leg[NB_LEGS]; ///< flag corresponding to a strike for a precise leg
@@ -161,6 +173,9 @@ class MatsuokaSixN: public Oscillators
 		double P_HFL;
 		double P_HAM1;
 		double P_HAM2;
+		double P_k_HFLrun1;
+		double P_k_HFLrun2;
+		double P_k_HAMrun;
 		double P_G_SOL;
 		double P_G_SOL_TA;
 		double P_G_GAS;
@@ -173,11 +188,22 @@ class MatsuokaSixN: public Oscillators
 		double p_HFL;
 		double p_HAM1;
 		double p_HAM2;
+		double p_k_HFLrun1;
+		double p_k_HFLrun2;
+		double p_k_HAMrun;
 		double p_G_SOL;
 		double p_G_SOL_TA;
 		double p_G_GAS;
 		double p_G_VAS;
 		double p_k_theta;
+
+		double p2_theta_trunk;
+		double p2_tau;
+		double p2_k_HAMrun;
+		double p2_k_HFLrun1;
+		double p2_k_HFLrun2;
+		double p2_G_SOL;
+		double p2_G_VAS;
 
 		// velocity tracking
 		double v_star;
@@ -215,7 +241,7 @@ class MatsuokaSixN: public Oscillators
 		double t_osc_error_mean;
 
 		int flag_range; ///< 1 if CPG range activated, 0 otherwise
-
+		int vel_track_enabled; ///< 1 if velocity tracking enabled, 0 otherwise
         // Running alignment fields
         // TODO: Assumes bipedal
         int flag_last_stance_leg_r;  /// Flag set when r leg was last stance leg

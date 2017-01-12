@@ -109,16 +109,27 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
     p_HFL   = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
     p_HAM1  = 0.0; // TODO: for now, these are zero'd, come back when speed modulating     
     p_HAM2  = 0.0; // TODO: for now, these are zero'd, come back when speed modulating     
+	p_k_HFLrun1 = 0.0;
+	p_k_HFLrun2 = 0.0;
+	p_k_HAMrun = 0.0;
 	p_G_SOL = 0.0;
 	p_G_SOL_TA = 0.0;
 	p_G_GAS = 0.0;
 	p_G_VAS = 0.0;
 	p_k_theta = 0.0;
 
+	p2_theta_trunk = 0.0;
+	p2_tau = 0.0;
+	p2_k_HFLrun1 = 0.0;
+	p2_k_HFLrun2 = 0.0;
+	p2_k_HAMrun = 0.0;
+	p2_G_SOL = 0.0;
+	p2_G_VAS = 0.0;
+
     // TODO: Default params for running stims' CPG weights
-    k_HFLrun1 =4.17021254;	//1.59619401;
-    k_HFLrun2 =9.16549638;	//7.01533279;
-    k_HAMrun =3.35982891;	//6.20870389; 
+    P_k_HFLrun1 =4.17021254;	//1.59619401;
+    P_k_HFLrun2 =9.16549638;	//7.01533279;
+    P_k_HAMrun =3.35982891;	//6.20870389; 
     
     // Init delayed "opti_set" params to defaults
     opt_k_HFLrun1 = k_HFLrun1 ;
@@ -134,7 +145,8 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
     opt_P_k_theta = P_k_theta;
 
 	// velocity tracking
-	v_star = 0.6;
+	v_star = 1.6;
+	vel_track_enabled = 0;
 
 	// flag for CPG range
 	flag_range = options->is_cpg_range();
@@ -209,38 +221,51 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 
 	this->v_request = v_request;
 
-	set_plot(v_request, "target speed [m/s]");
+	set_plot(v_request, "target sp");
 
 	// linear function	
-	theta_trunk_ref = P_theta_trunk  + p_theta_trunk * v_diff;
-	theta_hip_ref = P_theta_hip  + p_theta_hip * v_diff;
-	tau       = P_tau    + p_tau   * v_diff; 
-	k_GLU     = P_GLU;
-	k_HFL     = P_HFL    + p_HFL  * v_diff;
-	k_HAM1    = P_HAM1   + p_HAM1 * v_diff;
-	k_HAM2    = P_HAM2   + p_HAM2 * v_diff;
-	G_sol	  = P_G_SOL + p_G_SOL * v_diff;
-	G_sol_ta  = P_G_SOL_TA + p_G_SOL_TA * v_diff;
-	G_gas 	  = P_G_GAS + p_G_GAS * v_diff;
-	G_vas	  = P_G_VAS + p_G_VAS * v_diff;
-	k_theta	  = P_k_theta + p_k_theta * v_diff;
+	double v_diff_sq = v_diff * v_diff;
+	theta_hip_ref = P_theta_hip  		+ p_theta_hip * v_diff;
+	G_sol_ta  = P_G_SOL_TA 				+ p_G_SOL_TA * v_diff;
+	G_gas 	  = P_G_GAS 				+ p_G_GAS * v_diff;
+	k_theta	  = P_k_theta 				+ p_k_theta * v_diff;
 	
+	// Quadratic functions
+	theta_trunk_ref = P_theta_trunk + p_theta_trunk * v_diff + p2_theta_trunk * v_diff_sq;
+	k_HFLrun1 = P_k_HFLrun1 + p_k_HFLrun1  * v_diff + p2_k_HFLrun2 * v_diff_sq;
+	tau       = P_tau    	+ p_tau * v_diff 		+ p2_tau * v_diff_sq;
+	k_HFLrun2 = P_k_HFLrun2	+ p_k_HFLrun2 * v_diff 	+ p2_k_HFLrun2 * v_diff_sq;
+	k_HAMrun  = P_k_HAMrun 	+ p_k_HAMrun * v_diff 	+ p2_k_HAMrun * v_diff_sq;
+	G_sol	  = P_G_SOL 	+ p_G_SOL * v_diff 		+ p2_G_SOL * v_diff_sq;
+	G_vas	  = P_G_VAS 	+ p_G_VAS * v_diff 		+ p2_G_VAS * v_diff_sq;
+
 	// limiting the interpolations
 	theta_trunk_ref = (theta_trunk_ref < MIN_THETA_REF) \
                         ? MIN_THETA_REF : theta_trunk_ref;
     theta_hip_ref = (theta_hip_ref < MIN_THETA_REF) \
                         ? MIN_THETA_REF : theta_hip_ref;
 	tau       = (tau       < 0.0) ? 0.0 : tau;
-	k_GLU     = (k_GLU     < 0.0) ? 0.0 : k_GLU;
-	k_HFL     = (k_HFL     < 0.0) ? 0.0 : k_HFL;
-	k_HAM1    = (k_HAM1    < 0.0) ? 0.0 : k_HAM1;
-	k_HAM2    = (k_HAM2    < 0.0) ? 0.0 : k_HAM2;
+	k_HFLrun1 = (k_HFLrun1     < 0.0) ? 0.0 : k_HFLrun1;
+	k_HFLrun2 = (k_HFLrun2		< 0.0) ? 0.0 : k_HFLrun2;
+	k_HAMrun  = (k_HAMrun    	< 0.0) ? 0.0 : k_HAMrun;
 	G_sol	  = (G_sol < 0.0) ? 0.0 : G_sol;
 	G_sol_ta  = (G_sol_ta < 0.0) ? 0.0 : G_sol_ta;
 	G_gas	  = (G_gas < 0.0) ? 0.0 : G_gas;
 	G_vas	  = (G_vas < 0.0) ? 0.0 : G_vas;
 	k_theta	  = (k_theta < 0.0) ? 0.0 : k_theta;
 
+	set_plot(theta_trunk_ref, "trunk ref");
+	set_plot(theta_hip_ref, "hip_ref");
+	set_plot(tau, "tau");
+	set_plot(k_HFLrun1, "kHFL1");
+	set_plot(k_HFLrun2, "kHFL2");
+	set_plot(k_HAMrun, "kHAM");
+	set_plot(G_sol, "G_sol");
+	set_plot(G_sol_ta, "G_sol_ta");
+	set_plot(G_gas, "G_gas");
+	set_plot(G_vas, "G_vas");
+	set_plot(k_theta, "k_theta");
+		
 	// oscillators period
 	tau_inv   = 1.0 / tau;
 	tau_A_inv = 1.0 / (gamma_A * tau);
@@ -444,6 +469,11 @@ void MatsuokaSixN::update(double cur_t)
 	// update oscillators velocity parameters at a strike
 	if ((flag_range) && (sw_st->get_nb_strikes() >= 6)) 
 	{
+		if (!vel_track_enabled)
+		{
+			enable_velocity_tracking();
+			vel_track_enabled = 1;
+		}
 		update_speed_oscillos(user_ctr->get_v_request());
         //update_speed_oscillos();
 	}
@@ -500,3 +530,59 @@ void MatsuokaSixN::delayed_opti_set()
 	P_k_theta = opt_P_k_theta;
 }
 
+/*! \brief
+ * Sets variables used to compute parameter values according to target velocity
+*/
+void MatsuokaSixN::enable_velocity_tracking()
+{
+	// theta_trunk_ref
+	p2_theta_trunk = -0.52020504437119053;
+	p_theta_trunk = -0.1399675444787587;
+	P_theta_trunk = 0.067317903723985051;
+
+	// theta_hip_ref
+	p_theta_hip = -0.11423408504522288;
+	P_theta_hip = 0.15086233393733484;
+	
+	// k_theta
+	p_k_theta = -4.6234198774154329;
+	P_k_theta = 8.4405361935527647;
+
+	// G_gas
+	p_G_GAS = -20.600844927382358;
+	P_G_GAS = 6.195258451356267;
+	
+	// G_sol_ta
+	p_G_SOL_TA = 9.1775090282005749;
+	P_G_SOL_TA = 5.3130448653482372;
+
+	// k_HFLrun1
+	p2_k_HFLrun1 = -22.007999762683159;
+	p_k_HFLrun1 = -4.4405669208964582;
+	P_k_HFLrun1 = 5.2103152394545731;
+
+	// G_vas
+	p2_G_VAS = 15.280604826517052;
+	p_G_VAS = 4.2375212819955479;
+	P_G_VAS = 1.4749756110548873;
+
+	// G_sol
+	p2_G_SOL = 0.0; // Linear
+	p_G_SOL = 1.9386413435258159;
+	P_G_SOL = 3.0055859689812365;
+
+	// k_HFLrun2
+	p2_k_HFLrun2 = 0.0;	// Linear
+	p_k_HFLrun2 = 8.5424711163230125;
+	P_k_HFLrun2 = 6.2228128057859848;
+
+	// k_HAMrun
+	p2_k_HAMrun = 34.775222573116274;
+	p_k_HAMrun = 7.9605348521481858;
+	P_k_HAMrun = 3.9801109348512256;
+
+	// Tau
+	p2_tau = -0.041276417218839678;
+	p_tau = -0.018023193781565375;
+	P_tau = 0.046833600468618786;
+}

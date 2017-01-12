@@ -74,7 +74,7 @@ double simu_run(OptiClass *optiClass)
 
 	// dirdyn options (see documentations for additional options)
 	mbs_dirdyn->options->dt0 = 125e-6;
-	mbs_dirdyn->options->tf  = 20.0;
+	mbs_dirdyn->options->tf  = 70.0;
 
 	// results
 	mbs_dirdyn->options->save2file = 0;
