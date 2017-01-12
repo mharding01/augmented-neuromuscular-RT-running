@@ -1,0 +1,76 @@
+fitness: 1976.58381345951
+
+norms:
+0.265960260725998
+0.334757679861201
+0.420908677246017
+0.984800899557241
+0.997690459141561
+0.0172332945104248
+0.605547970004977
+0.562758187315428
+0.442210522618917
+0.0109970389031716
+0.764428089909297
+
+
+/*
+ * The following lines present the results file with the normalized parameters.
+ * Do not use it directly, its purpose is just to show the match between the parameters
+ * to optimize and their normalized optimized values.
+ */
+
+#include "OptiNorms.hh"
+#include "StimWangCtrl.hh"
+#include "JointsInit.hh"
+#include "MatsuokaSixN.hh"
+
+/*! \brief constructor
+ */
+OptiNorms::OptiNorms()
+{
+
+}
+
+/*! \brief destructor
+ */
+OptiNorms::~OptiNorms()
+{
+
+}
+
+/*! \brief set optimization parameters
+ */
+void OptiNorms::set_opti()
+{
+    StimWangCtrl *stim_wang = static_cast<StimWangCtrl*>(stim_ctrl);
+    MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
+
+    // Uses "opti_set" function family in order to delay setting these params
+    // until after Ctrl construction
+    g_osc->opti_set_P_tau(0.26596026 ); // Taken from master commit: "All_1 results, 1459 score"
+	// HIP CONTROL
+	g_osc->opti_set_P_theta_trunk( 0.33475768 ); // TODO: trunk lean 
+	g_osc->opti_set_P_theta_hip( 0.42090868 ); // TODO: made its lower bound smaller, come back to this later
+    
+	// CPG CONTROL
+    g_osc->opti_set_k_HFLrun1( 0.98480090);	// Higher bound
+    g_osc->opti_set_k_HFLrun2( 0.99769046);	// Higher bound
+    g_osc->opti_set_k_HAMrun( 0.01723329);
+
+	// ANKLE CONTROL
+	g_osc->opti_set_P_G_SOL( 0.60554797 );	// Lower bounds
+	g_osc->opti_set_P_G_SOL_TA( 0.56275819 );// Prevent tripping
+	g_osc->opti_set_P_G_GAS( 0.44221052 );
+	
+	// KNEE CONTROL
+	g_osc->opti_set_P_G_VAS( 0.01099704 );	// Shock absorption, v. thrust
+	g_osc->opti_set_P_k_theta( 0.76442809);	// Prevent hyperextension
+}
+//energy: 8.78529 [J/(m*kg)]
+//speed : 1.23848 [m/s]
+//period: 0.50095 [s]
+//length: 0.619895 [m]
+//one leg stance phase: 29.9435 [%]
+//double support: 0 [%]
+//tot flight: 40.1199 [%]

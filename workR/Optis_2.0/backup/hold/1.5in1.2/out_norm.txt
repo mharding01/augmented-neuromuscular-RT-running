@@ -1,0 +1,214 @@
+fitness: 1858.32653320879
+
+norms:
+0.749218414159299
+0.219296659872615
+0.924530466408124
+0.430917219491908
+0.310807873047266
+0.167379444671037
+0.51781190285323
+0.489375183053828
+0.907410889904942
+0.36956234452817
+0.959838663100075
+0.867355230256654
+0.919571147438809
+0.474778727431291
+0.420115141755233
+0.360162044311022
+0.0693126253694393
+0.303408951682779
+0.369887531162944
+0.165955844722204
+0.212070661827223
+0.423386485867496
+0.741295140384557
+0.514245262476937
+0.341386171491654
+0.552337703302401
+0.626936799781665
+0.56540906799193
+0.183440646201807
+0.281717097668088
+0.164299973156213
+0.244193676601017
+0.428908750601453
+0.590354547178709
+0.625556975312275
+0.928029594337339
+0.0814937625654904
+0.138034397255544
+0.468402509924269
+0.195549630405892
+0.117449864919599
+0.450098519682751
+0.70645585366139
+0.806069074044321
+0.720249563521865
+0.752313184561473
+0.296847197274416
+0.277047326054489
+0.612987503541369
+0.320385351021535
+0.507595879205631
+0.0836231774278735
+0.2541088029637
+0.163829693373571
+0.740327799563266
+0.58564238483619
+0.545794539359437
+0.341063903353469
+0.706188059513561
+0.958672783101984
+0.101262895655275
+0.582662103914995
+0.307135512621383
+0.794206139858112
+0.539952918815267
+0.849270445961121
+0.530504293518632
+0.336338640893751
+0.131106020949811
+0.564845873445902
+0.506459491826682
+0.770575782411829
+0.669796411432384
+0.320965540319969
+0.730156444558
+0.2880990816596
+0.781289126991726
+0.402263525269199
+0.0951652444384508
+0.400243729967375
+0.180852426479595
+0.185551365928817
+0.800878691237391
+
+
+/*
+ * The following lines present the results file with the normalized parameters.
+ * Do not use it directly, its purpose is just to show the match between the parameters
+ * to optimize and their normalized optimized values.
+ */
+
+#include "OptiNorms.hh"
+#include "StimWangCtrl.hh"
+#include "JointsInit.hh"
+#include "MatsuokaSixN.hh"
+
+/*! \brief constructor
+ */
+OptiNorms::OptiNorms()
+{
+
+}
+
+/*! \brief destructor
+ */
+OptiNorms::~OptiNorms()
+{
+
+}
+
+/*! \brief set optimization parameters
+ */
+void OptiNorms::set_opti()
+{
+	StimWangCtrl *stim_wang = static_cast<StimWangCtrl*>(stim_ctrl);
+    MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
+
+    // Oscillator fields
+    g_osc->set_gamma_A(0.74921841);
+    g_osc->set_gamma_B(0.21929666);
+    g_osc->set_gamma_C(0.92453047);
+
+    g_osc->set_eta_A(0.43091722);  
+    g_osc->set_eta_B(0.31080787);  
+    g_osc->set_eta_C(0.16737944);  // TODO: N3 and N6, controls how soon appear 
+    g_osc->set_eta_D(0.51781190);  
+    g_osc->set_eta_E(0.48937518);  
+
+    g_osc->set_P_tau(0.90741089 ); // Taken from master commit: "All_1 results, 1459 score"
+
+    g_osc->set_k_HFLrun1( 0.36956234);
+    g_osc->set_k_HFLrun2( 0.95983866);
+    g_osc->set_k_HAMrun( 0.86735523);
+    
+	// Wang stimulations
+
+    // TODO: added cpg_ctrl_thresh_t parameter for optimization
+	stim_wang->set_S0_sol_st( 0.91957115 );
+	stim_wang->set_S0_ta_st( 0.47477873 );
+	stim_wang->set_S0_gas_st( 0.42011514 );
+	stim_wang->set_S0_vas_st( 0.36016204 );
+	stim_wang->set_S0_ham_st( 0.06931263 );
+	stim_wang->set_S0_rf_st( 0.30340895 );
+	stim_wang->set_S0_glu_st( 0.36988753 );
+	stim_wang->set_S0_hfl_st( 0.16595584 );
+	stim_wang->set_S0_sol_sw( 0.21207066 );
+	stim_wang->set_S0_ta_sw( 0.42338649 );
+	stim_wang->set_S0_gas_sw( 0.74129514 );
+	stim_wang->set_S0_vas_sw( 0.51424526 );
+	stim_wang->set_S0_ham_sw( 0.34138617 );
+	stim_wang->set_S0_rf_sw( 0.55233770 );
+	stim_wang->set_S0_glu_sw( 0.62693680 );
+	stim_wang->set_S0_hfl_sw( 0.56540907 );
+	stim_wang->set_G_sol( 0.18344065 );
+	stim_wang->set_G_sol_ta( 0.28171710 );
+	stim_wang->set_G_gas( 0.16429997 );
+	stim_wang->set_G_vas( 0.24419368 );
+	stim_wang->set_G_ham( 0.42890875 );
+	stim_wang->set_G_glu( 0.59035455 );
+	stim_wang->set_G_ta_sw( 0.62555698 );
+	stim_wang->set_G_ta_st( 0.92802959 );
+	stim_wang->set_G_hfl( 0.08149376 );
+	stim_wang->set_G_ham_hfl( 0.13803440 );
+	stim_wang->set_l_off_ta_sw( 0.46840251 );
+	stim_wang->set_l_off_ta_st( 0.19554963 );
+	stim_wang->set_l_off_ham_hfl( 0.11744986 );
+	stim_wang->set_l_off_hfl( 0.45009852 );
+	stim_wang->set_K_ham( 0.70645585 );  // TODO: want less HAM in stance
+	stim_wang->set_K_glu( 0.80606907 ); // Prefer GLU to handle much of trunk lean
+	stim_wang->set_K_hfl( 0.72024956 ); // Prefer HFL not to be too active
+	stim_wang->set_D_ham( 0.75231318 );
+	stim_wang->set_D_glu( 0.29684720 );
+	stim_wang->set_D_hfl( 0.27704733 );
+	stim_wang->set_theta_ref( 0.61298750 ); // TODO: trunk lean, realistic max i pi/15=18deg.
+	stim_wang->set_si_vas( 0.32038535 );
+	stim_wang->set_si_rf( 0.50759588 );
+	stim_wang->set_si_glu( 0.08362318 );
+	stim_wang->set_si_hfl( 0.25410880 );
+	stim_wang->set_K_sp_vas( 0.16382969 );
+	stim_wang->set_K_sp_glu( 0.74032780 );
+	stim_wang->set_K_sp_hfl( 0.58564238 );
+	stim_wang->set_D_sp_vas( 0.54579454 );
+	stim_wang->set_D_sp_glu( 0.34106390 );
+	stim_wang->set_D_sp_hfl( 0.70618806 );
+	stim_wang->set_theta_k_ref( 0.95867278 );
+	stim_wang->set_theta_h_ref0( 0.10126290 ); // TODO: made its lower bound smaller, come back to this later
+	stim_wang->set_d_sp( 0.58266210 );
+	stim_wang->set_d_si( 0.30713551 );
+	stim_wang->set_k_THETA( 0.79420614 );
+	stim_wang->set_k_theta( 0.53995292 );
+	stim_wang->set_phi_off_pk( 0.84927045 );
+
+	//init pos
+	joints_init->set_T3( 0.53050429 );
+	joints_init->set_T3_p( 0.33633864 );
+	joints_init->set_R2( 0.13110602 );
+	joints_init->set_R2_p( 0.56484587 );
+	joints_init->set_r_sh_p( 0.50645949 );
+	joints_init->set_r_hip( 0.77057578 );
+	joints_init->set_r_hip_p( 0.66979641 );
+	joints_init->set_r_knee( 0.32096554 );
+	joints_init->set_r_knee_p( 0.73015644 );
+	joints_init->set_r_ankle( 0.28809908 );
+	joints_init->set_r_ankle_p( 0.78128913 );
+	joints_init->set_l_hip( 0.40226353 );
+	joints_init->set_l_hip_p( 0.09516524 );
+	joints_init->set_l_knee( 0.40024373 );
+	joints_init->set_l_knee_p( 0.18085243 );
+	joints_init->set_l_ankle( 0.18555137 );
+	joints_init->set_l_ankle_p( 0.80087869 );
+}
