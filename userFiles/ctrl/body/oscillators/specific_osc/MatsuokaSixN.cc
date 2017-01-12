@@ -118,8 +118,9 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	p_G_VAS = 0.0;
 	p_k_theta = 0.0;
 
-	p2_theta_trunk = 0.0;
 	p2_tau = 0.0;
+	p2_theta_hip= 0.0;
+	p2_theta_trunk = 0.0;
 	p2_k_HFLrun1 = 0.0;
 	p2_k_HFLrun2 = 0.0;
 	p2_k_HAMrun = 0.0;
@@ -221,7 +222,7 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 
 	this->v_request = v_request;
 
-	set_plot(v_request, "target sp");
+	set_plot(v_request, "target speed [m/s]");
 
 	// linear function	
 	double v_diff_sq = v_diff * v_diff;
@@ -254,17 +255,17 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 	G_vas	  = (G_vas < 0.0) ? 0.0 : G_vas;
 	k_theta	  = (k_theta < 0.0) ? 0.0 : k_theta;
 
-	set_plot(theta_trunk_ref, "trunk ref");
-	set_plot(theta_hip_ref, "hip_ref");
-	set_plot(tau, "tau");
-	set_plot(k_HFLrun1, "kHFL1");
-	set_plot(k_HFLrun2, "kHFL2");
-	set_plot(k_HAMrun, "kHAM");
-	set_plot(G_sol, "G_sol");
-	set_plot(G_sol_ta, "G_sol_ta");
-	set_plot(G_gas, "G_gas");
-	set_plot(G_vas, "G_vas");
-	set_plot(k_theta, "k_theta");
+	//set_plot(theta_trunk_ref, "trunk ref");
+	//set_plot(theta_hip_ref, "hip_ref");
+	//set_plot(tau, "tau");
+	//set_plot(k_HFLrun1, "kHFL1");
+	//set_plot(k_HFLrun2, "kHFL2");
+	//set_plot(k_HAMrun, "kHAM");
+	//set_plot(G_sol, "G_sol");
+	//set_plot(G_sol_ta, "G_sol_ta");
+	//set_plot(G_gas, "G_gas");
+	//set_plot(G_vas, "G_vas");
+	//set_plot(k_theta, "k_theta");
 		
 	// oscillators period
 	tau_inv   = 1.0 / tau;
@@ -536,53 +537,54 @@ void MatsuokaSixN::delayed_opti_set()
 void MatsuokaSixN::enable_velocity_tracking()
 {
 	// theta_trunk_ref
-	p2_theta_trunk = -0.52020504437119053;
-	p_theta_trunk = -0.1399675444787587;
-	P_theta_trunk = 0.067317903723985051;
+	p2_theta_trunk = 0.0;	// Linear
+	p_theta_trunk = -0.053268754307278801;
+	P_theta_trunk = 0.064766798107021073;
 
 	// theta_hip_ref
-	p_theta_hip = -0.11423408504522288;
-	P_theta_hip = 0.15086233393733484;
+	p2_theta_hip = 0.0;	// Linear
+	p_theta_hip = 0.064716819051908916;
+	P_theta_hip = 0.15823267374820044;
 	
 	// k_theta
-	p_k_theta = -4.6234198774154329;
-	P_k_theta = 8.4405361935527647;
+	p_k_theta = -1.1240650780815897;
+	P_k_theta = 8.4327796131278934;
 
 	// G_gas
-	p_G_GAS = -20.600844927382358;
-	P_G_GAS = 6.195258451356267;
+	p_G_GAS = -17.539064653262727;
+	P_G_GAS = 7.1463689581438032;
 	
 	// G_sol_ta
-	p_G_SOL_TA = 9.1775090282005749;
-	P_G_SOL_TA = 5.3130448653482372;
+	p_G_SOL_TA = 11.609061240492416;
+	P_G_SOL_TA = 5.4588662971259367;
 
 	// k_HFLrun1
-	p2_k_HFLrun1 = -22.007999762683159;
-	p_k_HFLrun1 = -4.4405669208964582;
-	P_k_HFLrun1 = 5.2103152394545731;
+	p2_k_HFLrun1 = 0.0;	// Linear
+	p_k_HFLrun1 = -3.7206222446606367;
+	P_k_HFLrun1 = 5.0553508873464876;
 
 	// G_vas
-	p2_G_VAS = 15.280604826517052;
-	p_G_VAS = 4.2375212819955479;
-	P_G_VAS = 1.4749756110548873;
+	p2_G_VAS = 0.0; // Linear 6.9194895163924643;
+	p_G_VAS = 2.3551627453468131;
+	P_G_VAS = 1.6223384239722289;
 
 	// G_sol
 	p2_G_SOL = 0.0; // Linear
-	p_G_SOL = 1.9386413435258159;
-	P_G_SOL = 3.0055859689812365;
+	p_G_SOL = 0.89076265526480658;
+	P_G_SOL = 3.1033301302152658;
 
 	// k_HFLrun2
-	p2_k_HFLrun2 = 0.0;	// Linear
-	p_k_HFLrun2 = 8.5424711163230125;
-	P_k_HFLrun2 = 6.2228128057859848;
+	p2_k_HFLrun2 = 0.0; // Linear 69.263066403460812;
+	p_k_HFLrun2 = 9.0976526263553641; //22.770831475395369;
+	P_k_HFLrun2 = 6.258079620370145; //5.8898560925247807;
 
 	// k_HAMrun
-	p2_k_HAMrun = 34.775222573116274;
-	p_k_HAMrun = 7.9605348521481858;
-	P_k_HAMrun = 3.9801109348512256;
+	p2_k_HAMrun = 0.0;	// Linear
+	p_k_HAMrun = 2.6284766761384448;
+	P_k_HAMrun = 4.3145569168227453;
 
 	// Tau
-	p2_tau = -0.041276417218839678;
-	p_tau = -0.018023193781565375;
-	P_tau = 0.046833600468618786;
+	p2_tau = 0.0;	// Linear
+	p_tau = -0.011473110394246446;
+	P_tau = 0.046661707239609634;
 }

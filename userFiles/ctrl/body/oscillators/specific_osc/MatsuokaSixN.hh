@@ -96,6 +96,7 @@ class MatsuokaSixN: public Oscillators
 		void set_p_G_VAS(double value)  { p_G_VAS = value; }
 		void set_p_k_theta(double value)  { p_k_theta = value; }
 		void set_p2_theta_trunk(double value)  { p2_theta_trunk = value; }
+		void set_p2_theta_hip(double value)  { p2_theta_hip= value; }
 		void set_p2_tau(double value)  { p2_tau = value; }
 		void set_p2_k_HFLrun1(double value)  { p2_k_HFLrun1= value; }
 		void set_p2_k_HFLrun2(double value)  { p2_k_HFLrun2 = value; }
@@ -198,6 +199,7 @@ class MatsuokaSixN: public Oscillators
 		double p_k_theta;
 
 		double p2_theta_trunk;
+		double p2_theta_hip;
 		double p2_tau;
 		double p2_k_HAMrun;
 		double p2_k_HFLrun1;
