@@ -15,6 +15,5 @@ build
 debug
 test
 workR/*Optis
-workR/*.*
+workR/*build
 .DS_Store
-*.txt
