@@ -146,7 +146,7 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
     opt_P_k_theta = P_k_theta;
 
 	// velocity tracking
-	v_star = 1.6;
+	v_star = 1.5;
 	vel_track_enabled = 0;
 
 	// flag for CPG range
