@@ -90,6 +90,9 @@ class MatsuokaSixN: public Oscillators
 		void set_p_HFL(double value)   { p_HFL = value; }
 		void set_p_HAM1(double value)  { p_HAM1 = value; }
 		void set_p_HAM2(double value)  { p_HAM2 = value; }
+		void set_p_k_HFLrun1(double value)  { p_k_HFLrun1 = value; }
+		void set_p_k_HFLrun2(double value)  { p_k_HFLrun2 = value; }
+		void set_p_k_HAMrun(double value)  { p_k_HAMrun = value; }
 		void set_p_G_SOL(double value)  { p_G_SOL = value; }
 		void set_p_G_SOL_TA(double value)  { p_G_SOL_TA = value; }
 		void set_p_G_GAS(double value)  { p_G_GAS = value; }
