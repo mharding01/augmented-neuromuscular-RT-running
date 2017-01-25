@@ -639,7 +639,6 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][HAM_MUSCLE] = 
                         S0_ham_st + pos(K_ham * (theta_torso - theta_ref) + D_ham * omega_torso);
                 }
-                //else if ((y3 || y5)) /* N4 and N2 positive - cpg-controlled HFL*/
                 else if ((y1 || y5)) /* N1 and N2 positive - cpg-controlled HFL*/
                 {
                     Stim[i][HFL_MUSCLE] = 
@@ -648,8 +647,7 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][GLU_MUSCLE] = (y1) ? S_MIN : S0_glu_sw + G_glu * (F_glu[i] / F_max_glu); 
                     Stim[i][HAM_MUSCLE] = (y1) ? S_MIN : S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
                 } 
-                //else if (y1 || y2)    /* N1/N3 positive - PD hip active (late swing), cpg-controlled HAM*/
-                else if (y3 || y4)    /* N4/N6 positive - PD hip active (late swing), cpg-controlled HAM*/
+                else if (y3)    /* N4 (N6, too) positive - PD hip active (late swing), cpg-controlled HAM*/
                 {
                     Stim[i][HFL_MUSCLE] = 
                         S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);
@@ -685,7 +683,6 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][HAM_MUSCLE] = 
                         S0_ham_st + pos(K_ham * (theta_torso - theta_ref) + D_ham * omega_torso);
                 }
-                //else if (y1 || y6) /* N1 and N5 - cpg-controlled HFL, 0'd GLU*/
                 else if (y3 || y6) /* N4 and N5 - cpg-controlled HFL, 0'd GLU*/
                 {
                     Stim[i][HFL_MUSCLE] =
@@ -694,8 +691,7 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][GLU_MUSCLE] = (y3) ? S_MIN : S0_glu_sw + G_glu * (F_glu[i] / F_max_glu); 
                     Stim[i][HAM_MUSCLE] = (y3) ? S_MIN : S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
                 }
-                //else if (y3 || y4) /* N4/N6 positive - PD control of hip, cpg-control of HAM (late swing)*/
-                else if (y1 || y2) /* N1/N3 positive - PD control of hip, cpg-control of HAM (late swing)*/
+                else if (y1) /* N1 (N3, too) positive - PD control of hip, cpg-control of HAM (late swing)*/
                 {
                     Stim[i][HFL_MUSCLE] = 
                         S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);

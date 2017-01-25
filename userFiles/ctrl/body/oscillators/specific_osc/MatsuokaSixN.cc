@@ -9,7 +9,7 @@
 inline double pos(double x){ return (x > 0.0) ?  x : 0.0; }
 inline double neg(double x){ return (x < 0.0) ? -x : 0.0; }
 
-#define NB_Y_OUTPUTS 8
+#define NB_Y_OUTPUTS 6 
 
 /*! \brief constructor
  * 
@@ -496,15 +496,12 @@ void MatsuokaSixN::update(double cur_t)
 	integrate_fatigue(cur_t);
 
 	// oscillators outputs
-	y[0] = pos(x[0]) - pos(x[1]);
-	y[1] = pos(x[2]) - pos(x[1]);
-	y[2] = pos(x[3]) - pos(x[4]);
-	y[3] = pos(x[5]) - pos(x[4]);
-    y[4] = pos(x[1]) - pos(x[0]);
-    y[5] = pos(x[4]) - pos(x[3]);
-    
-    y[6] = pos(x[0]) + pos(x[5]);
-    y[7] = pos(x[3]) + pos(x[2]);
+	y[0] = pos(x[0]); 
+	y[1] = pos(x[2]); 
+	y[2] = pos(x[3]); 
+	y[3] = pos(x[5]); 
+    y[4] = pos(x[1]); 
+    y[5] = pos(x[4]); 
 
 	// oscillators prediction error
 	oscillator_prediction_error(cur_t);
