@@ -198,8 +198,8 @@ double speed_range_fitness(OptiClass *optiClass)
 	std::vector<double> v_ref_tab;
 
 	// variables initialization
-	nb_runs = 11;
-	init_v  = 0.4;
+	nb_runs = 9;
+	init_v  = 1.3;
 	delta_v = 0.05;
 
 	fitness = 0.0;
