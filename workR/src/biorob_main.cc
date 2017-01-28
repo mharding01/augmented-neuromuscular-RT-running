@@ -68,8 +68,8 @@ Dispatcher::RunTask()
 	}
 
 	// run simulation(s) to compute the fitness
-	fitness = mean_fitness(optiClass, 3);
-	//fitness = speed_range_fitness(optiClass);
+	//fitness = mean_fitness(optiClass, 3);
+	fitness = speed_range_fitness(optiClass);
 
 	// release OptiClass memory
 	delete optiClass;

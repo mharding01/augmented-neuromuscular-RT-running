@@ -9,7 +9,7 @@
 inline double pos(double x){ return (x > 0.0) ?  x : 0.0; }
 inline double neg(double x){ return (x < 0.0) ? -x : 0.0; }
 
-#define NB_Y_OUTPUTS 8
+#define NB_Y_OUTPUTS 6 
 
 /*! \brief constructor
  * 
@@ -146,7 +146,7 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
     opt_P_k_theta = P_k_theta;
 
 	// velocity tracking
-	v_star = 1.6;
+	v_star = 1.5;
 	vel_track_enabled = 0;
 
 	// flag for CPG range
@@ -159,6 +159,7 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 
 	// for opti
 	inputs->get_opti_inputs()->set_osc(this);
+
 }
 
 /*! \brief destructor
@@ -224,21 +225,23 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 
 	set_plot(v_request, "target speed [m/s]");
 
+    // constant functions
+	theta_trunk_ref = P_theta_trunk;
+    theta_hip_ref   = P_theta_hip;
+	k_theta	        = P_k_theta;
+
 	// linear function	
 	double v_diff_sq = v_diff * v_diff;
-	theta_hip_ref = P_theta_hip  		+ p_theta_hip * v_diff;
+	k_HFLrun1 = P_k_HFLrun1             + p_k_HFLrun1  * v_diff;
 	G_sol_ta  = P_G_SOL_TA 				+ p_G_SOL_TA * v_diff;
 	G_gas 	  = P_G_GAS 				+ p_G_GAS * v_diff;
-	k_theta	  = P_k_theta 				+ p_k_theta * v_diff;
+	G_vas	  = P_G_VAS 	            + p_G_VAS * v_diff;
 	
 	// Quadratic functions
-	theta_trunk_ref = P_theta_trunk + p_theta_trunk * v_diff + p2_theta_trunk * v_diff_sq;
-	k_HFLrun1 = P_k_HFLrun1 + p_k_HFLrun1  * v_diff + p2_k_HFLrun2 * v_diff_sq;
 	tau       = P_tau    	+ p_tau * v_diff 		+ p2_tau * v_diff_sq;
 	k_HFLrun2 = P_k_HFLrun2	+ p_k_HFLrun2 * v_diff 	+ p2_k_HFLrun2 * v_diff_sq;
 	k_HAMrun  = P_k_HAMrun 	+ p_k_HAMrun * v_diff 	+ p2_k_HAMrun * v_diff_sq;
 	G_sol	  = P_G_SOL 	+ p_G_SOL * v_diff 		+ p2_G_SOL * v_diff_sq;
-	G_vas	  = P_G_VAS 	+ p_G_VAS * v_diff 		+ p2_G_VAS * v_diff_sq;
 
 	// limiting the interpolations
 	theta_trunk_ref = (theta_trunk_ref < MIN_THETA_REF) \
@@ -472,7 +475,7 @@ void MatsuokaSixN::update(double cur_t)
 	{
 		if (!vel_track_enabled)
 		{
-			enable_velocity_tracking();
+			//TODO: enable_velocity_tracking();
 			vel_track_enabled = 1;
 		}
 		update_speed_oscillos(user_ctr->get_v_request());
@@ -496,15 +499,12 @@ void MatsuokaSixN::update(double cur_t)
 	integrate_fatigue(cur_t);
 
 	// oscillators outputs
-	y[0] = pos(x[0]) - pos(x[1]);
-	y[1] = pos(x[2]) - pos(x[1]);
-	y[2] = pos(x[3]) - pos(x[4]);
-	y[3] = pos(x[5]) - pos(x[4]);
-    y[4] = pos(x[1]) - pos(x[0]);
-    y[5] = pos(x[4]) - pos(x[3]);
-    
-    y[6] = pos(x[0]) + pos(x[5]);
-    y[7] = pos(x[3]) + pos(x[2]);
+	y[0] = pos(x[0]); 
+	y[1] = pos(x[2]); 
+	y[2] = pos(x[3]); 
+	y[3] = pos(x[5]); 
+    y[4] = pos(x[1]); 
+    y[5] = pos(x[4]); 
 
 	// oscillators prediction error
 	oscillator_prediction_error(cur_t);

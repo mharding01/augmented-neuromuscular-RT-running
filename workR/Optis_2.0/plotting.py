@@ -82,6 +82,7 @@ def recenter_poly(coeffs, x_0):
         new_p = [d, e, f];
         p1 = np.poly1d(coeffs); p2 = np.poly1d(new_p);
         return new_p;
+
 # var is either a 'param' (an index) or a metric string
 def make_var_plot(var, data_d, param_meta, regr_d, recenter_x = 0.0, out_norm_flag = False):
     filetype = "OptiResults" if not out_norm_flag else "out_norm"
@@ -170,7 +171,7 @@ if __name__ == "__main__":
     dirs = [d for d in os.listdir(cur_path) if os.path.isdir(os.path.join(cur_path, d))];
     print "Starting ...\nDirectories are:", dirs
     nb_params = 11;
-    nb_trials = 4;
+    nb_trials = 5;
     
     param_meta = [(r'$\tau$', "[s]"),
                   (r'$\theta_{trunk}$', "[rad]"),
@@ -194,7 +195,7 @@ if __name__ == "__main__":
 
     # construct empty data dictionary
     # data stored in dictionary of format: 
-    # d[speed][file - "OptiResults" or "outnorm"][var# (or metrics)] = [5 trials] or metric value;
+    # d[speed][file - "OptiResults" or "out_norm"][var# (or metrics)] = [5 trials] or metric value;
     data_d = dict();
     for speed in speeds:
         data_d[speed] = dict();
