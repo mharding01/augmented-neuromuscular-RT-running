@@ -605,11 +605,6 @@ void StimWangCtrl::pitch_compute()
         double y6 = ghost_osc->get_y_pos(5);
         double y7 = ghost_osc->get_y_pos(6);
         double y8 = ghost_osc->get_y_pos(7);
-        double k_HFLrun1, k_HFLrun2;
-        double k_HAMrun;
-        k_HAMrun = ghost_osc->get_k_HAMrun();
-        k_HFLrun1 = ghost_osc->get_k_HFLrun1();
-        k_HFLrun2 = ghost_osc->get_k_HFLrun2();
 	
 		// compute hip target ankle
 		if (i==R_ID)
@@ -828,7 +823,15 @@ void StimWangCtrl::update_oscillators()
 	G_vas = ghost_osc->get_G_vas();	// Shock absorbing on stance, generate thrust 
 	k_theta = ghost_osc->get_k_theta(); // Prevents hyperextension
 
-
-	
+	set_plot(k_HFLrun1, "KHFL1");
+	set_plot(k_HFLrun2, "KHFL2");
+	set_plot(k_HAMrun, "KHAM");
+	set_plot(theta_ref, "trunk_th");
+	set_plot(theta_h_ref0, "hip_th");
+	set_plot(G_sol, "G_sol");
+	set_plot(G_sol_ta, "G_sol_ta");
+	set_plot(G_gas, "G_gas");
+	set_plot(G_vas, "G_vas");
+	set_plot(k_theta, "Ktheta");
 }
 

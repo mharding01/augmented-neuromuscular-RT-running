@@ -470,7 +470,7 @@ void MatsuokaSixN::oscillator_prediction_error(double cur_t)
  */
 void MatsuokaSixN::update(double cur_t)
 {
-	// update oscillators velocity parameters at a strike
+	// update oscillators velocity parameters at after some initialization
 	if ((flag_range) && (sw_st->get_nb_strikes() >= 6)) 
 	{
 		if (!vel_track_enabled)
@@ -479,9 +479,13 @@ void MatsuokaSixN::update(double cur_t)
 			vel_track_enabled = 1;
 		}
 		update_speed_oscillos(user_ctr->get_v_request());
-        //update_speed_oscillos();
 	}
-
+	else 
+	{
+		// Or, update for same speed 
+		// necessary if opti is different from default values
+        update_speed_oscillos();
+	}
 	// checking for too slow oscillators
 	check_osc_strike();
 
