@@ -20,10 +20,6 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
 {
 	if (ctrl->get_ctrl_id() == NICO_CTRL)
 	{   
-		// Flat optimization: 
-		fitness_tab.push_back(new WalkTimeFitness(mbs_data));           // 400
-		fitness_tab.push_back(new MinDistFitness(mbs_data, sens_info)); // 400
-		
 		if (options->speed_opti)
 		{   // 800 ...
 			// want to still reward staying as close as possible to within 0.025
@@ -31,14 +27,19 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
             speed_fitness = static_cast<SpeedFitness*>(cpg_speed_fitness);
 			fitness_tab.push_back(cpg_speed_fitness); 
 		}
+        fitness_tab.push_back(new OscillosFitness(mbs_data, ctrl));     // 400
+
+		// Flat optimization: 
+		fitness_tab.push_back(new WalkTimeFitness(mbs_data));           // 300
+		fitness_tab.push_back(new MinDistFitness(mbs_data, sens_info)); // 300
+		
 		fitness_tab.push_back(new MetEnergyFitness(mbs_data, ctrl));    // 200
 
-        fitness_tab.push_back(new OscillosFitness(mbs_data, ctrl));     // 250
 
 		//TODO: TorsoFitness favors no forward lean, needed for faster running
 		fitness_tab.push_back(new TorsoFitness(mbs_data, sens_info, ctrl)); // 250 
 		// TODO: flightfitness not necessary, doesn't allow speed-walking
-		//fitness_tab.push_back(new FlightFitness(mbs_data, ctrl));       // 250 
+		fitness_tab.push_back(new FlightFitness(mbs_data, ctrl));       // 250 
 		//TODO: foot fitness favors maximizing total stance time per gait cycle
 		//fitness_tab.push_back(new FootFitness(mbs_data, sens_info, ctrl));  // 25
 	}
