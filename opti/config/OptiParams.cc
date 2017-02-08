@@ -25,7 +25,7 @@ void OPTI_NAME::set_opti()
     MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
 
     // Oscillator fields
-    g_osc->set_gamma_A({1.28; 1.60});
+    g_osc->set_gamma_A({1.28; 1.80});
     g_osc->set_gamma_B({2.35; 2.55 });
     g_osc->set_gamma_C({2.55; 3.01 });
 
@@ -50,15 +50,15 @@ void OPTI_NAME::set_opti()
     g_osc->set_P_G_GAS({0.0; 11.0});
     g_osc->set_p_G_GAS({-20.0; 0.0});
 
-    g_osc->set_P_G_VAS({0.42; 5.0});
+    g_osc->set_P_G_VAS({0.22; 5.0});
     g_osc->set_p_G_VAS({-2.0; 5.0});
     
     // Quadratic
     g_osc->set_P_tau({0.010; .10});
-    g_osc->set_p_tau({-1.0; 0.0});
-    g_osc->set_p2_tau({-1.0;0.0});
+    g_osc->set_p_tau({-1.0; 0.5});
+    g_osc->set_p2_tau({-1.0;0.5});
     
-    g_osc->set_P_k_HFLrun2({1.0;10.0});
+    g_osc->set_P_k_HFLrun2({1.0;14.0});
     g_osc->set_p_k_HFLrun2({1.0;40.0});
     g_osc->set_p2_k_HFLrun2({0.0;110.0});
     
