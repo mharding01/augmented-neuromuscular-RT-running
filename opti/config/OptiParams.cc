@@ -119,23 +119,4 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_d_si( { 0.2 ; 0.7 } );
 	stim_wang->set_k_THETA( { 1.0 ; 5.7 } );
 	stim_wang->set_phi_off_pk( { 0.05 ; 0.2 } );
-
-	//init pos
-	joints_init->set_T3( { 0.46 ; 0.58 } );
-	joints_init->set_T3_p( { -0.5 ; 0.5 } );
-	joints_init->set_R2( { 0.0 ; 0.3 } );
-	joints_init->set_R2_p( { -5.0 ; 5.0 } );
-	joints_init->set_r_sh_p( { -5.0 ; 5.0 } );
-	joints_init->set_r_hip( { -0.87 ; -0.35 } );
-	joints_init->set_r_hip_p( { -5.0 ; 5.0 } );
-	joints_init->set_r_knee( { 0.0 ; 0.87 } );
-	joints_init->set_r_knee_p( { -5.0 ; 5.0 } );
-	joints_init->set_r_ankle( { -0.09 ; 0.09 } );
-	joints_init->set_r_ankle_p( { -5.0 ; 5.0 } );
-	joints_init->set_l_hip( { -0.09 ; 0.35 } );
-	joints_init->set_l_hip_p( { -5.0 ; 5.0 } );
-	joints_init->set_l_knee( { 0.35 ; 1.75 } );
-	joints_init->set_l_knee_p( { -5.0 ; 5.0 } );
-	joints_init->set_l_ankle( { 0.09 ; 0.45 } );
-	joints_init->set_l_ankle_p( { -5.0 ; 5.0 } );
 }

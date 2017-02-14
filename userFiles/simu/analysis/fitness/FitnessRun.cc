@@ -27,7 +27,7 @@ FitnessRun::FitnessRun(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *sens_info): F
             speed_fitness = static_cast<SpeedFitness*>(cpg_speed_fitness);
 			fitness_tab.push_back(cpg_speed_fitness); 
 		}
-        fitness_tab.push_back(new OscillosFitness(mbs_data, ctrl));     // 400
+        fitness_tab.push_back(new OscillosFitness(mbs_data, ctrl));     // 500
 
 		//TODO: TorsoFitness favors no forward lean, needed for faster running
 		fitness_tab.push_back(new TorsoFitness(mbs_data, sens_info, ctrl)); // 350 

@@ -102,23 +102,6 @@ double convert_to_optiParams(std::vector<double> optiNorms)
 		case 75 : return (last_elem * 0.50000000 + 0.20000000);
 		case 76 : return (last_elem * 4.70000000 + 1.00000000);
 		case 77 : return (last_elem * 0.15000000 + 0.05000000);
-		case 78 : return (last_elem * 0.12000000 + 0.46000000);
-		case 79 : return (last_elem * 1.00000000 + -0.50000000);
-		case 80 : return (last_elem * 0.30000000 + 0.00000000);
-		case 81 : return (last_elem * 10.00000000 + -5.00000000);
-		case 82 : return (last_elem * 10.00000000 + -5.00000000);
-		case 83 : return (last_elem * 0.52000000 + -0.87000000);
-		case 84 : return (last_elem * 10.00000000 + -5.00000000);
-		case 85 : return (last_elem * 0.87000000 + 0.00000000);
-		case 86 : return (last_elem * 10.00000000 + -5.00000000);
-		case 87 : return (last_elem * 0.18000000 + -0.09000000);
-		case 88 : return (last_elem * 10.00000000 + -5.00000000);
-		case 89 : return (last_elem * 0.44000000 + -0.09000000);
-		case 90 : return (last_elem * 10.00000000 + -5.00000000);
-		case 91 : return (last_elem * 1.40000000 + 0.35000000);
-		case 92 : return (last_elem * 10.00000000 + -5.00000000);
-		case 93 : return (last_elem * 0.36000000 + 0.09000000);
-		case 94 : return (last_elem * 10.00000000 + -5.00000000);
 
 		default:
 			std::cout << "Error: optiNorms is too small: " << index << " !" << std::endl;
@@ -133,5 +116,5 @@ double convert_to_optiParams(std::vector<double> optiNorms)
  */
 int get_nb_optiParams()
 {
-	return 95;
+	return 78;
 }

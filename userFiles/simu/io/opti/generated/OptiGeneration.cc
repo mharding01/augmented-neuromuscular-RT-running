@@ -119,23 +119,4 @@ void OptiGeneration::set_opti()
 	stim_wang->set_d_si( optiParams[75] );
 	stim_wang->set_k_THETA( optiParams[76] );
 	stim_wang->set_phi_off_pk( optiParams[77] );
-
-	//init pos
-	joints_init->set_T3( optiParams[78] );
-	joints_init->set_T3_p( optiParams[79] );
-	joints_init->set_R2( optiParams[80] );
-	joints_init->set_R2_p( optiParams[81] );
-	joints_init->set_r_sh_p( optiParams[82] );
-	joints_init->set_r_hip( optiParams[83] );
-	joints_init->set_r_hip_p( optiParams[84] );
-	joints_init->set_r_knee( optiParams[85] );
-	joints_init->set_r_knee_p( optiParams[86] );
-	joints_init->set_r_ankle( optiParams[87] );
-	joints_init->set_r_ankle_p( optiParams[88] );
-	joints_init->set_l_hip( optiParams[89] );
-	joints_init->set_l_hip_p( optiParams[90] );
-	joints_init->set_l_knee( optiParams[91] );
-	joints_init->set_l_knee_p( optiParams[92] );
-	joints_init->set_l_ankle( optiParams[93] );
-	joints_init->set_l_ankle_p( optiParams[94] );
 }
