@@ -25,9 +25,9 @@ void OPTI_NAME::set_opti()
     MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
 
     // Oscillator fields
-    g_osc->set_gamma_A({1.38; 1.58});
+    g_osc->set_gamma_A({1.28; 1.80});
     g_osc->set_gamma_B({2.35; 2.55 });
-    g_osc->set_gamma_C({2.75; 2.95 });
+    g_osc->set_gamma_C({2.55; 3.01 });
 
     g_osc->set_eta_A({5.45; 5.53  });  
     g_osc->set_eta_B({4.80; 4.90 });  
@@ -36,39 +36,39 @@ void OPTI_NAME::set_opti()
     g_osc->set_eta_E({3.64; 3.72 });  
 
     // Fitting parameters for improved vel tracking
-    g_osc->set_P_theta_trunk({0.05; .19});
-    g_osc->set_P_theta_hip({0.15; 0.4});
-    g_osc->set_P_k_theta({9.0; 14.0});
+    g_osc->set_P_theta_trunk({-0.05; .15});
+    g_osc->set_P_theta_hip({0.0; 0.3});
+    g_osc->set_P_k_theta({0.0; 12.0});
     
     // Linear
-    g_osc->set_P_k_HFLrun1({5.5; 8.5});
-    g_osc->set_p_k_HFLrun1({-4.5; -1.0});
+    g_osc->set_P_k_HFLrun1({0.2; 7.1});
+    g_osc->set_p_k_HFLrun1({-5.0; 1.0});
 
-    g_osc->set_P_G_SOL_TA({6.0;8.5});
-    g_osc->set_p_G_SOL_TA({5.0; 9.0});
+    g_osc->set_P_G_SOL_TA({0.4; 8.0});
+    g_osc->set_p_G_SOL_TA({0.0; 15.0});
 
-    g_osc->set_P_G_GAS({9.0; 13.0});
-    g_osc->set_p_G_GAS({-10.0; -4.0});
+    g_osc->set_P_G_GAS({0.0; 11.0});
+    g_osc->set_p_G_GAS({-20.0; 0.0});
 
-    g_osc->set_P_G_VAS({1.0; 3.5});
-    g_osc->set_p_G_VAS({3.5; 6.0});
+    g_osc->set_P_G_VAS({0.22; 5.0});
+    g_osc->set_p_G_VAS({-2.0; 5.0});
     
     // Quadratic
     g_osc->set_P_tau({0.010; .10});
-    g_osc->set_p_tau({-.2; 0.2});
-    g_osc->set_p2_tau({-0.3;0.1});
+    g_osc->set_p_tau({-1.0; 0.5});
+    g_osc->set_p2_tau({-1.0;0.5});
     
-    g_osc->set_P_k_HFLrun2({9.5;13.0});
-    g_osc->set_p_k_HFLrun2({1.0;30.0});
-    g_osc->set_p2_k_HFLrun2({0.0;50.0});
+    g_osc->set_P_k_HFLrun2({1.0;14.0});
+    g_osc->set_p_k_HFLrun2({1.0;40.0});
+    g_osc->set_p2_k_HFLrun2({0.0;110.0});
     
-    g_osc->set_P_k_HAMrun({5.3;7.5});
+    g_osc->set_P_k_HAMrun({0.3;7.0});
     g_osc->set_p_k_HAMrun({0.2;10.0});
-    g_osc->set_p2_k_HAMrun({0.0;25.0});
+    g_osc->set_p2_k_HAMrun({0.3;45.0});
 
-    g_osc->set_P_G_SOL({4.2;5.5});
-    g_osc->set_p_G_SOL({3.5;8.0});
-    g_osc->set_p2_G_SOL({0.0;10.0});
+    g_osc->set_P_G_SOL({0.4;5.0});
+    g_osc->set_p_G_SOL({0.4;8.0});
+    g_osc->set_p2_G_SOL({5.0;19.0});
 
 	// Wang stimulations
     // TODO: added cpg_ctrl_thresh_t parameter for optimization
