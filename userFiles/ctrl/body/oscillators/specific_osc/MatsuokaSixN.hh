@@ -49,6 +49,41 @@ class MatsuokaSixN: public Oscillators
 		double get_k_theta()	const { return k_theta; }
 
 		double get_t_osc_error_mean() const { return t_osc_error_mean; }
+		
+        float get_P_theta_trunk() { return P_theta_trunk; }
+		float get_P_theta_hip() { return P_theta_hip; }
+		float get_P_tau()   { return P_tau; }
+		float get_P_k_HFLrun1()  { return P_k_HFLrun1; }
+		float get_P_k_HFLrun2()  { return P_k_HFLrun2; }
+		float get_P_k_HAMrun()  { return P_k_HAMrun; }
+		float get_P_G_SOL()  { return P_G_SOL; }
+		float get_P_G_SOL_TA()  { return P_G_SOL_TA; }
+		float get_P_G_GAS()  { return P_G_GAS; }
+		float get_P_G_VAS()  { return P_G_VAS; }
+		float get_P_k_theta()  { return P_k_theta; }
+
+		float get_p_theta_trunk() { return p_theta_trunk; }
+		float get_p_theta_hip() { return p_theta_hip; }
+		float get_p_tau()   { return p_tau; }
+		float get_p_HFL()   { return p_HFL; }
+		float get_p_HAM1()  { return p_HAM1; }
+		float get_p_HAM2()  { return p_HAM2; }
+		float get_p_k_HFLrun1()  { return p_k_HFLrun1; }
+		float get_p_k_HFLrun2()  { return p_k_HFLrun2; }
+		float get_p_k_HAMrun()  { return p_k_HAMrun; }
+		float get_p_G_SOL()  { return p_G_SOL; }
+		float get_p_G_SOL_TA()  { return p_G_SOL_TA; }
+		float get_p_G_GAS()  { return p_G_GAS; }
+		float get_p_G_VAS()  { return p_G_VAS; }
+		float get_p_k_theta()  { return p_k_theta; }
+		float get_p2_theta_trunk()  { return p2_theta_trunk; }
+		float get_p2_theta_hip()  { return p2_theta_hip; }
+		float get_p2_tau()  { return p2_tau; }
+		float get_p2_k_HFLrun1()  { return p2_k_HFLrun1; }
+		float get_p2_k_HFLrun2()  { return p2_k_HFLrun2; }
+		float get_p2_k_HAMrun()  { return p2_k_HAMrun; }
+		float get_p2_G_SOL()  { return p2_G_SOL; }
+		float get_p2_G_VAS()  { return p2_G_VAS; }
 
 		void set_v_request(double value) { v_request = value; }
 
