@@ -36,39 +36,39 @@ void OPTI_NAME::set_opti()
     g_osc->set_eta_E({3.64; 3.72 });  
 
     // Fitting parameters for improved vel tracking
-    g_osc->set_P_theta_trunk({0.05; .19});
-    g_osc->set_P_theta_hip({0.15; 0.4});
-    g_osc->set_P_k_theta({9.0; 14.0});
+    g_osc->set_P_theta_trunk({0.10; .19});
+    g_osc->set_P_theta_hip({0.35; 0.45});
+    g_osc->set_P_k_theta({12.0; 14.0});
     
     // Linear
-    g_osc->set_P_k_HFLrun1({5.5; 8.5});
-    g_osc->set_p_k_HFLrun1({-4.5; -1.0});
+    g_osc->set_P_k_HFLrun1({7.5; 9.0});
+    g_osc->set_p_k_HFLrun1({-3.5; -2.0});
 
     g_osc->set_P_G_SOL_TA({6.0;8.5});
-    g_osc->set_p_G_SOL_TA({5.0; 9.0});
+    g_osc->set_p_G_SOL_TA({6.0; 7.5});
 
-    g_osc->set_P_G_GAS({9.0; 13.0});
-    g_osc->set_p_G_GAS({-10.0; -4.0});
+    g_osc->set_P_G_GAS({12.0; 13.5});
+    g_osc->set_p_G_GAS({-7.0; -5.0});
 
-    g_osc->set_P_G_VAS({1.0; 3.5});
-    g_osc->set_p_G_VAS({3.5; 6.0});
+    g_osc->set_P_G_VAS({2.0; 3.0});
+    g_osc->set_p_G_VAS({5.0; 6.5});
     
     // Quadratic
     g_osc->set_P_tau({0.010; .10});
     g_osc->set_p_tau({-.2; 0.2});
     g_osc->set_p2_tau({-0.3;0.1});
     
-    g_osc->set_P_k_HFLrun2({9.5;13.0});
-    g_osc->set_p_k_HFLrun2({1.0;30.0});
-    g_osc->set_p2_k_HFLrun2({0.0;50.0});
+    g_osc->set_P_k_HFLrun2({11.0;13.0});
+    g_osc->set_p_k_HFLrun2({11.0;14.0});
+    g_osc->set_p2_k_HFLrun2({25.0;31.0});
     
-    g_osc->set_P_k_HAMrun({5.3;7.5});
-    g_osc->set_p_k_HAMrun({0.2;10.0});
-    g_osc->set_p2_k_HAMrun({0.0;25.0});
+    g_osc->set_P_k_HAMrun({7.0;7.7});
+    g_osc->set_p_k_HAMrun({0.2;1.5});
+    g_osc->set_p2_k_HAMrun({16.0;20.0});
 
-    g_osc->set_P_G_SOL({4.2;5.5});
-    g_osc->set_p_G_SOL({3.5;8.0});
-    g_osc->set_p2_G_SOL({0.0;10.0});
+    g_osc->set_P_G_SOL({5.2;5.5});
+    g_osc->set_p_G_SOL({6.0;7.5});
+    g_osc->set_p2_G_SOL({0.0;2.0});
 
 	// Wang stimulations
     // TODO: added cpg_ctrl_thresh_t parameter for optimization
