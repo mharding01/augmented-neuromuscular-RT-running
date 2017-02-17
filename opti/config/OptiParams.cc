@@ -36,7 +36,7 @@ void OPTI_NAME::set_opti()
     g_osc->set_eta_E({3.64; 3.72 });  
 
     // Fitting parameters for improved vel tracking
-    g_osc->set_P_theta_trunk({0.01; .10});
+    g_osc->set_P_theta_trunk({0.05; .19});
     g_osc->set_P_theta_hip({0.15; 0.4});
     g_osc->set_P_k_theta({9.0; 14.0});
     
@@ -58,13 +58,13 @@ void OPTI_NAME::set_opti()
     g_osc->set_p_tau({-.2; 0.2});
     g_osc->set_p2_tau({-0.3;0.1});
     
-    g_osc->set_P_k_HFLrun2({9.5;11.5});
-    g_osc->set_p_k_HFLrun2({.1;7.0});
-    g_osc->set_p2_k_HFLrun2({0.0;7.0});
+    g_osc->set_P_k_HFLrun2({9.5;13.0});
+    g_osc->set_p_k_HFLrun2({1.0;30.0});
+    g_osc->set_p2_k_HFLrun2({0.0;50.0});
     
     g_osc->set_P_k_HAMrun({5.3;7.5});
     g_osc->set_p_k_HAMrun({0.2;10.0});
-    g_osc->set_p2_k_HAMrun({0.0;8.0});
+    g_osc->set_p2_k_HAMrun({0.0;25.0});
 
     g_osc->set_P_G_SOL({4.2;5.5});
     g_osc->set_p_G_SOL({3.5;8.0});
