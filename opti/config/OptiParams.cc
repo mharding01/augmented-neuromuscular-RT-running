@@ -25,13 +25,13 @@ void OPTI_NAME::set_opti()
     MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
 
     // Oscillator fields
-    g_osc->set_gamma_A({1.38; 1.58});
+    g_osc->set_gamma_A({1.30; 1.48});
     g_osc->set_gamma_B({2.35; 2.55 });
     g_osc->set_gamma_C({2.75; 2.95 });
 
     g_osc->set_eta_A({5.45; 5.53  });  
     g_osc->set_eta_B({4.80; 4.90 });  
-    g_osc->set_eta_C({5.62; 6.0});  // TODO: N3 and N6, controls how soon appear 
+    g_osc->set_eta_C({5.2; 5.8});  // TODO: N3 and N6, controls how soon appear 
     g_osc->set_eta_D({3.73; 3.78 });  
     g_osc->set_eta_E({3.64; 3.72 });  
 
