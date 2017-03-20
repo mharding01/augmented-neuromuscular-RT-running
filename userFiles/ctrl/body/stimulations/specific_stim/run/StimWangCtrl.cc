@@ -603,8 +603,6 @@ void StimWangCtrl::pitch_compute()
         double y4 = ghost_osc->get_y_pos(3);
         double y5 = ghost_osc->get_y_pos(4);
         double y6 = ghost_osc->get_y_pos(5);
-        double y7 = ghost_osc->get_y_pos(6);
-        double y8 = ghost_osc->get_y_pos(7);
 	
 		// compute hip target ankle
 		if (i==R_ID)
@@ -625,7 +623,7 @@ void StimWangCtrl::pitch_compute()
 
             if (i==R_ID) 
             {
-                if (y6)    /* N5 positive - PD torso active (stance)*/
+                if (y5)    /* N5 positive - PD torso active (stance)*/
                 {
                     Stim[i][HFL_MUSCLE] = 
 			            S0_hfl_st + neg(K_hfl * (theta_torso - theta_ref) + D_hfl * omega_torso);
@@ -634,22 +632,22 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][HAM_MUSCLE] = 
                         S0_ham_st + pos(K_ham * (theta_torso - theta_ref) + D_ham * omega_torso);
                 }
-                else if ((y1 || y5)) /* N1 and N2 positive - cpg-controlled HFL*/
+                else if ((y1 || y2)) /* N1 and N2 positive - cpg-controlled HFL*/
                 {
                     Stim[i][HFL_MUSCLE] = 
-                                k_HFLrun1 * y1 + k_HFLrun2 * y5;
+                                k_HFLrun1 * y1 + k_HFLrun2 * y2;
                     // Zero-out GLU when y1 is positive, FF during swing
                     Stim[i][GLU_MUSCLE] = (y1) ? S_MIN : S0_glu_sw + G_glu * (F_glu[i] / F_max_glu); 
                     Stim[i][HAM_MUSCLE] = (y1) ? S_MIN : S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
                 } 
-                else if (y3)    /* N4 (N6, too) positive - PD hip active (late swing), cpg-controlled HAM*/
+                else if (y4)    /* N4 (N6, too) positive - PD hip active (late swing), cpg-controlled HAM*/
                 {
                     Stim[i][HFL_MUSCLE] = 
                         S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);
                     Stim[i][GLU_MUSCLE] = 
                         S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
                     Stim[i][HAM_MUSCLE] = 
-                        k_HAMrun * y4;
+                        k_HAMrun * y6;
                         /* Force-feedback control of HAM in late-swing
                         S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
                         */
@@ -669,7 +667,7 @@ void StimWangCtrl::pitch_compute()
             }
             else if (i==L_ID) 
             {
-                if (y5)    /* N2 positive - PD control of torso (stance)*/
+                if (y2)    /* N2 positive - PD control of torso (stance)*/
                 {
                     Stim[i][HFL_MUSCLE] = 
 			            S0_hfl_st + neg(K_hfl * (theta_torso - theta_ref) + D_hfl * omega_torso);
@@ -678,13 +676,13 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][HAM_MUSCLE] = 
                         S0_ham_st + pos(K_ham * (theta_torso - theta_ref) + D_ham * omega_torso);
                 }
-                else if (y3 || y6) /* N4 and N5 - cpg-controlled HFL, 0'd GLU*/
+                else if (y4 || y5) /* N4 and N5 - cpg-controlled HFL, 0'd GLU*/
                 {
                     Stim[i][HFL_MUSCLE] =
-                        k_HFLrun1 * y3 + k_HFLrun2 * y6;
-                    // Zero-out GLU when y3 is positive, FF during swing
-                    Stim[i][GLU_MUSCLE] = (y3) ? S_MIN : S0_glu_sw + G_glu * (F_glu[i] / F_max_glu); 
-                    Stim[i][HAM_MUSCLE] = (y3) ? S_MIN : S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
+                        k_HFLrun1 * y4 + k_HFLrun2 * y5;
+                    // Zero-out GLU when y4 is positive, FF during swing
+                    Stim[i][GLU_MUSCLE] = (y4) ? S_MIN : S0_glu_sw + G_glu * (F_glu[i] / F_max_glu); 
+                    Stim[i][HAM_MUSCLE] = (y4) ? S_MIN : S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
                 }
                 else if (y1) /* N1 (N3, too) positive - PD control of hip, cpg-control of HAM (late swing)*/
                 {
@@ -693,7 +691,7 @@ void StimWangCtrl::pitch_compute()
                     Stim[i][GLU_MUSCLE] = 
                         S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
                     Stim[i][HAM_MUSCLE] = 
-                        k_HAMrun * y2;
+                        k_HAMrun * y3;
                         /* Force-feedback control of HAM in late-swing
                         S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
                         */
@@ -823,6 +821,7 @@ void StimWangCtrl::update_oscillators()
 	G_vas = ghost_osc->get_G_vas();	// Shock absorbing on stance, generate thrust 
 	k_theta = ghost_osc->get_k_theta(); // Prevents hyperextension
 
+	/*
 	set_plot(k_HFLrun1, "KHFL1");
 	set_plot(k_HFLrun2, "KHFL2");
 	set_plot(k_HAMrun, "KHAM");
@@ -832,6 +831,6 @@ void StimWangCtrl::update_oscillators()
 	set_plot(G_sol_ta, "G_sol_ta");
 	set_plot(G_gas, "G_gas");
 	set_plot(G_vas, "G_vas");
-	set_plot(k_theta, "Ktheta");
+	set_plot(k_theta, "Ktheta");//*/
 }
 

@@ -504,11 +504,11 @@ void MatsuokaSixN::update(double cur_t)
 
 	// oscillators outputs
 	y[0] = pos(x[0]); 
-	y[1] = pos(x[2]); 
-	y[2] = pos(x[3]); 
-	y[3] = pos(x[5]); 
-    y[4] = pos(x[1]); 
-    y[5] = pos(x[4]); 
+	y[1] = pos(x[1]); 
+	y[2] = pos(x[2]); 
+	y[3] = pos(x[3]); 
+    y[4] = pos(x[4]); 
+    y[5] = pos(x[5]); 
 
 	// oscillators prediction error
 	oscillator_prediction_error(cur_t);
