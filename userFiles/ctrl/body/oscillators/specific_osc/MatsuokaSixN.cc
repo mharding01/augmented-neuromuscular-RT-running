@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "MatsuokaSixN.hh"
+#include "set_output.h"
 
 #define NB_STEPS_OSC_ERROS 0 ///< number of steps before computing the oscillators prediction errors [-]
 #define OSC_EXCITATION 1.0   ///< excitation of the oscillators
@@ -224,6 +225,7 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 	this->v_request = v_request;
 
 	set_plot(v_request, "target speed [m/s]");
+	set_output(v_request, "target_speed");
 
     // constant functions
 	theta_trunk_ref = P_theta_trunk;

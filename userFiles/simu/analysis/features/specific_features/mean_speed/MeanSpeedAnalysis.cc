@@ -52,7 +52,7 @@ void MeanSpeedAnalysis::compute()
 	running_speed = speed_av_compute->update_and_get(mbs_data->qd[FJ_T1_id]);
 
 	set_plot(running_speed, "real speed [m/s]");
-	set_output(mbs_data->qd[FJ_T1_id], "real_speed raw");
+	//set_output(mbs_data->qd[FJ_T1_id], "real_speed raw");
 	set_output(mbs_data->qd[FJ_T1_id], "real_speed");
 	// mean speed
 	x_coman = mbs_data->q[FJ_T1_id];

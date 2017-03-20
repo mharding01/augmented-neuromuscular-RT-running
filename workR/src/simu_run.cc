@@ -77,7 +77,7 @@ double simu_run(OptiClass *optiClass)
 	mbs_dirdyn->options->tf  = 70.0;
 
 	// results
-	mbs_dirdyn->options->save2file = 0;
+	mbs_dirdyn->options->save2file = 1;
 	mbs_dirdyn->options->max_save_user = 12;
 	mbs_dirdyn->options->respath = PROJECT_SOURCE_DIR"/../resultsR";
 	mbs_dirdyn->options->animpath = PROJECT_SOURCE_DIR"/../animationR";
