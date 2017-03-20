@@ -98,11 +98,11 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
 	l_opt_ham = ham[R_ID]->get_lopt();
 	l_opt_hfl = hfl[R_ID]->get_lopt();
 
-    // set opti default parameters
-    set_opti_defaults();    
+	// set opti default parameters
+	set_opti_defaults();    
 
-    // switch controller nb of steps
-    nb_strikes_switch = 6;
+	// switch controller nb of steps
+	nb_strikes_switch = 6;
 
 	// for optimization
 	inputs->get_opti_inputs()->set_stim_ctrl(this);
@@ -114,14 +114,14 @@ StimWangCtrl::StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics
 	first_stance[R_ID] = 1;
 	first_stance[L_ID] = 1;
 
-    // added ghost oscillator object
-    this->ghost_osc = new MatsuokaSixN(6, inputs->get_t(), ws, inputs, options); 
+	// added ghost oscillator object
+	this->ghost_osc = new MatsuokaSixN(6, inputs->get_t(), ws, inputs, options); 
 
-    // add cpg control time threshold parameter
-    cpg_ctrl_thresh_t = 0.0;
+	// add cpg control time threshold parameter
+	cpg_ctrl_thresh_t = 0.0;
 
-    // add flag indicating when cpg control active
-    cpg_ctrl_active = 0;
+	// add flag indicating when cpg control active
+	cpg_ctrl_active = 0;
 }
 
 /*! \brief Set StimWang parameters to defaults
@@ -190,7 +190,7 @@ void StimWangCtrl::set_opti_defaults()
 	c_v = 0.0; //0.2;
 	// swing initiation and stance preparation offsets
 	d_sp = -0.07115247;
-    d_si = 0.37523836 ;
+	d_si = 0.37523836 ;
 	//additional parameters
 	k_THETA = 5.15958768; //1.15;
 	k_theta = 6.68941640;
@@ -203,14 +203,14 @@ void StimWangCtrl::set_opti_defaults()
  */
 void StimWangCtrl::set_opti_delayed()
 {
-    // Use Matsuoka to optimize 6 parameters - opti_set() occured at constructor
-    ghost_osc->delayed_opti_set();
-    ghost_osc->update_speed_oscillos(); // update theta_*_ref's
+	// Use Matsuoka to optimize 6 parameters - opti_set() occured at constructor
+	ghost_osc->delayed_opti_set();
+	ghost_osc->update_speed_oscillos(); // update theta_*_ref's
 
-    // Retrieve update values for trunk lean and hip angle, SOL and GAS gains
+	// Retrieve update values for trunk lean and hip angle, SOL and GAS gains
 	// HIP CONTROL
-    theta_ref = ghost_osc->get_theta_trunk_ref();
-    theta_h_ref0 = ghost_osc->get_theta_hip_ref();
+	theta_ref = ghost_osc->get_theta_trunk_ref();
+	theta_h_ref0 = ghost_osc->get_theta_hip_ref();
 	// ANKLE CONTROL
 	G_sol = ghost_osc->get_G_sol();
 	G_sol_ta = ghost_osc->get_G_sol_ta();
@@ -261,12 +261,12 @@ void StimWangCtrl::switch_results()
 		if((sw_st->get_nb_strikes() < nb_strikes_switch) && !flag_part1)
 		{
 			//opti_init->set_opti();
-            set_opti_defaults();
+			set_opti_defaults();
 			flag_part1 = 1;
 		}
 		else if((sw_st->get_nb_strikes() >= nb_strikes_switch) && !flag_part2)
 		{
-            set_opti_delayed();
+			set_opti_delayed();
 			flag_part2 = 1;
 		}
 	}
@@ -412,7 +412,7 @@ void StimWangCtrl::pitch_compute()
 				Stim[i][GLU_MUSCLE] = S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
 
 				// HFL
-                Stim[i][HFL_MUSCLE] = S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);
+				Stim[i][HFL_MUSCLE] = S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);
 			}
 			else
 			{
@@ -430,39 +430,39 @@ void StimWangCtrl::pitch_compute()
 				}
 
 				// HFL
-                Stim[i][HFL_MUSCLE] = S0_hfl_sw + k_THETA * (theta_toro_sw0 - theta_ref) + pos(G_hfl * ( (lce_hfl[i] / l_opt_hfl) - l_off_hfl)) - pos(G_ham_hfl * ( (lce_ham[i] / l_opt_ham) - l_off_ham_hfl));
+				Stim[i][HFL_MUSCLE] = S0_hfl_sw + k_THETA * (theta_toro_sw0 - theta_ref) + pos(G_hfl * ( (lce_hfl[i] / l_opt_hfl) - l_off_hfl)) - pos(G_ham_hfl * ( (lce_ham[i] / l_opt_ham) - l_off_ham_hfl));
 			}
 
-            // Plots
-            if (i == R_ID) 
-            {
-                // plot right leg stims
-                //set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU sw");	// TODO
-                //set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM sw");    // TODO
-                //set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL sw");    // TODO
-                //set_plot(Stim[R_ID][RF_MUSCLE], "R RF sw");    // TODO
-                
-                //set_plot(0.0, "R GLU st");	// TODO
-                //set_plot(0.0, "R HAM st");    // TODO
-                //set_plot(0.0, "R HFL st");    // TODO
-                //set_plot(0.0, "R RF st");    // TODO
-            }
-            else
-            {
-                
-                // plot left leg stims
-                //set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU sw");	// TODO
-                //set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM sw");    // TODO
-                //set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL sw");    // TODO
-                //set_plot(Stim[L_ID][RF_MUSCLE], "L RF sw");    // TODO
-                
-                //set_plot(0.0, "L GLU st");	// TODO
-                //set_plot(0.0, "L HAM st");    // TODO
-                //set_plot(0.0, "L HFL st");    // TODO
-                //set_plot(0.0, "L RF st");    // TODO
-                
-            }
-            
+			// Plots
+			if (i == R_ID) 
+			{
+				// plot right leg stims
+				//set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU sw");	// TODO
+				//set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM sw");    // TODO
+				//set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL sw");    // TODO
+				//set_plot(Stim[R_ID][RF_MUSCLE], "R RF sw");    // TODO
+				
+				//set_plot(0.0, "R GLU st");	// TODO
+				//set_plot(0.0, "R HAM st");    // TODO
+				//set_plot(0.0, "R HFL st");    // TODO
+				//set_plot(0.0, "R RF st");    // TODO
+			}
+			else
+			{
+				
+				// plot left leg stims
+				//set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU sw");	// TODO
+				//set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM sw");    // TODO
+				//set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL sw");    // TODO
+				//set_plot(Stim[L_ID][RF_MUSCLE], "L RF sw");    // TODO
+				
+				//set_plot(0.0, "L GLU st");	// TODO
+				//set_plot(0.0, "L HAM st");    // TODO
+				//set_plot(0.0, "L HFL st");    // TODO
+				//set_plot(0.0, "L RF st");    // TODO
+				
+			}
+			
 		}
 		// stance
 		else
@@ -550,59 +550,59 @@ void StimWangCtrl::pitch_compute()
 				Stim[i][HFL_MUSCLE] = limit_range(Stim[i][HFL_MUSCLE], S_MIN, S_MAX) + si_hfl;
 			}
 
-            // Plots
+			// Plots
 
-            if (i == R_ID)
-            {
-                //set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU st");	// TODO
-                //set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM st");    // TODO
-                //set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL st");    // TODO
-                //set_plot(Stim[R_ID][RF_MUSCLE], "R RF st");    // TODO
-                
-                //set_plot(0.0, "R GLU sw");	// TODO
-                //set_plot(0.0, "R HAM sw");    // TODO
-                //set_plot(0.0, "R HFL sw");    // TODO
-                //set_plot(0.0, "R RF sw");    // TODO
-            }
-            else
-            {
-                
-                //set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU st");	// TODO
-                //set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM st");    // TODO
-                //set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL st");    // TODO
-                //set_plot(Stim[L_ID][RF_MUSCLE], "L RF st");    // TODO
-                
-                //set_plot(0.0, "L GLU sw");	// TODO
-                //set_plot(0.0, "L HAM sw");    // TODO
-                //set_plot(0.0, "L HFL sw");    // TODO
-                //set_plot(0.0, "L RF sw");    // TODO
-                
-            } 
-            
+			if (i == R_ID)
+			{
+				//set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU st");	// TODO
+				//set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM st");    // TODO
+				//set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL st");    // TODO
+				//set_plot(Stim[R_ID][RF_MUSCLE], "R RF st");    // TODO
+				
+				//set_plot(0.0, "R GLU sw");	// TODO
+				//set_plot(0.0, "R HAM sw");    // TODO
+				//set_plot(0.0, "R HFL sw");    // TODO
+				//set_plot(0.0, "R RF sw");    // TODO
+			}
+			else
+			{
+				
+				//set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU st");	// TODO
+				//set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM st");    // TODO
+				//set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL st");    // TODO
+				//set_plot(Stim[L_ID][RF_MUSCLE], "L RF st");    // TODO
+				
+				//set_plot(0.0, "L GLU sw");	// TODO
+				//set_plot(0.0, "L HAM sw");    // TODO
+				//set_plot(0.0, "L HFL sw");    // TODO
+				//set_plot(0.0, "L RF sw");    // TODO
+				
+			} 
+			
 		}
 
-        // Stance+swing plots
-        
-        //set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU");	// TODO
-        //set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM");    // TODO
-        //set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL");    // TODO
-        //set_plot(Stim[R_ID][RF_MUSCLE], "R RF");    // TODO
-        
+		// Stance+swing plots
+		
+		//set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU");	// TODO
+		//set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM");    // TODO
+		//set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL");    // TODO
+		//set_plot(Stim[R_ID][RF_MUSCLE], "R RF");    // TODO
+		
 
-        //set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU");	// TODO
-        //set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM");    // TODO
-        //set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL");    // TODO
-        //set_plot(Stim[L_ID][RF_MUSCLE], "L RF");    // TODO
-        
+		//set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU");	// TODO
+		//set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM");    // TODO
+		//set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL");    // TODO
+		//set_plot(Stim[L_ID][RF_MUSCLE], "L RF");    // TODO
+		
 
-        // Overwrite stims
-        // TODO: Plot ghost_osc y[4]
-        double y1 = ghost_osc->get_y_pos(0);
-        double y2 = ghost_osc->get_y_pos(1);
-        double y3 = ghost_osc->get_y_pos(2);
-        double y4 = ghost_osc->get_y_pos(3);
-        double y5 = ghost_osc->get_y_pos(4);
-        double y6 = ghost_osc->get_y_pos(5);
+		// Overwrite stims
+		// TODO: Plot ghost_osc y[4]
+		double y1 = ghost_osc->get_y_pos(0);
+		double y2 = ghost_osc->get_y_pos(1);
+		double y3 = ghost_osc->get_y_pos(2);
+		double y4 = ghost_osc->get_y_pos(3);
+		double y5 = ghost_osc->get_y_pos(4);
+		double y6 = ghost_osc->get_y_pos(5);
 	
 		// compute hip target ankle
 		if (i==R_ID)
@@ -616,99 +616,105 @@ void StimWangCtrl::pitch_compute()
 		// SIMBICON law, converts hip reference angle	
 		theta_h_ref = -(theta_h_ref0 + c_d * d + c_v * speed_fwd_global);
 		//set_plot(theta_h_ref, "theta_h_ref");
-        if ( inputs->get_t() > cpg_ctrl_thresh_t ) /* Overwrite stims after thresh */
-        {
-            // Set flag, indicating cpg control initiated
-            cpg_ctrl_active = 1;    
+		if ( inputs->get_t() > cpg_ctrl_thresh_t ) /* Overwrite stims after thresh */
+		{
+			// Set flag, indicating cpg control initiated
+			cpg_ctrl_active = 1;
 
-            if (i==R_ID) 
-            {
-                if (y5)    /* N5 positive - PD torso active (stance)*/
-                {
-                    Stim[i][HFL_MUSCLE] = 
-			            S0_hfl_st + neg(K_hfl * (theta_torso - theta_ref) + D_hfl * omega_torso);
-                    Stim[i][GLU_MUSCLE] = 
-                        S0_glu_st + pos(K_glu * (theta_torso - theta_ref) + D_glu * omega_torso);
-                    Stim[i][HAM_MUSCLE] = 
-                        S0_ham_st + pos(K_ham * (theta_torso - theta_ref) + D_ham * omega_torso);
-                }
-                else if ((y1 || y2)) /* N1 and N2 positive - cpg-controlled HFL*/
-                {
-                    Stim[i][HFL_MUSCLE] = 
-                                k_HFLrun1 * y1 + k_HFLrun2 * y2;
-                    // Zero-out GLU when y1 is positive, FF during swing
-                    Stim[i][GLU_MUSCLE] = (y1) ? S_MIN : S0_glu_sw + G_glu * (F_glu[i] / F_max_glu); 
-                    Stim[i][HAM_MUSCLE] = (y1) ? S_MIN : S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
-                } 
-                else if (y4)    /* N4 (N6, too) positive - PD hip active (late swing), cpg-controlled HAM*/
-                {
-                    Stim[i][HFL_MUSCLE] = 
-                        S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);
-                    Stim[i][GLU_MUSCLE] = 
-                        S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
-                    Stim[i][HAM_MUSCLE] = 
-                        k_HAMrun * y6;
-                        /* Force-feedback control of HAM in late-swing
-                        S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
-                        */
-                }
-                else 
-                {
-                    Stim[i][HFL_MUSCLE] = S_MIN; 
-                    Stim[i][GLU_MUSCLE] = S_MIN; 
-                    Stim[i][HAM_MUSCLE] = S_MIN; 
-                }
+			/*
+			set_plot(y1, "y1");
+			set_plot(y2, "y2");
+			set_plot(y3, "y3");
+			set_plot(y4, "y4");
+			set_plot(y5, "y5");
+			set_plot(y6, "y6");//*/
 
-                
-                // plot right leg stims
-                //set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU cpg");    // TODO
-                //set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM cpg");    // TODO
-                //set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL cpg");    // TODO
-            }
-            else if (i==L_ID) 
-            {
-                if (y2)    /* N2 positive - PD control of torso (stance)*/
-                {
-                    Stim[i][HFL_MUSCLE] = 
-			            S0_hfl_st + neg(K_hfl * (theta_torso - theta_ref) + D_hfl * omega_torso);
-                    Stim[i][GLU_MUSCLE] = 
-                        S0_glu_st + pos(K_glu * (theta_torso - theta_ref) + D_glu * omega_torso);
-                    Stim[i][HAM_MUSCLE] = 
-                        S0_ham_st + pos(K_ham * (theta_torso - theta_ref) + D_ham * omega_torso);
-                }
-                else if (y4 || y5) /* N4 and N5 - cpg-controlled HFL, 0'd GLU*/
-                {
-                    Stim[i][HFL_MUSCLE] =
-                        k_HFLrun1 * y4 + k_HFLrun2 * y5;
-                    // Zero-out GLU when y4 is positive, FF during swing
-                    Stim[i][GLU_MUSCLE] = (y4) ? S_MIN : S0_glu_sw + G_glu * (F_glu[i] / F_max_glu); 
-                    Stim[i][HAM_MUSCLE] = (y4) ? S_MIN : S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
-                }
-                else if (y1) /* N1 (N3, too) positive - PD control of hip, cpg-control of HAM (late swing)*/
-                {
-                    Stim[i][HFL_MUSCLE] = 
-                        S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);
-                    Stim[i][GLU_MUSCLE] = 
-                        S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
-                    Stim[i][HAM_MUSCLE] = 
-                        k_HAMrun * y3;
-                        /* Force-feedback control of HAM in late-swing
-                        S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
-                        */
-                }
-                else 
-                {
-                    Stim[i][HFL_MUSCLE] = S_MIN; 
-                    Stim[i][GLU_MUSCLE] = S_MIN; 
-                    Stim[i][HAM_MUSCLE] = S_MIN; 
-                }
-                //set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU cpg");    // TODO
-                //set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM cpg");    // TODO
-                //set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL cpg");    // TODO
-            }
-			
-        }
+			if (i==R_ID) 
+			{
+				if (y5)    /* N5 positive - PD torso active (stance)*/
+				{
+					Stim[i][HFL_MUSCLE] = 
+						S0_hfl_st + neg(K_hfl * (theta_torso - theta_ref) + D_hfl * omega_torso);
+					Stim[i][GLU_MUSCLE] = 
+						S0_glu_st + pos(K_glu * (theta_torso - theta_ref) + D_glu * omega_torso);
+					Stim[i][HAM_MUSCLE] = 
+						S0_ham_st + pos(K_ham * (theta_torso - theta_ref) + D_ham * omega_torso);
+				}
+				else if ((y1 || y2)) /* N1 and N2 positive - cpg-controlled HFL*/
+				{
+					Stim[i][HFL_MUSCLE] = 
+								k_HFLrun1 * y1 + k_HFLrun2 * y2;
+					// Zero-out GLU when y1 is positive, FF during swing
+					Stim[i][GLU_MUSCLE] = (y1) ? S_MIN : S0_glu_sw + G_glu * (F_glu[i] / F_max_glu); 
+					Stim[i][HAM_MUSCLE] = (y1) ? S_MIN : S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
+				} 
+				else if (y4)    /* N4 (N6, too) positive - PD hip active (late swing), cpg-controlled HAM*/
+				{
+					Stim[i][HFL_MUSCLE] = 
+						S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);
+					Stim[i][GLU_MUSCLE] = 
+						S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
+					Stim[i][HAM_MUSCLE] = 
+						k_HAMrun * y6;
+						/* Force-feedback control of HAM in late-swing
+						S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
+						*/
+				}
+				else 
+				{
+					Stim[i][HFL_MUSCLE] = S_MIN; 
+					Stim[i][GLU_MUSCLE] = S_MIN; 
+					Stim[i][HAM_MUSCLE] = S_MIN; 
+				}
 
+				
+				// plot right leg stims
+				//set_plot(Stim[R_ID][GLU_MUSCLE], "R GLU cpg");    // TODO
+				//set_plot(Stim[R_ID][HAM_MUSCLE], "R HAM cpg");    // TODO
+				//set_plot(Stim[R_ID][HFL_MUSCLE], "R HFL cpg");    // TODO
+			}
+			else if (i==L_ID) 
+			{
+				if (y2)    /* N2 positive - PD control of torso (stance)*/
+				{
+					Stim[i][HFL_MUSCLE] = 
+						S0_hfl_st + neg(K_hfl * (theta_torso - theta_ref) + D_hfl * omega_torso);
+					Stim[i][GLU_MUSCLE] = 
+						S0_glu_st + pos(K_glu * (theta_torso - theta_ref) + D_glu * omega_torso);
+					Stim[i][HAM_MUSCLE] = 
+						S0_ham_st + pos(K_ham * (theta_torso - theta_ref) + D_ham * omega_torso);
+				}
+				else if (y4 || y5) /* N4 and N5 - cpg-controlled HFL, 0'd GLU*/
+				{
+					Stim[i][HFL_MUSCLE] =
+						k_HFLrun1 * y4 + k_HFLrun2 * y5;
+					// Zero-out GLU when y4 is positive, FF during swing
+					Stim[i][GLU_MUSCLE] = (y4) ? S_MIN : S0_glu_sw + G_glu * (F_glu[i] / F_max_glu); 
+					Stim[i][HAM_MUSCLE] = (y4) ? S_MIN : S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
+				}
+				else if (y1) /* N1 (N3, too) positive - PD control of hip, cpg-control of HAM (late swing)*/
+				{
+					Stim[i][HFL_MUSCLE] = 
+						S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);
+					Stim[i][GLU_MUSCLE] = 
+						S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
+					Stim[i][HAM_MUSCLE] = 
+						k_HAMrun * y3;
+						/* Force-feedback control of HAM in late-swing
+						S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
+						*/
+				}
+				else 
+				{
+					Stim[i][HFL_MUSCLE] = S_MIN; 
+					Stim[i][GLU_MUSCLE] = S_MIN; 
+					Stim[i][HAM_MUSCLE] = S_MIN; 
+				}
+				//set_plot(Stim[L_ID][GLU_MUSCLE], "L GLU cpg");    // TODO
+				//set_plot(Stim[L_ID][HAM_MUSCLE], "L HAM cpg");    // TODO
+				//set_plot(Stim[L_ID][HFL_MUSCLE], "L HFL cpg");    // TODO
+			}
+		}
 	}
 }
 
@@ -804,15 +810,15 @@ void StimWangCtrl::update_oscillators()
 {
 	ghost_osc->update(inputs->get_t());
 
-    // Retrieve updated values for cpg gains, trunk lean and hip ref angles, SOL and GAS gains
+	// Retrieve updated values for cpg gains, trunk lean and hip ref angles, SOL and GAS gains
 	// CPG CONTROL
 	k_HFLrun1 = ghost_osc->get_k_HFLrun1();
 	k_HFLrun2 = ghost_osc->get_k_HFLrun2();
 	k_HAMrun = ghost_osc->get_k_HAMrun();
 
 	// HIP CONTROL
-    theta_ref = ghost_osc->get_theta_trunk_ref();
-    theta_h_ref0 = ghost_osc->get_theta_hip_ref();
+	theta_ref = ghost_osc->get_theta_trunk_ref();
+	theta_h_ref0 = ghost_osc->get_theta_hip_ref();
 	// ANKLE CONTROL
 	G_sol = ghost_osc->get_G_sol();
 	G_sol_ta = ghost_osc->get_G_sol_ta();
