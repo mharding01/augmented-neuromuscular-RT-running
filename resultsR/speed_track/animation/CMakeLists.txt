@@ -25,7 +25,8 @@ if (UNIX)
 endif (UNIX)
 
 # mbsysc project path
-set(MBSYSC_PATH /data/nvander/Documents/Robotran/Projects/robotran/mbsysc)
+#set(MBSYSC_PATH /data/nvander/Documents/Robotran/Projects/robotran/mbsysc)
+set(MBSYSC_PATH /home/nico/Documents/Robotran/Projects/robotran/mbsysc)
 
 # additional CMake functions
 set(CMAKE_AUX ${MBSYSC_PATH}/MBsysC/cmake_aux)
