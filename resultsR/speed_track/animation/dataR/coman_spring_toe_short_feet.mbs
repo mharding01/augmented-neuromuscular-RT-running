@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mbsDescR7>
   <mbsname>coman_spring_toe_short_feet</mbsname>
-  <mbsyspad_version>1.9.5</mbsyspad_version>
+  <mbsyspad_version>1.9.6</mbsyspad_version>
   <base>
     <!--this is the base body-->
     <gravity>
@@ -54,7 +54,6 @@
         </base_body>
       </x2D>
       <x3D>
-        <x3D_frame />
         <x3D_shapes>
           <box>
             <name>Floor_path</name>
@@ -73,7 +72,7 @@
               <y>0.0</y>
               <z>0.0</z>
             </rotation>
-            <color R="102" G="102" B="102" />
+            <color R="0" G="0" B="0" />
             <specularColor R="255" G="255" B="255" />
             <shininess>250.0</shininess>
             <transparency>0.019999999552965164</transparency>
@@ -3965,8 +3964,8 @@
         </zUpVector>
         <active />
         <direction>
-          <x>-1.0</x>
-          <y>0.20000000298023224</y>
+          <x>0.0</x>
+          <y>1.0</y>
           <z>-1.0</z>
         </direction>
         <depthScale>0.0015</depthScale>
