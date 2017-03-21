@@ -11,6 +11,18 @@
 
 #define NB_JOINTS_COMAN 31 ///< number of joints (COMAN)
 
+/*! \brief get the time for the video, depending on the real time
+ * 
+ * This function slows down the video to get a better recording (later speed up to get normal speed)
+ *
+ * \param[in] t real time [s]
+ * \return video time [s]
+ */
+double time_video_slow_record(double t)
+{
+	return (t - 5.0) / 16.0;
+}
+
 /*! \brief main function
  */
 int main(int argc, char **argv)
@@ -43,7 +55,7 @@ int main(int argc, char **argv)
 		// update the timing
 		world_3d.UpdateTime();
 
-		tsim = world_3d.GetT() - 5.0;
+		tsim = time_video_slow_record(world_3d.GetT());
 
 		// fill Q values by reading the anim
 		reader->FillQ(tsim, NB_JOINTS_COMAN, joint_vec);
