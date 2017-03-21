@@ -8,8 +8,7 @@
  */
 OptiClass::OptiClass()
 {
-	fitness = 0.0;
-	v_ref   = CMAKE_VAR_1;
+	reset();
 }
 
 /*! \brief destructor
@@ -35,6 +34,8 @@ void OptiClass::reset()
 {
 	fitness = 0.0;
 	v_ref   = CMAKE_VAR_1;
+
+	v_real = 0.0;
 
 	optiNorms.clear();
 	optiParams.clear();

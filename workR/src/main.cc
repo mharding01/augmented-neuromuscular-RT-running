@@ -4,7 +4,7 @@
  * \brief main project file
  */
 
-#if !defined(OPTI_BIOROB) && !defined(OPTI_MPI)
+#if !defined(EVAL_RUN) && !defined(OPTI_BIOROB) && !defined(OPTI_MPI)
 
 #include "def_main.hh"
 #include "opti_gestion.hh"

@@ -76,8 +76,13 @@ double simu_run(OptiClass *optiClass)
 	mbs_dirdyn->options->dt0 = 125e-6;
 	mbs_dirdyn->options->tf  = 70.0;
 
+	// special time for evaluations
+	#ifdef EVAL_RUN
+		mbs_dirdyn->options->tf  = 30.0;
+	#endif
+
 	// results
-	mbs_dirdyn->options->save2file = 1;
+	mbs_dirdyn->options->save2file = 0;
 	mbs_dirdyn->options->saveperiod = 4;
 	mbs_dirdyn->options->max_save_user = 12;
 	mbs_dirdyn->options->respath = PROJECT_SOURCE_DIR"/../resultsR";
@@ -109,9 +114,11 @@ double simu_run(OptiClass *optiClass)
 	#endif
 
 	// special optimization parameters
-	#ifdef OPTI_RUN
+	#if defined(EVAL_RUN) || defined(OPTI_RUN)
 	mbs_dirdyn->options->realtime = 0;
+	mbs_dirdyn->options->save2file = 0;
 	#endif
+
 	
 	// get UserIO
 	uvs = mbs_data->user_IO;
