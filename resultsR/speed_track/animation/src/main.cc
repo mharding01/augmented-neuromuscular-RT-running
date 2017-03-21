@@ -25,7 +25,8 @@ int main(int argc, char **argv)
     OpenGLMbs::shader_multisample(PROJECT_SOURCE_DIR"/dataR/coman_spring_toe_short_feet.mbs", shader_flag, multi_samp);
 
 	// main window for 3D world
-	OpenGLMbs::MbsWorld3D world_3d(1024, 768, shader_flag, multi_samp);
+	//OpenGLMbs::MbsWorld3D world_3d(1024, 768, shader_flag, multi_samp);
+	OpenGLMbs::MbsWorld3D world_3d(1280, 720, shader_flag, multi_samp);
 
 	// load mbs files
 	world_3d.AddMbs(PROJECT_SOURCE_DIR"/dataR/coman_spring_toe_short_feet.mbs");

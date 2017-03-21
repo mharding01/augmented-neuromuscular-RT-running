@@ -1210,7 +1210,7 @@
                 <y>0.0</y>
                 <z>0.0</z>
               </rotation>
-              <color R="204" G="204" B="204" />
+              <color R="102" G="102" B="102" />
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
@@ -1237,7 +1237,7 @@
                 <y>0.0</y>
                 <z>0.0</z>
               </rotation>
-              <color R="204" G="204" B="204" />
+              <color R="102" G="102" B="102" />
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
@@ -1356,7 +1356,7 @@
                 <y>0.0</y>
                 <z>0.0</z>
               </rotation>
-              <color R="102" G="102" B="102" />
+              <color R="51" G="51" B="51" />
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
@@ -2217,7 +2217,7 @@
                 <y>0.0</y>
                 <z>0.0</z>
               </rotation>
-              <color R="204" G="204" B="204" />
+              <color R="102" G="102" B="102" />
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
@@ -2244,7 +2244,7 @@
                 <y>0.0</y>
                 <z>0.0</z>
               </rotation>
-              <color R="204" G="204" B="204" />
+              <color R="102" G="102" B="102" />
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
@@ -2363,7 +2363,7 @@
                 <y>0.0</y>
                 <z>0.0</z>
               </rotation>
-              <color R="102" G="102" B="102" />
+              <color R="51" G="51" B="51" />
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
@@ -3924,12 +3924,12 @@
         <name>CoMan_profile</name>
         <joint>FJ_T2_Coman</joint>
         <position>
-          <x>0.0</x>
+          <x>-0.45</x>
           <y>-1.0</y>
           <z>0.5</z>
         </position>
         <target>
-          <x>0.0</x>
+          <x>-0.45</x>
           <y>0.0</y>
           <z>0.5</z>
         </target>
@@ -3964,7 +3964,7 @@
         </zUpVector>
         <active />
         <direction>
-          <x>0.0</x>
+          <x>-0.25</x>
           <y>1.0</y>
           <z>-1.0</z>
         </direction>
