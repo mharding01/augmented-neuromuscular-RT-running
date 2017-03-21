@@ -8,13 +8,14 @@
 #include "user_IO.h"
 #include "user_realtime.h"
 
-#define TIME_SAFETY 0.15          ///< time safety [s]
-#define TIME_TAKE_OFF_SAFETY 0.01 ///< time safety to wait after take-off [s]
+#define TIME_SAFETY 0.1             ///< time safety (for strike) [s]
+#define TIME_SAFETY_2 0.05          ///< time safety (for take-off) [s]
+#define TIME_TAKE_OFF_SAFETY 2.5e-3 ///< time safety to wait after take-off [s]
 #define FZ_THRESHOLD_STRIKE 5.0   ///< normal force threshold to detect strike [N]
 #define THRESHOLD_X_OBSTACLE 0.15 ///< minimal distance between two obstacles [m]
 
 #define MIN_T_MEAN 9.0 ///< start time to compute stride periods and lengths
-#define MAX_T_MEAN 19.0 ///< finish time to compute stride periods and lengths
+#define MAX_T_MEAN 29.0 ///< finish time to compute stride periods and lengths
 
 #define MIN_DIST_STEP 0.1 ///< minimal distance between two steps
 
@@ -252,7 +253,7 @@ void SwingStanceAnalysis::compute()
 			}
 
 			// take-off
-			if ( (Fz[i] <= 0.0) && (t - last_t_strike_leg[i] > TIME_SAFETY) && (t - t_last_force_leg[i] > TIME_TAKE_OFF_SAFETY) )
+			if ( (Fz[i] <= 0.0) && (t - last_t_strike_leg[i] > TIME_SAFETY_2) && (t - t_last_force_leg[i] > TIME_TAKE_OFF_SAFETY) )
 			{
 				swing_leg[i] = 1;
 

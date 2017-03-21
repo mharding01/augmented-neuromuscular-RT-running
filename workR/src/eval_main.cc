@@ -92,13 +92,20 @@ void evaluate_sp_features()
 				// outputs
 				cur_speed = optiClass->get_v_real();
 
-				std::cout << cur_speed << std::endl;
-
 				count_test++;
 
-			} while (cur_speed < 0.1);
+			} while (fabs(speed_ref[i] - cur_speed) > 0.1 || optiClass->get_t_final() < 29.5);
 
 			out_stream << cur_speed << std::endl;
+
+			out_stream << optiClass->get_stride_period_mean() << std::endl;
+			out_stream << optiClass->get_stride_length_mean() << std::endl;
+			out_stream << optiClass->get_take_off_mean() << std::endl;
+			out_stream << optiClass->get_flight_cycle_mean() << std::endl;
+			out_stream << optiClass->get_ds_cycle_mean() << std::endl;
+
+			out_stream << optiClass->get_met_energy_legs() << std::endl;
+			out_stream << optiClass->get_met_energy_total() << std::endl;
 		}
 	}
 	

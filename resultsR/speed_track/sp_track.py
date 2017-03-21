@@ -74,13 +74,13 @@ targ_sp = data_ref[:,1]
 
 # movie properties
 movie_fqc  = 60
-movie_time = 74
+movie_time = 74*16 # for slow down with a factor 16
 
 # output folder
 output_folder = './'
 
 # 1 to get the animation, 0 otherwise
-anim = 0
+anim = 1
 
 # 1 to save the figure, 0 otherwise
 save_fig = 1
@@ -97,6 +97,9 @@ def animate_movie(i):
 	# get correct time index
 	ind = (i * one_sec_nb_meas / movie_fqc) - 5 * one_sec_nb_meas
 	
+	# slow down by a factor 16
+	ind = int(ind / 16)
+
 	# plot not started
 	if ind < 0:
 		return lines
@@ -201,6 +204,6 @@ else:
 	anim = animation.FuncAnimation(fig, animate_movie, init_func=init_movie,
 		frames=movie_fqc*movie_time, interval=1000/movie_fqc, blit=True)
 
-	#anim.save('sp_track.mp4', fps=movie_fqc, extra_args=['-vcodec', 'libx264'])
+	anim.save('sp_track.mp4', fps=movie_fqc, extra_args=['-vcodec', 'libx264'])
 
 plt.show()

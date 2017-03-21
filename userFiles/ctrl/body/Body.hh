@@ -35,7 +35,10 @@ class Body: public Computation
 		StimulationCtrl* get_stim_ctrl() { return stim_ctrl; }
 
 		/// get met_energy_total
-		double get_met_energy_total() { return met_energy_total; }
+		double get_met_energy_total() const { return met_energy_total; }
+
+		/// get met_energy_legs
+		double get_met_energy_legs() const { return met_energy_legs; }
 
 		WalkStates* get_walk_state() { return ws; }
 
@@ -73,6 +76,7 @@ class Body: public Computation
 		StimWalkCtrl *ghost_stim_cpg; ///< stimulations from cpg (ghost controller for testing)
 
 		double met_energy_total; ///< total metabolic enrgy
+		double met_energy_legs; ///< energy for the legs
 
 		int flag_ctrl; ///< flag indicating the requested controller
 		int flag_apply_Qq_wang;

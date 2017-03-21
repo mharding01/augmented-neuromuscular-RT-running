@@ -132,6 +132,7 @@ Body::Body(CtrlInputs *inputs, CtrlOptions *options, MotorCtrlIndex *ctrl_index,
 
 	// metabolic energy
 	met_energy_total = 0.0;
+	met_energy_legs  = 0.0;
 
 	if (flag_apply_Qq_wang)
 	{
@@ -202,6 +203,7 @@ void Body::compute()
 	t = inputs->get_t();
 
 	met_energy_total = 0.0;
+	met_energy_legs  = 0.0;
 
 	switch (m_st->get_coman_state())
 	{
@@ -251,6 +253,8 @@ void Body::compute()
 		}
 		met_energy_total += parts[i]->get_met_energy();
 	}
+
+	met_energy_legs = parts[RIGHT_LEG_BODY]->get_met_energy() + parts[LEFT_LEG_BODY]->get_met_energy();
 
 	// send torque references
 	send_references();
