@@ -125,7 +125,7 @@ if not anim:
 	plt.plot(t, real_av, 'r', lw=3.5, label='actual speed')
 	plt.xlabel("time (s)", fontsize=15, fontweight='bold')
 	plt.ylabel("speed (m/s)", fontsize=15, fontweight='bold')
-	plt.xlim([0, 69.0])
+	plt.xlim([0, 70.0])
 	plt.ylim([1.1, 1.9])
 
 	# space for labels
@@ -158,7 +158,7 @@ if not anim:
 #	ax.text((22.0+18.8)/2.0, 0.18, 'snapshots', horizontalalignment='center', verticalalignment='center', fontsize=20, color='black')
 
 	if save_fig:
-		plt.savefig('{}/sp_track.eps'.format(output_folder), bbox_inches='tight', pad_inches=0.0)
+		plt.savefig('{}/sp_track.eps'.format(output_folder), bbox_inches='tight', pad_inches=0.8)
 
 # animation
 else:
