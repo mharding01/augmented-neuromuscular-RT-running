@@ -77,7 +77,7 @@
             <specularColor R="255" G="255" B="255" />
             <shininess>250.0</shininess>
             <transparency>0.4000000059604645</transparency>
-            <url>PRJPATH/../../../animationR/obj/ground/floor_grid.wrl</url>
+            <url>PRJPATH/../../../animationR/obj/ground/floor_grid.obj</url>
           </inline>
           <box>
             <name>Floor_path</name>
@@ -127,7 +127,7 @@
             <specularColor R="255" G="255" B="255" />
             <shininess>250.0</shininess>
             <transparency>0.0</transparency>
-            <url>PRJPATH/../../../animationR/obj/other/salamander_rosace.wrl</url>
+            <url>PRJPATH/../../../animationR/obj/other/salamander_rosace.obj</url>
           </inline>
         </x3D_shapes>
       </x3D>
@@ -379,7 +379,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_07_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_07_prt.obj</url>
             </inline>
             <box>
               <name>Waist_contact_visu_1</name>
@@ -549,7 +549,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_20_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_20_prt.obj</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -682,7 +682,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_19_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_19_prt.obj</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -826,7 +826,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_18_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_18_prt.obj</url>
             </inline>
             <box>
               <name>RThigh_contact_visu</name>
@@ -997,7 +997,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_17_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_17_prt.obj</url>
             </inline>
             <box>
               <name>RLowLeg_contact_visu</name>
@@ -1146,7 +1146,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_16_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_16_prt.obj</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -1296,7 +1296,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/feet/cache/cache_foot.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/feet/cache/cache_foot.obj</url>
             </inline>
             <inline>
               <name>Cache_right</name>
@@ -1319,7 +1319,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/feet/cache/cache_foot.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/feet/cache/cache_foot.obj</url>
             </inline>
             <box>
               <name>Bar_right</name>
@@ -1614,7 +1614,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_06_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_06_prt.obj</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -1747,7 +1747,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_05_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_05_prt.obj</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -1889,7 +1889,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_04_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_04_prt.obj</url>
             </inline>
             <box>
               <name>LThigh_contact_visu</name>
@@ -2058,7 +2058,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_03_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_03_prt.obj</url>
             </inline>
             <box>
               <name>LLowLeg_contact_visu</name>
@@ -2207,7 +2207,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_02_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_02_prt.obj</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -2357,7 +2357,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/feet/cache/cache_foot.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/feet/cache/cache_foot.obj</url>
             </inline>
             <inline>
               <name>Cache_right</name>
@@ -2380,7 +2380,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/feet/cache/cache_foot.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/feet/cache/cache_foot.obj</url>
             </inline>
             <box>
               <name>Bar_right</name>
@@ -2686,7 +2686,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_09_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_09_prt.obj</url>
             </inline>
             <inline>
               <name>DWL2_visu</name>
@@ -2709,7 +2709,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_08_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_08_prt.obj</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -2975,7 +2975,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_10_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_10_prt.obj</url>
             </inline>
             <sphere>
               <name>Torso_contact_visu_1</name>
@@ -3197,7 +3197,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_24_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_24_prt.obj</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -3330,7 +3330,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_23_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_23_prt.obj</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -3473,7 +3473,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_22_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_22_prt.obj</url>
             </inline>
             <box>
               <name>Rhoulder_contact_visu</name>
@@ -3624,7 +3624,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_21_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_21_prt.obj</url>
             </inline>
             <box>
               <name>RElbow_contact_visu</name>
@@ -3794,7 +3794,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_14_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_14_prt.obj</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -3929,7 +3929,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_13_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_13_prt.obj</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -4072,7 +4072,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_12_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_12_prt.obj</url>
             </inline>
             <box>
               <name>LSoulder_contact_visu</name>
@@ -4225,7 +4225,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_11_prt.wrl</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_11_prt.obj</url>
             </inline>
             <box>
               <name>LElbow_contact_visu</name>
