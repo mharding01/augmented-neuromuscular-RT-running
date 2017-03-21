@@ -2775,7 +2775,7 @@
             <inline>
               <name>Torso_visu</name>
               <position>
-                <x>-0.035</x>
+                <x>-0.015</x>
                 <y>0.0</y>
                 <z>-0.69</z>
               </position>
@@ -2897,7 +2897,7 @@
             <inline>
               <name>RShp_visu</name>
               <position>
-                <x>-0.02</x>
+                <x>0.0</x>
                 <y>0.08</y>
                 <z>-0.85</z>
               </position>
@@ -3030,7 +3030,7 @@
             <inline>
               <name>RShr_visu</name>
               <position>
-                <x>-0.02</x>
+                <x>0.0</x>
                 <y>0.15</y>
                 <z>-0.85</z>
               </position>
@@ -3173,7 +3173,7 @@
             <inline>
               <name>RShy_visu</name>
               <position>
-                <x>-0.02</x>
+                <x>0.0</x>
                 <y>0.15</y>
                 <z>-0.8</z>
               </position>
@@ -3297,7 +3297,7 @@
             <inline>
               <name>RElb_visu</name>
               <position>
-                <x>-0.02</x>
+                <x>0.0</x>
                 <y>0.15</y>
                 <z>-0.67</z>
               </position>
@@ -3417,7 +3417,7 @@
             <inline>
               <name>LShp_visu</name>
               <position>
-                <x>-0.02</x>
+                <x>0.0</x>
                 <y>-0.08</y>
                 <z>-0.85</z>
               </position>
@@ -3552,7 +3552,7 @@
             <inline>
               <name>LShr_visu</name>
               <position>
-                <x>-0.02</x>
+                <x>0.0</x>
                 <y>-0.15</y>
                 <z>-0.85</z>
               </position>
@@ -3695,7 +3695,7 @@
             <inline>
               <name>LShy_visu</name>
               <position>
-                <x>-0.02</x>
+                <x>0.0</x>
                 <y>-0.15</y>
                 <z>-0.8</z>
               </position>
@@ -3821,7 +3821,7 @@
             <inline>
               <name>LElb_visu</name>
               <position>
-                <x>-0.02</x>
+                <x>0.0</x>
                 <y>-0.15</y>
                 <z>-0.67</z>
               </position>
