@@ -33,8 +33,8 @@ int main(int argc, char **argv)
 	int shader_flag, multi_samp;
 	OpenGLMbs::AnimReader *reader;
 
-    // get the shader flag and the mutlisampling option from .mbs file
-    OpenGLMbs::shader_multisample(PROJECT_SOURCE_DIR"/dataR/coman_spring_toe_short_feet.mbs", shader_flag, multi_samp);
+	// get the shader flag and the mutlisampling option from .mbs file
+	OpenGLMbs::shader_multisample(PROJECT_SOURCE_DIR"/dataR/coman_spring_toe_short_feet.mbs", shader_flag, multi_samp);
 
 	// main window for 3D world
 	//OpenGLMbs::MbsWorld3D world_3d(1024, 768, shader_flag, multi_samp);
