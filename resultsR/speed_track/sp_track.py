@@ -42,8 +42,7 @@ def running_average(t, x, t_av):
 
 	# final border
 	for i in range(vec_len - av_semi_len, vec_len):
-		i_comp = vec_len - 1 - i
-		y[i] = float(cum_sum[i+i_comp] - cum_sum[i-i_comp] + x[i-i_comp]) / float(2*i_comp+1)
+		y[i] = float(cum_sum[vec_len-1] - cum_sum[vec_len-av_len] + x[vec_len-av_len]) / float(av_len)
 
 	# return result
 	return y
@@ -81,7 +80,7 @@ movie_time = 74
 output_folder = './'
 
 # 1 to get the animation, 0 otherwise
-anim = 1
+anim = 0
 
 # 1 to save the figure, 0 otherwise
 save_fig = 1
