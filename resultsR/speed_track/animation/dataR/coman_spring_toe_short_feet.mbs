@@ -56,12 +56,12 @@
       <x3D>
         <x3D_frame />
         <x3D_shapes>
-          <inline>
-            <name>Floor_grid</name>
+          <box>
+            <name>Floor_path</name>
             <position>
               <x>0.0</x>
               <y>0.0</y>
-              <z>0.0</z>
+              <z>-0.005</z>
             </position>
             <scale>
               <x>1.0</x>
@@ -73,43 +73,20 @@
               <y>0.0</y>
               <z>0.0</z>
             </rotation>
-            <color R="0" G="0" B="0" />
-            <specularColor R="255" G="255" B="255" />
-            <shininess>250.0</shininess>
-            <transparency>0.4000000059604645</transparency>
-            <url>PRJPATH/../../../animationR/obj/ground/floor_grid.obj</url>
-          </inline>
-          <box>
-            <name>Floor_path</name>
-            <position>
-              <x>0.0</x>
-              <y>0.0</y>
-              <z>-0.005</z>
-            </position>
-            <scale>
-              <x>100.0</x>
-              <y>1.0</y>
-              <z>0.01</z>
-            </scale>
-            <rotation>
-              <x>0.0</x>
-              <y>0.0</y>
-              <z>0.0</z>
-            </rotation>
-            <color R="0" G="0" B="0" />
+            <color R="102" G="102" B="102" />
             <specularColor R="255" G="255" B="255" />
             <shininess>250.0</shininess>
             <transparency>0.019999999552965164</transparency>
             <size>
-              <x>2.0</x>
+              <x>500.0</x>
               <y>1.0</y>
-              <z>1.0</z>
+              <z>0.01</z>
             </size>
           </box>
           <inline>
             <name>Salamander</name>
             <position>
-              <x>10.0</x>
+              <x>50.0</x>
               <y>1.0</y>
               <z>0.6</z>
             </position>
@@ -120,7 +97,7 @@
             </scale>
             <rotation>
               <x>3.141592653589793</x>
-              <y>3.141592653589793</y>
+              <y>0.0</y>
               <z>0.0</z>
             </rotation>
             <color R="0" G="0" B="0" />
@@ -381,56 +358,6 @@
               <transparency>0.0</transparency>
               <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_07_prt.obj</url>
             </inline>
-            <box>
-              <name>Waist_contact_visu_1</name>
-              <position>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <size>
-                <x>0.1</x>
-                <y>0.2</y>
-                <z>0.11</z>
-              </size>
-            </box>
-            <sphere>
-              <name>Waist_contact_visu_2</name>
-              <position>
-                <x>-0.05</x>
-                <y>0.0</y>
-                <z>0.1</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <radius>0.07</radius>
-            </sphere>
           </x3D_shapes>
         </x3D>
       </graphics>
@@ -828,33 +755,6 @@
               <transparency>0.0</transparency>
               <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_18_prt.obj</url>
             </inline>
-            <box>
-              <name>RThigh_contact_visu</name>
-              <position>
-                <x>0.003</x>
-                <y>0.005</y>
-                <z>0.01</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <size>
-                <x>0.1</x>
-                <y>0.1</y>
-                <z>0.26</z>
-              </size>
-            </box>
           </x3D_shapes>
         </x3D>
       </graphics>
@@ -999,33 +899,6 @@
               <transparency>0.0</transparency>
               <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_17_prt.obj</url>
             </inline>
-            <box>
-              <name>RLowLeg_contact_visu</name>
-              <position>
-                <x>0.0</x>
-                <y>0.005</y>
-                <z>-0.12</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <size>
-                <x>0.1</x>
-                <y>0.1</y>
-                <z>0.22</z>
-              </size>
-            </box>
           </x3D_shapes>
         </x3D>
       </graphics>
@@ -1891,33 +1764,6 @@
               <transparency>0.0</transparency>
               <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_04_prt.obj</url>
             </inline>
-            <box>
-              <name>LThigh_contact_visu</name>
-              <position>
-                <x>0.003</x>
-                <y>-0.005</y>
-                <z>0.01</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <size>
-                <x>0.1</x>
-                <y>0.1</y>
-                <z>0.26</z>
-              </size>
-            </box>
           </x3D_shapes>
         </x3D>
       </graphics>
@@ -2060,33 +1906,6 @@
               <transparency>0.0</transparency>
               <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_03_prt.obj</url>
             </inline>
-            <box>
-              <name>LLowLeg_contact_visu</name>
-              <position>
-                <x>0.0</x>
-                <y>-0.005</y>
-                <z>-0.12</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <size>
-                <x>0.1</x>
-                <y>0.1</y>
-                <z>0.22</z>
-              </size>
-            </box>
           </x3D_shapes>
         </x3D>
       </graphics>
@@ -2975,108 +2794,8 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_10_prt.obj</url>
+              <url>/data/nvander/Documents/Robotran/Projects/walkman/coman_matthew/animationR/obj/IIT_files/torso_blue.obj</url>
             </inline>
-            <sphere>
-              <name>Torso_contact_visu_1</name>
-              <position>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>-0.05</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <radius>0.06</radius>
-            </sphere>
-            <box>
-              <name>Torso_contact_visu_2</name>
-              <position>
-                <x>-0.04</x>
-                <y>0.0</y>
-                <z>0.17</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <size>
-                <x>0.12</x>
-                <y>0.35</y>
-                <z>0.1</z>
-              </size>
-            </box>
-            <box>
-              <name>Torso_contact_visu_3</name>
-              <position>
-                <x>-0.05</x>
-                <y>0.0</y>
-                <z>0.13</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <size>
-                <x>0.19</x>
-                <y>0.18</y>
-                <z>0.2</z>
-              </size>
-            </box>
-            <sphere>
-              <name>Torso_contact_visu_4</name>
-              <position>
-                <x>-0.02</x>
-                <y>0.0</y>
-                <z>0.02</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <radius>0.07</radius>
-            </sphere>
           </x3D_shapes>
         </x3D>
       </graphics>
@@ -3475,33 +3194,6 @@
               <transparency>0.0</transparency>
               <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_22_prt.obj</url>
             </inline>
-            <box>
-              <name>Rhoulder_contact_visu</name>
-              <position>
-                <x>-0.02</x>
-                <y>-0.015</y>
-                <z>-0.05</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <size>
-                <x>0.08</x>
-                <y>0.08</y>
-                <z>0.27</z>
-              </size>
-            </box>
           </x3D_shapes>
         </x3D>
       </graphics>
@@ -3626,56 +3318,6 @@
               <transparency>0.0</transparency>
               <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_21_prt.obj</url>
             </inline>
-            <box>
-              <name>RElbow_contact_visu</name>
-              <position>
-                <x>-0.02</x>
-                <y>-0.005</y>
-                <z>-0.13</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <size>
-                <x>0.032</x>
-                <y>0.032</y>
-                <z>0.16</z>
-              </size>
-            </box>
-            <sphere>
-              <name>RWrist_contact_visu</name>
-              <position>
-                <x>-0.02</x>
-                <y>-0.005</y>
-                <z>-0.208</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <radius>0.021</radius>
-            </sphere>
           </x3D_shapes>
         </x3D>
       </graphics>
@@ -4074,33 +3716,6 @@
               <transparency>0.0</transparency>
               <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_12_prt.obj</url>
             </inline>
-            <box>
-              <name>LSoulder_contact_visu</name>
-              <position>
-                <x>-0.02</x>
-                <y>0.015</y>
-                <z>-0.05</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <size>
-                <x>0.08</x>
-                <y>0.08</y>
-                <z>0.27</z>
-              </size>
-            </box>
           </x3D_shapes>
         </x3D>
       </graphics>
@@ -4227,56 +3842,6 @@
               <transparency>0.0</transparency>
               <url>PRJPATH/../../../animationR/obj/IIT_files/asm0001_vrml_11_prt.obj</url>
             </inline>
-            <box>
-              <name>LElbow_contact_visu</name>
-              <position>
-                <x>-0.015</x>
-                <y>0.005</y>
-                <z>-0.13</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <size>
-                <x>0.032</x>
-                <y>0.032</y>
-                <z>0.16</z>
-              </size>
-            </box>
-            <sphere>
-              <name>Lwrist_contact_visu</name>
-              <position>
-                <x>-0.015</x>
-                <y>0.005</y>
-                <z>-0.208</z>
-              </position>
-              <scale>
-                <x>1.0</x>
-                <y>1.0</y>
-                <z>1.0</z>
-              </scale>
-              <rotation>
-                <x>0.0</x>
-                <y>0.0</y>
-                <z>0.0</z>
-              </rotation>
-              <color R="0" G="102" B="0" />
-              <specularColor R="255" G="255" B="255" />
-              <shininess>250.0</shininess>
-              <transparency>1.0</transparency>
-              <radius>0.021</radius>
-            </sphere>
           </x3D_shapes>
         </x3D>
       </graphics>
@@ -4351,35 +3916,11 @@
       <point>0.3</point>
     </shapeScaleFactors>
     <opengl>
-      <lightAndShadowMode>LIGHTS_NO_SPEC_SHADER</lightAndShadowMode>
+      <lightAndShadowMode>SHADOW_MAPPING_SHADER</lightAndShadowMode>
       <glfwSample>4</glfwSample>
     </opengl>
     <viewpoints>
       <!--This is the viewpoint list-->
-      <viewpoint>
-        <name>CoMan</name>
-        <joint>FJ_T3_Coman</joint>
-        <position>
-          <x>1.0</x>
-          <y>1.0</y>
-          <z>0.5</z>
-        </position>
-        <target>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>0.0</z>
-        </target>
-        <up>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>1.0</z>
-        </up>
-        <projection>parallel</projection>
-        <scale>0.2</scale>
-        <fieldOfView>2.0</fieldOfView>
-        <frontClipDst>0.01</frontClipDst>
-        <backClipDst>50.0</backClipDst>
-      </viewpoint>
       <viewpoint>
         <name>CoMan_profile</name>
         <joint>FJ_T2_Coman</joint>
@@ -4404,66 +3945,18 @@
         <frontClipDst>0.01</frontClipDst>
         <backClipDst>50.0</backClipDst>
       </viewpoint>
-      <viewpoint>
-        <name>Ground</name>
-        <joint>base</joint>
-        <position>
-          <x>1.0</x>
-          <y>1.0</y>
-          <z>1.0</z>
-        </position>
-        <target>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>0.5</z>
-        </target>
-        <up>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>1.0</z>
-        </up>
-        <projection>parallel</projection>
-        <scale>0.2</scale>
-        <fieldOfView>0.785</fieldOfView>
-        <frontClipDst>0.01</frontClipDst>
-        <backClipDst>50.0</backClipDst>
-      </viewpoint>
-      <viewpoint>
-        <name>CoMan_face</name>
-        <joint>FJ_T2_Coman</joint>
-        <position>
-          <x>1.0</x>
-          <y>0.0</y>
-          <z>0.5</z>
-        </position>
-        <target>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>0.5</z>
-        </target>
-        <up>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>1.0</z>
-        </up>
-        <projection>parallel</projection>
-        <scale>0.3</scale>
-        <fieldOfView>0.785</fieldOfView>
-        <frontClipDst>0.01</frontClipDst>
-        <backClipDst>50.0</backClipDst>
-      </viewpoint>
     </viewpoints>
     <lights>
       <!--This is the light list-->
-      <spotLight>
-        <name>X_fwd</name>
+      <directionalLight>
+        <name>Dir_light</name>
         <joint>FJ_T3_Coman</joint>
         <color R="255" G="255" B="255" />
         <ambient>0.05</ambient>
         <depthXWidth>1024.0</depthXWidth>
         <depthYWidth>1024.0</depthYWidth>
-        <depthNear>0.1</depthNear>
-        <depthFar>100.0</depthFar>
+        <depthNear>-10.0</depthNear>
+        <depthFar>20.0</depthFar>
         <shadowBias>0.0</shadowBias>
         <zUpVector>
           <x>0.0</x>
@@ -4471,110 +3964,18 @@
           <z>1.0</z>
         </zUpVector>
         <active />
-        <position>
-          <x>-10.0</x>
-          <y>-10.0</y>
-          <z>0.0</z>
-        </position>
-        <attenuation>
-          <cst>1.5</cst>
-          <lin>0.0</lin>
-          <quad>0.0</quad>
-        </attenuation>
-        <depthFovRad>1.0</depthFovRad>
-        <shadowDirVector>
-          <x>0.0</x>
-          <y>-1.0</y>
-          <z>0.0</z>
-        </shadowDirVector>
-        <direction>
-          <x>1.0</x>
-          <y>1.0</y>
-          <z>0.0</z>
-        </direction>
-        <angle>3.1415927</angle>
-        <concentration>0.0</concentration>
-      </spotLight>
-      <spotLight>
-        <name>X_bwd</name>
-        <joint>FJ_T3_Coman</joint>
-        <color R="255" G="255" B="255" />
-        <ambient>0.05</ambient>
-        <depthXWidth>1024.0</depthXWidth>
-        <depthYWidth>1024.0</depthYWidth>
-        <depthNear>0.1</depthNear>
-        <depthFar>100.0</depthFar>
-        <shadowBias>0.0</shadowBias>
-        <zUpVector>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>1.0</z>
-        </zUpVector>
-        <active />
-        <position>
-          <x>10.0</x>
-          <y>10.0</y>
-          <z>0.0</z>
-        </position>
-        <attenuation>
-          <cst>1.5</cst>
-          <lin>0.0</lin>
-          <quad>0.0</quad>
-        </attenuation>
-        <depthFovRad>1.0</depthFovRad>
-        <shadowDirVector>
-          <x>0.0</x>
-          <y>-1.0</y>
-          <z>0.0</z>
-        </shadowDirVector>
         <direction>
           <x>-1.0</x>
-          <y>-1.0</y>
-          <z>0.0</z>
-        </direction>
-        <angle>3.1415927</angle>
-        <concentration>0.0</concentration>
-      </spotLight>
-      <spotLight>
-        <name>Z</name>
-        <joint>FJ_T3_Coman</joint>
-        <color R="255" G="255" B="255" />
-        <ambient>0.05</ambient>
-        <depthXWidth>1024.0</depthXWidth>
-        <depthYWidth>1024.0</depthYWidth>
-        <depthNear>0.1</depthNear>
-        <depthFar>100.0</depthFar>
-        <shadowBias>0.0</shadowBias>
-        <zUpVector>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>1.0</z>
-        </zUpVector>
-        <active />
-        <position>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>10.0</z>
-        </position>
-        <attenuation>
-          <cst>1.2000000476837158</cst>
-          <lin>0.0</lin>
-          <quad>0.0</quad>
-        </attenuation>
-        <depthFovRad>1.0</depthFovRad>
-        <shadowDirVector>
-          <x>0.0</x>
-          <y>-1.0</y>
-          <z>0.0</z>
-        </shadowDirVector>
-        <direction>
-          <x>0.0</x>
-          <y>0.0</y>
+          <y>0.20000000298023224</y>
           <z>-1.0</z>
         </direction>
-        <angle>3.1415927</angle>
-        <concentration>0.0</concentration>
-      </spotLight>
+        <depthScale>0.0015</depthScale>
+        <relPointVector>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+        </relPointVector>
+      </directionalLight>
     </lights>
   </x3D>
 </mbsDescR7>
