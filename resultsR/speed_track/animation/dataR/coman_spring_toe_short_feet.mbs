@@ -82,29 +82,6 @@
               <z>0.01</z>
             </size>
           </box>
-          <inline>
-            <name>Salamander</name>
-            <position>
-              <x>50.0</x>
-              <y>1.0</y>
-              <z>0.6</z>
-            </position>
-            <scale>
-              <x>2.0</x>
-              <y>2.0</y>
-              <z>2.0</z>
-            </scale>
-            <rotation>
-              <x>3.141592653589793</x>
-              <y>0.0</y>
-              <z>0.0</z>
-            </rotation>
-            <color R="0" G="0" B="0" />
-            <specularColor R="255" G="255" B="255" />
-            <shininess>250.0</shininess>
-            <transparency>0.0</transparency>
-            <url>PRJPATH/../../../animationR/obj/other/salamander_rosace.obj</url>
-          </inline>
         </x3D_shapes>
       </x3D>
     </graphics>
