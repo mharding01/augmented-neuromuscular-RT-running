@@ -17,9 +17,13 @@
  *
  * \param[in] t real time [s]
  * \return video time [s]
+ *
+ * snapshots time: 11.84 ; 11.94 ; 12.04
+ * 12.35 ; 12.4 ; 12.45 ; 12.5 ; 12.55 ; 12.6 ; 12.65 ; 12.7 ; 12.75 ; 12.8 ; 12.85 ; 12.9
  */
 double time_video_slow_record(double t)
 {
+	//return 12.35;
 	return (t - 5.0) / 16.0;
 }
 

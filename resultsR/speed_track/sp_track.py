@@ -80,10 +80,10 @@ movie_time = 74*16 # for slow down with a factor 16
 output_folder = './'
 
 # 1 to get the animation, 0 otherwise
-anim = 1
+anim = 0
 
 # 1 to save the figure, 0 otherwise
-save_fig = 1
+save_fig = 0
 
 # initialization of the animation
 def init_movie():
@@ -154,11 +154,11 @@ if not anim:
 	plt.legend(loc='upper right', frameon=False, fontsize=20)
 
 #	# screenshots time
-#	plt.plot([18.8, 22.0], [0.27, 0.27], 'black', lw=3)
-#	plt.plot([18.8, 18.8], [0.25, 0.29], 'black', lw=3)
-#	plt.plot([22.0, 22.0], [0.25, 0.29], 'black', lw=3)
+#	plt.plot([12.35, 12.90], [1.37, 1.37], 'black', lw=3)
+#	plt.plot([12.35, 12.35], [1.365, 1.375], 'black', lw=3)
+#	plt.plot([12.90, 12.90], [1.365, 1.375], 'black', lw=3)
 #
-#	ax.text((22.0+18.8)/2.0, 0.18, 'snapshots', horizontalalignment='center', verticalalignment='center', fontsize=20, color='black')
+#	ax.text((12.35+12.90)/2.0, 1.41, 'snapshots', horizontalalignment='center', verticalalignment='center', fontsize=13, color='black')
 
 	if save_fig:
 		plt.savefig('{}/sp_track.eps'.format(output_folder), bbox_inches='tight', pad_inches=0.8)
