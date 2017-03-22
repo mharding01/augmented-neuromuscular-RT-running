@@ -12,6 +12,7 @@
 #define TIME_SAFETY_2 0.05          ///< time safety (for take-off) [s]
 #define TIME_TAKE_OFF_SAFETY 2.5e-3 ///< time safety to wait after take-off [s]
 #define FZ_THRESHOLD_STRIKE 5.0   ///< normal force threshold to detect strike [N]
+#define FZ_THRESHOLD_TAKE_OFF 5.0 ///< normal force threshold to detect take-off [N]
 #define THRESHOLD_X_OBSTACLE 0.15 ///< minimal distance between two obstacles [m]
 
 #define MIN_T_MEAN 9.0 ///< start time to compute stride periods and lengths
@@ -122,8 +123,8 @@ void SwingStanceAnalysis::compute()
 		case MESH_GCM_MODEL:
 			whole_feet = cppInterface->get_simu_ctrl()->get_gcm_mesh()->get_whole_feet();
 
-			Fz[RIGHT_ID] = whole_feet->get_leg_feet_forces(RIGHT_ID, 2);
-			Fz[LEFT_ID]  = whole_feet->get_leg_feet_forces(LEFT_ID, 2);
+			Fz[RIGHT_ID] = whole_feet->get_leg_feet_forces(RIGHT_ID, 2) + whole_feet->get_leg_feet_dist_forces(RIGHT_ID, 2);
+			Fz[LEFT_ID]  = whole_feet->get_leg_feet_forces(LEFT_ID, 2)  + whole_feet->get_leg_feet_dist_forces(LEFT_ID, 2);
 			break;
 	
 		case PRIM_GCM_MODEL:
@@ -247,7 +248,7 @@ void SwingStanceAnalysis::compute()
 		// stance
 		else
 		{
-			if (Fz[i] >= FZ_THRESHOLD_STRIKE)
+			if (Fz[i] >= FZ_THRESHOLD_TAKE_OFF)
 			{
 				t_last_force_leg[i] = t;
 			}
@@ -281,7 +282,7 @@ void SwingStanceAnalysis::compute()
 		{
 			flight_time += dt;
 		}
-	}	
+	}
 
 	if (options->print && !flag_print && mbs_data->tsim > 19.5)
 	{
