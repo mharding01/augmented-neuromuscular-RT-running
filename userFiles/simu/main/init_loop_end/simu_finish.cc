@@ -12,8 +12,7 @@
 #include "GaitFeatures.hh"
 #include "MeanSpeedAnalysis.hh"
 #include "SwingStanceAnalysis.hh"
-#include "NicoCtrl.hh"
-#include "Body.hh"
+#include "MetEnergyFitness.hh"
 
 #include "user_model.h"
 #include "user_IO.h"
@@ -32,8 +31,7 @@ void simu_finish(MbsData *mbs_data)
 	GaitFeatures *gait_features;
 	MeanSpeedAnalysis *mean_speed;
 	SwingStanceAnalysis *sw_st;
-	NicoCtrl *nico_ctrl;
-	Body *body;
+	MetEnergyFitness *energy_fitness;
 
 	// get requested classes
 	cppInterface = static_cast<CppInterface*>(mbs_data->user_model->cppInterface);
@@ -58,10 +56,9 @@ void simu_finish(MbsData *mbs_data)
 	optiClass->set_ds_cycle_mean(sw_st->get_ds_cycle_mean());
 	optiClass->set_flight_cycle_mean(sw_st->get_flight_cycle_mean());
 
-	nico_ctrl = static_cast<NicoCtrl*>(simu_ctrl->get_ctrl());
-	body = static_cast<Body*>(nico_ctrl->get_manager()->get_computation(LOWER_BODY));
-	optiClass->set_met_energy_legs(body->get_met_energy_legs());
-	optiClass->set_met_energy_total(body->get_met_energy_total());
+	energy_fitness = static_cast<MetEnergyFitness*>(fitness_simu->get_stage(5));
+	optiClass->set_met_energy_legs(energy_fitness->get_met_energy_legs_norm());
+	optiClass->set_met_energy_total(energy_fitness->get_met_energy_total_norm());
 
 
 	// final time

@@ -15,8 +15,8 @@
 #define FZ_THRESHOLD_TAKE_OFF 5.0 ///< normal force threshold to detect take-off [N]
 #define THRESHOLD_X_OBSTACLE 0.15 ///< minimal distance between two obstacles [m]
 
-#define MIN_T_MEAN 9.0 ///< start time to compute stride periods and lengths
-#define MAX_T_MEAN 29.0 ///< finish time to compute stride periods and lengths
+#define MIN_T_MEAN 9.0 ///< start time to compute stride periods and lengths [s]
+#define MAX_T_MEAN 29.0 ///< finish time to compute stride periods and lengths [s]
 
 #define MIN_DIST_STEP 0.1 ///< minimal distance between two steps
 

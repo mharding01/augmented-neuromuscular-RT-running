@@ -5,6 +5,9 @@
 
 #define DIST_ENERGY_START 3.0
 
+#define MIN_T_ENERGY 9.0 ///< start time to compute the normalized energy [s]
+#define MAX_T_ENERGY 29.0 ///< finish time to compute the normalized energy [s]
+
 /*! \brief constructor
  * 
  * \param[in] mbs_data Robotran structure
@@ -30,6 +33,22 @@ MetEnergyFitness::MetEnergyFitness(MbsData *mbs_data, Ctrl *ctrl): FitnessStage(
 
 	options = mbs_data->user_IO->options;
 	printed = 0;
+
+	// for data extraction
+	met_energy_total_norm = 0.0;
+	met_energy_legs_norm = 0.0;
+
+	met_energy_total_init = 0.0;
+	met_energy_legs_init = 0.0;
+
+	met_energy_total_end = 0.0;
+	met_energy_legs_end = 0.0;
+
+	dist_init = 0.0;
+	dist_end = 0.0;
+
+	min_energy_flag = false;
+	max_energy_flag = false;
 }
 
 /*! \brief destructor
@@ -43,6 +62,8 @@ MetEnergyFitness::~MetEnergyFitness()
  */
 void MetEnergyFitness::compute()
 {
+	double t;
+
 	if ( (!met_energy_init_flag) && (mbs_data->q[1] > DIST_ENERGY_START))
 	{
 		met_energy_init_flag = 1;
@@ -60,6 +81,32 @@ void MetEnergyFitness::compute()
 			printed = 1;
 			std::cout << "energy: " << met_energy_dist/MASS_COMAN << " [J/(m*kg)]" << std::endl;
 		}
+	}
+
+	// similar computation, but for data extraction (not opti)
+	t = mbs_data->tsim;
+
+	if (!min_energy_flag && t >= MIN_T_ENERGY)
+	{
+		min_energy_flag = true;
+
+		met_energy_total_init = lower_body->get_met_energy_total();
+		met_energy_legs_init  = lower_body->get_met_energy_legs();
+
+		dist_init = mbs_data->q[1];
+	}
+
+	if (!max_energy_flag && t >= MAX_T_ENERGY)
+	{
+		max_energy_flag = true;
+
+		met_energy_total_end = lower_body->get_met_energy_total();
+		met_energy_legs_end  = lower_body->get_met_energy_legs();
+
+		dist_end = mbs_data->q[1];
+
+		met_energy_total_norm = ((met_energy_total_end - met_energy_total_init) / (dist_end - dist_init)) / MASS_COMAN;
+		met_energy_legs_norm  = ((met_energy_legs_end  - met_energy_legs_init ) / (dist_end - dist_init)) / MASS_COMAN;
 	}
 }
 

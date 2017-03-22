@@ -14,7 +14,7 @@
 #include "def_main.hh"
 #include "opti_gestion.hh"
 
-#define NB_SPEED_PARAMS_REF 10 ///< number of speed references
+#define NB_SPEED_PARAMS_REF 8 ///< number of speed references
 
 // function prototypes
 void evaluate_sp_features();
@@ -42,7 +42,7 @@ void evaluate_sp_features()
 	OptiClass *optiClass;
 
 	// vectors
-	double speed_ref[NB_SPEED_PARAMS_REF] = {1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7};
+	double speed_ref[NB_SPEED_PARAMS_REF] = {1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6};
 
 	// output file
 	std::ofstream out_stream("./out_sp_features.txt");
@@ -74,7 +74,7 @@ void evaluate_sp_features()
 			do
 			{
 				// safety
-				if (count_test >= 500)
+				if (count_test >= 1000)
 				{
 					std::cout << "problem for speed = " << speed_ref[i] << " m/s" << std::endl;
 					break;
@@ -100,12 +100,10 @@ void evaluate_sp_features()
 
 			out_stream << optiClass->get_stride_period_mean() << std::endl;
 			out_stream << optiClass->get_stride_length_mean() << std::endl;
-			out_stream << optiClass->get_take_off_mean() << std::endl;
 			out_stream << optiClass->get_flight_cycle_mean() << std::endl;
-			out_stream << optiClass->get_ds_cycle_mean() << std::endl;
-
 			out_stream << optiClass->get_met_energy_legs() << std::endl;
-			out_stream << optiClass->get_met_energy_total() << std::endl;
+
+			out_stream << std::endl;
 		}
 	}
 	

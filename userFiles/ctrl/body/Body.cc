@@ -20,7 +20,6 @@
 
 inline int getmod(int index, int index_max) { return ((index % index_max) + index_max) % index_max; }
 
-
 /*! \brief constructor
  * 
  * \param[in] inputs controller inputs
@@ -254,7 +253,7 @@ void Body::compute()
 		met_energy_total += parts[i]->get_met_energy();
 	}
 
-	met_energy_legs = parts[RIGHT_LEG_BODY]->get_met_energy() + parts[LEFT_LEG_BODY]->get_met_energy();
+	met_energy_legs = static_cast<Leg*>(parts[RIGHT_LEG_BODY])->get_sag_met_energy() + static_cast<Leg*>(parts[LEFT_LEG_BODY])->get_sag_met_energy();
 
 	// send torque references
 	send_references();

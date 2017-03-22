@@ -31,6 +31,8 @@ class Fitness: public ComputationSimu
 
 		void set_speed_ref(double value);
 
+		FitnessStage* get_stage(int i) { return fitness_tab[i]; }
+
 	protected:
 		Ctrl *ctrl;       ///< controller
 		SensorsInfo *sens_info; ///< info from the sensor

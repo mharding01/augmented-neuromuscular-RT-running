@@ -75,8 +75,8 @@ class Body: public Computation
 		StimulationCtrl *stim_upper; ///< stimulations for the upper body
 		StimWalkCtrl *ghost_stim_cpg; ///< stimulations from cpg (ghost controller for testing)
 
-		double met_energy_total; ///< total metabolic enrgy
-		double met_energy_legs; ///< energy for the legs
+		double met_energy_total; ///< total metabolic energy
+		double met_energy_legs;  ///< energy for the legs
 
 		int flag_ctrl; ///< flag indicating the requested controller
 		int flag_apply_Qq_wang;
