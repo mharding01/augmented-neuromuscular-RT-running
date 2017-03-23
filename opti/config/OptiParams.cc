@@ -29,11 +29,18 @@ void OPTI_NAME::set_opti()
     g_osc->set_gamma_B({2.35; 2.55 });
     g_osc->set_gamma_C({2.75; 2.95 });
 
+    g_osc->set_beta_A({4.5; 6.5});
+    g_osc->set_beta_B({4.0; 6.0 });
+    g_osc->set_beta_C({3.0; 6.0 });
+
     g_osc->set_eta_A({5.45; 5.53  });  
     g_osc->set_eta_B({4.80; 4.90 });  
     g_osc->set_eta_C({5.2; 5.8});  // TODO: N3 and N6, controls how soon appear 
     g_osc->set_eta_D({3.73; 3.78 });  
-    g_osc->set_eta_E({3.64; 3.72 });  
+    g_osc->set_eta_E({3.64; 3.72 });
+
+    g_osc->set_eta_F({2.5 ; 5.0 });
+    g_osc->set_eta_G({3.0 ; 5.5 }); 
 
     // Fitting parameters for improved vel tracking
     g_osc->set_P_theta_trunk({0.10; .19});

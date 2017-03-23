@@ -385,7 +385,7 @@ void StimWangCtrl::pitch_compute()
 			Stim[i][GAS_MUSCLE] = S0_gas_sw;
 
 			// HAM
-			Stim[i][HAM_MUSCLE] = S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
+			//Stim[i][HAM_MUSCLE] = S0_ham_sw + G_ham * (F_ham[i] / F_max_ham); 
 
 			// RF
 			Stim[i][RF_MUSCLE] = S0_rf_sw;
@@ -398,21 +398,21 @@ void StimWangCtrl::pitch_compute()
 				// compute hip target ankle
 				if (i==R_ID)
 				{
-					d = fwd_kin->get_r_COM_Lfoot(0);
+					//d = fwd_kin->get_r_COM_Lfoot(0);
 				}
 				else
 				{
-					d = fwd_kin->get_r_COM_Rfoot(0);
+					//d = fwd_kin->get_r_COM_Rfoot(0);
 				}
-				theta_h_ref = -(theta_h_ref0 + c_d * d + c_v * speed_fwd_global);
+				//theta_h_ref = -(theta_h_ref0 + c_d * d + c_v * speed_fwd_global);
 				// VAS
 				Stim[i][VAS_MUSCLE] = S0_vas_sw + pos(K_sp_vas * (phi_k[i] - theta_k_ref) + D_sp_vas * phip_k[i]);
 
 				// GLU
-				Stim[i][GLU_MUSCLE] = S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
+				//Stim[i][GLU_MUSCLE] = S0_glu_sw + neg(K_sp_glu * (phi_h[i] - theta_h_ref) + D_sp_glu * phip_h[i]);
 
 				// HFL
-				Stim[i][HFL_MUSCLE] = S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);
+				//Stim[i][HFL_MUSCLE] = S0_hfl_sw + pos(K_sp_hfl * (phi_h[i] - theta_h_ref) + D_sp_hfl * phip_h[i]);
 			}
 			else
 			{
@@ -420,17 +420,17 @@ void StimWangCtrl::pitch_compute()
 				Stim[i][VAS_MUSCLE] = S0_vas_sw;
 
 				// GLU
-				Stim[i][GLU_MUSCLE] = S0_glu_sw + G_glu * (F_glu[i] / F_max_glu);
+				//Stim[i][GLU_MUSCLE] = S0_glu_sw + G_glu * (F_glu[i] / F_max_glu);
 
 				// HFL
 				if (first_swing[i])
 				{
-					theta_toro_sw0 = theta_torso;
+					//theta_toro_sw0 = theta_torso;
 					first_swing[i] = 0;
 				}
 
 				// HFL
-				Stim[i][HFL_MUSCLE] = S0_hfl_sw + k_THETA * (theta_toro_sw0 - theta_ref) + pos(G_hfl * ( (lce_hfl[i] / l_opt_hfl) - l_off_hfl)) - pos(G_ham_hfl * ( (lce_ham[i] / l_opt_ham) - l_off_ham_hfl));
+				//Stim[i][HFL_MUSCLE] = S0_hfl_sw + k_THETA * (theta_toro_sw0 - theta_ref) + pos(G_hfl * ( (lce_hfl[i] / l_opt_hfl) - l_off_hfl)) - pos(G_ham_hfl * ( (lce_ham[i] / l_opt_ham) - l_off_ham_hfl));
 			}
 
 			// Plots
@@ -477,7 +477,7 @@ void StimWangCtrl::pitch_compute()
 
 			if(first_step) // first step
 			{
-				Stim[i][SOL_MUSCLE] = S_MIN;
+				//Stim[i][SOL_MUSCLE] = S_MIN;
 			}
 
 			// TA
@@ -485,7 +485,7 @@ void StimWangCtrl::pitch_compute()
 
 			if(first_step) // first step
 			{
-				Stim[i][TA_MUSCLE] = S_MAX;
+				//Stim[i][TA_MUSCLE] = S_MAX;
 			}
 
 			// GAS
@@ -493,7 +493,7 @@ void StimWangCtrl::pitch_compute()
 
 			if(first_step) // first step
 			{
-				Stim[i][GAS_MUSCLE] = S_MIN;
+				//Stim[i][GAS_MUSCLE] = S_MIN;
 			}
 
 			// VAS
@@ -507,30 +507,30 @@ void StimWangCtrl::pitch_compute()
 			}
 
 			// HAM
-			Stim[i][HAM_MUSCLE] = S0_ham_st + pos(K_ham * (theta_torso - theta_ref) + D_ham * omega_torso);
+			//Stim[i][HAM_MUSCLE] = S0_ham_st + pos(K_ham * (theta_torso - theta_ref) + D_ham * omega_torso);
 
 			if (tr_st->get_trailing_leg(i)) // trailing leg in double support
 			{
-				Stim[i][HAM_MUSCLE] = S0_ham_st;
+				//Stim[i][HAM_MUSCLE] = S0_ham_st;
 			}
 
 			//RF
 			Stim[i][RF_MUSCLE] = S0_rf_st;
 
 			// GLU
-			Stim[i][GLU_MUSCLE] = S0_glu_st + pos(K_glu * (theta_torso - theta_ref) + D_glu * omega_torso);
+			//Stim[i][GLU_MUSCLE] = S0_glu_st + pos(K_glu * (theta_torso - theta_ref) + D_glu * omega_torso);
 			
 			if (tr_st->get_trailing_leg(i)) // trailing leg in double support
 			{
-				Stim[i][GLU_MUSCLE] = S0_glu_st;
+				//Stim[i][GLU_MUSCLE] = S0_glu_st;
 			}
 
 			// HFL
-			Stim[i][HFL_MUSCLE] = S0_hfl_st + neg(K_hfl * (theta_torso - theta_ref) + D_hfl * omega_torso);
+			//Stim[i][HFL_MUSCLE] = S0_hfl_st + neg(K_hfl * (theta_torso - theta_ref) + D_hfl * omega_torso);
 			
 			if (tr_st->get_trailing_leg(i)) // trailing leg in double support
 			{
-				Stim[i][HFL_MUSCLE] = S0_hfl_st;
+				//Stim[i][HFL_MUSCLE] = S0_hfl_st;
 			}
 
 			first_swing[i] = 1; // re-initialize flag to enter once at the beginning on the swing phase
@@ -544,10 +544,10 @@ void StimWangCtrl::pitch_compute()
 				Stim[i][RF_MUSCLE] = limit_range(Stim[i][RF_MUSCLE], S_MIN, S_MAX) + si_rf;
 
 				// GLU
-				Stim[i][GLU_MUSCLE] = limit_range(Stim[i][GLU_MUSCLE], S_MIN, S_MAX) - si_glu;
+				//Stim[i][GLU_MUSCLE] = limit_range(Stim[i][GLU_MUSCLE], S_MIN, S_MAX) - si_glu;
 				
 				// HFL
-				Stim[i][HFL_MUSCLE] = limit_range(Stim[i][HFL_MUSCLE], S_MIN, S_MAX) + si_hfl;
+				//Stim[i][HFL_MUSCLE] = limit_range(Stim[i][HFL_MUSCLE], S_MIN, S_MAX) + si_hfl;
 			}
 
 			// Plots
@@ -616,7 +616,7 @@ void StimWangCtrl::pitch_compute()
 		// SIMBICON law, converts hip reference angle	
 		theta_h_ref = -(theta_h_ref0 + c_d * d + c_v * speed_fwd_global);
 		//set_plot(theta_h_ref, "theta_h_ref");
-		if ( inputs->get_t() > cpg_ctrl_thresh_t ) /* Overwrite stims after thresh */
+		if ( inputs->get_t() > cpg_ctrl_thresh_t ) /* Overwrite stims after thresh -> always verified */
 		{
 			// Set flag, indicating cpg control initiated
 			cpg_ctrl_active = 1;
@@ -628,6 +628,8 @@ void StimWangCtrl::pitch_compute()
 			set_plot(y4, "y4");
 			set_plot(y5, "y5");
 			set_plot(y6, "y6");//*/
+
+
 
 			if (i==R_ID) 
 			{
@@ -761,11 +763,11 @@ void StimWangCtrl::yaw_compute_min()
 
 /*! \brief return 1 if stance preparation starts (end of swing phase), 0 otherwise
  */
-int StimWangCtrl::stance_preparation(int swing_leg_id)
+int StimWangCtrl::stance_preparation(int leg_id)
 {
 	double d; // normalized horizontal distance between COM and foot
 
-	switch(swing_leg_id)
+	switch(leg_id)
 	{
 		case R_ID : 
 			d = fwd_kin->get_r_COM_Rfoot(0) / LEG_LENGTH;
@@ -775,20 +777,35 @@ int StimWangCtrl::stance_preparation(int swing_leg_id)
 			break;
 
 		default:
-			std::cout << "Error: unknown leg id : " << swing_leg_id << " !" << std::endl;
+			std::cout << "Error: unknown leg id : " << leg_id << " !" << std::endl;
 			exit(EXIT_FAILURE);
 	}
+
+	/*
+	switch(leg_id)
+	{
+		case R_ID : 
+			return (ghost_osc->get_y_pos(3) || ghost_osc->get_y_pos(5));
+			break;
+		case L_ID : 
+			return (ghost_osc->get_y_pos(0) || ghost_osc->get_y_pos(2));
+			break;
+
+		default:
+			std::cout << "Error: unknown leg id : " << leg_id << " !" << std::endl;
+			exit(EXIT_FAILURE);
+	}//*/
 
 	return (d < d_sp);
 }
 
 /*! \brief return 1 if swing initiation starts (end of stance phase), 0 otherwise
  */
-int StimWangCtrl::swing_initiation(int stance_leg_id)
+int StimWangCtrl::swing_initiation(int leg_id)
 {
 	double d; // normalized horizontal distance between COM and foot
 
-	switch(stance_leg_id)
+	switch(leg_id)
 	{
 		case R_ID : 
 			d = fwd_kin->get_r_COM_Rfoot(0) / LEG_LENGTH;
@@ -798,9 +815,24 @@ int StimWangCtrl::swing_initiation(int stance_leg_id)
 			break;
 
 		default:
-			std::cout << "Error: unknown leg id : " << stance_leg_id << " !" << std::endl;
+			std::cout << "Error: unknown leg id : " << leg_id << " !" << std::endl;
 			exit(EXIT_FAILURE);
 	}
+
+	/*
+	switch(leg_id)
+	{
+		case R_ID : 
+			return (ghost_osc->get_y_pos(0) || ghost_osc->get_y_pos(2));
+			break;
+		case L_ID : 
+			return (ghost_osc->get_y_pos(3) || ghost_osc->get_y_pos(5));
+			break;
+
+		default:
+			std::cout << "Error: unknown leg id : " << leg_id << " !" << std::endl;
+			exit(EXIT_FAILURE);
+	}//*/
 
 	return ((d > d_si) || (sw_st->is_double_support() && d > 0.0));
 }

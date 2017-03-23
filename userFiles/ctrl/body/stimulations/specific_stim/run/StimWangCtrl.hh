@@ -253,8 +253,8 @@ class StimWangCtrl: public StimulationCtrl
 		void roll_compute_min();
 		void yaw_compute_min();
 
-		int stance_preparation(int swing_leg_id);
-		int swing_initiation(int stance_leg_id);
+		int stance_preparation(int leg_id);
+		int swing_initiation(int leg_id);
 
         // TODO:For testing cpg control of stims for optis
         double cpg_ctrl_thresh_t;
