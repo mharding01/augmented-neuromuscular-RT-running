@@ -99,12 +99,8 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_G_glu( { 0.0 ; 2.0 } );
 	stim_wang->set_G_ta_sw( { 0.55 ; 5.0 } );
 	stim_wang->set_G_ta_st( { 0.55 ; 5.0 } );
-	stim_wang->set_G_hfl( { 0.17 ; 3.0 } );
-	stim_wang->set_G_ham_hfl( { 0.0 ; 10.0 } );
 	stim_wang->set_l_off_ta_sw( { 0.50 ; 0.8 } );
 	stim_wang->set_l_off_ta_st( { 0.50 ; 0.8 } );
-	stim_wang->set_l_off_ham_hfl( { 0.0 ; 0.71 } );
-	stim_wang->set_l_off_hfl( { 0.0 ; 0.85 } );
 	stim_wang->set_K_ham( { 0.5 ; 6.0 } );  // TODO: want less HAM in stance
 	stim_wang->set_K_glu( { 0.5 ; 14.0 } ); // Prefer GLU to handle much of trunk lean
 	stim_wang->set_K_hfl( { 1.0 ; 10.0 } ); // Prefer HFL not to be too active
@@ -113,8 +109,6 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_D_hfl( { 0.0 ; 0.8 } );
 	stim_wang->set_si_vas( { 0.3 ; 1.0 } );
 	stim_wang->set_si_rf( { 0.0 ; 1.0 } );
-	stim_wang->set_si_glu( { 0.2 ; 1.0 } );
-	stim_wang->set_si_hfl( { 0.0 ; 1.0 } );
 	stim_wang->set_K_sp_vas( { 0.0 ; 5.0 } );
 	stim_wang->set_K_sp_glu( { 0.0 ; 5.0 } );
 	stim_wang->set_K_sp_hfl( { 0.0 ; 5.0 } );
