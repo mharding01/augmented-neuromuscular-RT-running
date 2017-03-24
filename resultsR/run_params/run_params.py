@@ -147,16 +147,16 @@ speed_170 = np.array([ 1.68574 , 1.695  ,  1.71022 , 1.6766  , 1.69125])
 
 # names of the variables
 names = ['tau', 'theta_trunk', 'theta_hip', 'k_HFL1', 'k_HFL2',
-                'k_HAM', 'G_sol', 'G_sol_ta', 'G_gas', 'G_vas', 'k_theta']
+                'k_HAM', 'G_sol', 'G_sol_ta', 'G_gas', 'G_vas', 'k_phi_knee']
 
 # plot factors for unit conversions
 plot_fac = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
 
 # labels for plot
-labels = [r'$\boldsymbol{\tau~(s)}$', r'$\boldsymbol{\theta_{trunk}~(rad)}$', r'$\boldsymbol{\theta_{hip}~(rad)}$', \
+labels = [r'$\boldsymbol{\tau~(s)}$', r'$\boldsymbol{\theta_{ref}~(rad)}$', r'$\boldsymbol{\varphi_{h,ref}~(rad)}$', \
 	r'$\boldsymbol{k_{HFL,1}~(-)}$', r'$\boldsymbol{k_{HFL,2}~(-)}$', r'$\boldsymbol{k_{HAM}~(-)}$', \
-	r'$\boldsymbol{G_{SOL}~(-)}$', r'$\boldsymbol{G_{SOL-TA}~(-)}$', r'$\boldsymbol{G_{GAS}~(-)}$', \
-	r'$\boldsymbol{G_{VAS}~(-)}$', r'$\boldsymbol{k_{\theta}~(-)}$']
+	r'$\boldsymbol{G_{SOL}~(-)}$', r'$\boldsymbol{G_{S-T}~(-)}$', r'$\boldsymbol{G_{GAS}~(-)}$', \
+	r'$\boldsymbol{G_{VAS}~(-)}$', r'$\boldsymbol{k_{\varphi,k}~(-)}$']
 
 # approximation order
 approx_order = [2, 0, 0, 1, 2, 2, 2, 1, 1, 1, 0]
