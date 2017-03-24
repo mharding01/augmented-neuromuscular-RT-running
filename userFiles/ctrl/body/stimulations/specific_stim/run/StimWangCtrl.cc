@@ -614,7 +614,8 @@ void StimWangCtrl::pitch_compute()
 			d = fwd_kin->get_r_COM_Rfoot(0);
 		}
 		// SIMBICON law, converts hip reference angle	
-		theta_h_ref = -(theta_h_ref0 + c_d * d + c_v * speed_fwd_global);
+		//theta_h_ref = -(theta_h_ref0 + c_d * d + c_v * speed_fwd_global);
+		theta_h_ref = -theta_h_ref0;
 		//set_plot(theta_h_ref, "theta_h_ref");
 		if ( inputs->get_t() > cpg_ctrl_thresh_t ) /* Overwrite stims after thresh -> always verified */
 		{
