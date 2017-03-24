@@ -146,7 +146,7 @@ data_170 = np.array(
 speed_170 = np.array([ 1.68574 , 1.695  ,  1.71022 , 1.6766  , 1.69125])
 
 # names of the variables
-names = ['tau', 'theta_trunk', 'theta_hip', 'k_HFL1', 'k_HFL2',
+names = ['tau', 'theta_ref', 'phi_hip_ref', 'k_HFL1', 'k_HFL2',
                 'k_HAM', 'G_sol', 'G_sol_ta', 'G_gas', 'G_vas', 'k_phi_knee']
 
 # plot factors for unit conversions
@@ -217,14 +217,14 @@ all_data.add_data(data_165, speed_165, 1.65)
 all_data.add_data(data_170, speed_170, 1.7)
 
 # option to save the graphs
-flag_save = 0
+flag_save = 1
 
 all_data.flag_save = flag_save
 
 # graphs
 all_data.param_plot('tau')
-all_data.param_plot('theta_trunk')
-all_data.param_plot('theta_hip')
+all_data.param_plot('theta_ref')
+all_data.param_plot('phi_hip_ref')
 all_data.param_plot('k_HFL1')
 all_data.param_plot('k_HFL2')
 all_data.param_plot('k_HAM')
@@ -232,14 +232,14 @@ all_data.param_plot('G_sol')
 all_data.param_plot('G_sol_ta')
 all_data.param_plot('G_gas')
 all_data.param_plot('G_vas')
-all_data.param_plot('k_theta')
+all_data.param_plot('k_phi_knee')
 
 # polynomial order
 	
 print('')
 all_data.lack_of_fit_012('tau')
-all_data.lack_of_fit_012('theta_trunk')
-all_data.lack_of_fit_012('theta_hip')
+all_data.lack_of_fit_012('theta_ref')
+all_data.lack_of_fit_012('phi_hip_ref')
 all_data.lack_of_fit_012('k_HFL1')
 all_data.lack_of_fit_012('k_HFL2')
 all_data.lack_of_fit_012('k_HAM')
@@ -247,7 +247,7 @@ all_data.lack_of_fit_012('G_sol')
 all_data.lack_of_fit_012('G_sol_ta')
 all_data.lack_of_fit_012('G_gas')
 all_data.lack_of_fit_012('G_vas')
-all_data.lack_of_fit_012('k_theta')
+all_data.lack_of_fit_012('k_phi_knee')
 
 # show plots
 plt.show()
