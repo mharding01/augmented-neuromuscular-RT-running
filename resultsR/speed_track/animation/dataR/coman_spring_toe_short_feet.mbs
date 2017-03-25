@@ -2770,7 +2770,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>/data/nvander/Documents/Robotran/Projects/walkman/coman_matthew/animationR/obj/IIT_files/torso_blue.obj</url>
+              <url>PRJPATH/../../../animationR/obj/IIT_files/torso_blue.obj</url>
             </inline>
           </x3D_shapes>
         </x3D>
