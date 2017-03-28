@@ -185,7 +185,7 @@ void StimWangCtrl::set_opti_defaults()
 	D_sp_hfl = 0.02470569;
 	theta_k_ref = 0.11244578;
 	// stance preparation SIMBICON-style feedback parameters
-	theta_h_ref0 = 0.16986034; //TODO //0.60620732;
+	theta_h_ref0 = -0.16986034; //TODO //0.60620732;
 	c_d = 0.0; //0.5;
 	c_v = 0.0; //0.2;
 	// swing initiation and stance preparation offsets
@@ -404,7 +404,7 @@ void StimWangCtrl::pitch_compute()
 				{
 					//d = fwd_kin->get_r_COM_Rfoot(0);
 				}
-				//theta_h_ref = -(theta_h_ref0 + c_d * d + c_v * speed_fwd_global);
+				//theta_h_ref = -(-theta_h_ref0 + c_d * d + c_v * speed_fwd_global);
 				// VAS
 				Stim[i][VAS_MUSCLE] = S0_vas_sw + pos(K_sp_vas * (phi_k[i] - theta_k_ref) + D_sp_vas * phip_k[i]);
 
@@ -614,8 +614,8 @@ void StimWangCtrl::pitch_compute()
 			d = fwd_kin->get_r_COM_Rfoot(0);
 		}
 		// SIMBICON law, converts hip reference angle	
-		//theta_h_ref = -(theta_h_ref0 + c_d * d + c_v * speed_fwd_global);
-		theta_h_ref = -theta_h_ref0;
+		//theta_h_ref = -(-theta_h_ref0 + c_d * d + c_v * speed_fwd_global);
+		theta_h_ref = theta_h_ref0;
 		//set_plot(theta_h_ref, "theta_h_ref");
 		if ( inputs->get_t() > cpg_ctrl_thresh_t ) /* Overwrite stims after thresh -> always verified */
 		{

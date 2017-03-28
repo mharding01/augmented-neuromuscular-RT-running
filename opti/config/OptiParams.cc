@@ -44,7 +44,7 @@ void OPTI_NAME::set_opti()
 
     // Fitting parameters for improved vel tracking
     g_osc->set_P_theta_trunk({0.10; .19});
-    g_osc->set_P_theta_hip({0.35; 0.45});
+    g_osc->set_P_theta_hip({-0.45; -0.35});
     g_osc->set_P_k_theta({12.0; 14.0});
     
     // Linear

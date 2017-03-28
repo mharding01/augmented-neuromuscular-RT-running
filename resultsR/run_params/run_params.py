@@ -145,6 +145,18 @@ data_170 = np.array(
  [ 0.97280991 , 0.46862926 , 0.43226082 , 0.84757306 , 0.47071248]])
 speed_170 = np.array([ 1.68574 , 1.695  ,  1.71022 , 1.6766  , 1.69125])
 
+# complementary of 'phi_hip_ref' to invert the sign
+for i in range(5):
+	data_130[2][i] = 1 - data_130[2][i]
+	data_135[2][i] = 1 - data_135[2][i]
+	data_140[2][i] = 1 - data_140[2][i]
+	data_145[2][i] = 1 - data_145[2][i]
+	data_150[2][i] = 1 - data_150[2][i]
+	data_155[2][i] = 1 - data_155[2][i]
+	data_160[2][i] = 1 - data_160[2][i]
+	data_165[2][i] = 1 - data_165[2][i]
+	data_170[2][i] = 1 - data_170[2][i]
+
 # names of the variables
 names = ['tau', 'theta_ref', 'phi_hip_ref', 'k_HFL1', 'k_HFL2',
                 'k_HAM', 'G_sol', 'G_sol_ta', 'G_gas', 'G_vas', 'k_phi_knee']
@@ -163,17 +175,17 @@ approx_order = [2, 0, 0, 1, 2, 2, 2, 1, 1, 1, 0]
 
 # parameter bounds
 bounds = np.array([
-	[ 0.010 , 0.15 ] ,
-	[ 0.0   , 0.25 ] ,
-	[ 0.005 , 0.9  ] ,
-	[ 0.3   , 8.1  ] ,
-	[ 1.0   , 12.0 ] ,
-	[ 0.3   , 7.0  ] ,
-	[ 0.60  , 5.0  ] ,
-	[ 0.4   , 7.0  ] ,
-	[ 0.0   , 20.0 ] ,
-	[ 0.82  , 5.0  ] ,
-	[ 1.0   , 15.0 ]
+	[ 0.010 , 0.15  ] ,
+	[ 0.0   , 0.25  ] ,
+	[ -0.9  ,-0.005 ] ,
+	[ 0.3   , 8.1   ] ,
+	[ 1.0   , 12.0  ] ,
+	[ 0.3   , 7.0   ] ,
+	[ 0.60  , 5.0   ] ,
+	[ 0.4   , 7.0   ] ,
+	[ 0.0   , 20.0  ] ,
+	[ 0.82  , 5.0   ] ,
+	[ 1.0   , 15.0  ]
 ])
 
 # xlim values
@@ -183,7 +195,7 @@ plot_xlim  = np.array([ 1.28 , 1.72 ])
 plot_ylim = np.array([
 	[ 0.043 , 0.053 ] ,
 	[ 0.02  , 0.1   ] ,
-	[ 0.05  , 0.3   ] ,
+	[ -0.3  , -0.05 ] ,
 	[ 3.0   , 8.0   ] ,
 	[ 1.0   , 11.0  ] ,
 	[ 1.0   , 6.0   ] ,
@@ -217,7 +229,7 @@ all_data.add_data(data_165, speed_165, 1.65)
 all_data.add_data(data_170, speed_170, 1.7)
 
 # option to save the graphs
-flag_save = 1
+flag_save = 0
 
 all_data.flag_save = flag_save
 

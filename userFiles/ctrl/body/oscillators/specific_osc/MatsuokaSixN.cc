@@ -84,7 +84,7 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 
 	// velocity adaptation parameters
 	P_theta_trunk = 0.06586455; // Taken from StimWang new defaults
-    P_theta_hip = 0.16986034;	// TODO: 0.60620732;
+    P_theta_hip = -0.16986034;	// TODO: 0.60620732;
 	P_tau   = 0.04676336;
 	P_GLU   = 1.065147;
 	P_HFL   = 3.689370;
@@ -248,8 +248,8 @@ void MatsuokaSixN::update_speed_oscillos(double v_request)
 	// limiting the interpolations
 	theta_trunk_ref = (theta_trunk_ref < MIN_THETA_REF) \
                         ? MIN_THETA_REF : theta_trunk_ref;
-    theta_hip_ref = (theta_hip_ref < MIN_THETA_REF) \
-                        ? MIN_THETA_REF : theta_hip_ref;
+//    theta_hip_ref = (theta_hip_ref < MIN_THETA_REF) \
+//                        ? MIN_THETA_REF : theta_hip_ref;
 	tau       = (tau       < 0.0) ? 0.0 : tau;
 	k_HFLrun1 = (k_HFLrun1     < 0.0) ? 0.0 : k_HFLrun1;
 	k_HFLrun2 = (k_HFLrun2		< 0.0) ? 0.0 : k_HFLrun2;
@@ -550,9 +550,9 @@ void MatsuokaSixN::enable_velocity_tracking()
 	P_theta_trunk = 0.064766798107021073;
 
 	// theta_hip_ref
-	p2_theta_hip = 0.0;	// Linear
-	p_theta_hip = 0.064716819051908916;
-	P_theta_hip = 0.15823267374820044;
+	p2_theta_hip = -0.0;	// Linear
+	p_theta_hip = -0.064716819051908916;
+	P_theta_hip = -0.15823267374820044;
 	
 	// k_theta
 	p_k_theta = -1.1240650780815897;
