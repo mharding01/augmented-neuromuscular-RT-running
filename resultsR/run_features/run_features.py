@@ -175,7 +175,7 @@ def get_figure(var_mean, var_std, y_label, prefix_name):
 get_figure(period_mean, period_std, 'stride period (s)', 'period')
 get_figure(freq_mean  , freq_std  , 'stride frequency (Hz)', 'freq')
 get_figure(length_mean, length_std, 'stride length (m)', 'length')
-get_figure(flight_mean, flight_std, 'flight phase (%)', 'flight')
+get_figure(flight_mean, flight_std, 'flying phase (%)', 'flight')
 get_figure(energy_mean, energy_std, 'metabolic energy (J /m kg)', 'energy')
 
 plt.show()
