@@ -395,12 +395,10 @@ void MatsuokaSixN::compute_osc_excitation()
 			// handles oscillators too late (first 2 lines) and oscillators succession (second line)
 			// Ordering: N5 -> N1 -> N2 -> N4, N5/N2 are RFS/LFS-aligned (see eta's)
 			u[0] -= flag_strike_leg[L_ID]*pos(x[0]);
-			u[0] -= pos(x[0])*supporting_l;
 			
             u[1] += flag_strike_leg[L_ID]*neg(x[1]);
 
 			u[3] -= flag_strike_leg[R_ID]*pos(x[3]);
-			u[3] -= pos(x[3])*supporting_r;
 
 			u[4] += flag_strike_leg[R_ID]*neg(x[4]);
 
@@ -409,10 +407,10 @@ void MatsuokaSixN::compute_osc_excitation()
 			{
                 // Attenuate signals: N1/N3 while L stance, N4/N6 while R stance
 				u[0] -= pos(x[0])*supporting_l;
-				//u[1] -= pos(x[1])*supporting_r;
+				u[1] -= pos(x[1])*supporting_r;
 				u[2] -= pos(x[2])*supporting_l;
 				u[3] -= pos(x[3])*supporting_r;
-				//u[4] -= pos(x[4])*supporting_l;
+				u[4] -= pos(x[4])*supporting_l;
 				u[5] -= pos(x[5])*supporting_r;
 			}
 		}
