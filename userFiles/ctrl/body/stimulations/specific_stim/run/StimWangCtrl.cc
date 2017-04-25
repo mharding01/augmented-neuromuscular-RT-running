@@ -766,6 +766,7 @@ void StimWangCtrl::yaw_compute_min()
  */
 int StimWangCtrl::stance_preparation(int leg_id)
 {
+	/*
 	double d; // normalized horizontal distance between COM and foot
 
 	switch(leg_id)
@@ -782,28 +783,31 @@ int StimWangCtrl::stance_preparation(int leg_id)
 			exit(EXIT_FAILURE);
 	}
 
-	/*
+	return (d < d_sp);
+	*/
 	switch(leg_id)
 	{
 		case R_ID : 
+			// Stance if N4 or N6 active in late swing
 			return (ghost_osc->get_y_pos(3) || ghost_osc->get_y_pos(5));
 			break;
 		case L_ID : 
+			// Stance if N1 or N3 active in late swing
 			return (ghost_osc->get_y_pos(0) || ghost_osc->get_y_pos(2));
 			break;
 
 		default:
 			std::cout << "Error: unknown leg id : " << leg_id << " !" << std::endl;
 			exit(EXIT_FAILURE);
-	}//*/
-
-	return (d < d_sp);
+			return false;
+	}
 }
 
 /*! \brief return 1 if swing initiation starts (end of stance phase), 0 otherwise
  */
 int StimWangCtrl::swing_initiation(int leg_id)
 {
+	/*
 	double d; // normalized horizontal distance between COM and foot
 
 	switch(leg_id)
@@ -820,22 +824,25 @@ int StimWangCtrl::swing_initiation(int leg_id)
 			exit(EXIT_FAILURE);
 	}
 
-	/*
+	return ((d > d_si) || (sw_st->is_double_support() && d > 0.0));
+	*/
+
 	switch(leg_id)
 	{
 		case R_ID : 
+			// N1 or N2 positive, cpg-controlled HFL
 			return (ghost_osc->get_y_pos(0) || ghost_osc->get_y_pos(2));
 			break;
 		case L_ID : 
+			//  N4 or N5 positive, cpg-controlled HFL
 			return (ghost_osc->get_y_pos(3) || ghost_osc->get_y_pos(5));
 			break;
 
 		default:
 			std::cout << "Error: unknown leg id : " << leg_id << " !" << std::endl;
 			exit(EXIT_FAILURE);
-	}//*/
-
-	return ((d > d_si) || (sw_st->is_double_support() && d > 0.0));
+			return false;
+	}
 }
 
 /*! \brief update oscillator gains for velocity tracking */
