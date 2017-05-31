@@ -25,22 +25,22 @@ void OPTI_NAME::set_opti()
     MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
 
     // Oscillator fields
-    g_osc->set_gamma_A({1.30; 1.48});
-    g_osc->set_gamma_B({2.35; 2.55 });
-    g_osc->set_gamma_C({2.75; 2.95 });
+    g_osc->set_gamma_A({1.0; 2.0}); // Lowest
+    g_osc->set_gamma_B({1.5; 2.8 }); // Second
+    g_osc->set_gamma_C({2.25; 3.5 }); // Highest
 
     g_osc->set_beta_A({4.5; 6.5});
     g_osc->set_beta_B({4.0; 6.0 });
     g_osc->set_beta_C({3.0; 6.0 });
 
-    g_osc->set_eta_A({5.45; 5.53  });  
-    g_osc->set_eta_B({4.80; 4.90 });  
+    g_osc->set_eta_A({5.0; 6.3  });  
+    g_osc->set_eta_B({4.30; 5.4 });  
     g_osc->set_eta_C({5.2; 5.8});  // TODO: N3 and N6, controls how soon appear 
-    g_osc->set_eta_D({3.73; 3.78 });  
-    g_osc->set_eta_E({3.64; 3.72 });
+    g_osc->set_eta_D({3.5; 4.3 });  
+    g_osc->set_eta_E({3.0; 3.9 });
 
-    g_osc->set_eta_F({2.5 ; 5.0 });
-    g_osc->set_eta_G({3.0 ; 5.5 }); 
+    g_osc->set_eta_F({2.0 ; 6.0 });
+    g_osc->set_eta_G({3.0 ; 6.5 }); 
 
     // Fitting parameters for improved vel tracking
     g_osc->set_P_theta_trunk({0.01; 0.2}); // 0.0609
@@ -67,7 +67,7 @@ void OPTI_NAME::set_opti()
     
     g_osc->set_P_k_HFLrun2({3.0;9.0}); // 5.8581
     g_osc->set_p_k_HFLrun2({27.0;33.0});// 29.9698
-    g_osc->set_p2_k_HFLrun2({80.0;90.0});//84.8007
+    g_osc->set_p2_k_HFLrun2({75.0;95.0});//84.8007
     
     g_osc->set_P_k_HAMrun({2.0;5.7}); // 3.8158
     g_osc->set_p_k_HAMrun({7.2;10.5}); // 8.7087

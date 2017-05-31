@@ -25,9 +25,9 @@ void OptiGeneration::set_opti()
     MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
 
     // Oscillator fields
-    g_osc->set_gamma_A(optiParams[0]);
-    g_osc->set_gamma_B(optiParams[1]);
-    g_osc->set_gamma_C(optiParams[2]);
+    g_osc->set_gamma_A(optiParams[0]); // Lowest
+    g_osc->set_gamma_B(optiParams[1]); // Second
+    g_osc->set_gamma_C(optiParams[2]); // Highest
 
     g_osc->set_beta_A(optiParams[3]);
     g_osc->set_beta_B(optiParams[4]);
