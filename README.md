@@ -1,4 +1,4 @@
-Nicolas Van der Noot's thesis: COMAN robot
+Augmented Neuromuscular Gait Controller Enables Real-time Tracking of Bipedal Running Speed
 =========================================
 
 This project contains different [COMAN](https://www.youtube.com/watch?v=oXBYZxa25vc) models, along with appropriate controllers to achieve dynamic walking. These controllers are based on bio-inspired approaches computing appropriate voltages to send to the robot motors.
