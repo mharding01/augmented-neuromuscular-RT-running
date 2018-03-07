@@ -1,8 +1,11 @@
 Augmented Neuromuscular Gait Controller Enables Real-time Tracking of Bipedal Running Speed
 =========================================
 
-This project contains different [COMAN](https://www.youtube.com/watch?v=oXBYZxa25vc) models, along with appropriate controllers to achieve dynamic walking. These controllers are based on bio-inspired approaches computing appropriate voltages to send to the robot motors.
+This project supplies the source code related to the bipedal running research done at the BIOROB Laboratory under Dr. Auke Ijspeert at EPFL, and represents the work of Dr. Nicolas Van der Noot, Bruno Somers, and Matthew Harding. The scientific contribution of this work was to demonstrate an adaptable and bio-inspired running-gait control system that can realize a wide range of speeds from a single optimization.
 
+Several figures below summarize the initialization and optimization parameters used in our simulations to attain our results.
+
+This repository contains different models of COMAN, our robot platform of choice for our simulations, which one can learn more about [here](https://www.youtube.com/watch?v=oXBYZxa25vc).
 
 ## Project structure ##
 
@@ -14,7 +17,7 @@ This project contains different [COMAN](https://www.youtube.com/watch?v=oXBYZxa2
     * [elem](dataR/elem): .mbs files which can be combined to make bigger .mbs files
     * [index](dataR/index): files where the .mbs indexes are linked to the simulation code
     * [python](dataR/python): python script to combine .mbs files (from [elem](dataR/elem)) in another .mbs file
-* [mbsysCopy](mbsysCopy): copies of the files located in the generic *mbsysC* folder, in order to perform optimizations, or to run the project in a *standalon* fashion. This is not available for *Windows*.
+* [mbsysCopy](mbsysCopy): copies of the files located in the generic *mbsysC* folder, in order to perform optimizations, or to the project in a *standalone* fashion. This is not available for *Windows*.
     * [cmake_aux](mbsysCopy/cmake_aux): auxiliary CMake files
     * [conf](mbsysCopy/conf): configuration files (external libraries paths...)
     * [extra_conf](mbsysCopy/extra_conf): extra configuration files (i.e. not in generic Robotran projects)
