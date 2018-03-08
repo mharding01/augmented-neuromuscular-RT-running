@@ -1,9 +1,9 @@
 Augmented Neuromuscular Gait Controller Enables Real-time Tracking of Bipedal Running Speed
 =========================================
 
-This project supplies the source code related to the bipedal running research done at the BIOROB Laboratory under Dr. Auke Ijspeert at EPFL, and represents the work of Dr. Nicolas Van der Noot, Bruno Somers, and Matthew Harding. The scientific contribution of this work was to demonstrate an adaptable and bio-inspired running-gait control system that can realize a wide range of speeds from a single optimization.
+This project supplies the source code related to the bipedal running research done at the BIOROB Laboratory under Dr. Auke Ijspeert at EPFL, and represents the work of Dr. Nicolas Van der Noot, Bruno Somers, and Matthew Harding. The contribution of this work was to demonstrate an adaptable and bio-inspired running-gait control system that can realize a wide range of speeds from a single optimization.
 
-Several figures below summarize the initialization and optimization parameters used in our simulations to attain our results.
+This repository contains different models of COMAN, our robot platform of choice for our simulations, which one can learn more about [here](https://www.youtube.com/watch?v=oXBYZxa25vc). Several figures below summarize the initialization, optimization, and static muscle parameters used in our simulations to attain our results. 
 
 <p align="center">
    </br>
@@ -22,7 +22,39 @@ parameters are computed as follows: <code>τ = K<sub>τ</sub> + L<sub>τ</sub> v
 </p>
 
 
-This repository contains different models of COMAN, our robot platform of choice for our simulations, which one can learn more about [here](https://www.youtube.com/watch?v=oXBYZxa25vc).
+
+<p align="center">
+   </br>
+   <img src ="figures/table_III-rf.png"/>
+   </br></br><strong>Table III</strong>: The fixed MTU parameters of the <strong>RF</strong> virtual muscle are reported here, which were used in addition to those of
+11 muscles described in [1]: <strong>SOL</strong>, <strong>TA</strong>, <strong>GAS</strong>, <strong>VAS</strong>, <strong>HAM</strong>, <strong>GLU</strong>, <strong>HFL</strong>, <strong>SET</strong>, <strong>SFL</strong>, <strong>EET</strong>, and <strong>EFL</strong>. When a leg MTU acts
+on different joints, its values are explicitly reported as (a) for ankle, (k) for knee and (h) for hip (except if they are equal).
+These values were extracted from [2] and [3] for the leg muscles. The arm muscles were estimated with the <i>OpenSim</i>
+simulator [4] using the human model developed in [5]. The masses <i>m</i><sub><i>mtu</i></sub> were obtained using the method proposed in
+[6], while the <i>λ</i> values were obtained from [7]. These values were scaled to the size of COMAN by using dynamic scaling
+methods, being described in [8] and [9].
+</p>
+
+**Table Bibliography**:
+
+[1] N. Van der Noot, A. J. Ijspeert, and R. Ronsse, “Bio-inspiredcontroller achieving forward speed modulation with a 3d bipedal walker,” _The International Journal of Robotics Research_, vol. 37, no. 1, pp. 168–196, Jan. 2018.
+
+[2] H. Geyer and H. Herr, “A muscle-reflex model that encodes principlesof legged mechanics produces human walking dynamics and muscle activities.” _IEEE transactions on neural systems and rehabilitation engineering : a publication of the IEEE Engineering in Medicine and Biology Society_, vol. 18, no. 3, pp. 263–73, June 2010.
+
+[3] S. Song and H. Geyer, “A neural circuitry that emphasizes spinal feedback generates diverse behaviours of human locomotion.” _The Journal of physiology_, Apr. 2015.
+
+[4] S. L. Delp, F. C. Anderson, A. S. Arnold, P. Loan, A. Habib, C. T. John, E. Guendelman, and D. G. Thelen, “OpenSim: open-source software to create and analyze dynamic simulations of movement.” _IEEE transactions on bio-medical engineering_, vol. 54, no. 11, pp. 1940–50, Nov. 2007.
+
+[5] A. Rajagopal, C. L. Dembia, M. S. DeMers, D. D. Delp, J. L. Hicks, and S. L. Delp, “Full-Body Musculoskeletal Model for Muscle-Driven Simulation of Human Gait,” _IEEE Transactions on Biomedical Engineering_, vol. 63, no. 10, pp. 2068–2079, Oct. 2016.
+
+[6] J. M. Wang, S. R. Hamner, S. L. Delp, and V. Koltun, “Optimizing locomotion controllers using biologically-based actuators and objectives,” _ACM Trans. Graph_, p. 25, 2012.
+
+[7] G. T. Yamaguchi, A. G.-U. Sawa, D. W. Moran, M. J. Fessler, and J. M. Winters, “A survey of human musculotendon actuator parameters,” in _Multiple Muscle Systems: Biomechanics and Movement Organization_. Springer-Verlag, 1990, pp. 717–778.
+
+[8] A. Bejan and J. H. Marden, “Unifying constructal theory for scale effects in running, swimming and flying.” _The Journal of experimental biology_, vol. 209, no. Pt 2, pp. 238–48, Jan. 2006.
+
+[9] A. Schepelmann, M. D. Taylor, and H. Geyer, “Development of a Testbed for Robotic Neuromuscular Controllers,” in _Robotics: Science and Systems_. MIT Press, 2012.
+
 
 ## Project structure ##
 
