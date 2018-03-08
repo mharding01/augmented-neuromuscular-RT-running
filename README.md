@@ -5,6 +5,12 @@ This project supplies the source code related to the bipedal running research do
 
 Several figures below summarize the initialization and optimization parameters used in our simulations to attain our results.
 
+<p align="center">
+   <img src ="figures/table_I-initial_dynamics.png"/>
+   </br>Table I: The parameters to be optimized for the biped
+initial dynamics state, and their ranges are reported in this table. <i>z</i><sub><i>w</i></sub> is the vertical position of the waist, <i>&theta;</i><sub><i>w</i></sub> its orientation (used to describe the floating base kinematics). <i>φ</i><sub><i>h</i></sub>, <i>φ</i><sub><i>k</i></sub>, <i>φ</i><sub><i>a</i></sub> and <i>φ</i><sub><i>sh</i></sub> are respectively the hip, knee, ankle and shoulder sagittal joint angles (with R and L standing respectively for right and left). It is worthy to note that <i>φ</i><sub><i>sh</i></sub> is computed from left and right leg <i>φ</i><sub><i>h</i></sub>, as shown in the publication. All these initialization parameters' time derivatives (denoted by the •<bold>'</bold> function) are optimized in the [−5; 5] range, except <i>z</i><sub><i>w</i></sub><bold>'</bold> being optimized in the [−0.5; 0.5] range.
+</p>
+
 This repository contains different models of COMAN, our robot platform of choice for our simulations, which one can learn more about [here](https://www.youtube.com/watch?v=oXBYZxa25vc).
 
 ## Project structure ##
