@@ -18,7 +18,7 @@ initial dynamics state, and their ranges are reported in this table. <i>z</i><su
    </br>
    <img src ="figures/table_II-parameters.png"/>
    </br></br><strong>Table II</strong>:  The parameters to be optimized in the controller, and their ranges are reported in this table. The speed dependent
-parameters are computed as follows: τ = Kτ + Lτ v∗ + Mτ v∗ 2 ; kHF L,1 = KHF L,1 + LHF L,1 v∗; kHF L,2 = KHF L,2 + LHF L,2 v∗MHF L,2 v∗ 2 ; kHAM = KHAM + LHAM v∗ + MHAM v∗ 2; GV AS = KG,V AS + LG,V AS v∗ ; GGAS = KG,GAS + LG,GAS v∗; GSOLKG,SOL + LG,SOL v∗ + MG,SOL v∗ 2 ; GS−T = KG,S−T + LG,S−T v∗ , where v∗ = vref − 1.5 and vref is the target forward speed.
+parameters are computed as follows: <code>τ = K<sub>τ</sub> + L<sub>τ</sub> v<sub>∗</sub> + M<sub>τ</sub> v<sub>∗</sub><sup>2</sup></code>; <code>k<sub>HFL,1</sub> = K<sub>HFL,1</sub> + L<sub>HFL,1</sub> v<sub>∗</sub></code>; <code>k<sub>HFL,2</sub> = K<sub>HFL,2</sub> + L<sub>HFL,2</sub> v<sub>∗</sub> + M<sub>HFL,2</sub> v<sub>∗</sub><sup>2</sup></code>; <code>k<sub>HAM</sub> = K<sub>HAM</sub> + L<sub>HAM</sub> v<sub>∗</sub> + M<sub>HAM</sub> v<sub>∗</sub><sup>2</sup></code>; <code>G<sub>VAS</sub> = K<sub>G,VAS</sub> + L<sub>G,VAS</sub> v<sub>∗</sub></code>; <code>G<sub>GAS</sub> = K<sub>G,GAS</sub> + L<sub>G,GAS</sub> v<sub>∗</sub></code>; <code>G<sub>SOL</sub> = K<sub>G,SOL</sub> + L<sub>G,SOL</sub> v<sub>∗</sub> + M<sub>G,SOL</sub> v<sub>∗</sub><sup>2</sup></code>; <code>G<sub>S−T</sub> = K<sub>G,S−T</sub> + L<sub>G,S−T</sub> v<sub>∗</sub></code>, where <code>v<sub>∗</sub> = v<sub>ref</sub> − 1.5</code> and </code>v<sub>ref</sub></code> is the target forward speed.
 </p>
 
 
