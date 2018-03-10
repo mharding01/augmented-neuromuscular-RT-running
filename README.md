@@ -37,9 +37,9 @@ methods, being described in [8] and [9].
 
 **Table Bibliography**:
 
-[1] N. Van der Noot, A. J. Ijspeert, and R. Ronsse, “Bio-inspiredcontroller achieving forward speed modulation with a 3d bipedal walker,” _The International Journal of Robotics Research_, vol. 37, no. 1, pp. 168–196, Jan. 2018.
+[1] N. Van der Noot, A. J. Ijspeert, and R. Ronsse, “Bio-inspired controller achieving forward speed modulation with a 3d bipedal walker,” _The International Journal of Robotics Research_, vol. 37, no. 1, pp. 168–196, Jan. 2018.
 
-[2] H. Geyer and H. Herr, “A muscle-reflex model that encodes principlesof legged mechanics produces human walking dynamics and muscle activities.” _IEEE transactions on neural systems and rehabilitation engineering : a publication of the IEEE Engineering in Medicine and Biology Society_, vol. 18, no. 3, pp. 263–73, June 2010.
+[2] H. Geyer and H. Herr, “A muscle-reflex model that encodes principles of legged mechanics produces human walking dynamics and muscle activities.” _IEEE transactions on neural systems and rehabilitation engineering : a publication of the IEEE Engineering in Medicine and Biology Society_, vol. 18, no. 3, pp. 263–73, June 2010.
 
 [3] S. Song and H. Geyer, “A neural circuitry that emphasizes spinal feedback generates diverse behaviours of human locomotion.” _The Journal of physiology_, Apr. 2015.
 
