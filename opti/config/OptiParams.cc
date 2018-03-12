@@ -25,24 +25,59 @@ void OPTI_NAME::set_opti()
     MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
 
     // Oscillator fields
-    g_osc->set_gamma_A({1.48; 1.60});
-    g_osc->set_gamma_B({2.35; 2.55 });
-    g_osc->set_gamma_C({2.55; 3.01 });
+    g_osc->set_gamma_A({1.0; 2.0}); // Lowest
+    g_osc->set_gamma_B({1.5; 2.8 }); // Second
+    g_osc->set_gamma_C({2.25; 3.5 }); // Highest
 
-    g_osc->set_eta_A({5.45; 5.53  });  
-    g_osc->set_eta_B({4.80; 4.90 });  
-    g_osc->set_eta_C({5.62; 6.0});  // TODO: N3 and N6, controls how soon appear 
-    g_osc->set_eta_D({3.73; 3.78 });  
-    g_osc->set_eta_E({3.64; 3.72 });  
+    g_osc->set_beta_A({4.5; 6.5});
+    g_osc->set_beta_B({4.0; 6.0 });
+    g_osc->set_beta_C({3.0; 6.0 });
 
-    g_osc->set_P_tau({0.00015 ; 0.05} ); // Taken from master commit: "All_1 results, 1459 score"
+    g_osc->set_eta_A({5.0; 6.3  });  
+    g_osc->set_eta_B({4.30; 5.4 });  
+    g_osc->set_eta_C({5.2; 5.8});  // TODO: N3 and N6, controls how soon appear 
+    g_osc->set_eta_D({3.5; 4.3 });  
+    g_osc->set_eta_E({3.0; 3.9 });
 
-    g_osc->set_k_HFLrun1( {1.0 ; 6.1});
-    g_osc->set_k_HFLrun2( {1.5 ; 10.0});
-    g_osc->set_k_HAMrun3( {0.5 ; 7.0});
+    g_osc->set_eta_F({2.0 ; 6.0 });
+    g_osc->set_eta_G({3.0 ; 6.5 }); 
+
+    // Fitting parameters for improved vel tracking
+    g_osc->set_P_theta_trunk({0.01; 0.2}); // 0.0609
+    g_osc->set_P_theta_hip({0.05; 0.25}); // 0.1616
+    g_osc->set_P_k_theta({4.5; 10.5}); // 8.6158
     
-	// Wang stimulations
+    // Linear
+    g_osc->set_P_k_HFLrun1({2.5; 8.0}); // 5.1025
+    g_osc->set_p_k_HFLrun1({-5.5; -2.0}); // -3.1544
 
+    g_osc->set_P_G_SOL_TA({3.0;8.5}); // 5.3225
+    g_osc->set_p_G_SOL_TA({7.5; 12.5}); // 9.0977
+
+    g_osc->set_P_G_GAS({5.5; 10.5}); // 7.5656
+    g_osc->set_p_G_GAS({-15.5; -10.0}); // -13.7575
+
+    g_osc->set_P_G_VAS({1.0; 3.0}); // 1.6058
+    g_osc->set_p_G_VAS({1.0; 3.5}); // 2.0708
+    
+    // Quadratic
+    g_osc->set_P_tau({0.010; .10}); // 0.0465
+    g_osc->set_p_tau({-.2; 0.2}); // -.0168
+    g_osc->set_p2_tau({-0.3;0.1});// -.0277
+    
+    g_osc->set_P_k_HFLrun2({3.0;9.0}); // 5.8581
+    g_osc->set_p_k_HFLrun2({27.0;33.0});// 29.9698
+    g_osc->set_p2_k_HFLrun2({75.0;95.0});//84.8007
+    
+    g_osc->set_P_k_HAMrun({2.0;5.7}); // 3.8158
+    g_osc->set_p_k_HAMrun({7.2;10.5}); // 8.7087
+    g_osc->set_p2_k_HAMrun({29.0;37.0});//34.0513
+
+    g_osc->set_P_G_SOL({1.2;5.5}); // 2.9365
+    g_osc->set_p_G_SOL({1.0;6.5}); // 3.4425
+    g_osc->set_p2_G_SOL({10.0;16.0}); // 13.5518
+
+	// Wang stimulations
     // TODO: added cpg_ctrl_thresh_t parameter for optimization
 	stim_wang->set_S0_sol_st( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_ta_st( { 0.01 ; 0.05 } );
@@ -60,31 +95,20 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_S0_rf_sw( { 0.01 ; 0.5 } );
 	stim_wang->set_S0_glu_sw( { 0.01 ; 0.05 } );
 	stim_wang->set_S0_hfl_sw( { 0.01 ; 0.05 } );
-	stim_wang->set_G_sol( { 0.97 ; 5.0 } );
-	stim_wang->set_G_sol_ta( { 0.4 ; 7.0 } );
-	stim_wang->set_G_gas( { 0.0 ; 20.0 } );
-	stim_wang->set_G_vas( { 0.82 ; 5.0 } );
 	stim_wang->set_G_ham( { 0.0 ; 3.0 } );
 	stim_wang->set_G_glu( { 0.0 ; 2.0 } );
 	stim_wang->set_G_ta_sw( { 0.55 ; 5.0 } );
 	stim_wang->set_G_ta_st( { 0.55 ; 5.0 } );
-	stim_wang->set_G_hfl( { 0.17 ; 3.0 } );
-	stim_wang->set_G_ham_hfl( { 0.0 ; 10.0 } );
 	stim_wang->set_l_off_ta_sw( { 0.50 ; 0.8 } );
 	stim_wang->set_l_off_ta_st( { 0.50 ; 0.8 } );
-	stim_wang->set_l_off_ham_hfl( { 0.0 ; 0.71 } );
-	stim_wang->set_l_off_hfl( { 0.0 ; 0.85 } );
 	stim_wang->set_K_ham( { 0.5 ; 6.0 } );  // TODO: want less HAM in stance
 	stim_wang->set_K_glu( { 0.5 ; 14.0 } ); // Prefer GLU to handle much of trunk lean
 	stim_wang->set_K_hfl( { 1.0 ; 10.0 } ); // Prefer HFL not to be too active
 	stim_wang->set_D_ham( { 0.0 ; 0.5 } );
 	stim_wang->set_D_glu( { 0.0 ; 0.5 } );
 	stim_wang->set_D_hfl( { 0.0 ; 0.8 } );
-	stim_wang->set_theta_ref( { 0.005 ; 0.15 } ); // TODO: trunk lean, realistic max i pi/15=18deg.
 	stim_wang->set_si_vas( { 0.3 ; 1.0 } );
 	stim_wang->set_si_rf( { 0.0 ; 1.0 } );
-	stim_wang->set_si_glu( { 0.2 ; 1.0 } );
-	stim_wang->set_si_hfl( { 0.0 ; 1.0 } );
 	stim_wang->set_K_sp_vas( { 0.0 ; 5.0 } );
 	stim_wang->set_K_sp_glu( { 0.0 ; 5.0 } );
 	stim_wang->set_K_sp_hfl( { 0.0 ; 5.0 } );
@@ -92,29 +116,8 @@ void OPTI_NAME::set_opti()
 	stim_wang->set_D_sp_glu( { 0.0 ; 0.1 } );
 	stim_wang->set_D_sp_hfl( { 0.0 ; 0.1 } );
 	stim_wang->set_theta_k_ref( { 0.0 ; 0.3 } );
-	stim_wang->set_theta_h_ref0( { 0.05 ; 0.9 } ); // TODO: made its lower bound smaller, come back to this later
 	stim_wang->set_d_sp( { -0.3 ; 0.1 } );
 	stim_wang->set_d_si( { 0.2 ; 0.7 } );
 	stim_wang->set_k_THETA( { 1.0 ; 5.7 } );
-	stim_wang->set_k_theta( { 1.0 ; 15.0 } );
 	stim_wang->set_phi_off_pk( { 0.05 ; 0.2 } );
-
-	//init pos
-	joints_init->set_T3( { 0.46 ; 0.58 } );
-	joints_init->set_T3_p( { -0.5 ; 0.5 } );
-	joints_init->set_R2( { 0.0 ; 0.3 } );
-	joints_init->set_R2_p( { -5.0 ; 5.0 } );
-	joints_init->set_r_sh_p( { -5.0 ; 5.0 } );
-	joints_init->set_r_hip( { -0.87 ; -0.35 } );
-	joints_init->set_r_hip_p( { -5.0 ; 5.0 } );
-	joints_init->set_r_knee( { 0.0 ; 0.87 } );
-	joints_init->set_r_knee_p( { -5.0 ; 5.0 } );
-	joints_init->set_r_ankle( { -0.09 ; 0.09 } );
-	joints_init->set_r_ankle_p( { -5.0 ; 5.0 } );
-	joints_init->set_l_hip( { -0.09 ; 0.35 } );
-	joints_init->set_l_hip_p( { -5.0 ; 5.0 } );
-	joints_init->set_l_knee( { 0.35 ; 1.75 } );
-	joints_init->set_l_knee_p( { -5.0 ; 5.0 } );
-	joints_init->set_l_ankle( { 0.09 ; 0.45 } );
-	joints_init->set_l_ankle_p( { -5.0 ; 5.0 } );
 }

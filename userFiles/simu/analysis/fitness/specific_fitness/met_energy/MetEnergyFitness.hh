@@ -26,6 +26,12 @@ class MetEnergyFitness: public FitnessStage
 		virtual double get_fitness();
 		virtual int next_stage_unlocked();
 
+		/// get met_energy_total_norm
+		double get_met_energy_total_norm() const { return met_energy_total_norm; }
+
+		/// get met_energy_legs_norm
+		double get_met_energy_legs_norm() const { return met_energy_legs_norm; }
+
 	private:
 		MinDistFitness *min_dist_fit; ///< minimal distance fitness stage
 
@@ -43,6 +49,22 @@ class MetEnergyFitness: public FitnessStage
 		double dt; 
 		
 		int printed;
+
+		// for data extraction
+		double met_energy_total_init; ///< total metabolic energy (init)
+		double met_energy_legs_init;  ///< energy for the legs (init)
+
+		double met_energy_total_end; ///< total metabolic energy (end)
+		double met_energy_legs_end;  ///< energy for the legs (end)
+
+		double dist_init; ///< initial distance [m]
+		double dist_end;  ///< final distance [m]
+
+		bool min_energy_flag; ///< true if enrgy init done, false otherwise
+		bool max_energy_flag; ///< true if enrgy end done, false otherwise
+
+		double met_energy_total_norm; ///< 'met_energy_total' normalized to walking distance and robot mass
+		double met_energy_legs_norm;  ///< 'met_energy_legs' normalized to walking distance and robot mass
 };
 
 #endif

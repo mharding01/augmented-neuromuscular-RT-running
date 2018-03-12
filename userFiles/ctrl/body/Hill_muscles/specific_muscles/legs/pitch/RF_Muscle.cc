@@ -58,7 +58,10 @@ void RF_Muscle::rm_compute()
 void RF_Muscle::lmtu_compute()
 {
 	double delta_lmtu_pk = rho_pk * r_max_pk * (sin(k_pk*(pitch_knee->get_q() - phi_max_pk)) - sin(k_pk*(phi_ref_pk - phi_max_pk))) / k_pk;
+	//double delta_lmtu_pk = rho_pk * r_max_pk * (sin(pitch_knee->get_q() - phi_max_pk) - sin(phi_ref_pk - phi_max_pk));
+
 	double delta_lmtu_ph = rho_ph * r0_ph * (pitch_hip->get_q() - phi_ref_ph);
+	//double delta_lmtu_ph = rho_pk * r0_ph * (pitch_hip->get_q() - phi_ref_ph);
 
 	l.mtu = p.l_opt + p.l_slack + delta_lmtu_pk + delta_lmtu_ph;
 }

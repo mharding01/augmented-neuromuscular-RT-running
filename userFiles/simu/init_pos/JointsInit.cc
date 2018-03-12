@@ -17,27 +17,27 @@ JointsInit::JointsInit(MbsData *mbs_data, CtrlInputs *inputs)
 	this->inputs = inputs;
 
 	T1_p = CMAKE_VAR_2;
-	T3   = 0.0;
-	T3_p = 0.0;
-	R2   = 0.0;
-	R2_p = 0.0;
+	T3   = 0.51223863;		// Taken from workR/Optis_3.0/1.5vt8.3/OptiResults
+	T3_p =  0.00185412;
+	R2   = 0.06613346;
+	R2_p = 3.91008657;
 
 	r_sh   = 0.0;
-	r_sh_p = 0.0;
+	r_sh_p = 4.87004676;
 
-	r_hip     = 0.0;
-	r_hip_p   = 0.0;
-	r_knee    = 0.0;
-	r_knee_p  = 0.0;
-	r_ankle   = 0.0;
-	r_ankle_p = 0.0;
+	r_hip     = -0.77071918;
+	r_hip_p   = -3.83071851;
+	r_knee    = 0.24857749;
+	r_knee_p  = -3.64650428;
+	r_ankle   = 0.07297330;
+	r_ankle_p = -3.85941459;
 
-	l_hip     = 0.0;
-	l_hip_p   = 0.0;
-	l_knee    = 0.0;
-	l_knee_p  = 0.0;
-	l_ankle   = 0.0;
-	l_ankle_p = 0.0;
+	l_hip     = 0.06109374;
+	l_hip_p   = -1.23523796;
+	l_knee    = 1.22608835;
+	l_knee_p  = 3.78344275;
+	l_ankle   = 0.30323805;
+	l_ankle_p = 4.18894087;
 
 	nb_mot = inputs->get_nb_mot();
 

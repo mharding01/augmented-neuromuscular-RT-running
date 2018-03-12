@@ -35,15 +35,55 @@ class MatsuokaSixN: public Oscillators
 		double get_k_HFL()     const { return k_HFL;     }
 		double get_k_HFLrun1()     const { return k_HFLrun1;     }
 		double get_k_HFLrun2()     const { return k_HFLrun2;     }
-		double get_k_HFLrun3()     const { return k_HFLrun3;     }
 		double get_k_HAM1()    const { return k_HAM1;    }
 		double get_k_HAM2()    const { return k_HAM2;    }
 		double get_k_HAMrun1()    const { return k_HAMrun1;    }
 		double get_k_HAMrun2()    const { return k_HAMrun2;    }
-		double get_k_HAMrun3()    const { return k_HAMrun3;    }
-		double get_theta_ref() const { return theta_ref; }
+		double get_k_HAMrun()    const { return k_HAMrun;    }
+		double get_theta_trunk_ref() const { return theta_trunk_ref; }
+		double get_theta_hip_ref() const { return theta_hip_ref; }
+		double get_G_sol()	const { return G_sol; }
+		double get_G_sol_ta()	const { return G_sol_ta; }
+		double get_G_gas()	const { return G_gas; }
+		double get_G_vas()	const { return G_vas; }
+		double get_k_theta()	const { return k_theta; }
 
 		double get_t_osc_error_mean() const { return t_osc_error_mean; }
+		
+        float get_P_theta_trunk() { return P_theta_trunk; }
+		float get_P_theta_hip() { return P_theta_hip; }
+		float get_P_tau()   { return P_tau; }
+		float get_P_k_HFLrun1()  { return P_k_HFLrun1; }
+		float get_P_k_HFLrun2()  { return P_k_HFLrun2; }
+		float get_P_k_HAMrun()  { return P_k_HAMrun; }
+		float get_P_G_SOL()  { return P_G_SOL; }
+		float get_P_G_SOL_TA()  { return P_G_SOL_TA; }
+		float get_P_G_GAS()  { return P_G_GAS; }
+		float get_P_G_VAS()  { return P_G_VAS; }
+		float get_P_k_theta()  { return P_k_theta; }
+
+		float get_p_theta_trunk() { return p_theta_trunk; }
+		float get_p_theta_hip() { return p_theta_hip; }
+		float get_p_tau()   { return p_tau; }
+		float get_p_HFL()   { return p_HFL; }
+		float get_p_HAM1()  { return p_HAM1; }
+		float get_p_HAM2()  { return p_HAM2; }
+		float get_p_k_HFLrun1()  { return p_k_HFLrun1; }
+		float get_p_k_HFLrun2()  { return p_k_HFLrun2; }
+		float get_p_k_HAMrun()  { return p_k_HAMrun; }
+		float get_p_G_SOL()  { return p_G_SOL; }
+		float get_p_G_SOL_TA()  { return p_G_SOL_TA; }
+		float get_p_G_GAS()  { return p_G_GAS; }
+		float get_p_G_VAS()  { return p_G_VAS; }
+		float get_p_k_theta()  { return p_k_theta; }
+		float get_p2_theta_trunk()  { return p2_theta_trunk; }
+		float get_p2_theta_hip()  { return p2_theta_hip; }
+		float get_p2_tau()  { return p2_tau; }
+		float get_p2_k_HFLrun1()  { return p2_k_HFLrun1; }
+		float get_p2_k_HFLrun2()  { return p2_k_HFLrun2; }
+		float get_p2_k_HAMrun()  { return p2_k_HAMrun; }
+		float get_p2_G_SOL()  { return p2_G_SOL; }
+		float get_p2_G_VAS()  { return p2_G_VAS; }
 
 		void set_v_request(double value) { v_request = value; }
 
@@ -63,27 +103,66 @@ class MatsuokaSixN: public Oscillators
 		void set_eta_F(double value) { eta_F = value; }
 		void set_eta_G(double value) { eta_G = value; }
 
-		void set_P_theta(double value) { P_theta = value; }
+		void set_P_theta_trunk(double value) { P_theta_trunk = value; }
+		void set_P_theta_hip(double value) { P_theta_hip = value; }
 		void set_P_tau(double value)   { P_tau = value; }
 		void set_P_GLU(double value)   { P_GLU = value; }
 		void set_P_HFL(double value)   { P_HFL = value; }
 		void set_P_HAM1(double value)  { P_HAM1 = value; }
 		void set_P_HAM2(double value)  { P_HAM2 = value; }
+		void set_P_k_HFLrun1(double value)  { P_k_HFLrun1= value; }
+		void set_P_k_HFLrun2(double value)  { P_k_HFLrun2= value; }
+		void set_P_k_HAMrun(double value)  { P_k_HAMrun= value; }
+		void set_P_G_SOL(double value)  { P_G_SOL = value; }
+		void set_P_G_SOL_TA(double value)  { P_G_SOL_TA = value; }
+		void set_P_G_GAS(double value)  { P_G_GAS = value; }
+		void set_P_G_VAS(double value)  { P_G_VAS = value; }
+		void set_P_k_theta(double value)  { P_k_theta = value; }
 
-		void set_p_theta(double value) { p_theta = value; }
+		void set_p_theta_trunk(double value) { p_theta_trunk = value; }
+		void set_p_theta_hip(double value) { p_theta_hip = value; }
 		void set_p_tau(double value)   { p_tau = value; }
 		void set_p_HFL(double value)   { p_HFL = value; }
 		void set_p_HAM1(double value)  { p_HAM1 = value; }
 		void set_p_HAM2(double value)  { p_HAM2 = value; }
+		void set_p_k_HFLrun1(double value)  { p_k_HFLrun1 = value; }
+		void set_p_k_HFLrun2(double value)  { p_k_HFLrun2 = value; }
+		void set_p_k_HAMrun(double value)  { p_k_HAMrun = value; }
+		void set_p_G_SOL(double value)  { p_G_SOL = value; }
+		void set_p_G_SOL_TA(double value)  { p_G_SOL_TA = value; }
+		void set_p_G_GAS(double value)  { p_G_GAS = value; }
+		void set_p_G_VAS(double value)  { p_G_VAS = value; }
+		void set_p_k_theta(double value)  { p_k_theta = value; }
+		void set_p2_theta_trunk(double value)  { p2_theta_trunk = value; }
+		void set_p2_theta_hip(double value)  { p2_theta_hip= value; }
+		void set_p2_tau(double value)  { p2_tau = value; }
+		void set_p2_k_HFLrun1(double value)  { p2_k_HFLrun1= value; }
+		void set_p2_k_HFLrun2(double value)  { p2_k_HFLrun2 = value; }
+		void set_p2_k_HAMrun(double value)  { p2_k_HAMrun = value; }
+		void set_p2_G_SOL(double value)  { p2_G_SOL = value; }
+		void set_p2_G_VAS(double value)  { p2_G_VAS = value; }
 		
 		void set_k_HAMrun1(double value)  { k_HAMrun1 = value; }
 		void set_k_HAMrun2(double value)  { k_HAMrun2 = value; }
-		void set_k_HAMrun3(double value)  { k_HAMrun3 = value; }
+		void set_k_HAMrun(double value)  { k_HAMrun = value; }
 
 		void set_k_HFLrun1(double value)  { k_HFLrun1 = value; }
 		void set_k_HFLrun2(double value)  { k_HFLrun2 = value; }
-		void set_k_HFLrun3(double value)  { k_HFLrun3 = value; }
 
+        /* Delayed setting of fields, after x steps during optimization */
+		void opti_set_k_HFLrun1(double value)  { opt_k_HFLrun1 = value; }
+		void opti_set_k_HFLrun2(double value)  { opt_k_HFLrun2 = value; }
+		void opti_set_k_HAMrun(double value)  { opt_k_HAMrun = value; }
+		void opti_set_P_theta_trunk(double value) { opt_P_theta_trunk = value; }
+		void opti_set_P_theta_hip(double value) { opt_P_theta_hip = value; }
+		void opti_set_P_tau(double value)   { opt_P_tau = value; }
+		void opti_set_P_G_SOL(double value)   { opt_P_G_SOL = value; }
+		void opti_set_P_G_SOL_TA(double value)   { opt_P_G_SOL_TA = value; }
+		void opti_set_P_G_GAS(double value)   { opt_P_G_GAS = value; }
+		void opti_set_P_G_VAS(double value)   { opt_P_G_VAS = value; }
+		void opti_set_P_k_theta(double value)   { opt_P_k_theta = value; }
+
+        void delayed_opti_set();
 	private:
 		std::vector<double> v;  ///< fatigue for neurons
 		std::vector<double> vd; ///< fatigue for neurons (derivative)
@@ -95,6 +174,8 @@ class MatsuokaSixN: public Oscillators
 		CtrlInputs *inputs;     ///< controller inputs
 		UserCtrl *user_ctr;     ///< user control
 		AverageInc *osc_err_av; ///< mean errors on the oscillators
+
+		void enable_velocity_tracking(); ///< after init steps, updates coeffs
 
 		int flag_strike_err;          ///< flag to compute strike error
 		int flag_strike_leg[NB_LEGS]; ///< flag corresponding to a strike for a precise leg
@@ -124,26 +205,58 @@ class MatsuokaSixN: public Oscillators
 		double tau_C_inv;
 
 		// velocity adaptation parameters
-		double P_theta;
+		double P_theta_trunk;
+		double P_theta_hip;
 		double P_tau;
 		double P_GLU;
 		double P_HFL;
 		double P_HAM1;
 		double P_HAM2;
+		double P_k_HFLrun1;
+		double P_k_HFLrun2;
+		double P_k_HAMrun;
+		double P_G_SOL;
+		double P_G_SOL_TA;
+		double P_G_GAS;
+		double P_G_VAS;
+		double P_k_theta;
 
-		double p_theta;
+		double p_theta_trunk;
+		double p_theta_hip;
 		double p_tau;
 		double p_HFL;
 		double p_HAM1;
 		double p_HAM2;
+		double p_k_HFLrun1;
+		double p_k_HFLrun2;
+		double p_k_HAMrun;
+		double p_G_SOL;
+		double p_G_SOL_TA;
+		double p_G_GAS;
+		double p_G_VAS;
+		double p_k_theta;
+
+		double p2_theta_trunk;
+		double p2_theta_hip;
+		double p2_tau;
+		double p2_k_HAMrun;
+		double p2_k_HFLrun1;
+		double p2_k_HFLrun2;
+		double p2_G_SOL;
+		double p2_G_VAS;
 
 		// velocity tracking
 		double v_star;
 		double v_request;
 
-		double theta_ref;
+		double theta_trunk_ref;
+		double theta_hip_ref;
 		double tau;
-
+		double G_sol;	// FF gain for SOL
+		double G_sol_ta;// FF gain for SOL-based suppression of TA
+		double G_gas;	// FF gain for GAS
+		double G_vas;	// FF gain for GAS
+		double k_theta;	// VAS suppression on stance, P control beyond phi_off
 
 		double k_GLU;
 		double k_HFL;
@@ -151,10 +264,9 @@ class MatsuokaSixN: public Oscillators
 		double k_HAM2;
 		double k_HAMrun1;
 		double k_HAMrun2;
-		double k_HAMrun3;
+		double k_HAMrun;
         double k_HFLrun1;   
         double k_HFLrun2;
-        double k_HFLrun3;
 
 		// integration
 		double last_t;
@@ -169,10 +281,25 @@ class MatsuokaSixN: public Oscillators
 		double t_osc_error_mean;
 
 		int flag_range; ///< 1 if CPG range activated, 0 otherwise
-
+		int vel_track_enabled; ///< 1 if velocity tracking enabled, 0 otherwise
         // Running alignment fields
         // TODO: Assumes bipedal
         int flag_last_stance_leg_r;  /// Flag set when r leg was last stance leg
+
+        // Optimization variables for varying speed running
+		double opt_P_theta_trunk;
+		double opt_P_theta_hip;
+		double opt_P_tau;
+		double opt_P_G_SOL;
+		double opt_P_G_SOL_TA;
+		double opt_P_G_GAS;
+		double opt_P_G_VAS;
+		double opt_P_k_theta;
+
+        double opt_k_HFLrun1;   
+        double opt_k_HFLrun2;
+		double opt_k_HAMrun;
+
 };
 
 #endif

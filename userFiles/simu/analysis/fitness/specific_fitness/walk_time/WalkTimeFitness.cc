@@ -1,6 +1,7 @@
 
 #include "WalkTimeFitness.hh"
 
+#define WT_PERCENT_THRESH 0.75
 /*! \brief constructor
  * 
  * \param[in] mbs_data Robotran structure
@@ -8,7 +9,7 @@
 WalkTimeFitness::WalkTimeFitness(MbsData *mbs_data): FitnessStage(mbs_data)
 {
 	tf = mbs_data->tf;
-	max_fitness = 500.0;
+	max_fitness = 300.0;
 }
 
 /*! \brief destructor
@@ -40,5 +41,5 @@ double WalkTimeFitness::get_fitness()
  */
 int WalkTimeFitness::next_stage_unlocked()
 {
-	return 1;
+	return (mbs_data->tsim / tf) > WT_PERCENT_THRESH;
 }

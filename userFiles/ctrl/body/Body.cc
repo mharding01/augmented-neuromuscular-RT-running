@@ -20,7 +20,6 @@
 
 inline int getmod(int index, int index_max) { return ((index % index_max) + index_max) % index_max; }
 
-
 /*! \brief constructor
  * 
  * \param[in] inputs controller inputs
@@ -73,7 +72,6 @@ Body::Body(CtrlInputs *inputs, CtrlOptions *options, MotorCtrlIndex *ctrl_index,
 
     /* Init stimulations controllers */
 	stim_init = new StimQqRefCtrl(inputs, ws, fwd_kin, parts, options);
-	ghost_stim_cpg = new StimWalkCtrl(inputs, ws, fwd_kin, parts, options);
     	
 	switch (flag_ctrl) /* Select and init lower body's stim. controller */
 	{
@@ -86,8 +84,7 @@ Body::Body(CtrlInputs *inputs, CtrlOptions *options, MotorCtrlIndex *ctrl_index,
 			break;
 
 		case CTRL_REFLEX_WANG:
-            /* TODO: Added pointer to ghost_stim_cpg's osc's to constructor */
-			stim_ctrl = new StimWangCtrl(inputs, ws, fwd_kin, parts, options, ghost_stim_cpg->get_osc());
+			stim_ctrl = new StimWangCtrl(inputs, ws, fwd_kin, parts, options);
 			break;
 
 		case CTRL_STIM_TEST:
@@ -134,6 +131,7 @@ Body::Body(CtrlInputs *inputs, CtrlOptions *options, MotorCtrlIndex *ctrl_index,
 
 	// metabolic energy
 	met_energy_total = 0.0;
+	met_energy_legs  = 0.0;
 
 	if (flag_apply_Qq_wang)
 	{
@@ -204,6 +202,7 @@ void Body::compute()
 	t = inputs->get_t();
 
 	met_energy_total = 0.0;
+	met_energy_legs  = 0.0;
 
 	switch (m_st->get_coman_state())
 	{
@@ -230,8 +229,6 @@ void Body::compute()
 	// compute stimulation
 	cur_stim_ctrl->compute();
 	stim_upper->compute();
-    // TODO: Adding ghost controller computation
-    ghost_stim_cpg->compute();
 	
 	// apply stimulations
 	for(int i=0; i<NB_BODY_PARTS; i++)
@@ -255,6 +252,8 @@ void Body::compute()
 		}
 		met_energy_total += parts[i]->get_met_energy();
 	}
+
+	met_energy_legs = static_cast<Leg*>(parts[RIGHT_LEG_BODY])->get_sag_met_energy() + static_cast<Leg*>(parts[LEFT_LEG_BODY])->get_sag_met_energy();
 
 	// send torque references
 	send_references();

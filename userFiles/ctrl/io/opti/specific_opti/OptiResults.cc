@@ -25,96 +25,99 @@ void OptiResults::set_opti()
     MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
 
     // Oscillator fields
-    g_osc->set_gamma_A(1.56979859);
-    g_osc->set_gamma_B(2.49723515);
-    g_osc->set_gamma_C(2.69045600);
+    g_osc->set_gamma_A(1.31466772);
+    g_osc->set_gamma_B(2.40343304);
+    g_osc->set_gamma_C(2.78442275);
 
-    g_osc->set_eta_A(5.48543727);  
-    g_osc->set_eta_B(4.85188411);  
-    g_osc->set_eta_C(5.94055309);  // TODO: N3 and N6, controls how soon appear 
-    g_osc->set_eta_D(3.75602226);  
-    g_osc->set_eta_E(3.66501723);  
+    g_osc->set_beta_A(5.78212310);
+    g_osc->set_beta_B(5.55493185);
+    g_osc->set_beta_C(3.60503114);
 
-    g_osc->set_P_tau(0.04829689 ); // Taken from master commit: "All_1 results, 1459 score"
+    g_osc->set_eta_A(5.48931652);  
+    g_osc->set_eta_B(4.89257413);  
+    g_osc->set_eta_C(5.42287258);  // TODO: N3 and N6, controls how soon appear 
+    g_osc->set_eta_D(3.73940070);  
+    g_osc->set_eta_E(3.69522122);
 
-    g_osc->set_k_HFLrun1( 1.97013575);
-    g_osc->set_k_HFLrun2( 4.94740384);
-    g_osc->set_k_HAMrun3( 3.28465598);
+    g_osc->set_eta_F(4.73163386);
+    g_osc->set_eta_G(3.52516749); 
+
+    // Fitting parameters for improved vel tracking
+    g_osc->set_P_theta_trunk(0.04352992); // 0.0609
+    g_osc->set_P_theta_hip(0.13607615); // 0.1616
+    g_osc->set_P_k_theta(7.57313438); // 8.6158
     
+    // Linear
+    g_osc->set_P_k_HFLrun1(7.63949718); // 5.1025
+    g_osc->set_p_k_HFLrun1(-4.31105036); // -3.1544
+
+    g_osc->set_P_G_SOL_TA(6.74090020); // 5.3225
+    g_osc->set_p_G_SOL_TA(10.57195677); // 9.0977
+
+    g_osc->set_P_G_GAS(8.80164898); // 7.5656
+    g_osc->set_p_G_GAS(-14.96919228); // -13.7575
+
+    g_osc->set_P_G_VAS(2.71664392); // 1.6058
+    g_osc->set_p_G_VAS(1.29140329); // 2.0708
+    
+    // Quadratic
+    g_osc->set_P_tau(0.05645322); // 0.0465
+    g_osc->set_p_tau(-0.00373714); // -.0168
+    g_osc->set_p2_tau(0.00861792);// -.0277
+    
+    g_osc->set_P_k_HFLrun2(8.79112856); // 5.8581
+    g_osc->set_p_k_HFLrun2(29.07043842);// 29.9698
+    g_osc->set_p2_k_HFLrun2(85.01290082);//84.8007
+    
+    g_osc->set_P_k_HAMrun(5.58157540); // 3.8158
+    g_osc->set_p_k_HAMrun(8.80416757); // 8.7087
+    g_osc->set_p2_k_HAMrun(31.86747170);//34.0513
+
+    g_osc->set_P_G_SOL(4.77975898); // 2.9365
+    g_osc->set_p_G_SOL(5.02438920); // 3.4425
+    g_osc->set_p2_G_SOL(14.02293313); // 13.5518
+
 	// Wang stimulations
-
     // TODO: added cpg_ctrl_thresh_t parameter for optimization
-	stim_wang->set_S0_sol_st( 0.02194817 );
-	stim_wang->set_S0_ta_st( 0.02562719 );
-	stim_wang->set_S0_gas_st( 0.01810459 );
-	stim_wang->set_S0_vas_st( 0.44042045 );
-	stim_wang->set_S0_ham_st( 0.20237877 );
-	stim_wang->set_S0_rf_st( 0.10120247 );
-	stim_wang->set_S0_glu_st( 0.29770641 );
-	stim_wang->set_S0_hfl_st( 0.18072312 );
-	stim_wang->set_S0_sol_sw( 0.02209875 );
-	stim_wang->set_S0_ta_sw( 0.02128742 );
-	stim_wang->set_S0_gas_sw( 0.16021302 );
-	stim_wang->set_S0_vas_sw( 0.02544146 );
-	stim_wang->set_S0_ham_sw( 0.09626436 );
-	stim_wang->set_S0_rf_sw( 0.13831479 );
-	stim_wang->set_S0_glu_sw( 0.02297107 );
-	stim_wang->set_S0_hfl_sw( 0.03559792 );
-	stim_wang->set_G_sol( 3.86143565 );
-	stim_wang->set_G_sol_ta( 2.23527349 );
-	stim_wang->set_G_gas( 16.12240268 );
-	stim_wang->set_G_vas( 1.31822437 );
-	stim_wang->set_G_ham( 1.50051293 );
-	stim_wang->set_G_glu( 0.33246666 );
-	stim_wang->set_G_ta_sw( 2.92715246 );
-	stim_wang->set_G_ta_st( 3.42944165 );
-	stim_wang->set_G_hfl( 1.67669726 );
-	stim_wang->set_G_ham_hfl( 3.80544781 );
-	stim_wang->set_l_off_ta_sw( 0.55343540 );
-	stim_wang->set_l_off_ta_st( 0.64861688 );
-	stim_wang->set_l_off_ham_hfl( 0.48237644 );
-	stim_wang->set_l_off_hfl( 0.28690527 );
-	stim_wang->set_K_ham( 4.91877910 );  // TODO: want less HAM in stance
-	stim_wang->set_K_glu( 7.92362812 ); // Prefer GLU to handle much of trunk lean
-	stim_wang->set_K_hfl( 4.90032020 ); // Prefer HFL not to be too active
-	stim_wang->set_D_ham( 0.09565679 );
-	stim_wang->set_D_glu( 0.31915933 );
-	stim_wang->set_D_hfl( 0.19707590 );
-	stim_wang->set_theta_ref( 0.02358341 ); // TODO: trunk lean, realistic max i pi/15=18deg.
-	stim_wang->set_si_vas( 0.90530405 );
-	stim_wang->set_si_rf( 0.47380585 );
-	stim_wang->set_si_glu( 0.59193452 );
-	stim_wang->set_si_hfl( 0.09751235 );
-	stim_wang->set_K_sp_vas( 3.83015083 );
-	stim_wang->set_K_sp_glu( 0.63644002 );
-	stim_wang->set_K_sp_hfl( 2.46860713 );
-	stim_wang->set_D_sp_vas( 0.04409413 );
-	stim_wang->set_D_sp_glu( 0.03368846 );
-	stim_wang->set_D_sp_hfl( 0.05510572 );
-	stim_wang->set_theta_k_ref( 0.08557284 );
-	stim_wang->set_theta_h_ref0( 0.64557474 ); // TODO: made its lower bound smaller, come back to this later
-	stim_wang->set_d_sp( -0.16744413 );
-	stim_wang->set_d_si( 0.31075125 );
-	stim_wang->set_k_THETA( 2.77354147 );
-	stim_wang->set_k_theta( 10.53640192 );
-	stim_wang->set_phi_off_pk( 0.08459034 );
-
-	//init pos
-	joints_init->set_T3( 0.50150535 );
-	joints_init->set_T3_p( 0.11369304 );
-	joints_init->set_R2( 0.17464433 );
-	joints_init->set_R2_p( 1.02029611 );
-	joints_init->set_r_sh_p( -2.24530040 );
-	joints_init->set_r_hip( -0.68812954 );
-	joints_init->set_r_hip_p( 4.78889217 );
-	joints_init->set_r_knee( 0.44390555 );
-	joints_init->set_r_knee_p( 0.82832996 );
-	joints_init->set_r_ankle( 0.05231890 );
-	joints_init->set_r_ankle_p( 2.04323971 );
-	joints_init->set_l_hip( -0.03572839 );
-	joints_init->set_l_hip_p( -2.92095395 );
-	joints_init->set_l_knee( 1.03811341 );
-	joints_init->set_l_knee_p( -1.26551026 );
-	joints_init->set_l_ankle( 0.29137364 );
-	joints_init->set_l_ankle_p( 4.57176218 );
+	stim_wang->set_S0_sol_st( 0.03818302 );
+	stim_wang->set_S0_ta_st( 0.04154003 );
+	stim_wang->set_S0_gas_st( 0.04980694 );
+	stim_wang->set_S0_vas_st( 0.23074307 );
+	stim_wang->set_S0_ham_st( 0.20799120 );
+	stim_wang->set_S0_rf_st( 0.06717290 );
+	stim_wang->set_S0_glu_st( 0.30088037 );
+	stim_wang->set_S0_hfl_st( 0.08220173 );
+	stim_wang->set_S0_sol_sw( 0.02868729 );
+	stim_wang->set_S0_ta_sw( 0.04480496 );
+	stim_wang->set_S0_gas_sw( 0.10223686 );
+	stim_wang->set_S0_vas_sw( 0.01282052 );
+	stim_wang->set_S0_ham_sw( 0.08402490 );
+	stim_wang->set_S0_rf_sw( 0.47692941 );
+	stim_wang->set_S0_glu_sw( 0.04719897 );
+	stim_wang->set_S0_hfl_sw( 0.03901564 );
+	stim_wang->set_G_ham( 1.19918457 );
+	stim_wang->set_G_glu( 0.64059899 );
+	stim_wang->set_G_ta_sw( 3.49518872 );
+	stim_wang->set_G_ta_st( 2.54519658 );
+	stim_wang->set_l_off_ta_sw( 0.54057781 );
+	stim_wang->set_l_off_ta_st( 0.64669994 );
+	stim_wang->set_K_ham( 5.37770470 );  // TODO: want less HAM in stance
+	stim_wang->set_K_glu( 8.85066706 ); // Prefer GLU to handle much of trunk lean
+	stim_wang->set_K_hfl( 3.01257080 ); // Prefer HFL not to be too active
+	stim_wang->set_D_ham( 0.19354081 );
+	stim_wang->set_D_glu( 0.40696855 );
+	stim_wang->set_D_hfl( 0.12420056 );
+	stim_wang->set_si_vas( 0.75524048 );
+	stim_wang->set_si_rf( 0.64097198 );
+	stim_wang->set_K_sp_vas( 0.58630839 );
+	stim_wang->set_K_sp_glu( 2.82446922 );
+	stim_wang->set_K_sp_hfl( 4.96323862 );
+	stim_wang->set_D_sp_vas( 0.07211924 );
+	stim_wang->set_D_sp_glu( 0.07267726 );
+	stim_wang->set_D_sp_hfl( 0.03362618 );
+	stim_wang->set_theta_k_ref( 0.22824145 );
+	stim_wang->set_d_sp( -0.05599871 );
+	stim_wang->set_d_si( 0.68096545 );
+	stim_wang->set_k_THETA( 2.92964455 );
+	stim_wang->set_phi_off_pk( 0.16679902 );
 }

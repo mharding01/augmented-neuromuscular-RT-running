@@ -39,6 +39,10 @@ class Leg: public BodyPart
 
 		virtual void update_S_ref();
 
+		double get_sag_met_energy() const { return sag_met_energy; }
+
+		virtual void update_body_part(StimulationCtrl *stim_ctrl);
+
 	private:
 		std::vector<double> F_min_pitch;     ///< pitch muscles minimal value [N]
 		std::vector<double> l_ce_star_pitch; ///< pitch muscles 'l_ce' value to get the minimal 'F_m' [m]
@@ -62,6 +66,8 @@ class Leg: public BodyPart
 		// specific muscles : yaw
 		HER_Muscle *her;
 		HIR_Muscle *hir;
+
+		double sag_met_energy; ///< metabolic energy consumption for the sagittal muscles [J]
 };
 
 #endif

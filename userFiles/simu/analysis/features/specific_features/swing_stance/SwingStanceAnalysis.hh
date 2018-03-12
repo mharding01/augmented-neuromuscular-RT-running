@@ -31,6 +31,12 @@ class SwingStanceAnalysis: public FeatureAnalysis
 		void set_rfoot_shape(ContactGeom::RigidShape *r_foot) { rfoot_shape = r_foot; }
 		void set_lfoot_shape(ContactGeom::RigidShape *l_foot) { lfoot_shape = l_foot; }
 
+		double get_stride_period_mean() const { return stride_period_mean; }
+		double get_stride_length_mean() const { return stride_length_mean; }
+		double get_take_off_mean() const { return take_off_mean; }
+		double get_ds_cycle_mean() const { return ds_cycle_mean; }
+		double get_flight_cycle_mean() const { return flight_cycle_mean; }
+
 	private:
 		SensorsInfo *sens_info; ///< info from the sensors
 
@@ -62,9 +68,9 @@ class SwingStanceAnalysis: public FeatureAnalysis
 		double cur_x_obstacle;     ///< current x position for teh obstacle [m]
 		double stride_period_mean; ///< mean of the stride period [s]
 		double stride_length_mean; ///< mean of the stride length [m]
-		double ds_cycle_mean; ///< mean of the double support per cycle [%]
-		double flight_cycle_mean; ///< mean of the flight phase per cycle [%]
-		double take_off_mean; ///< mean for starting take off [%]
+		double ds_cycle_mean;      ///< mean of the double support per cycle [%]
+		double flight_cycle_mean;  ///< mean of the flight phase per cycle [%]
+		double take_off_mean;      ///< mean for starting take off [%]
 
 		double ds_time; ///< double support time per cycle [s]
 		double flight_time; ///< flight time per cycle [s]

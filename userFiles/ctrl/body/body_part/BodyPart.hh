@@ -26,8 +26,10 @@ class BodyPart
 		virtual void update_S_ref() = 0;
 
 		void update_inputs();
-		void update_body_part(StimulationCtrl *stim_ctrl);
+		
 		void set_Qq_ref_art();
+
+		virtual void update_body_part(StimulationCtrl *stim_ctrl);
 
 		Articulation* get_articulations(int index) { return articulations[index]; }
 		Muscle* get_muscle(int index) { return muscles[index]; }

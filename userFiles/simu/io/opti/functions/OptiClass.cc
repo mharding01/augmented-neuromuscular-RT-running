@@ -8,8 +8,7 @@
  */
 OptiClass::OptiClass()
 {
-	fitness = 0.0;
-	v_ref   = CMAKE_VAR_1;
+	reset();
 }
 
 /*! \brief destructor
@@ -35,6 +34,19 @@ void OptiClass::reset()
 {
 	fitness = 0.0;
 	v_ref   = CMAKE_VAR_1;
+
+	t_final = 0.0;
+
+	v_real = 0.0;
+
+	stride_period_mean = 0.0;
+	stride_length_mean = 0.0;
+	take_off_mean = 0.0;
+	ds_cycle_mean = 0.0;
+	flight_cycle_mean = 0.0;
+
+	met_energy_legs  = 0.0;
+	met_energy_total = 0.0;
 
 	optiNorms.clear();
 	optiParams.clear();

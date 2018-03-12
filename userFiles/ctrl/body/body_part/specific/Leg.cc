@@ -46,6 +46,8 @@ Leg::Leg(CtrlInputs *inputs, MotorCtrlIndex *ctrl_index, int body_part_id): Body
 		}
 	}
 
+	sag_met_energy = 0.0;
+
 	// pitch
 	pitch_articulations.push_back(articulations[PITCH_FOOT_ART]);
 	pitch_articulations.push_back(articulations[PITCH_KNEE_ART]);
@@ -333,4 +335,21 @@ void Leg::update_S_ref()
 	std::cout << "Error: set FLAG_GLPK to ON to use GLPK !" << std::endl;
 	exit(EXIT_FAILURE);
 	#endif
+}
+
+/*! \brief computations related to the body part
+ * 
+ * \param[in] stim_ctrl stimulations for the muscles controller
+ */
+void Leg::update_body_part(StimulationCtrl *stim_ctrl)
+{
+	BodyPart::update_body_part(stim_ctrl);
+
+	sag_met_energy = 0.0;
+
+	// apply stimulations
+	for(unsigned int i=0; i<pitch_muscles.size(); i++)
+	{
+		sag_met_energy += pitch_muscles[i]->get_met_energy();
+	}
 }

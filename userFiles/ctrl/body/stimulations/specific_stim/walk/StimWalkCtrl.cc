@@ -226,7 +226,7 @@ void StimWalkCtrl::update_oscillators()
 {
 	osc->update(inputs->get_t());
 
-	theta_ref = osc->get_theta_ref();
+	//theta_ref = osc->get_theta_ref();
 
 	k_GLU = osc->get_k_GLU();
 	k_HFL = osc->get_k_HFL();

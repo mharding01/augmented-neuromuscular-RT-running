@@ -21,7 +21,7 @@ SimuOptions* init_SimuOptions()
 	options->simu_constraint = SIMU_2D_CONSTRAINT;
 
 	// 1 to print comments, 0 otherwise
-	#if defined(OPTI_BIOROB) || defined(OPTI_MPI)
+	#if defined(EVAL_RUN) || defined(OPTI_BIOROB) || defined(OPTI_MPI)
 		options->print = 0;
 	#else
 		options->print = 1;

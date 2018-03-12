@@ -19,10 +19,12 @@
 class StimWangCtrl: public StimulationCtrl
 {
 	public:
-		StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics *fwd_kin, BodyPart **parts, CtrlOptions *options, MatsuokaSixN* ghost_osc);
+		StimWangCtrl(CtrlInputs *inputs, WalkStates *ws, ForwardKinematics *fwd_kin, BodyPart **parts, CtrlOptions *options);
 		virtual ~StimWangCtrl();
 
 		virtual void compute();
+        virtual void set_opti_defaults();
+        virtual void set_opti_delayed();
 
 		void compute_delay();
 		void compute_stimulation();
@@ -142,6 +144,7 @@ class StimWangCtrl: public StimulationCtrl
 
 		double theta_toro_sw0; ///< torso angle at the beginning of the swing phase [rad]
 		int first_swing[NB_LEGS]; ///< flag to enter only one in first swing contact 
+		int first_stance[NB_LEGS]; ///< flag to enter only once in first stance contact 
 
 		// l.ce (dalay)
 		double lce_ta[NB_LEGS];  ///< contractile element derivative for TA [m]
@@ -166,6 +169,11 @@ class StimWangCtrl: public StimulationCtrl
 		double l_opt_hfl; ///< l.opt: HFL muscle [m]
 
 		// --- opti parameters ---
+		
+		// cpg oscillator signal gains
+		double k_HFLrun1; ///< HFL "swing prep" oscillator gain [.]
+		double k_HFLrun2; ///< HFL "swing" oscillator gain [.]
+		double k_HAMrun; ///< HAM "late swing" oscillator gain [.]
 
     	// pre-stimulations
     	double S0_sol_st;
@@ -235,6 +243,9 @@ class StimWangCtrl: public StimulationCtrl
     	double phi_off_pk;
     	//switch controller
     	double t_switch;
+        int nb_strikes_switch;
+
+		void update_oscillators();
 
 		void pitch_compute();
 
@@ -242,8 +253,8 @@ class StimWangCtrl: public StimulationCtrl
 		void roll_compute_min();
 		void yaw_compute_min();
 
-		int stance_preparation(int swing_leg_id);
-		int swing_initiation(int stance_leg_id);
+		int stance_preparation(int leg_id);
+		int swing_initiation(int leg_id);
 
         // TODO:For testing cpg control of stims for optis
         double cpg_ctrl_thresh_t;

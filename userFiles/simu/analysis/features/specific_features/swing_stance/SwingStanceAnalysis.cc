@@ -6,14 +6,17 @@
 #include "user_IO.h"
 #include "ContactGestion.hh"
 #include "user_IO.h"
+#include "user_realtime.h"
 
-#define TIME_SAFETY 0.15          ///< time safety [s]
-#define TIME_TAKE_OFF_SAFETY 0.01 ///< time safety to wait after take-off [s]
+#define TIME_SAFETY 0.1             ///< time safety (for strike) [s]
+#define TIME_SAFETY_2 0.05          ///< time safety (for take-off) [s]
+#define TIME_TAKE_OFF_SAFETY 2.5e-3 ///< time safety to wait after take-off [s]
 #define FZ_THRESHOLD_STRIKE 5.0   ///< normal force threshold to detect strike [N]
+#define FZ_THRESHOLD_TAKE_OFF 5.0 ///< normal force threshold to detect take-off [N]
 #define THRESHOLD_X_OBSTACLE 0.15 ///< minimal distance between two obstacles [m]
 
-#define MIN_T_MEAN 9.0 ///< start time to compute stride periods and lengths
-#define MAX_T_MEAN 19.0 ///< finish time to compute stride periods and lengths
+#define MIN_T_MEAN 9.0 ///< start time to compute stride periods and lengths [s]
+#define MAX_T_MEAN 29.0 ///< finish time to compute stride periods and lengths [s]
 
 #define MIN_DIST_STEP 0.1 ///< minimal distance between two steps
 
@@ -99,6 +102,8 @@ void SwingStanceAnalysis::compute()
 	double x_foot, t;
 	double Fz[N_LEGS];
 	double angle_foot;
+	double gh_t_flight, flight_per_cycle;
+
 
 	CppInterface *cppInterface;
 
@@ -118,8 +123,8 @@ void SwingStanceAnalysis::compute()
 		case MESH_GCM_MODEL:
 			whole_feet = cppInterface->get_simu_ctrl()->get_gcm_mesh()->get_whole_feet();
 
-			Fz[RIGHT_ID] = whole_feet->get_leg_feet_forces(RIGHT_ID, 2);
-			Fz[LEFT_ID]  = whole_feet->get_leg_feet_forces(LEFT_ID, 2);
+			Fz[RIGHT_ID] = whole_feet->get_leg_feet_forces(RIGHT_ID, 2) + whole_feet->get_leg_feet_dist_forces(RIGHT_ID, 2);
+			Fz[LEFT_ID]  = whole_feet->get_leg_feet_forces(LEFT_ID, 2)  + whole_feet->get_leg_feet_dist_forces(LEFT_ID, 2);
 			break;
 	
 		case PRIM_GCM_MODEL:
@@ -135,7 +140,7 @@ void SwingStanceAnalysis::compute()
 	flag_strike = 0;
 
 	flag_strike = 0;
-
+	
 	for (int i=0; i<N_LEGS; i++)
 	{
 		flag_strike_leg[i] = 0;	
@@ -218,10 +223,12 @@ void SwingStanceAnalysis::compute()
 				{
 					stride_period_mean = str_period_av->update_and_get(stride_period[i]);
 					stride_length_mean = str_length_av->update_and_get(stride_length[i]);
+					// Stance-time of leg i, only
 					take_off_mean = take_off_av->update_and_get(take_off_pourc[i]);
 					if (i == RIGHT_ID) 
 					{
 						ds_cycle_mean = ds_cycle_av->update_and_get(100*ds_time/stride_period[i]);
+						// Flight total time over one gait cycle
 						flight_cycle_mean = flight_cycle_av->update_and_get(100*flight_time/stride_period[i]);
 					}
 				}
@@ -241,13 +248,13 @@ void SwingStanceAnalysis::compute()
 		// stance
 		else
 		{
-			if (Fz[i] >= FZ_THRESHOLD_STRIKE)
+			if (Fz[i] >= FZ_THRESHOLD_TAKE_OFF)
 			{
 				t_last_force_leg[i] = t;
 			}
 
 			// take-off
-			if ( (Fz[i] <= 0.0) && (t - last_t_strike_leg[i] > TIME_SAFETY) && (t - t_last_force_leg[i] > TIME_TAKE_OFF_SAFETY) )
+			if ( (Fz[i] <= 0.0) && (t - last_t_strike_leg[i] > TIME_SAFETY_2) && (t - t_last_force_leg[i] > TIME_TAKE_OFF_SAFETY) )
 			{
 				swing_leg[i] = 1;
 
@@ -275,7 +282,7 @@ void SwingStanceAnalysis::compute()
 		{
 			flight_time += dt;
 		}
-	}	
+	}
 
 	if (options->print && !flag_print && mbs_data->tsim > 19.5)
 	{
@@ -283,8 +290,8 @@ void SwingStanceAnalysis::compute()
 
 		std::cout << "period: " << stride_period_mean << " [s]" << std::endl;
 		std::cout << "length: " << stride_length_mean << " [m]" <<std::endl;
-		std::cout << "stance phase: " << take_off_mean << " [%]" <<std::endl;
+		std::cout << "one leg stance phase: " << take_off_mean << " [%]" <<std::endl;
 		std::cout << "double support: " << ds_cycle_mean << " [%]" <<std::endl;
-		std::cout << "flight: " << flight_cycle_mean << " [%]" <<std::endl;
+		std::cout << "tot flight: " << flight_cycle_mean << " [%]" <<std::endl;
 	}
 }

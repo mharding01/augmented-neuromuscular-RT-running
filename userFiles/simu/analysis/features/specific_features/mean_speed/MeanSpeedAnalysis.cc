@@ -1,8 +1,11 @@
 #include "MeanSpeedAnalysis.hh"
 #include "SimuIndex.hh"
 #include "user_IO.h"
+#include "user_realtime.h"
+#include "set_output.h"
 
-#define DIST_VELOCITY_START 25.0 ///< distance to start speed computation TODO: Hardcoded, not important
+#define DIST_VELOCITY_START 10.0 ///< distance to start speed computation TODO: Hardcoded, not important
+
 #define DIST_VELOCITY_END 30.0  ///< distance to finish speed computation
 
 #define SIZE_VEL_AVERAGE 4000 ///< size of the running average to compute speed
@@ -49,8 +52,9 @@ void MeanSpeedAnalysis::compute()
 	// running speed
 	running_speed = speed_av_compute->update_and_get(mbs_data->qd[FJ_T1_id]);
 
-	//set_plot(running_speed, "real speed [m/s]");
-
+	set_plot(running_speed, "real speed [m/s]");
+	//set_output(mbs_data->qd[FJ_T1_id], "real_speed raw");
+	set_output(mbs_data->qd[FJ_T1_id], "real_speed");
 	// mean speed
 	x_coman = mbs_data->q[FJ_T1_id];
 

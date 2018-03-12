@@ -14,5 +14,7 @@ SfunctionsR
 build
 debug
 test
-workR/optis
+workR/*Optis
 .DS_Store
+*.txt
+*.png

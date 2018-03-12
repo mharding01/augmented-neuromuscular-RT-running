@@ -15,7 +15,7 @@
 #define X1 0.005
 #define X2 0.035
 
-#define OBS_MAX_H 30e-3 // (before: 10e-3 to 40e-3) 
+#define OBS_MAX_H 15e-3 // (before: 10e-3 to 40e-3) 
 #define OBST_T_INIT 10.0
 
 #define DENOM (2.0*HALF_BASIS - X2)

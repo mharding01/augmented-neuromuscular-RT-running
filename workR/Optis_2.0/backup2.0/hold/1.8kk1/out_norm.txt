@@ -1,0 +1,69 @@
+fitness: 1625.53930121258
+
+norms:
+0.246677712192157
+0.176268634807033
+0.248809504207612
+0.543483976704342
+0.925328061279578
+0.962376432069807
+0.498729279306577
+0.943243554310338
+0.281078437621086
+0.188619056875543
+0.604396462719497
+
+
+/*
+ * The following lines present the results file with the normalized parameters.
+ * Do not use it directly, its purpose is just to show the match between the parameters
+ * to optimize and their normalized optimized values.
+ */
+
+#include "OptiNorms.hh"
+#include "StimWangCtrl.hh"
+#include "JointsInit.hh"
+#include "MatsuokaSixN.hh"
+
+/*! \brief constructor
+ */
+OptiNorms::OptiNorms()
+{
+
+}
+
+/*! \brief destructor
+ */
+OptiNorms::~OptiNorms()
+{
+
+}
+
+/*! \brief set optimization parameters
+ */
+void OptiNorms::set_opti()
+{
+    StimWangCtrl *stim_wang = static_cast<StimWangCtrl*>(stim_ctrl);
+    MatsuokaSixN *g_osc = static_cast<MatsuokaSixN*>(stim_wang->get_ghost_osc());
+
+    // Uses "opti_set" function family in order to delay setting these params
+    // until after Ctrl construction
+    g_osc->opti_set_P_tau(0.24667771 ); // Taken from master commit: "All_1 results, 1459 score"
+	// HIP CONTROL
+	g_osc->opti_set_P_theta_trunk( 0.17626863 ); // TODO: trunk lean 
+	g_osc->opti_set_P_theta_hip( 0.24880950 ); // TODO: made its lower bound smaller, come back to this later
+    
+	// CPG CONTROL
+    g_osc->opti_set_k_HFLrun1( 0.54348398);	// Higher bound
+    g_osc->opti_set_k_HFLrun2( 0.92532806);	// Higher bound
+    g_osc->opti_set_k_HAMrun( 0.96237643);
+
+	// ANKLE CONTROL
+	g_osc->opti_set_P_G_SOL( 0.49872928 );	// Lower bounds
+	g_osc->opti_set_P_G_SOL_TA( 0.94324355 );// Prevent tripping
+	g_osc->opti_set_P_G_GAS( 0.28107844 );
+	
+	// KNEE CONTROL
+	g_osc->opti_set_P_G_VAS( 0.18861906 );	// Shock absorption, v. thrust
+	g_osc->opti_set_P_k_theta( 0.60439646);	// Prevent hyperextension
+}

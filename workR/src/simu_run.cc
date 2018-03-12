@@ -74,10 +74,15 @@ double simu_run(OptiClass *optiClass)
 
 	// dirdyn options (see documentations for additional options)
 	mbs_dirdyn->options->dt0 = 125e-6;
-	mbs_dirdyn->options->tf  = 30.0;
+	mbs_dirdyn->options->tf  = 70.0;
 
+	// special time for evaluations
+	#ifdef EVAL_RUN
+		mbs_dirdyn->options->tf  = 30.0;
+	#endif
 	// results
 	mbs_dirdyn->options->save2file = 0;
+	mbs_dirdyn->options->saveperiod = 4;
 	mbs_dirdyn->options->max_save_user = 12;
 	mbs_dirdyn->options->respath = PROJECT_SOURCE_DIR"/../resultsR";
 	mbs_dirdyn->options->animpath = PROJECT_SOURCE_DIR"/../animationR";
@@ -108,9 +113,11 @@ double simu_run(OptiClass *optiClass)
 	#endif
 
 	// special optimization parameters
-	#ifdef OPTI_RUN
+	#if defined(EVAL_RUN) || defined(OPTI_RUN)
 	mbs_dirdyn->options->realtime = 0;
+	mbs_dirdyn->options->save2file = 0;
 	#endif
+
 	
 	// get UserIO
 	uvs = mbs_data->user_IO;
@@ -198,8 +205,8 @@ double speed_range_fitness(OptiClass *optiClass)
 	std::vector<double> v_ref_tab;
 
 	// variables initialization
-	nb_runs = 11;
-	init_v  = 0.4;
+	nb_runs = 17; 	// 1.1 - 1.9m/s
+	init_v  = 1.1;
 	delta_v = 0.05;
 
 	fitness = 0.0;
@@ -252,7 +259,7 @@ void simu_constraint_apply(MbsData *mbs_data)
 			mbs_set_qdriven(mbs_data, FJ_R3_Coman_id);
 
 			mbs_data->q[FJ_T3_Coman_id] = 0.75;
-			//mbs_data->q[FJ_R2_Coman_id] = M_PI; //tete à l'envers
+			//mbs_data->q[FJ_R2_Coman_id] = M_PI; //tete Ã  l'envers
 			break;
 
 		case SIMU_Qq_MATCH_WANG:

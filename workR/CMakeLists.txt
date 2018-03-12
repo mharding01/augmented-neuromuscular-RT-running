@@ -13,11 +13,11 @@
 # possibilities: init_feet ; long_feet ; flex_feet ; short_feet ; short_feet_ball ; spring_toe_feet ; spring_toe_short_feet
 set( COMAN_VERSION "spring_toe_short_feet" )
 
-# 0: no opti ; 1: normal opti ; 2: BioRob opti ; 3: MPI
-set( OPTI_RUN 0 )
+# 0: normal run ; 1: evaluation run ; 2: test opti ; 3: BioRob opti ; 4: MPI opti
+set( MAIN_RUN 0 )
 
 # speed reference
-set (CMAKE_VAR_1 1.6)
+set (CMAKE_VAR_1 1.5)
 
 # initial forward speed
 set (CMAKE_VAR_2 1.6)
@@ -54,8 +54,8 @@ set(TRIAL_PATHS_MBSYSC
 )
 find_path(ROBOTRAN_SOURCE_DIR mbs_common ${TRIAL_PATHS_MBSYSC})
 
-# mbsysCopy for optimization
-if ( NOT OPTI_RUN EQUAL 0 )
+# force mbsysCopy for optimization
+if ( MAIN_RUN GREATER 1 )
 	set (ROBOTRAN_SOURCE_DIR "${PROJECT_SOURCE_DIR}/../mbsysCopy")
 endif ( )
 
@@ -99,8 +99,8 @@ set ( SYMBOLIC_PATH symbolicR/${COMAN_VERSION} )
 find_package( LibSymbolicR )
 find_package( LibRobotranC )
 
-# flags default
-if ( OPTI_RUN EQUAL 0 )
+# real-time when not performing an optimization
+if ( MAIN_RUN LESS 2 )
 
 	# real-time
 	set_flag( FLAG_REAL_TIME ON )
@@ -143,7 +143,7 @@ endif ( )
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 # Biorob Cluster
-if ( OPTI_RUN EQUAL 2 )
+if ( MAIN_RUN EQUAL 3 )
 	find_package( BiorobOpti REQUIRED )
 	if (BIOROB_OPTI_FOUND)
 		include_directories (${BIOROB_OPTI_INCLUDE_PATH})
@@ -157,7 +157,7 @@ if ( OPTI_RUN EQUAL 2 )
 endif ( )
 
 # MPI library
-if (OPTI_RUN EQUAL 3)
+if (MAIN_RUN EQUAL 4)
 	find_package(MPI REQUIRED)
 	if (MPI_FOUND)
 		include_directories (${MPI_INCLUDE_PATH})
@@ -197,21 +197,27 @@ if( CMAKE_BUILD_TYPE MATCHES "Debug" )
 	message(STATUS "Debug version !")
 endif( )
 
+# evaluation run
+if ( MAIN_RUN EQUAL 1 )
+	add_definitions( -D EVAL_RUN )
+	message(STATUS "Evaluation run !")
+endif (  )
+
 # optimization run
-if ( OPTI_RUN GREATER 0 )
-	add_definitions( -DOPTI_RUN )
+if ( MAIN_RUN GREATER 1 )
+	add_definitions( -D OPTI_RUN )
 	message(STATUS "Running optimization !")
 endif (  )
 
 # BioRob optimization
-if ( OPTI_RUN EQUAL 2 )
-	add_definitions( -DOPTI_BIOROB )
+if ( MAIN_RUN EQUAL 3 )
+	add_definitions( -D OPTI_BIOROB )
 	message(STATUS "BioRob cluster !")
 endif (  )
 
 # MPI optimization
-if ( OPTI_RUN EQUAL 3 )
-	add_definitions( -DOPTI_MPI )
+if ( MAIN_RUN EQUAL 4 )
+	add_definitions( -D OPTI_MPI )
 	message(STATUS "MPI computation !")
 endif (  )
 
@@ -301,14 +307,14 @@ endif ( )
 ## ---- PYTHON SCRIPTS FOR OPTI ---- ##
 
 # BioRob
-if (OPTI_RUN EQUAL 2)
+if (MAIN_RUN EQUAL 3)
 	file(COPY ${PROJECT_SOURCE_DIR}/../opti/python/xml_gen.py DESTINATION ${CMAKE_BINARY_DIR})
 	file(COPY ${PROJECT_SOURCE_DIR}/../opti/python/biorob_res_gen.py DESTINATION ${CMAKE_BINARY_DIR})
 	file(COPY ${PROJECT_SOURCE_DIR}/../opti/python/nb_opti_params.py DESTINATION ${CMAKE_BINARY_DIR})
 endif ( )
 
 # MPI
-if (OPTI_RUN EQUAL 3)
+if (MAIN_RUN EQUAL 4)
 	file(COPY ${PROJECT_SOURCE_DIR}/../opti/python/mpi_res_gen.py DESTINATION ${CMAKE_BINARY_DIR})
 endif ( )
 
@@ -321,7 +327,7 @@ endif ( )
 include_directories (${INCLUDE_DIR})
 
 # name of the executable
-if ( OPTI_RUN GREATER 1 ) # opti cluster
+if ( MAIN_RUN GREATER 2 ) # opti cluster
 	set (Executable dispatcher_opti)
 else ( )
 	set (Executable exe_${PROJECT_NAME})
@@ -381,12 +387,12 @@ if (UNIX)
 endif ( )
 
 # Biorob Cluster
-if ( OPTI_RUN EQUAL 2 )
+if ( MAIN_RUN EQUAL 3 )
 	target_link_libraries (${Executable} ${BIOROB_OPTI_LIBRARIES})
 endif ( )
 
 # MPI library
-if ( OPTI_RUN EQUAL 3 )
+if ( MAIN_RUN EQUAL 4 )
 	target_link_libraries (${Executable} ${MPI_LIBRARIES})
 endif ( )
 

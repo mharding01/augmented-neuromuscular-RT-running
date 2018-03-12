@@ -4,7 +4,10 @@
 #include "NicoCtrl.hh"
 #include "Body.hh"
 
-#define VELOCITY_MARGIN 0.05
+#define DIST_VELOCITY_START 3.0
+#define VELOCITY_MARGIN 0.025
+#define VELOCITY_THRESH 0.05
+
 
 /*! \brief constructor
  * 
@@ -23,6 +26,7 @@ CPG_SpeedFitness::CPG_SpeedFitness(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *s
  */
 CPG_SpeedFitness::~CPG_SpeedFitness()
 {
+	//printf("Speed opti, speed ref: %f, %f\n", speed_opti, speed_ref);
 
 }
 
@@ -32,7 +36,8 @@ void CPG_SpeedFitness::compute()
 {
 	double t;
 
-	if (stims->is_cpg_ctrl_active()) /* Only start when cpg contrl active */
+	if (mbs_data->q[1] > DIST_VELOCITY_START 
+            && stims->is_cpg_ctrl_active()) /* Only start when cpg contrl active and moved forward certain distance */
 	{
 		t = mbs_data->tsim;
 
@@ -50,3 +55,31 @@ void CPG_SpeedFitness::compute()
 	}
 }
 
+/*! \brief get fitness
+ * 
+ * \return fitness
+ */
+double CPG_SpeedFitness::get_fitness()
+{
+	if (speed_opti_started)
+	{
+		if (fabs(speed_opti - speed_ref) > VELOCITY_MARGIN)
+		{
+            // TODO: Changed error coeff to 85, now error of 0.05 is 75% of m_score
+			return compute_gaussian_fitness(speed_ref - speed_opti, max_fitness, 85);
+		}
+		else
+		{
+			return max_fitness;
+		}
+	}
+	else
+	{
+		return 0.0;
+	}
+}
+
+int CPG_SpeedFitness::next_stage_unlocked()
+{
+	return (fabs(speed_opti - speed_ref) < VELOCITY_THRESH);
+}
