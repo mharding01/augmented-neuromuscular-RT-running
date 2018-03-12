@@ -95,6 +95,7 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	P_G_GAS = 9.63917261;
 	P_G_VAS = 1.64607262;
 	P_k_theta = 6.68941640;
+
     
     /*
 	p_theta = 0.502487;
@@ -104,8 +105,10 @@ MatsuokaSixN::MatsuokaSixN(int nb_neurons, int cur_t, WalkStates *ws, CtrlInputs
 	p_HAM2  = -2.829820;
     */
 
+
     p_theta_trunk = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
     p_theta_hip = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
+
     p_tau   = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
     p_HFL   = 0.0; // TODO: for now, these are zero'd, come back when speed modulating 
     p_HAM1  = 0.0; // TODO: for now, these are zero'd, come back when speed modulating     
@@ -190,10 +193,10 @@ void MatsuokaSixN::Matsuoka_six_neurons()
 	vd[4] = tau_B_inv * ( -v[4] + pos(x[4]) );
 	vd[5] = tau_C_inv * ( -v[5] + pos(x[5]) ); 
     
-    //set_plot(x[0], "x1");
+    set_plot(x[0], "x1");
     //set_plot(x[1], "x2");
     //set_plot(x[3] , "x4");
-    //set_plot(x[4] , "x5");
+    set_plot(x[4] , "x5");
     //set_plot(x[2] , "x3");
     //set_plot(x[5] , "x6");
 

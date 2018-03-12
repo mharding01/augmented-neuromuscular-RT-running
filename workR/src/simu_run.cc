@@ -80,7 +80,6 @@ double simu_run(OptiClass *optiClass)
 	#ifdef EVAL_RUN
 		mbs_dirdyn->options->tf  = 30.0;
 	#endif
-
 	// results
 	mbs_dirdyn->options->save2file = 0;
 	mbs_dirdyn->options->saveperiod = 4;
@@ -260,7 +259,7 @@ void simu_constraint_apply(MbsData *mbs_data)
 			mbs_set_qdriven(mbs_data, FJ_R3_Coman_id);
 
 			mbs_data->q[FJ_T3_Coman_id] = 0.75;
-			//mbs_data->q[FJ_R2_Coman_id] = M_PI; //tete à l'envers
+			//mbs_data->q[FJ_R2_Coman_id] = M_PI; //tete Ã  l'envers
 			break;
 
 		case SIMU_Qq_MATCH_WANG:

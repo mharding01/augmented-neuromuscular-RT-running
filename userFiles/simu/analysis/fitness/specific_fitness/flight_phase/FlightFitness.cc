@@ -5,6 +5,7 @@
 #include "WalkStates.hh"
 
 #define DIST_FIT_START 3.0
+
 #define MAX_FLIGHT_PER_CYCLE 0.1    // TODO: tune this value later?
 #define FLIGHT_MARGIN 0.08
 

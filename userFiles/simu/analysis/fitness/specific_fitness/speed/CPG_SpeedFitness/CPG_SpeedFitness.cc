@@ -8,6 +8,7 @@
 #define VELOCITY_MARGIN 0.025
 #define VELOCITY_THRESH 0.05
 
+
 /*! \brief constructor
  * 
  * \param[in] mbs_data Robotran structure
@@ -26,6 +27,7 @@ CPG_SpeedFitness::CPG_SpeedFitness(MbsData *mbs_data, Ctrl *ctrl, SensorsInfo *s
 CPG_SpeedFitness::~CPG_SpeedFitness()
 {
 	//printf("Speed opti, speed ref: %f, %f\n", speed_opti, speed_ref);
+
 }
 
 /*! \brief compute variables at each time step

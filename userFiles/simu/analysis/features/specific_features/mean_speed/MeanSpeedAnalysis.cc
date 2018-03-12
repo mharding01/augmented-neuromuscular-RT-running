@@ -5,6 +5,7 @@
 #include "set_output.h"
 
 #define DIST_VELOCITY_START 10.0 ///< distance to start speed computation TODO: Hardcoded, not important
+
 #define DIST_VELOCITY_END 30.0  ///< distance to finish speed computation
 
 #define SIZE_VEL_AVERAGE 4000 ///< size of the running average to compute speed

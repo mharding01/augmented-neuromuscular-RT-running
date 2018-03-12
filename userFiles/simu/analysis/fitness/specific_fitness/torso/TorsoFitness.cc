@@ -23,8 +23,9 @@ TorsoFitness::TorsoFitness(MbsData *mbs_data, SensorsInfo *sens_info, Ctrl *ctrl
 	torso_mean = 0.0;
 
 	opti_started = 0;
-	
+
 	max_fitness = 350.0;
+
 }
 
 /*! \brief destructor

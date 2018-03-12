@@ -6,6 +6,7 @@
 #include "StimWangCtrl.hh"
 
 #define DIST_OSCILLO_START .5    // 3m distance before penalizing oscillo error 
+
 /*! \brief constructor
  * 
  * \param[in] mbs_data Robotran structure
@@ -22,6 +23,7 @@ OscillosFitness::OscillosFitness(MbsData *mbs_data, Ctrl *ctrl): FitnessStage(mb
 	osc = stim_wang_ctrl->get_ghost_osc();
 
 	max_fitness = 500.0;
+
 }
 
 /*! \brief destructor

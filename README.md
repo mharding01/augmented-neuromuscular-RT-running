@@ -1,7 +1,59 @@
-Nicolas Van der Noot's thesis: COMAN robot
+Augmented Neuromuscular Gait Controller Enables Real-time Tracking of Bipedal Running Speed
 =========================================
 
-This project contains different [COMAN](https://www.youtube.com/watch?v=oXBYZxa25vc) models, along with appropriate controllers to achieve dynamic walking. These controllers are based on bio-inspired approaches computing appropriate voltages to send to the robot motors.
+This project supplies the source code related to the bipedal running research done at the BIOROB Laboratory under Dr. Auke Ijspeert at EPFL, and represents the work of Dr. Nicolas Van der Noot, Bruno Somers, and Matthew Harding. The contribution of this work was to demonstrate an adaptable and bio-inspired running-gait control system that can realize a wide range of speeds from a single optimization.
+
+This repository contains different models of COMAN, our robot platform of choice for our simulations, which one can learn more about [here](https://www.youtube.com/watch?v=oXBYZxa25vc). Several figures below summarize the initialization, optimization, and static muscle parameters used in our simulations to attain our results. 
+
+<p align="center">
+   </br>
+   <img src ="figures/table_I-initial_dynamics.png"/>
+   </br></br><strong>Table I</strong>: The parameters to be optimized for the biped
+initial dynamics state, and their ranges are reported in this table. <i>z</i><sub><i>w</i></sub> is the vertical position of the waist, <i>&theta;</i><sub><i>w</i></sub> its orientation (used to describe the floating base kinematics). <i>φ</i><sub><i>h</i></sub>, <i>φ</i><sub><i>k</i></sub>, <i>φ</i><sub><i>a</i></sub> and <i>φ</i><sub><i>sh</i></sub> are respectively the hip, knee, ankle and shoulder sagittal joint angles (with R and L standing respectively for right and left). It is worthy to note that <i>φ</i><sub><i>sh</i></sub> is computed from left and right leg <i>φ</i><sub><i>h</i></sub>, as shown in the publication. All these initialization parameters' time derivatives (denoted by the •<strong>'</strong> function) are optimized in the [−5; 5] range, except <i>z</i><sub><i>w</i></sub><strong>'</strong> being optimized in the [−0.5; 0.5] range.
+</p>
+
+
+
+<p align="center">
+   </br>
+   <img src ="figures/table_II-parameters.png"/>
+   </br></br><strong>Table II</strong>:  The parameters to be optimized in the controller, and their ranges are reported in this table. The speed dependent
+parameters are computed as follows: <code>τ = K<sub>τ</sub> + L<sub>τ</sub> v<sub>∗</sub> + M<sub>τ</sub> v<sub>∗</sub><sup>2</sup></code>; <code>k<sub>HFL,1</sub> = K<sub>HFL,1</sub> + L<sub>HFL,1</sub> v<sub>∗</sub></code>; <code>k<sub>HFL,2</sub> = K<sub>HFL,2</sub> + L<sub>HFL,2</sub> v<sub>∗</sub> + M<sub>HFL,2</sub> v<sub>∗</sub><sup>2</sup></code>; <code>k<sub>HAM</sub> = K<sub>HAM</sub> + L<sub>HAM</sub> v<sub>∗</sub> + M<sub>HAM</sub> v<sub>∗</sub><sup>2</sup></code>; <code>G<sub>VAS</sub> = K<sub>G,VAS</sub> + L<sub>G,VAS</sub> v<sub>∗</sub></code>; <code>G<sub>GAS</sub> = K<sub>G,GAS</sub> + L<sub>G,GAS</sub> v<sub>∗</sub></code>; <code>G<sub>SOL</sub> = K<sub>G,SOL</sub> + L<sub>G,SOL</sub> v<sub>∗</sub> + M<sub>G,SOL</sub> v<sub>∗</sub><sup>2</sup></code>; <code>G<sub>S−T</sub> = K<sub>G,S−T</sub> + L<sub>G,S−T</sub> v<sub>∗</sub></code>, where <code>v<sub>∗</sub> = v<sub>ref</sub> − 1.5</code> and </code>v<sub>ref</sub></code> is the target forward speed.
+</p>
+
+
+
+<p align="center">
+   </br>
+   <img src ="figures/table_III-rf.png"/>
+   </br></br><strong>Table III</strong>: The fixed MTU parameters of the <strong>RF</strong> virtual muscle are reported here, which were used in addition to those of
+11 muscles described in [1]: <strong>SOL</strong>, <strong>TA</strong>, <strong>GAS</strong>, <strong>VAS</strong>, <strong>HAM</strong>, <strong>GLU</strong>, <strong>HFL</strong>, <strong>SET</strong>, <strong>SFL</strong>, <strong>EET</strong>, and <strong>EFL</strong>. When a leg MTU acts
+on different joints, its values are explicitly reported as (a) for ankle, (k) for knee and (h) for hip (except if they are equal).
+These values were extracted from [2] and [3] for the leg muscles. The arm muscles were estimated with the <i>OpenSim</i>
+simulator [4] using the human model developed in [5]. The masses <i>m</i><sub><i>mtu</i></sub> were obtained using the method proposed in
+[6], while the <i>λ</i> values were obtained from [7]. These values were scaled to the size of COMAN by using dynamic scaling
+methods, being described in [8] and [9].
+</p>
+
+**Table Bibliography**:
+
+[1] N. Van der Noot, A. J. Ijspeert, and R. Ronsse, “Bio-inspired controller achieving forward speed modulation with a 3d bipedal walker,” _The International Journal of Robotics Research_, vol. 37, no. 1, pp. 168–196, Jan. 2018.
+
+[2] H. Geyer and H. Herr, “A muscle-reflex model that encodes principles of legged mechanics produces human walking dynamics and muscle activities.” _IEEE transactions on neural systems and rehabilitation engineering : a publication of the IEEE Engineering in Medicine and Biology Society_, vol. 18, no. 3, pp. 263–73, June 2010.
+
+[3] S. Song and H. Geyer, “A neural circuitry that emphasizes spinal feedback generates diverse behaviours of human locomotion.” _The Journal of physiology_, Apr. 2015.
+
+[4] S. L. Delp, F. C. Anderson, A. S. Arnold, P. Loan, A. Habib, C. T. John, E. Guendelman, and D. G. Thelen, “OpenSim: open-source software to create and analyze dynamic simulations of movement.” _IEEE transactions on bio-medical engineering_, vol. 54, no. 11, pp. 1940–50, Nov. 2007.
+
+[5] A. Rajagopal, C. L. Dembia, M. S. DeMers, D. D. Delp, J. L. Hicks, and S. L. Delp, “Full-Body Musculoskeletal Model for Muscle-Driven Simulation of Human Gait,” _IEEE Transactions on Biomedical Engineering_, vol. 63, no. 10, pp. 2068–2079, Oct. 2016.
+
+[6] J. M. Wang, S. R. Hamner, S. L. Delp, and V. Koltun, “Optimizing locomotion controllers using biologically-based actuators and objectives,” _ACM Trans. Graph_, p. 25, 2012.
+
+[7] G. T. Yamaguchi, A. G.-U. Sawa, D. W. Moran, M. J. Fessler, and J. M. Winters, “A survey of human musculotendon actuator parameters,” in _Multiple Muscle Systems: Biomechanics and Movement Organization_. Springer-Verlag, 1990, pp. 717–778.
+
+[8] A. Bejan and J. H. Marden, “Unifying constructal theory for scale effects in running, swimming and flying.” _The Journal of experimental biology_, vol. 209, no. Pt 2, pp. 238–48, Jan. 2006.
+
+[9] A. Schepelmann, M. D. Taylor, and H. Geyer, “Development of a Testbed for Robotic Neuromuscular Controllers,” in _Robotics: Science and Systems_. MIT Press, 2012.
 
 
 ## Project structure ##
@@ -14,7 +66,7 @@ This project contains different [COMAN](https://www.youtube.com/watch?v=oXBYZxa2
     * [elem](dataR/elem): .mbs files which can be combined to make bigger .mbs files
     * [index](dataR/index): files where the .mbs indexes are linked to the simulation code
     * [python](dataR/python): python script to combine .mbs files (from [elem](dataR/elem)) in another .mbs file
-* [mbsysCopy](mbsysCopy): copies of the files located in the generic *mbsysC* folder, in order to perform optimizations, or to run the project in a *standalon* fashion. This is not available for *Windows*.
+* [mbsysCopy](mbsysCopy): copies of the files located in the generic *mbsysC* folder, in order to perform optimizations, or to the project in a *standalone* fashion. This is not available for *Windows*.
     * [cmake_aux](mbsysCopy/cmake_aux): auxiliary CMake files
     * [conf](mbsysCopy/conf): configuration files (external libraries paths...)
     * [extra_conf](mbsysCopy/extra_conf): extra configuration files (i.e. not in generic Robotran projects)
